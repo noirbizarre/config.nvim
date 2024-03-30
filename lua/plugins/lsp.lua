@@ -25,7 +25,7 @@ return {
             --   "prettierd",
             "luacheck",
             "ruff_lsp",
-            "shellcheck",
+            "bashls",
             "stylua",
             "lua_ls",
             "pylsp",
@@ -137,6 +137,7 @@ return {
                 end)
             end)
 
+            lspconfig.bashls.setup{}
             lspconfig.lua_ls.setup{}
             -- lspconfig.pylsp.setup{}
             lspconfig.pyright.setup{}
@@ -245,7 +246,7 @@ return {
                     -- nls.builtins.formatting.prettierd,
                     nls.builtins.formatting.stylua,
                     -- nls.builtins.completion.spell,
-                    nls.builtins.diagnostics.shellcheck,
+                    -- nls.builtins.diagnostics.shellcheck,
                     -- nls.builtins.formatting.fish_indent,
                     -- nls.builtins.formatting.fixjson.with({ filetypes = { "jsonc" } }),
                     -- nls.builtins.formatting.eslint_d,

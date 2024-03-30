@@ -16,7 +16,7 @@ return {
 
         require("neo-tree").setup({
             close_if_last_window = true,
-            use_libuv_file_watcher=true,
+            use_libuv_file_watcher = true,
             enable_git_status = true,
             enable_diagnostics = true,
             sort_case_insensitive = true,
@@ -25,6 +25,15 @@ return {
                     hide_dotfiles = false,
                     hide_gitignored = false,
                 },
+                follow_current_file = {
+                    enabled = true, -- This will find and focus the file in the active buffer every time
+                    --               -- the current file is changed while the tree is open.
+                    -- leave_dirs_open = false, -- `false` closes auto expanded dirs, such as with `:Neotree reveal`
+                },
+                use_libuv_file_watcher = true,
+            },
+            default_component_configs = {
+                symlink_target = { enabled = true },
             },
         })
     end,

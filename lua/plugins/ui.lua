@@ -1,12 +1,9 @@
--- local system = require("lib.system")
-
 return {
     --- Top bufferline/tabline
     --- https://github.com/akinsho/bufferline.nvim
     {
         "akinsho/bufferline.nvim",
         lazy = false,
-        branch = "v3.0.0",
         dependencies = {
             "nvim-tree/nvim-web-devicons",
         },
@@ -16,19 +13,17 @@ return {
             {"<C-S-Left>", "<cmd>BufferLineMovePrev<cr>", desc="Move to next buffer"},
             {"<C-S-Right>", "<cmd>BufferLineMoveNext<cr>", desc="Move to previous buffer"},
         },
-        config = function()
-            require("bufferline").setup{
-                options = {
-                    diagnostics = "nvim_lsp",
-                    always_show_bufferline = false,
-                    offsets = {
-                        { filetype = "NvimTree", text = "", padding = 1 },
-                        { filetype = "neo-tree", text = "", padding = 1 },
-                        { filetype = "Outline", text = "", padding = 1 },
-                    },
-                }
+        opts = {
+            options = {
+                diagnostics = "nvim_lsp",
+                always_show_bufferline = false,
+                offsets = {
+                    { filetype = "NvimTree", text = "", padding = 1 },
+                    { filetype = "neo-tree", text = "", padding = 1 },
+                    { filetype = "Outline", text = "", padding = 1 },
+                },
             }
-        end,
+        },
     },
 
     -- {
@@ -46,48 +41,27 @@ return {
         cmd = "LspSaga",
         event = { "BufReadPost", "BufNewFile" },
         keys = {
-            {'<C-S-i', '<cmd>Lspsaga code_action<cr>', desc="Code Action"},
-            {'<C-S-r', '<cmd>Lspsaga rename<cr>', desc="Rename"},
-            -- {'<C-S-I', '<cmd>Lspsaga hover_doc<cr>', desc="Hover Documentation"},
+            {'<leader>li', '<cmd>Lspsaga incoming_calls<cr>', desc="Incoming calls"},
+            {'<leader>lo', '<cmd>Lspsaga outgoing_calls<cr>', desc="Outgoing calls"},
+            {'<leader>la', '<cmd>Lspsaga code_action<cr>', desc="Code Action"},
+            {'<leader>lr', '<cmd>Lspsaga rename<cr>', desc="Rename"},
+            {'<leader>lt', '<cmd>Lspsaga outline<cr>', desc="Outline"},
+            {'<leader>lp', '<cmd>Lspsaga peek_definition<cr>', desc="Peek definition"},
+            {'<leader>lg', '<cmd>Lspsaga goto_definition<cr>', desc="Go to definition"},
+            {'<leader>lpt', '<cmd>Lspsaga peek_type_definition<cr>', desc="Peek type definition"},
+            {'<leader>lgt', '<cmd>Lspsaga goto_type_definition<cr>', desc="Go to type definition"},
+            {'<leader>lh', '<cmd>Lspsaga hover_doc<cr>', desc="Toggle hover documentation"},
         },
         opts = {
             lightbulb = {
                 enable = false,
             }
         },
-        -- config = function()
-        --     require('lspsaga').setup({})
-        -- end,
         dependencies = {
             'nvim-treesitter/nvim-treesitter', -- optional
             'nvim-tree/nvim-web-devicons',     -- optional
         },
     },
-
-    --- Floating winbar
-    --- https://github.com/b0o/incline.nvim
-    -- {
-    --     "b0o/incline.nvim",
-    --     event = "BufReadPre",
-    --     config = function()
-    --         require("incline").setup()
-    --         -- local colors = require("nightfox.colors").setup()
-    --         -- require("incline").setup({
-    --         --     highlight = {
-    --         --     groups = {
-    --         --         InclineNormal = { guibg = "#FC56B1", guifg = colors.black },
-    --         --         InclineNormalNC = { guifg = "#FC56B1", guibg = colors.black },
-    --         --     },
-    --         --     },
-    --         --     window = { margin = { vertical = 0, horizontal = 1 } },
-    --         --     render = function(props)
-    --         --     local filename = vim.fn.fnamemodify(vim.api.nvim_buf_get_name(props.buf), ":t")
-    --         --     local icon, color = require("nvim-web-devicons").get_icon_color(filename)
-    --         --     return { { icon, guifg = color }, { " " }, { filename } }
-    --         --     end,
-    --         -- })
-    --     end,
-    -- },
 
     --- Bottom status bar
     --- https://github.com/nvim-lualine/lualine.nvim

@@ -33,7 +33,8 @@ return {
             "jsonls",
             "rust_analyzer",
             -- "pylsp",
-            "pyright",
+            "basedpyright",
+            -- "pyright",
             --   "deno",
             --   "eslint_d",
             --   "selene",
@@ -41,29 +42,6 @@ return {
         },
         config = function()
             require("mason-lspconfig").setup()
-            -- require("mason-lspconfig").setup_handlers {
-            --     -- The first entry (without a key) will be the default handler
-            --     -- and will be called for each installed server that doesn't have
-            --     -- a dedicated handler.
-            --     function (server_name) -- default handler (optional)
-            --         require("lspconfig")[server_name].setup {}
-            --     end,
-            --     -- Next, you can provide a dedicated handler for specific servers.
-            --     -- For example, a handler override for the `rust_analyzer`:
-            --     -- ["rust_analyzer"] = function ()
-            --     --     require("rust-tools").setup {}
-            --     -- end
-            --     ["jsonls"] = function ()
-            --         require("rust-lspconfig").jsonls.setup{
-            --             settings = {
-            --                 json = {
-            --                   schemas = require('schemastore').json.schemas(),
-            --                   validate = { enable = true },
-            --                 },
-            --             },
-            --         }
-            --     end
-            -- }
         end,
     },
 
@@ -90,37 +68,6 @@ return {
             --- https://github.com/folke/neodev.nvim
             { "folke/neodev.nvim", config = true },
         },
-        -- opts = {
-        --     servers = {
-        --         -- Lua
-        --         sumneko_lua = {},
-        --         -- Python
-        --         pylsp = {},
-        --         ruff_lsp = {},
-        --         -- Configs
-        --         jsonls = {
-        --             settings = {
-        --                 json = {
-        --                     schemas = require('schemastore').json.schemas(),
-        --                     validate = { enable = true },
-        --                 },
-        --             },
-        --         },
-        --         -- Rust
-        --         rust_analyzer = {
-        --             settings = {
-        --                 ["rust-analyzer"] = {
-        --                     cargo = { allFeatures = true },
-        --                     checkOnSave = {
-        --                         command = "clippy",
-        --                         extraArgs = { "--no-deps" },
-        --                     },
-        --                 },
-        --             },
-        --         },
-        --         vimls = {},
-        --     }
-        -- },
 
         config = function()
             local lspconfig = require("lspconfig")
@@ -140,7 +87,8 @@ return {
             lspconfig.bashls.setup{}
             lspconfig.lua_ls.setup{}
             -- lspconfig.pylsp.setup{}
-            lspconfig.pyright.setup{}
+            -- lspconfig.pyright.setup{}
+            lspconfig.basedpyright.setup{}
             lspconfig.ruff_lsp.setup{}
             lspconfig.jsonls.setup{
                 settings = {
@@ -162,6 +110,7 @@ return {
                 },
             }
             lspconfig.vimls.setup{}
+            lspconfig.jinja_lsp.setup{}
 
             -- replace the default lsp diagnostic symbols
             for name, icon in pairs(icons.diagnostics) do
@@ -177,55 +126,6 @@ return {
                 update_in_insert = false,
                 virtual_text = true,
             })
-
-            -- ---@type lspconfig.options
-            -- local servers = {
-            --     --   ansiblels = {},
-            --     --   bashls = {},
-            --     --   clangd = {},
-            --     --   cssls = {},
-            --     --   dockerls = {},
-            --     --   tsserver = {},
-            --     --   svelte = {},
-            --     --   eslint = {},
-            --     html = {},
-            --     sumneko_lua = {},
-            --     pylsp = {},
-            --     ruff_lsp = {},
-            --     --   jsonls = {
-            --     --     on_new_config = function(new_config)
-            --     --       new_config.settings.json.schemas = new_config.settings.json.schemas or {}
-            --     --       vim.list_extend(new_config.settings.json.schemas, require("schemastore").json.schemas())
-            --     --     end,
-            --     --     settings = {
-            --     --       json = {
-            --     --         format = {
-            --     --           enable = true,
-            --     --         },
-            --     --         validate = { enable = true },
-            --     --       },
-            --     --     },
-            --     --   },
-            --     --   gopls = {},
-            --     --   marksman = {},
-            --     --   pyright = {},
-            --         -- rust_analyzer = {
-            --         --     settings = {
-            --         --     ["rust-analyzer"] = {
-            --         --         cargo = { allFeatures = true },
-            --         --         checkOnSave = {
-            --         --         command = "clippy",
-            --         --         extraArgs = { "--no-deps" },
-            --         --         },
-            --         --     },
-            --         --     },
-            --         -- },
-            --     --   yamlls = {},
-
-            --     --   vimls = {},
-            --     --   -- tailwindcss = {},
-            --     },
-            -- }
         end,
     },
 

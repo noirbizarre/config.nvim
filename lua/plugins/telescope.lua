@@ -13,6 +13,7 @@ return {
         'nvim-lua/plenary.nvim', 
         "nvim-treesitter/nvim-treesitter",
         "someone-stole-my-name/yaml-companion.nvim",
+        { 'nvim-telescope/telescope-fzf-native.nvim', build = 'make' },
     },
     config = function()
         local telescope = require('telescope')
@@ -44,6 +45,7 @@ return {
                 },
             },
         }
+        telescope.load_extension('fzf')
         telescope.load_extension("yaml_schema")
     end
 }

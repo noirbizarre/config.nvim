@@ -7,8 +7,13 @@ return {
         { "<leader>kb", "<cmd>Telescope buffers<cr>", desc = "Telescope buffers" },
         { "<leader>kg", "<cmd>Telescope live_grep<cr>", desc = "Telescope Live Grep" },
         { "<leader>ks", "<cmd>Telescope lsp_workspace_symbols<cr>", desc = "Telescope Workspace Symbols" },
+        { "<leader>ky", "<cmd>Telescope yaml_schema<cr>", desc = "Telescope YAML Schema" },
     },
-    dependencies = {'nvim-lua/plenary.nvim', "nvim-treesitter/nvim-treesitter"},
+    dependencies = {
+        'nvim-lua/plenary.nvim', 
+        "nvim-treesitter/nvim-treesitter",
+        "someone-stole-my-name/yaml-companion.nvim",
+    },
     config = function()
         local telescope = require('telescope')
         local telescopeConfig = require("telescope.config")
@@ -39,5 +44,6 @@ return {
                 },
             },
         }
+        telescope.load_extension("yaml_schema")
     end
 }

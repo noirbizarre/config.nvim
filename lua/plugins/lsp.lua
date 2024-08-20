@@ -39,6 +39,7 @@ return {
             --   "eslint_d",
             --   "selene",
             --   "shfmt",
+            "yamlls",
         },
         config = function()
             require("mason-lspconfig").setup()
@@ -61,6 +62,7 @@ return {
             "williamboman/mason.nvim",
             "williamboman/mason-lspconfig.nvim",
 		    "onsails/lspkind-nvim",
+            "someone-stole-my-name/yaml-companion.nvim",
             --- NeoConf - Configure LSP from workspace neoconf.json
             --- https://github.com/folke/neoconf.nvim
             { "folke/neoconf.nvim", config = true },
@@ -83,6 +85,55 @@ return {
                     vim.api.nvim_command(":PylspInstall pyls-flake8 pylsp-mypy python-lsp-ruff python-lsp-black")
                 end)
             end)
+
+            -- YANL companion
+            -- cf. https://www.arthurkoziel.com/json-schemas-in-neovim/
+            local yaml_cfg = require("yaml-companion").setup {
+                -- detect k8s schemas based on file content
+                builtin_matchers = {
+                    kubernetes = { enabled = true }
+                },
+
+                -- schemas available in Telescope picker
+                schemas = {
+                    -- not loaded automatically, manually select with
+                    -- :Telescope yaml_schema
+                    {
+                        name = "Argo CD Application",
+                        uri = "https://raw.githubusercontent.com/datreeio/CRDs-catalog/main/argoproj.io/application_v1alpha1.json"
+                    },
+                    -- schemas below are automatically loaded, but added
+                    -- them here so that they show up in the statusline
+                    {
+                        name = "GitHub Workflow",
+                        uri = "https://json.schemastore.org/github-workflow.json"
+                    },
+                },
+
+                lspconfig = {
+                    settings = {
+                        yaml = {
+                            validate = true,
+                            schemaStore = {
+                                enable = false,
+                                url = ""
+                            },
+                            -- schemas from store, matched by filename
+                            -- loaded automatically
+                            schemas = require('schemastore').yaml.schemas {
+                                extra = {
+                                    {
+                                        url = 'https://raw.githubusercontent.com/datreeio/CRDs-catalog/main/argoproj.io/application_v1alpha1.json',
+                                        name = 'Argo CD Application',
+                                        description = 'Argo CD Application Schema (v1alpha1)',
+                                        fileMatch = 'argocd-application.yaml'
+                                    },
+                                },
+                            },
+                        },
+                    },
+                },
+            }
 
             lspconfig.bashls.setup{}
             lspconfig.lua_ls.setup{}
@@ -111,6 +162,7 @@ return {
             }
             lspconfig.vimls.setup{}
             lspconfig.jinja_lsp.setup{}
+            lspconfig.yamlls.setup(yaml_cfg)
 
             -- replace the default lsp diagnostic symbols
             for name, icon in pairs(icons.diagnostics) do

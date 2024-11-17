@@ -73,7 +73,7 @@ return {
 
         config = function()
             local lspconfig = require("lspconfig")
-            local icons = require("config.ui").icons
+            local icons = require("lib.ui.icons")
 
             -- Install manual dependencies if required
             require("mason-registry"):on("package:install:success", function(pkg)
@@ -139,13 +139,19 @@ return {
             lspconfig.lua_ls.setup{}
             -- lspconfig.pylsp.setup{}
             -- lspconfig.pyright.setup{}
-            lspconfig.basedpyright.setup{}
-            lspconfig.ruff_lsp.setup{}
+            lspconfig.basedpyright.setup{
+                settings = {
+                    basedpyright = {
+                        typeCheckingMode = "standard",
+                    },
+                },
+            }
+            lspconfig.ruff.setup{}
             lspconfig.jsonls.setup{
                 settings = {
                     json = {
-                      schemas = require('schemastore').json.schemas(),
-                      validate = { enable = true },
+                        schemas = require('schemastore').json.schemas(),
+                        validate = { enable = true },
                     },
                 },
             }
@@ -222,4 +228,51 @@ return {
             })
         end,
     },
+    --- LSP widgets and helpers
+    ---
+    {
+        'nvimdev/lspsaga.nvim',
+        cmd = "LspSaga",
+        event = { "BufReadPost", "BufNewFile" },
+        keys = {
+            {'<leader>li', '<cmd>Lspsaga incoming_calls<cr>', desc="Incoming calls"},
+            {'<leader>lo', '<cmd>Lspsaga outgoing_calls<cr>', desc="Outgoing calls"},
+            {'<leader>la', '<cmd>Lspsaga code_action<cr>', desc="Code Action"},
+            {'<leader>lr', '<cmd>Lspsaga rename<cr>', desc="Rename"},
+            {'<leader>lt', '<cmd>Lspsaga outline<cr>', desc="Outline"},
+            {'<leader>lpd', '<cmd>Lspsaga peek_definition<cr>', desc="Peek definition"},
+            {'<leader>lgd', '<cmd>Lspsaga goto_definition<cr>', desc="Go to definition"},
+            {'<leader>lpt', '<cmd>Lspsaga peek_type_definition<cr>', desc="Peek type definition"},
+            {'<leader>lgt', '<cmd>Lspsaga goto_type_definition<cr>', desc="Go to type definition"},
+            {'<leader>lh', '<cmd>Lspsaga hover_doc<cr>', desc="Toggle hover documentation"},
+        },
+        opts = {
+            lightbulb = {
+                enable = false,
+            },
+            winbar = {
+                folder_level = 3,
+            },
+        },
+        dependencies = {
+            'nvim-treesitter/nvim-treesitter', -- optional
+            'nvim-tree/nvim-web-devicons',     -- optional
+        },
+    },
+    -- Virtualenv auto selection and picker
+    -- https://github.com/linux-cultist/venv-selector.nvim
+    {
+        'linux-cultist/venv-selector.nvim',
+        dependencies = { 'neovim/nvim-lspconfig', 'nvim-telescope/telescope.nvim', 'mfussenegger/nvim-dap-python' },
+        -- event = 'VeryLazy', -- Optional: needed only if you want to type `:VenvSelect` without a keymapping
+        keys = {
+            -- Keymap to open VenvSelector to pick a venv.
+            { '<leader>vs', '<cmd>VenvSelect<cr>' },
+            -- Keymap to retrieve the venv from a cache (the one previously used for the same project directory).
+            { '<leader>vc', '<cmd>VenvSelectCached<cr>' },
+        },
+        opts = {
+            name = {"venv", ".venv"},
+        },
+    }
 }

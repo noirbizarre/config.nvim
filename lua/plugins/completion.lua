@@ -38,8 +38,11 @@ return { -- snippets
             require("luasnip.loaders.from_vscode").lazy_load()
         end,
     }, 
+    -- https://github.com/iguanacucumber/magazine.nvim
     {
-        "hrsh7th/nvim-cmp",
+        -- "hrsh7th/nvim-cmp",
+        "iguanacucumber/magazine.nvim",
+        name = "nvim-cmp",
         dependencies = {
             "hrsh7th/cmp-nvim-lsp", 
             "hrsh7th/cmp-buffer",
@@ -54,11 +57,11 @@ return { -- snippets
             local cmp = require("cmp")
 	        local lspkind = require("lspkind")
             local luasnip = require('luasnip')
-            local icons = require("config.ui").icons
+            local icons = require("lib.ui.icons")
 
             return {
                 completion = {
-                    completeopt = "menu,menuone,noinsert",
+                    completeopt = "menu,menuone,preview,noinsert,noselect",
                 },
                 snippet = {
                     expand = function(args)

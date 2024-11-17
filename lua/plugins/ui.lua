@@ -1,4 +1,147 @@
 return {
+    --- Solarized Osaka
+    --- https://github.com/craftzdog/solarized-osaka.nvim
+    {
+        "craftzdog/solarized-osaka.nvim",
+        lazy = false,
+        priority = 1000,
+        -- opts = {
+        --     transparent = false,    -- Disable setting background
+        --     dim_inactive = true, -- Non focused panes set to alternative background
+        -- },
+        config = function()
+            require('solarized-osaka').setup({
+                transparent = true,    -- Disable setting background
+                dim_inactive = true, -- Non focused panes set to alternative background
+            })
+
+            vim.cmd "colorscheme solarized-osaka"
+        end,
+    },
+    --- Dashboard / Greeter
+    --- https://github.com/nvimdev/dashboard-nvim
+    {
+        'nvimdev/dashboard-nvim',
+        dependencies = {
+            'nvim-tree/nvim-web-devicons',
+            "folke/persistence.nvim",
+        },
+        event = 'VimEnter',
+        cmd = {
+            "Dashboard",
+            "DashboardUpdateFooter",
+        },
+        config = function()
+            local db = require("dashboard")
+            local ascii = require("lib.ui.ascii")
+
+            db.setup {
+                theme = "doom",
+                config = {
+                    header = vim.split(ascii.neovim, "\n"),
+                    center = {
+                        {
+                            action = "lua require('persistence').load()",
+                            desc = "Restore Session",
+                            key = "s",
+                            icon = " ",
+                            icon_hl = "DashboardSession",
+                            key_hl = "DashboardSession",
+                        },
+                        {
+                            icon = "󰤄 ",
+                            icon_hl = "DashboardLazy",
+                            desc = "Lazy",
+                            key = "l",
+                            key_hl = "DashboardLazy",
+                            action = "Lazy",
+                        },
+                        {
+                            icon = " ",
+                            icon_hl = "DashboardServer",
+                            desc = "Mason",
+                            key = "m",
+                            key_hl = "DashboardServer",
+                            action = "Mason",
+                        },
+                        {
+                            icon = " ",
+                            icon_hl = "DashboardQuit",
+                            desc = "Quit Neovim",
+                            key = "q",
+                            key_hl = "DashboardQuit",
+                            action = "qa",
+                        },
+                    },
+                },
+            }
+        end,
+    },
+    --- A collection of small QoL plugins for Neovim 
+    --- https://github.com/folke/snacks.nvim
+    {
+        "folke/snacks.nvim",
+        priority = 1000,
+        lazy = false,
+        opts = {
+            bigfile = { enabled = true },
+            notifier = {
+                enabled = true,
+                timeout = 3000,
+            },
+            quickfile = { enabled = true },
+            statuscolumn = { enabled = true },
+            words = { enabled = true },
+            styles = {
+                notification = {
+                    wo = { wrap = true } -- Wrap notifications
+                }
+            }
+        },
+        keys = {
+            { "<leader>un", function() Snacks.notifier.hide() end, desc = "Dismiss All Notifications" },
+            { "<leader>bd", function() Snacks.bufdelete() end, desc = "Delete Buffer" },
+            { "<leader>gg", function() Snacks.lazygit() end, desc = "Lazygit" },
+            { "<leader>gb", function() Snacks.git.blame_line() end, desc = "Git Blame Line" },
+            { "<leader>gB", function() Snacks.gitbrowse() end, desc = "Git Browse" },
+            -- { "<leader>gf", function() Snacks.lazygit.log_file() end, desc = "Lazygit Current File History" },
+            { "<leader>gl", function() Snacks.lazygit.log() end, desc = "Lazygit Log (cwd)" },
+            { "<leader>cR", function() Snacks.rename() end, desc = "Rename File" },
+            -- { "<c-/>",      function() Snacks.terminal() end, desc = "Toggle Terminal" },
+            -- { "<c-_>",      function() Snacks.terminal() end, desc = "which_key_ignore" },
+            { "]]",         function() Snacks.words.jump(vim.v.count1) end, desc = "Next Reference", mode = { "n", "t" } },
+            { "[[",         function() Snacks.words.jump(-vim.v.count1) end, desc = "Prev Reference", mode = { "n", "t" } },
+        },
+    },
+    --- Highly experimental plugin that completely replaces the UI for messages, cmdline and the popupmenu
+    --- https://github.com/folke/noice.nvim
+    {
+        "folke/noice.nvim",
+        event = "VeryLazy",
+        dependencies = {
+            "MunifTanjim/nui.nvim",
+        },
+        config = function()
+            require("noice").setup({
+                lsp = {
+                    -- override markdown rendering so that **cmp** and other plugins use **Treesitter**
+                    override = {
+                        ["vim.lsp.util.convert_input_to_markdown_lines"] = true,
+                        ["vim.lsp.util.stylize_markdown"] = true,
+                        ["cmp.entry.get_documentation"] = true,
+                    },
+                },
+                -- you can enable a preset for easier configuration
+                presets = {
+                    bottom_search = true, -- use a classic bottom cmdline for search
+                    command_palette = true, -- position the cmdline and popupmenu together
+                    long_message_to_split = true, -- long messages will be sent to a split
+                    inc_rename = false, -- enables an input dialog for inc-rename.nvim
+                    lsp_doc_border = false, -- add a border to hover docs and signature help
+                },
+            })
+        end,
+    },
     --- Top bufferline/tabline
     --- https://github.com/akinsho/bufferline.nvim
     {
@@ -25,44 +168,6 @@ return {
             }
         },
     },
-
-    -- {
-    --     'Bekaboo/dropbar.nvim',
-    --     enabled = system.isNeovimVersionsatisfied(10),
-    --     event = { "BufReadPost", "BufNewFile" },
-    --     -- optional, but required for fuzzy finder support
-    --     dependencies = {
-    --         'nvim-telescope/telescope-fzf-native.nvim'
-    --     },
-    -- },
-
-    {
-        'nvimdev/lspsaga.nvim',
-        cmd = "LspSaga",
-        event = { "BufReadPost", "BufNewFile" },
-        keys = {
-            {'<leader>li', '<cmd>Lspsaga incoming_calls<cr>', desc="Incoming calls"},
-            {'<leader>lo', '<cmd>Lspsaga outgoing_calls<cr>', desc="Outgoing calls"},
-            {'<leader>la', '<cmd>Lspsaga code_action<cr>', desc="Code Action"},
-            {'<leader>lr', '<cmd>Lspsaga rename<cr>', desc="Rename"},
-            {'<leader>lt', '<cmd>Lspsaga outline<cr>', desc="Outline"},
-            {'<leader>lp', '<cmd>Lspsaga peek_definition<cr>', desc="Peek definition"},
-            {'<leader>lg', '<cmd>Lspsaga goto_definition<cr>', desc="Go to definition"},
-            {'<leader>lpt', '<cmd>Lspsaga peek_type_definition<cr>', desc="Peek type definition"},
-            {'<leader>lgt', '<cmd>Lspsaga goto_type_definition<cr>', desc="Go to type definition"},
-            {'<leader>lh', '<cmd>Lspsaga hover_doc<cr>', desc="Toggle hover documentation"},
-        },
-        opts = {
-            lightbulb = {
-                enable = false,
-            }
-        },
-        dependencies = {
-            'nvim-treesitter/nvim-treesitter', -- optional
-            'nvim-tree/nvim-web-devicons',     -- optional
-        },
-    },
-
     --- Bottom status bar
     --- https://github.com/nvim-lualine/lualine.nvim
     {
@@ -72,54 +177,27 @@ return {
             "someone-stole-my-name/yaml-companion.nvim",
         },
         event = "VeryLazy",
-        config = function()
-            -- https://github.com/someone-stole-my-name/yaml-companion.nvim#get-the-schema-name-for-the-current-buffer
-            local function get_schema()
-                local schema = require("yaml-companion").get_buf_schema(0)
-                if schema.result[1].name == "none" then
-                    return ""
-                end
-                return schema.result[1].name
-            end
-
-            icons = require("config.ui").icons
-            require("lualine").setup({
-                options = {
-                    -- theme = "nightfox",
-                    -- theme = "solarized_dark",
-                    section_separators = icons.ui.powerline.separators,
-                    component_separators = icons.ui.powerline.inner_separators,
-                    icons_enabled = true,
-                    globalstatus = true,
-                },
-                sections = {
-                    lualine_a = { "mode" },
-                    lualine_b = { "branch" },
-                    lualine_c = {
-                        "diff",
-                        { "diagnostics", sources = { "nvim_diagnostic" } },
-                        "overseer",
-                    },
-                    lualine_x = {
-                        "searchcount",
-                        "filetype",
-                        "fileformat",
-                        "encoding",
-                        get_schema,
-                    },
-                    lualine_y = { "progress" },
-                    lualine_z = { "location" },
-                },
-                inactive_sections = {
-                    lualine_a = {},
-                    lualine_b = {},
-                    lualine_c = { "filename" },
-                    lualine_x = {},
-                    lualine_y = {},
-                    lualine_z = { "location" },
-                },
-                extensions = { "quickfix", "toggleterm", "man" },
-            })
-        end
+        opts = require("lib.ui.lualine"),
+    },
+    --- Set and display key bindings
+    --- https://github.com/folke/which-key.nvim
+    {
+        "folke/which-key.nvim",
+        cmd = "WhichKey",
+        event = "VeryLazy",
+        keys = {
+            { "<leader>,", "<cmd>WhichKey<cr>", desc = "Keymaps (which-key)" },
+            { "<leader>/", "<cmd>WhichKey<cr>", desc = "Keymaps (which-key)" },
+            {
+                "<leader>?",
+                function()
+                    require("which-key").show({ global = false })
+                end,
+                desc = "Buffer Local Keymaps (which-key)",
+            },
+        },
+        opts= {
+            spec = require("lib.keymaps"),
+        },
     },
 }

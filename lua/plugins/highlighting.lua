@@ -159,9 +159,9 @@ return {
         },
     },
     -- Jinja
-    -- {
-    --     "HiPhish/jinja.vim",
-    -- },
+    {
+        "HiPhish/jinja.vim",
+    },
 
     -- colorizer
     {

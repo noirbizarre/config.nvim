@@ -75,13 +75,7 @@ return {
             {'<leader>sw', '<cmd>lua require("spectre").open_visual()<CR>', mode = "v", desc = 'Search current word'},
             {'<leader>sp', '<cmd>lua require("spectre").open_file_search({select_word=true})<CR>', desc = 'Search on current file'},
         },
-        config = function()
-            require('grug-far').setup({
-                -- ... options, see Configuration section below ...
-                -- ... there are no required options atm...
-                -- ... engine = 'ripgrep' is default, but 'astgrep' can be specified...
-            });
-        end
+        opts = { headerMaxWidth = 100 },
     },
     --- Multicursor support
     --- https://github.com/jake-stewart/multicursor.nvim

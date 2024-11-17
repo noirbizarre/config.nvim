@@ -73,7 +73,7 @@ return {
         "neo-tree",
     },
     right = {
-        { title = "Search & replace", ft = "grug-far", size = { width = 0.4 } },
+        { title = "Search & replace", ft = "grug-far", size = { width = 0.25 } },
         { title = "Outline", ft = "sagaoutline", size = { width = 0.18 } },
         { title = "Code Companion", ft = "codecompanion", size = { width = 70 } },
         -- { title = "Avante", ft = "Avante", size = { width = 70 } },

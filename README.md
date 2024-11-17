@@ -1,5 +1,9 @@
 # config.nvim
 
+<a href="https://dotfyle.com/noirbizarre/confignvim"><img src="https://dotfyle.com/noirbizarre/confignvim/badges/plugins?style=flat" /></a>
+<a href="https://dotfyle.com/noirbizarre/confignvim"><img src="https://dotfyle.com/noirbizarre/confignvim/badges/leaderkey?style=flat" /></a>
+<a href="https://dotfyle.com/noirbizarre/confignvim"><img src="https://dotfyle.com/noirbizarre/confignvim/badges/plugin-manager?style=flat" /></a>
+
 My personal NeoViM configuration
 
 ## Layout

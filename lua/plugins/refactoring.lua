@@ -23,15 +23,7 @@ return {
     {
         'numToStr/Comment.nvim',
         lazy = false,
-        config = function()
-            local comment = require('Comment')
-            local ft = require('Comment.ft')
-
-            -- Until https://github.com/numToStr/Comment.nvim/pull/430 is merged
-            ft.kdl = {'//%s', '/*%s*/'}
-
-            comment.setup()
-        end
+        config = true,
     },
     -- https://github.com/echasnovski/mini.nvim/blob/main/readmes/mini-move.md
     {

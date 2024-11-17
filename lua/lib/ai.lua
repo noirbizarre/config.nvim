@@ -1,10 +1,7 @@
---- Avante prompts
-local avante = {}
+--- AI-related snippets and prompts
 
--- NOTE: most templates are inspired from ChatGPT.nvim -> chatgpt-actions.json
-avante.grammar_correction = 'Correct the text to standard English, but keep any code blocks inside intact.'
-avante.keywords = 'Extract the main keywords from the following text'
-avante.code_readability_analysis = [[
+--- TODO: make it const in LUA 5.4
+local CODE_READABILITY_ANALYSIS = [[
   You must identify any readability issues in the code snippet.
   Some readability issues to consider:
   - Unclear naming
@@ -20,15 +17,42 @@ avante.code_readability_analysis = [[
   Only list lines with readability issues, in the format <line_num>|<issue and proposed solution>
   If there's no issues with code respond with only: <OK>
 ]]
-avante.optimize_code = 'Optimize the following code'
-avante.summarize = 'Summarize the following text'
-avante.translate = 'Translate this into Chinese, but keep any code blocks inside intact'
-avante.explain_code = 'Explain the following code'
-avante.complete_code = 'Complete the following codes written in ' .. vim.bo.filetype
-avante.add_docstring = 'Add docstring to the following codes'
-avante.fix_bugs = 'Fix the bugs inside the following codes if any'
-avante.add_tests = 'Implement tests for the following code'
 
 return {
-    avante = avante,
+    -- Prompts are function to allow call time context resolution
+    prompts = {
+        grammar_correction = function()
+            return 'Correct the text to standard English, but keep any code blocks inside intact.'
+        end,
+        keywords = function()
+            return 'Extract the main keywords from the following text'
+        end,
+        code_readability_analysis = function()
+            return CODE_READABILITY_ANALYSIS
+        end,
+        optimize_code = function() 
+            return 'Optimize the following code'
+        end,
+        summarize = function()
+            return 'Summarize the following text'
+        end,
+        translate = function()
+            return 'Translate this into Chinese, but keep any code blocks inside intact'
+        end,
+        explain_code = function()
+            return 'Explain the following code'
+        end,
+        complete_code = function()
+            return 'Complete the following codes written in ' .. vim.bo.filetype
+        end,
+        add_docstring = function()
+            return 'Add docstring to the following codes'
+        end,
+        fix_bugs = function()
+            return 'Fix the bugs inside the following codes if any'
+        end,
+        add_tests = function()
+            return 'Implement tests for the following code'
+        end,
+    },
 }

@@ -115,7 +115,7 @@ return {
             {
                 "<leader>ag",
                 function()
-                    require("avante.api").ask({ question = ai.avante.grammar_correction })
+                    require("avante.api").ask({ question = ai.prompts.grammar_correction() })
                 end,
                 mode = { "n", "v" },
                 desc = "Grammar Correction(ask)",
@@ -123,7 +123,7 @@ return {
             {
                 "<leader>ak",
                 function()
-                    require("avante.api").ask({ question = ai.avante.keywords })
+                    require("avante.api").ask({ question = ai.prompts.keywords() })
                 end,
                 mode = { "n", "v" },
                 desc = "Keywords(ask)",
@@ -131,7 +131,7 @@ return {
             {
                 "<leader>al",
                 function()
-                    require("avante.api").ask({ question = ai.avante.code_readability_analysis })
+                    require("avante.api").ask({ question = ai.prompts.code_readability_analysis() })
                 end,
                 mode = { "n", "v" },
                 desc = "Code Readability Analysis(ask)",
@@ -139,7 +139,7 @@ return {
             {
                 "<leader>ao",
                 function()
-                    require("avante.api").ask({ question = ai.avante.optimize_code })
+                    require("avante.api").ask({ question = ai.prompts.optimize_code() })
                 end,
                 mode = { "n", "v" },
                 desc = "Optimize Code(ask)",
@@ -147,7 +147,7 @@ return {
             {
                 "<leader>am",
                 function()
-                    require("avante.api").ask({ question = ai.avante.summarize })
+                    require("avante.api").ask({ question = ai.prompts.summarize() })
                 end,
                 mode = { "n", "v" },
                 desc = "Summarize text(ask)",
@@ -155,7 +155,7 @@ return {
             {
                 "<leader>an",
                 function()
-                    require("avante.api").ask({ question = ai.avante.translate })
+                    require("avante.api").ask({ question = ai.prompts.translate() })
                 end,
                 mode = { "n", "v" },
                 desc = "Translate text(ask)",
@@ -163,7 +163,7 @@ return {
             {
                 "<leader>ax",
                 function()
-                    require("avante.api").ask({ question = ai.avante.explain_code })
+                    require("avante.api").ask({ question = ai.prompts.explain_code() })
                 end,
                 mode = { "n", "v" },
                 desc = "Explain Code(ask)",
@@ -171,7 +171,7 @@ return {
             {
                 "<leader>ac",
                 function()
-                    require("avante.api").ask({ question = ai.avante.complete_code })
+                    require("avante.api").ask({ question = ai.prompts.complete_code() })
                 end,
                 mode = { "n", "v" },
                 desc = "Complete Code(ask)",
@@ -179,7 +179,7 @@ return {
             {
                 "<leader>ad",
                 function()
-                    require("avante.api").ask({ question = ai.avante.add_docstring })
+                    require("avante.api").ask({ question = ai.prompts.add_docstring() })
                 end,
                 mode = { "n", "v" },
                 desc = "Docstring(ask)",
@@ -187,7 +187,7 @@ return {
             {
                 "<leader>ab",
                 function()
-                    require("avante.api").ask({ question = ai.avante.fix_bugs })
+                    require("avante.api").ask({ question = ai.prompts.fix_bugs() })
                 end,
                 mode = { "n", "v" },
                 desc = "Fix Bugs(ask)",
@@ -195,7 +195,7 @@ return {
             {
                 "<leader>au",
                 function()
-                    require("avante.api").ask({ question = ai.avante.add_tests })
+                    require("avante.api").ask({ question = ai.prompts.add_tests() })
                 end,
                 mode = { "n", "v" },
                 desc = "Add Tests(ask)",

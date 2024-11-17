@@ -18,7 +18,7 @@ return {
 
     {
         group = "Session",
-        { "<leader>qq", "qa!", mode = { "n", "v" }, desc = "Quit without saving", icon = "󰈆" },
+        { "<leader>qq", "<cmd>qa!<cr>", mode = { "n", "v" }, desc = "Quit without saving", icon = "󰈆" },
     },
 
     -- Hidden hacks

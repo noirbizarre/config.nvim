@@ -33,6 +33,8 @@ vim.opt.shiftwidth = 4
 -- Transform tabs into spaces
 vim.opt.expandtab = true
 
+-- Backspace everything
+vim.opt.backspace = [[indent,eol,start]]
 
 -- Set python3 interpreter
 vim.g.python3_host_prog = "/usr/bin/python3"

@@ -7,7 +7,7 @@ return {
             {
                 "<leader>rp",
                 function()
-                    require("refactoring").debug.printf({ below = false })
+                    require("refactoring").debug.printf({})
                 end,
                 desc = "Print statement",
             },
@@ -36,7 +36,14 @@ return {
                 desc = "Refactor",
             },
         },
-        opts = {},
+        opts = {
+            printf_statements = {
+                python = { 'print(f"🔎 [%s]=> {locals()=}")' },
+            },
+            print_var_statements = {
+                python = { 'print(f"🔎 %.0s{%s=}")' },
+            },
+        },
     },
     --- Comments
     --- https://github.com/numToStr/Comment.nvim

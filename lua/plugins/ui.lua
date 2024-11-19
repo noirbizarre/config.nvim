@@ -1,3 +1,5 @@
+local ascii = require("lib.ui.ascii")
+
 return {
     --- Solarized Osaka
     --- https://github.com/craftzdog/solarized-osaka.nvim
@@ -18,86 +20,12 @@ return {
             vim.cmd "colorscheme solarized-osaka"
         end,
     },
-    --- Dashboard / Greeter
-    --- https://github.com/nvimdev/dashboard-nvim
-    {
-        'nvimdev/dashboard-nvim',
-        dependencies = {
-            'nvim-tree/nvim-web-devicons',
-            "folke/persistence.nvim",
-        },
-        event = 'VimEnter',
-        cmd = {
-            "Dashboard",
-            "DashboardUpdateFooter",
-        },
-        config = function()
-            local db = require("dashboard")
-            local ascii = require("lib.ui.ascii")
-
-            db.setup {
-                theme = "doom",
-                config = {
-                    header = vim.split(ascii.neovim, "\n"),
-                    center = {
-                        {
-                            action = "lua require('persistence').load()",
-                            desc = "Restore Session",
-                            key = "s",
-                            icon = " ",
-                            icon_hl = "DashboardSession",
-                            key_hl = "DashboardSession",
-                        },
-                        {
-                            icon = "󰤄 ",
-                            icon_hl = "DashboardLazy",
-                            desc = "Lazy",
-                            key = "l",
-                            key_hl = "DashboardLazy",
-                            action = "Lazy",
-                        },
-                        {
-                            icon = " ",
-                            icon_hl = "DashboardServer",
-                            desc = "Mason",
-                            key = "m",
-                            key_hl = "DashboardServer",
-                            action = "Mason",
-                        },
-                        {
-                            icon = " ",
-                            icon_hl = "DashboardQuit",
-                            desc = "Quit Neovim",
-                            key = "q",
-                            key_hl = "DashboardQuit",
-                            action = "qa",
-                        },
-                    },
-                },
-            }
-        end,
-    },
     --- A collection of small QoL plugins for Neovim 
     --- https://github.com/folke/snacks.nvim
     {
         "folke/snacks.nvim",
         priority = 1000,
         lazy = false,
-        opts = {
-            bigfile = { enabled = true },
-            notifier = {
-                enabled = true,
-                timeout = 3000,
-            },
-            quickfile = { enabled = true },
-            statuscolumn = { enabled = true },
-            words = { enabled = true },
-            styles = {
-                notification = {
-                    wo = { wrap = true } -- Wrap notifications
-                }
-            }
-        },
         keys = {
             { "<leader>un", function() Snacks.notifier.hide() end, desc = "Dismiss All Notifications" },
             { "<leader>bd", function() Snacks.bufdelete() end, desc = "Delete Buffer" },
@@ -111,6 +39,64 @@ return {
             -- { "<c-_>",      function() Snacks.terminal() end, desc = "which_key_ignore" },
             { "]]",         function() Snacks.words.jump(vim.v.count1) end, desc = "Next Reference", mode = { "n", "t" } },
             { "[[",         function() Snacks.words.jump(-vim.v.count1) end, desc = "Prev Reference", mode = { "n", "t" } },
+        },
+        opts = {
+            bigfile = { enabled = true },
+            dashboard = {
+                enabled = true,
+                preset = {
+                    header = ascii.neovim,
+                    keys = {
+                        { icon = " ", key = "n", desc = "New File", action = ":ene | startinsert" },
+                        { icon = " ", key = "f", desc = "Find File", action = ":lua Snacks.dashboard.pick('files')" },
+                        { icon = " ", key = "g", desc = "Find Text", action = ":lua Snacks.dashboard.pick('live_grep')" },
+                        { icon = " ", key = "r", desc = "Recent Files", action = ":lua Snacks.dashboard.pick('oldfiles')" },
+                        -- { icon = " ", key = "c", desc = "Config", action = ":lua Snacks.dashboard.pick('files', {cwd = vim.fn.stdpath('config')})" },
+                        { icon = " ", key = "s", desc = "Restore Session", section = "session" },
+                        { icon = "󰒲 ", key = "l", desc = "Lazy", action = ":Lazy", enabled = package.loaded.lazy },
+                        { icon = " ", key = "m", desc = "Mason", action = ":Mason" },
+                        { icon = " ", key = "q", desc = "Quit", action = ":qa" },
+                    }
+                },
+                sections = {
+                    { section = "header" },
+                    {
+                      pane = 2,
+                      section = "terminal",
+                      cmd = "colorscript -e square",
+                      height = 5,
+                      padding = 1,
+                    },
+                    { section = "keys", gap = 1, padding = 1 },
+                    { pane = 2, icon = " ", title = "Recent Files", section = "recent_files", indent = 2, padding = 1 },
+                    { pane = 2, icon = " ", title = "Projects", section = "projects", indent = 2, padding = 1 },
+                    {
+                      pane = 2,
+                      icon = " ",
+                      title = "Git Status",
+                      section = "terminal",
+                      enabled = vim.fn.isdirectory(".git") == 1,
+                      cmd = "hub status --short --branch --renames",
+                      height = 5,
+                      padding = 1,
+                      ttl = 5 * 60,
+                      indent = 3,
+                    },
+                    { section = "startup" },
+                  },
+            },
+            notifier = {
+                enabled = true,
+                timeout = 3000,
+            },
+            quickfile = { enabled = true },
+            statuscolumn = { enabled = true },
+            words = { enabled = true },
+            styles = {
+                notification = {
+                    wo = { wrap = true } -- Wrap notifications
+                }
+            }
         },
     },
     --- Highly experimental plugin that completely replaces the UI for messages, cmdline and the popupmenu

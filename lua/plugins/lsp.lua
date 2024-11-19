@@ -166,6 +166,7 @@ return {
                     },
                 },
             }
+            lspconfig.taplo.setup{}
             lspconfig.vimls.setup{}
             lspconfig.jinja_lsp.setup{}
             lspconfig.yamlls.setup(yaml_cfg)

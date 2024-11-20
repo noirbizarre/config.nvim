@@ -39,6 +39,9 @@ vim.opt.backspace = [[indent,eol,start]]
 -- Session Persistence
 vim.opt.sessionoptions = "buffers,curdir,folds,help,tabpages,winsize,terminal"
 
+-- Disable swap files
+vim.opt.swapfile = false
+
 -- Set python3 interpreter
 vim.g.python3_host_prog = "/usr/bin/python3"
 

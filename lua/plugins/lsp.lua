@@ -43,17 +43,6 @@ return {
             local lspconfig = require("lspconfig")
             local icons = require("lib.ui.icons")
 
-            -- Install manual dependencies if required
-            require("mason-registry"):on("package:install:success", function(pkg)
-                if pkg.name ~= "python-lsp-server" then
-                    return
-                end
-
-                vim.schedule(function()
-                    vim.api.nvim_command(":PylspInstall pyls-flake8 pylsp-mypy python-lsp-ruff python-lsp-black")
-                end)
-            end)
-
             -- YANL companion
             -- cf. https://www.arthurkoziel.com/json-schemas-in-neovim/
             local yaml_cfg = require("yaml-companion").setup({
@@ -226,9 +215,9 @@ return {
         cmd = "LspSaga",
         event = { "BufReadPost", "BufNewFile" },
         keys = {
-            { "<leader>li", "<cmd>Lspsaga incoming_calls<cr>", desc = "Incoming calls" },
-            { "<leader>lo", "<cmd>Lspsaga outgoing_calls<cr>", desc = "Outgoing calls" },
-            { "<leader>la", "<cmd>Lspsaga code_action<cr>", desc = "Code Action" },
+            -- { "<leader>li", "<cmd>Lspsaga incoming_calls<cr>", desc = "Incoming calls" },
+            -- { "<leader>lo", "<cmd>Lspsaga outgoing_calls<cr>", desc = "Outgoing calls" },
+            -- { "<leader>la", "<cmd>Lspsaga code_action<cr>", desc = "Code Action" },
             { "<leader>lr", "<cmd>Lspsaga rename<cr>", desc = "Rename" },
             { "<leader>lt", "<cmd>Lspsaga outline<cr>", desc = "Outline" },
             { "<leader>lpd", "<cmd>Lspsaga peek_definition<cr>", desc = "Peek definition" },

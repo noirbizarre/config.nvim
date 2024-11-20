@@ -17,6 +17,19 @@ vim.opt.rtp:prepend(lazypath)
 
 require("lazy").setup({
     spec = {
+        --- Mason - Fetch binaries
+        --- https://github.com/williamboman/mason.nvim
+        {
+            "williamboman/mason.nvim",
+            cmd = {
+                "Mason",
+                "MasonInstall",
+                "MasonUninstall",
+                "MasonUninstallAll",
+                "MasonLog",
+            },
+            config = true,
+        },
         -- import your plugins
         { import = "plugins" },
         { import = "plugins.features" },

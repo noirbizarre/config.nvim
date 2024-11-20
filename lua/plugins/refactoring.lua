@@ -95,6 +95,15 @@ return {
             notify_on_error = true,
         },
     },
+    --- https://github.com/zapling/mason-conform.nvim
+    {
+       "zapling/mason-conform.nvim",
+        dependencies = {
+            "williamboman/mason.nvim",
+            "stevearc/conform.nvim",
+        },
+        config = true,
+    },
     --- Global search and replace
     --- https://github.com/MagicDuck/grug-far.nvim
     {

@@ -5,6 +5,7 @@ return {
     keys = {
         { "<C-k>", "<cmd>Telescope find_files<cr>", desc = "Telescope" },
         { "<leader>kb", "<cmd>Telescope buffers<cr>", desc = "Telescope buffers" },
+        { "<leader>ke", "<cmd>Telescope env<cr>", desc = "Telescope Environment variables" },
         { "<leader>kg", "<cmd>Telescope live_grep<cr>", desc = "Telescope Live Grep" },
         { "<leader>ks", "<cmd>Telescope lsp_workspace_symbols<cr>", desc = "Telescope Workspace Symbols" },
         { "<leader>ky", "<cmd>Telescope yaml_schema<cr>", desc = "Telescope YAML Schema" },
@@ -26,6 +27,8 @@ return {
         "someone-stole-my-name/yaml-companion.nvim",
         { "nvim-telescope/telescope-fzf-native.nvim", build = "make" },
         "nvim-telescope/telescope-ui-select.nvim",
+        "nvim-telescope/telescope-frecency.nvim",
+        "LinArcX/telescope-env.nvim",
     },
     config = function()
         local telescope = require("telescope")
@@ -121,5 +124,7 @@ return {
         telescope.load_extension("yaml_schema")
         telescope.load_extension("refactoring")
         telescope.load_extension("ui-select")
+        telescope.load_extension("env")
+        telescope.load_extension("frecency")
     end,
 }

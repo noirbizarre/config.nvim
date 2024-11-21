@@ -1,18 +1,40 @@
 return {
     "nvim-telescope/telescope.nvim",
+    dependencies = {
+        "nvim-lua/plenary.nvim",
+        "nvim-treesitter/nvim-treesitter",
+        "someone-stole-my-name/yaml-companion.nvim",
+        { "nvim-telescope/telescope-fzf-native.nvim", build = "make" },
+        "nvim-telescope/telescope-frecency.nvim",
+        "LinArcX/telescope-env.nvim",
+    },
     branch = "0.1.x", -- or tag = '0.1.0',
     cmd = "Telescope",
     keys = {
         { "<C-k>", "<cmd>Telescope find_files<cr>", desc = "Telescope" },
-        { "<leader>kb", "<cmd>Telescope buffers<cr>", desc = "Telescope buffers" },
-        { "<leader>ke", "<cmd>Telescope env<cr>", desc = "Telescope Environment variables" },
-        { "<leader>kg", "<cmd>Telescope live_grep<cr>", desc = "Telescope Live Grep" },
-        { "<leader>ks", "<cmd>Telescope lsp_workspace_symbols<cr>", desc = "Telescope Workspace Symbols" },
-        { "<leader>ky", "<cmd>Telescope yaml_schema<cr>", desc = "Telescope YAML Schema" },
+        { "<leader>kb", "<cmd>Telescope buffers<cr>", desc = "Buffers" },
+        { "<leader>ke", "<cmd>Telescope env<cr>", desc = "Environment variables" },
+        { "<leader>kk", "<cmd>Telescope keymaps<cr>", desc = "Keymaps" },
+        -- { "<leader>k;", "<cmd>Telescope symbols<cr>", desc = "Emojis" },
+        { "<leader>k;", function()
+            -- local builtin = require("telescope.builtin")
+            require("telescope.builtin").symbols{
+                sources = {'emoji', 'gitmoji', "nerd", "math"},
+                layout_strategy="vertical",
+                layout_config={width=0.3, height=0.5},
+            }
+        end, desc = "Emojis" },
+        { "<leader>kg", "<cmd>Telescope live_grep<cr>", desc = "Live Grep" },
+        { "<leader>ky", "<cmd>Telescope yaml_schema<cr>", desc = "YAML Schema" },
 
         -- LSP
         { "<leader>li", "<cmd>Telescope lsp_incoming_calls<cr>", desc = "Incoming calls" },
         { "<leader>lo", "<cmd>Telescope lsp_outgoing_calls<cr>", desc = "Outgoing calls" },
+        { "<leader>ls", "<cmd>Telescope lsp_document_symbols<cr>", desc = "Document Symbols" },
+        { "<leader>lw", "<cmd>Telescope lsp_workspace_symbols<cr>", desc = "Workspace Symbols" },
+        { "<leader>lgi", "<cmd>Telescope lsp_implementations<cr>", desc = "Go to implementation" },
+        { "<leader>lgd", "<cmd>Telescope lsp_definitions<cr>", desc = "Go to definition" },
+        { "<leader>lgt", "<cmd>Telescope lsp_type_definitions<cr>", desc = "Go to type definition" },
         {
             "<leader>la",
             function()
@@ -20,15 +42,6 @@ return {
             end,
             desc = "Code Action",
         },
-    },
-    dependencies = {
-        "nvim-lua/plenary.nvim",
-        "nvim-treesitter/nvim-treesitter",
-        "someone-stole-my-name/yaml-companion.nvim",
-        { "nvim-telescope/telescope-fzf-native.nvim", build = "make" },
-        "nvim-telescope/telescope-ui-select.nvim",
-        "nvim-telescope/telescope-frecency.nvim",
-        "LinArcX/telescope-env.nvim",
     },
     config = function()
         local telescope = require("telescope")
@@ -80,27 +93,10 @@ return {
                 },
                 layout_config = {
                     prompt_position = "top",
-                },
-            },
-            extensions = {
-                ["ui-select"] = {
-                    require("telescope.themes").get_dropdown({
-                        -- even more opts
-                    }),
-
-                    -- pseudo code / specification for writing custom displays, like the one
-                    -- for "codeactions"
-                    -- specific_opts = {
-                    --   [kind] = {
-                    --     make_indexed = function(items) -> indexed_items, width,
-                    --     make_displayer = function(widths) -> displayer
-                    --     make_display = function(displayer) -> function(e)
-                    --     make_ordinal = function(e) -> string
-                    --   },
-                    --   -- for example to disable the custom builtin "codeactions" display
-                    --      do the following
-                    --   codeactions = false,
-                    -- }
+                    horizontal = {
+                        prompt_position = "top",
+                        preview_width = 0.5,
+                    },
                 },
             },
             pickers = {
@@ -122,8 +118,6 @@ return {
         })
         telescope.load_extension("fzf")
         telescope.load_extension("yaml_schema")
-        telescope.load_extension("refactoring")
-        telescope.load_extension("ui-select")
         telescope.load_extension("env")
         telescope.load_extension("frecency")
     end,

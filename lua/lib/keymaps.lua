@@ -5,8 +5,6 @@ return {
     { "<leader>d", group = "Debug", icon = "" },
     { "<leader>k", group = "Telescope", icon = "" },
     { "<leader>g", group = "Git", icon = ""},
-    { "<leader>l", group = "LSP", icon = "󰘦" },
-    { "<leader>r", group = "Refactoring", icon = "󰑕" },
     { "<leader>s", group = "Search", icon = "󱈇" },
     { "<leader>t", group = "Test", icon = "󰤑" },
 
@@ -21,6 +19,14 @@ return {
         { "<leader>qq", "<cmd>qa!<cr>", mode = { "n", "v" }, desc = "Quit without saving", icon = "󰈆" },
     },
 
+    { "<leader>l", group = "LSP", icon = "󰘦" },
+    {
+        group = "LSP",
+        { "<leader>lh", function() vim.lsp.buf.hover() end, desc = "Hover" },
+        { "<leader>lr", function() vim.lsp.buf.rename() end, desc = "Rename" },
+    },
+
+    { "<leader>r", group = "Refactoring", icon = "󰑕" },
     {
         group = "Refactoring",
         { "<leader>rs", "<cmd>sort<cr>", mode = "v", desc = "Sort (Alpha ASC)", icon = "" },

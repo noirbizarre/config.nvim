@@ -99,6 +99,19 @@ return {
             }
         },
     },
+
+    --- Override Input and Select
+    --- https://github.com/stevearc/dressing.nvim
+    {
+        "stevearc/dressing.nvim",
+        opts = {
+            select = {
+                -- Priority list of preferred vim.select implementations
+                backend = { "telescope", "nui", "fzf", "builtin" },
+            },
+        },
+    },
+
     --- Highly experimental plugin that completely replaces the UI for messages, cmdline and the popupmenu
     --- https://github.com/folke/noice.nvim
     {

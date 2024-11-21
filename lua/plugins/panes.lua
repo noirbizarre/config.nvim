@@ -10,7 +10,13 @@ return {
             vim.opt.splitkeep = "screen"
         end,
         keys = {
-            {"<leader>we", function() require("edgy").toggle() end, desc = "Edgy Toggle"},
+            {
+                "<leader>we",
+                function()
+                    require("edgy").toggle()
+                end,
+                desc = "Edgy Toggle",
+            },
             -- stylua: ignore
             { "<leader>wE", function() require("edgy").select() end, desc = "Edgy Select Window" },
         },
@@ -24,7 +30,7 @@ return {
             -- },
             icons = {
                 closed = " ",
-                open =   " ",
+                open = " ",
             },
             keys = {
                 -- increase width
@@ -63,7 +69,7 @@ return {
             { "<C-b>", "<cmd>Neotree toggle<cr>", desc = "NeoTree" },
         },
         cmd = "Neotree",
-        opts = function ()
+        opts = function()
             local function on_move(data)
                 Snacks.rename.on_rename_file(data.source, data.destination)
             end
@@ -98,7 +104,22 @@ return {
                     width = 70,
                 },
             }
-        end
+        end,
+    },
+    --- Symbools outline
+    --- https://github.com/hedyhli/outline.nvim
+    {
+        "hedyhli/outline.nvim",
+        lazy = true,
+        cmd = { "Outline", "OutlineOpen" },
+        keys = { -- Example mapping to toggle outline
+            { "<leader>o", "<cmd>Outline<CR>", desc = "Toggle outline" },
+        },
+        opts = {
+            preview_window = {
+                auto_preview = true,
+            },
+        },
     },
     --- Dianostic
     ---
@@ -110,34 +131,34 @@ return {
         cmd = "Trouble",
         keys = {
             {
-              "<leader>xx",
-              "<cmd>Trouble diagnostics toggle<cr>",
-              desc = "Diagnostics (Trouble)",
+                "<leader>xx",
+                "<cmd>Trouble diagnostics toggle<cr>",
+                desc = "Diagnostics (Trouble)",
             },
             {
-              "<leader>xX",
-              "<cmd>Trouble diagnostics toggle filter.buf=0<cr>",
-              desc = "Buffer Diagnostics (Trouble)",
+                "<leader>xX",
+                "<cmd>Trouble diagnostics toggle filter.buf=0<cr>",
+                desc = "Buffer Diagnostics (Trouble)",
             },
             {
-              "<leader>cs",
-              "<cmd>Trouble symbols toggle focus=false<cr>",
-              desc = "Symbols (Trouble)",
+                "<leader>cs",
+                "<cmd>Trouble symbols toggle focus=false<cr>",
+                desc = "Symbols (Trouble)",
             },
             {
-              "<leader>cl",
-              "<cmd>Trouble lsp toggle focus=false win.position=right<cr>",
-              desc = "LSP Definitions / references / ... (Trouble)",
+                "<leader>cl",
+                "<cmd>Trouble lsp toggle focus=false win.position=right<cr>",
+                desc = "LSP Definitions / references / ... (Trouble)",
             },
             {
-              "<leader>xL",
-              "<cmd>Trouble loclist toggle<cr>",
-              desc = "Location List (Trouble)",
+                "<leader>xL",
+                "<cmd>Trouble loclist toggle<cr>",
+                desc = "Location List (Trouble)",
             },
             {
-              "<leader>xQ",
-              "<cmd>Trouble qflist toggle<cr>",
-              desc = "Quickfix List (Trouble)",
+                "<leader>xQ",
+                "<cmd>Trouble qflist toggle<cr>",
+                desc = "Quickfix List (Trouble)",
             },
         },
         opts = {

@@ -75,6 +75,7 @@ return {
     right = {
         { title = "Search & replace", ft = "grug-far", size = { width = 0.25 } },
         { title = "Outline", ft = "sagaoutline", size = { width = 0.18 } },
+        { title = "Outline", ft = "Outline", size = { width = 0.18 } },
         { title = "Code Companion", ft = "codecompanion", size = { width = 70 } },
         -- { title = "Avante", ft = "Avante", size = { width = 70 } },
     },

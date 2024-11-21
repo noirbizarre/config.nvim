@@ -44,6 +44,9 @@ return {
                 python = { 'print(f"🔎 %.0s{%s=}")' },
             },
         },
+        init = function()
+            require("telescope").load_extension("refactoring")
+        end,
     },
     --- Comments
     --- https://github.com/numToStr/Comment.nvim

@@ -7,38 +7,90 @@ return {
         "craftzdog/solarized-osaka.nvim",
         lazy = false,
         priority = 1000,
-        -- opts = {
-        --     transparent = false,    -- Disable setting background
-        --     dim_inactive = true, -- Non focused panes set to alternative background
-        -- },
         config = function()
-            require('solarized-osaka').setup({
-                transparent = true,    -- Disable setting background
+            require("solarized-osaka").setup({
+                transparent = true, -- Disable setting background
                 dim_inactive = true, -- Non focused panes set to alternative background
             })
 
-            vim.cmd "colorscheme solarized-osaka"
+            vim.cmd("colorscheme solarized-osaka")
         end,
     },
-    --- A collection of small QoL plugins for Neovim 
+    --- A collection of small QoL plugins for Neovim
     --- https://github.com/folke/snacks.nvim
     {
         "folke/snacks.nvim",
         priority = 1000,
         lazy = false,
         keys = {
-            { "<leader>un", function() Snacks.notifier.hide() end, desc = "Dismiss All Notifications" },
-            { "<leader>bd", function() Snacks.bufdelete() end, desc = "Delete Buffer" },
-            { "<leader>gg", function() Snacks.lazygit() end, desc = "Lazygit" },
-            { "<leader>gb", function() Snacks.git.blame_line() end, desc = "Git Blame Line" },
-            { "<leader>gB", function() Snacks.gitbrowse() end, desc = "Git Browse" },
+            {
+                "<leader>un",
+                function()
+                    Snacks.notifier.hide()
+                end,
+                desc = "Dismiss All Notifications",
+            },
+            {
+                "<leader>bd",
+                function()
+                    Snacks.bufdelete()
+                end,
+                desc = "Delete Buffer",
+            },
+            {
+                "<leader>gg",
+                function()
+                    Snacks.lazygit()
+                end,
+                desc = "Lazygit",
+            },
+            {
+                "<leader>gb",
+                function()
+                    Snacks.git.blame_line()
+                end,
+                desc = "Git Blame Line",
+            },
+            {
+                "<leader>gB",
+                function()
+                    Snacks.gitbrowse()
+                end,
+                desc = "Git Browse",
+            },
             -- { "<leader>gf", function() Snacks.lazygit.log_file() end, desc = "Lazygit Current File History" },
-            { "<leader>gl", function() Snacks.lazygit.log() end, desc = "Lazygit Log (cwd)" },
-            { "<leader>cR", function() Snacks.rename() end, desc = "Rename File" },
+            {
+                "<leader>gl",
+                function()
+                    Snacks.lazygit.log()
+                end,
+                desc = "Lazygit Log (cwd)",
+            },
+            {
+                "<leader>cR",
+                function()
+                    Snacks.rename()
+                end,
+                desc = "Rename File",
+            },
             -- { "<c-/>",      function() Snacks.terminal() end, desc = "Toggle Terminal" },
             -- { "<c-_>",      function() Snacks.terminal() end, desc = "which_key_ignore" },
-            { "]]",         function() Snacks.words.jump(vim.v.count1) end, desc = "Next Reference", mode = { "n", "t" } },
-            { "[[",         function() Snacks.words.jump(-vim.v.count1) end, desc = "Prev Reference", mode = { "n", "t" } },
+            {
+                "]]",
+                function()
+                    Snacks.words.jump(vim.v.count1)
+                end,
+                desc = "Next Reference",
+                mode = { "n", "t" },
+            },
+            {
+                "[[",
+                function()
+                    Snacks.words.jump(-vim.v.count1)
+                end,
+                desc = "Prev Reference",
+                mode = { "n", "t" },
+            },
         },
         opts = {
             bigfile = { enabled = true },
@@ -48,42 +100,64 @@ return {
                     header = ascii.neovim,
                     keys = {
                         { icon = " ", key = "n", desc = "New File", action = ":ene | startinsert" },
-                        { icon = " ", key = "f", desc = "Find File", action = ":lua Snacks.dashboard.pick('files')" },
-                        { icon = " ", key = "g", desc = "Find Text", action = ":lua Snacks.dashboard.pick('live_grep')" },
-                        { icon = " ", key = "r", desc = "Recent Files", action = ":lua Snacks.dashboard.pick('oldfiles')" },
+                        {
+                            icon = " ",
+                            key = "f",
+                            desc = "Find File",
+                            action = ":lua Snacks.dashboard.pick('files')",
+                        },
+                        {
+                            icon = " ",
+                            key = "g",
+                            desc = "Find Text",
+                            action = ":lua Snacks.dashboard.pick('live_grep')",
+                        },
+                        {
+                            icon = " ",
+                            key = "r",
+                            desc = "Recent Files",
+                            action = ":lua Snacks.dashboard.pick('oldfiles')",
+                        },
                         { icon = " ", key = "s", desc = "Restore Session", section = "session" },
                         { icon = "󰒲 ", key = "l", desc = "Lazy", action = ":Lazy", enabled = package.loaded.lazy },
                         { icon = " ", key = "m", desc = "Mason", action = ":Mason" },
                         { icon = " ", key = "q", desc = "Quit", action = ":qa" },
-                    }
+                    },
                 },
                 sections = {
                     { section = "header" },
                     {
-                      pane = 2,
-                      section = "terminal",
-                      -- cmd = "colorscript -e six",
-                      cmd = "colorscript -e square",
-                      height = 5,
-                      padding = 1,
+                        pane = 2,
+                        section = "terminal",
+                        -- cmd = "colorscript -e six",
+                        cmd = "colorscript -e square",
+                        height = 5,
+                        padding = 1,
                     },
                     { section = "keys", gap = 1, padding = 1 },
-                    { pane = 2, icon = " ", title = "Recent Files", section = "recent_files", indent = 2, padding = 1 },
+                    {
+                        pane = 2,
+                        icon = " ",
+                        title = "Recent Files",
+                        section = "recent_files",
+                        indent = 2,
+                        padding = 1,
+                    },
                     -- { pane = 2, icon = " ", title = "Projects", section = "projects", indent = 2, padding = 1 },
                     {
-                      pane = 2,
-                      icon = " ",
-                      title = "Git Status",
-                      section = "terminal",
-                      enabled = vim.fn.isdirectory(".git") == 1,
-                      cmd = "hub status --short --branch --renames",
-                      height = 5,
-                      padding = 1,
-                      ttl = 5 * 60,
-                      indent = 3,
+                        pane = 2,
+                        icon = " ",
+                        title = "Git Status",
+                        section = "terminal",
+                        enabled = vim.fn.isdirectory(".git") == 1,
+                        cmd = "hub status --short --branch --renames",
+                        height = 5,
+                        padding = 1,
+                        ttl = 5 * 60,
+                        indent = 3,
                     },
                     { section = "startup" },
-                  },
+                },
             },
             notifier = {
                 enabled = true,
@@ -94,9 +168,9 @@ return {
             words = { enabled = true },
             styles = {
                 notification = {
-                    wo = { wrap = true } -- Wrap notifications
-                }
-            }
+                    wo = { wrap = true }, -- Wrap notifications
+                },
+            },
         },
     },
 
@@ -141,8 +215,8 @@ return {
             })
         end,
     },
-    --- Top bufferline/tabline
-    --- https://github.com/akinsho/bufferline.nvim
+    -- --- Top bufferline/tabline
+    -- --- https://github.com/akinsho/bufferline.nvim
     {
         "akinsho/bufferline.nvim",
         lazy = false,
@@ -150,10 +224,10 @@ return {
             "nvim-tree/nvim-web-devicons",
         },
         keys = {
-            {"<S-Left>", "<cmd>BufferLineCyclePrev<cr>", desc="Next buffer"},
-            {"<S-Right>", "<cmd>BufferLineCycleNext<cr>", desc="Previous buffer"},
-            {"<C-S-Left>", "<cmd>BufferLineMovePrev<cr>", desc="Move to next buffer"},
-            {"<C-S-Right>", "<cmd>BufferLineMoveNext<cr>", desc="Move to previous buffer"},
+            { "<S-Left>", "<cmd>BufferLineCyclePrev<cr>", desc = "Next buffer" },
+            { "<S-Right>", "<cmd>BufferLineCycleNext<cr>", desc = "Previous buffer" },
+            { "<C-S-Left>", "<cmd>BufferLineMovePrev<cr>", desc = "Move to next buffer" },
+            { "<C-S-Right>", "<cmd>BufferLineMoveNext<cr>", desc = "Move to previous buffer" },
         },
         opts = {
             options = {
@@ -164,7 +238,21 @@ return {
                     { filetype = "neo-tree", text = "", padding = 1 },
                     { filetype = "Outline", text = "", padding = 1 },
                 },
-            }
+            },
+        },
+    },
+    --- Breadcrumbs
+    -- https://github.com/utilyre/barbecue.nvim
+    {
+        "utilyre/barbecue.nvim",
+        name = "barbecue",
+        version = "*",
+        dependencies = {
+            "SmiteshP/nvim-navic",
+            "nvim-tree/nvim-web-devicons", -- optional dependency
+        },
+        opts = {
+            -- configurations go here
         },
     },
     --- Bottom status bar
@@ -195,7 +283,7 @@ return {
                 desc = "Buffer Local Keymaps (which-key)",
             },
         },
-        opts= {
+        opts = {
             spec = require("lib.keymaps"),
         },
     },

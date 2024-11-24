@@ -167,10 +167,16 @@ return {
             "BufNewFile",
         },
         keys = {
-            {"<leader>ll", function() require("lint").try_lint() end, desc = "Lint" },
+            {
+                "<leader>ll",
+                function()
+                    require("lint").try_lint()
+                end,
+                desc = "Lint",
+            },
         },
         config = function()
-            local lint = require('lint')
+            local lint = require("lint")
             lint.linters_by_ft = {
                 text = { "vale" },
                 json = { "jsonlint" },
@@ -194,7 +200,7 @@ return {
                     end,
                 },
             }
-        end
+        end,
     },
     --- https://github.com/rshkarin/mason-nvim-lint
     {
@@ -205,38 +211,6 @@ return {
         },
         opts = {
             ignore_install = { "janet", "inko", "clj-kondo", "ruby" },
-        },
-    },
-
-    --- LSP widgets and helpers
-    ---
-    {
-        "nvimdev/lspsaga.nvim",
-        cmd = "LspSaga",
-        event = { "BufReadPost", "BufNewFile" },
-        keys = {
-            -- { "<leader>li", "<cmd>Lspsaga incoming_calls<cr>", desc = "Incoming calls" },
-            -- { "<leader>lo", "<cmd>Lspsaga outgoing_calls<cr>", desc = "Outgoing calls" },
-            -- { "<leader>la", "<cmd>Lspsaga code_action<cr>", desc = "Code Action" },
-            -- { "<leader>lr", "<cmd>Lspsaga rename<cr>", desc = "Rename" },
-            -- { "<leader>lt", "<cmd>Lspsaga outline<cr>", desc = "Outline" },
-            -- { "<leader>lpd", "<cmd>Lspsaga peek_definition<cr>", desc = "Peek definition" },
-            -- { "<leader>lgd", "<cmd>Lspsaga goto_definition<cr>", desc = "Go to definition" },
-            -- { "<leader>lpt", "<cmd>Lspsaga peek_type_definition<cr>", desc = "Peek type definition" },
-            -- { "<leader>lgt", "<cmd>Lspsaga goto_type_definition<cr>", desc = "Go to type definition" },
-            -- { "<leader>lh", "<cmd>Lspsaga hover_doc<cr>", desc = "Toggle hover documentation" },
-        },
-        opts = {
-            lightbulb = {
-                enable = false,
-            },
-            winbar = {
-                folder_level = 3,
-            },
-        },
-        dependencies = {
-            "nvim-treesitter/nvim-treesitter", -- optional
-            "nvim-tree/nvim-web-devicons", -- optional
         },
     },
     -- Virtualenv auto selection and picker

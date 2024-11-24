@@ -15,9 +15,7 @@ return {
         { "<leader>kb", "<cmd>Telescope buffers<cr>", desc = "Buffers" },
         { "<leader>ke", "<cmd>Telescope env<cr>", desc = "Environment variables" },
         { "<leader>kk", "<cmd>Telescope keymaps<cr>", desc = "Keymaps" },
-        -- { "<leader>k;", "<cmd>Telescope symbols<cr>", desc = "Emojis" },
         { "<leader>k;", function()
-            -- local builtin = require("telescope.builtin")
             require("telescope.builtin").symbols{
                 sources = {'emoji', 'gitmoji', "nerd", "math"},
                 layout_strategy="vertical",

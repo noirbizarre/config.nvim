@@ -7,6 +7,7 @@ return {
     { "<leader>g", group = "Git", icon = ""},
     { "<leader>s", group = "Search", icon = "󱈇" },
     { "<leader>t", group = "Test", icon = "󰤑" },
+    { "<leader>h", group = "Harpoon", icon = "" },
 
     {
         group = "Clipboard",

@@ -35,7 +35,7 @@ return {
             get_yaml_schema,
         },
         lualine_y = { "progress" },
-        lualine_z = { "location" },
+        lualine_z = { "location", { "harpoon2", no_harpoon = "" } },
     },
     inactive_sections = {
         lualine_a = {},

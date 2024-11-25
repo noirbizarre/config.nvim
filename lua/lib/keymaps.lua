@@ -3,11 +3,12 @@ return {
     { "<leader>a", group = "Avante", icon = "󱚣" },
     { "<leader>c", group = "CodeCompanion", icon = "" },
     { "<leader>d", group = "Debug", icon = "" },
-    { "<leader>k", group = "Telescope", icon = "" },
     { "<leader>g", group = "Git", icon = ""},
+    { "<leader>h", group = "Harpoon", icon = "" },
+    { "<leader>k", group = "Telescope", icon = "" },
     { "<leader>s", group = "Search", icon = "󱈇" },
     { "<leader>t", group = "Test", icon = "󰤑" },
-    { "<leader>h", group = "Harpoon", icon = "" },
+    { "<leader>x", group = "Trouble", icon = "🚦" },
 
     {
         group = "Clipboard",

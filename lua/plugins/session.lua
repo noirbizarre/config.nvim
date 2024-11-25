@@ -1,4 +1,3 @@
--- ahmedkhalf/project.nvim
 return {
 	-- Measure startuptime
 	{

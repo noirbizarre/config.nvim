@@ -31,10 +31,10 @@ return {
     { "<leader>r", group = "Refactoring", icon = "󰑕" },
     {
         group = "Refactoring",
-        { "<leader>rs", "<cmd>sort<cr>", mode = "v", desc = "Sort (Alpha ASC)", icon = "" },
-        { "<leader>rS", "<cmd>sort!<cr>", mode = "v", desc = "Sort (Alpha DESC)", icon = "" },
-        { "<leader>rn", "<cmd>sort n<cr>", mode = "v", desc = "Sort (Num ASC)", icon = "" },
-        { "<leader>rN", "<cmd>sort! n<cr>", mode = "v", desc = "Sort (Num DESC)", icon = "" },
+        { "<leader>rs", ":'<,'>sort<cr>", mode = "x", desc = "Sort (Alpha ASC)", icon = "" },
+        { "<leader>rS", ":'<,'>sort!<cr>", mode = "x", desc = "Sort (Alpha DESC)", icon = "" },
+        { "<leader>rn", ":'<,'>sort n<cr>", mode = "x", desc = "Sort (Num ASC)", icon = "" },
+        { "<leader>rN", ":'<,'>sort! n<cr>", mode = "x", desc = "Sort (Num DESC)", icon = "" },
     },
 
     -- Hidden hacks

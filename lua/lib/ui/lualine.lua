@@ -2,6 +2,7 @@
 --- See: https://github.com/nvim-lualine/lualine.nvim
 local icons = require("lib.ui.icons")
 local filetypes = require("lib.filetypes")
+table.unpack = table.unpack or unpack -- 5.1 compatibility
 
 local function get_yaml_schema()
     local schema = require("yaml-companion").get_buf_schema(0)
@@ -41,7 +42,7 @@ return {
         disabled_focus = filetypes.internals,
         disabled_filetypes = {
             statusline = { "snacks_dashboard" },
-            winbar = filetypes.internals,
+            winbar = { "gitrebase", table.unpack(filetypes.internals) },
         },
     },
     sections = {

@@ -1,6 +1,7 @@
 --- Full lualine.nvim configuration
 --- See: https://github.com/nvim-lualine/lualine.nvim
 local icons = require("lib.ui.icons")
+local filetypes = require("lib.filetypes")
 
 local function get_yaml_schema()
     local schema = require("yaml-companion").get_buf_schema(0)
@@ -8,6 +9,25 @@ local function get_yaml_schema()
         return ""
     end
     return schema.result[1].name
+end
+
+local function dirs()
+    local filename = vim.fn.expand("%:~:.")
+    local parts = {}
+    for part in string.gmatch(filename, "[^/]+") do
+        table.insert(parts, part)
+    end
+    table.remove(parts)
+    return table.concat(parts, " " .. icons.ui.powerline.inner_separators.left .. " ")
+end
+
+local function modified()
+    if vim.bo.modified then
+        return icons.file_status.modified
+    elseif vim.bo.modifiable == false or vim.bo.readonly == true then
+        return icons.file_status.readonly
+    end
+    return ""
 end
 
 return {
@@ -18,6 +38,11 @@ return {
         component_separators = icons.ui.powerline.inner_separators,
         icons_enabled = true,
         globalstatus = true,
+        disabled_focus = filetypes.internals,
+        disabled_filetypes = {
+            statusline = { "snacks_dashboard" },
+            winbar = filetypes.internals,
+        },
     },
     sections = {
         lualine_a = { "mode" },
@@ -44,6 +69,71 @@ return {
         lualine_x = {},
         lualine_y = {},
         lualine_z = { "location" },
+    },
+    winbar = {
+        lualine_a = {
+            {
+                dirs,
+                on_click = function() require("telescope.builtin").find_files() end,
+            },
+        },
+        lualine_b = {
+            { "filetype", colored = true, icon_only = true, separator = "", padding = { left = 1, right = 0 } },
+            {
+                "filename",
+                on_click = function() require("telescope.builtin").find_files() end,
+                color = { gui = "bold" },
+                padding = { left = 0, right = 1 },
+                file_status = false,
+                separator = "",
+            },
+            {
+                modified,
+                on_click = function() require("telescope.builtin").find_files() end,
+                draw_empty = true,
+                padding = { left = 0, right = 1 },
+                color = { fg = "orange" },
+            },
+        },
+        lualine_c = {
+            {
+                "navic",
+                on_click = function() require("telescope.builtin").lsp_document_symbols() end,
+                color_correction = "dynamic",
+            },
+        },
+        lualine_x = {},
+        lualine_y = {},
+        lualine_z = {},
+    },
+
+    inactive_winbar = {
+        lualine_a = {},
+        lualine_b = {},
+        lualine_c = {
+            {
+                dirs,
+                on_click = function() require("telescope.builtin").find_files() end,
+            },
+            { "filetype", colored = true, icon_only = true, separator = "", padding = { left = 1, right = 0 } },
+            {
+                "filename",
+                on_click = function() require("telescope.builtin").find_files() end,
+                padding = { left = 0, right = 1 },
+                file_status = false,
+                separator = "",
+            },
+            {
+                modified,
+                on_click = function() require("telescope.builtin").find_files() end,
+                draw_empty = true,
+                padding = { left = 0, right = 1 },
+                color = { fg = "orange" },
+            },
+        },
+        lualine_x = {},
+        lualine_y = {},
+        lualine_z = {},
     },
     extensions = { "quickfix", "toggleterm", "man" },
 }

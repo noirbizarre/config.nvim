@@ -25,69 +25,51 @@ return {
         keys = {
             {
                 "<leader>un",
-                function()
-                    Snacks.notifier.hide()
-                end,
+                function() Snacks.notifier.hide() end,
                 desc = "Dismiss All Notifications",
             },
             {
                 "<leader>bd",
-                function()
-                    Snacks.bufdelete()
-                end,
+                function() Snacks.bufdelete() end,
                 desc = "Delete Buffer",
             },
             {
                 "<leader>gg",
-                function()
-                    Snacks.lazygit()
-                end,
+                function() Snacks.lazygit() end,
                 desc = "Lazygit",
             },
             {
                 "<leader>gb",
-                function()
-                    Snacks.git.blame_line()
-                end,
+                function() Snacks.git.blame_line() end,
                 desc = "Git Blame Line",
             },
             {
                 "<leader>gB",
-                function()
-                    Snacks.gitbrowse()
-                end,
+                function() Snacks.gitbrowse() end,
                 desc = "Git Browse",
             },
             -- { "<leader>gf", function() Snacks.lazygit.log_file() end, desc = "Lazygit Current File History" },
             {
                 "<leader>gl",
-                function()
-                    Snacks.lazygit.log()
-                end,
+                function() Snacks.lazygit.log() end,
                 desc = "Lazygit Log (cwd)",
             },
             {
                 "<leader>cR",
-                function()
-                    Snacks.rename()
-                end,
+                function() Snacks.rename() end,
                 desc = "Rename File",
             },
             -- { "<c-/>",      function() Snacks.terminal() end, desc = "Toggle Terminal" },
             -- { "<c-_>",      function() Snacks.terminal() end, desc = "which_key_ignore" },
             {
                 "]]",
-                function()
-                    Snacks.words.jump(vim.v.count1)
-                end,
+                function() Snacks.words.jump(vim.v.count1) end,
                 desc = "Next Reference",
                 mode = { "n", "t" },
             },
             {
                 "[[",
-                function()
-                    Snacks.words.jump(-vim.v.count1)
-                end,
+                function() Snacks.words.jump(-vim.v.count1) end,
                 desc = "Prev Reference",
                 mode = { "n", "t" },
             },
@@ -215,46 +197,6 @@ return {
             })
         end,
     },
-    -- --- Top bufferline/tabline
-    -- --- https://github.com/akinsho/bufferline.nvim
-    {
-        "akinsho/bufferline.nvim",
-        lazy = false,
-        dependencies = {
-            "nvim-tree/nvim-web-devicons",
-        },
-        keys = {
-            { "<S-Left>", "<cmd>BufferLineCyclePrev<cr>", desc = "Next buffer" },
-            { "<S-Right>", "<cmd>BufferLineCycleNext<cr>", desc = "Previous buffer" },
-            { "<C-S-Left>", "<cmd>BufferLineMovePrev<cr>", desc = "Move to next buffer" },
-            { "<C-S-Right>", "<cmd>BufferLineMoveNext<cr>", desc = "Move to previous buffer" },
-        },
-        opts = {
-            options = {
-                diagnostics = "nvim_lsp",
-                always_show_bufferline = false,
-                offsets = {
-                    { filetype = "NvimTree", text = "", padding = 1 },
-                    { filetype = "neo-tree", text = "", padding = 1 },
-                    { filetype = "Outline", text = "", padding = 1 },
-                },
-            },
-        },
-    },
-    --- Breadcrumbs
-    -- https://github.com/utilyre/barbecue.nvim
-    {
-        "utilyre/barbecue.nvim",
-        name = "barbecue",
-        version = "*",
-        dependencies = {
-            "SmiteshP/nvim-navic",
-            "nvim-tree/nvim-web-devicons", -- optional dependency
-        },
-        opts = {
-            -- configurations go here
-        },
-    },
     --- Bottom status bar
     --- https://github.com/nvim-lualine/lualine.nvim
     {
@@ -262,6 +204,16 @@ return {
         dependencies = {
             "nvim-tree/nvim-web-devicons",
             "someone-stole-my-name/yaml-companion.nvim",
+            {
+                "SmiteshP/nvim-navic",
+                opts = {
+                    highlight = true,
+                    -- click = true,
+                    lsp = {
+                        auto_attach = true,
+                    },
+                },
+            },
         },
         event = "VeryLazy",
         opts = require("lib.ui.lualine"),
@@ -277,9 +229,7 @@ return {
             { "<leader>/", "<cmd>WhichKey<cr>", desc = "Keymaps (which-key)" },
             {
                 "<leader>?",
-                function()
-                    require("which-key").show({ global = false })
-                end,
+                function() require("which-key").show({ global = false }) end,
                 desc = "Buffer Local Keymaps (which-key)",
             },
         },

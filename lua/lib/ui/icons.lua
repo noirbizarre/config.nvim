@@ -47,6 +47,12 @@ return {
         Value = " ",
         Variable = " ",
     },
+    file_status = {
+        modified = "",
+        readonly = "",
+        unnamed = "[No Name]",
+        newfile = "",
+    },
     ui = {
         gutter = "▍",
         powerline = {

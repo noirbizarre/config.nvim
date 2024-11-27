@@ -11,6 +11,7 @@ return {
         "Trouble",
         "cmp_menu",
         "codecompanion",
+        "copilot-chat",
         "flash_prompt",
         "grug-far",
         "lazy",

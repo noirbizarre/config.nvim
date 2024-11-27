@@ -40,6 +40,39 @@ return {
         -- end,
         opts = {},
     },
+    --- CopilotChat
+    --- https://github.com/CopilotC-Nvim/CopilotChat.nvim
+    {
+        "CopilotC-Nvim/CopilotChat.nvim",
+        branch = "canary",
+        dependencies = {
+            { "github/copilot.vim" }, -- or zbirenbaum/copilot.lua
+            { "nvim-lua/plenary.nvim" }, -- for curl, log wrapper
+        },
+        build = "make tiktoken", -- Only on MacOS or Linux
+        cmd = {
+            "CopilotChat",
+            "CopilotChatOpen",
+            "CopilotChatClose",
+            "CopilotChatToggle",
+            "CopilotChatStop",
+            "CopilotChatReset",
+            "CopilotChatSave",
+            "CopilotChatLoad",
+            "CopilotChatDebugInfo",
+            "CopilotChatModels",
+            "CopilotChatAgents",
+        },
+        keys = {
+            {"<leader>ii", "<cmd>CopilotChatToggle<cr>", desc = "Toggle Copilot Chat"},
+            {"<leader>im", "<cmd>CopilotChatModels<cr>", desc = "Copilot Chat Models"},
+            {"<leader>ia", "<cmd>CopilotChatAgents<cr>", desc = "Copilot Chat Agents"},
+        },
+        opts = {
+            -- See Configuration section for options
+        },
+        -- See Commands section for default commands if you want to lazy load on them
+    },
     --- CodeCompanion
     --- https://github.com/olimorris/codecompanion.nvim
     {
@@ -114,89 +147,67 @@ return {
             { "<leader>aa", ":AvanateAsk<CR>", desc = "Avante" },
             {
                 "<leader>ag",
-                function()
-                    require("avante.api").ask({ question = ai.prompts.grammar_correction() })
-                end,
+                function() require("avante.api").ask({ question = ai.prompts.grammar_correction() }) end,
                 mode = { "n", "v" },
                 desc = "Grammar Correction(ask)",
             },
             {
                 "<leader>ak",
-                function()
-                    require("avante.api").ask({ question = ai.prompts.keywords() })
-                end,
+                function() require("avante.api").ask({ question = ai.prompts.keywords() }) end,
                 mode = { "n", "v" },
                 desc = "Keywords(ask)",
             },
             {
                 "<leader>al",
-                function()
-                    require("avante.api").ask({ question = ai.prompts.code_readability_analysis() })
-                end,
+                function() require("avante.api").ask({ question = ai.prompts.code_readability_analysis() }) end,
                 mode = { "n", "v" },
                 desc = "Code Readability Analysis(ask)",
             },
             {
                 "<leader>ao",
-                function()
-                    require("avante.api").ask({ question = ai.prompts.optimize_code() })
-                end,
+                function() require("avante.api").ask({ question = ai.prompts.optimize_code() }) end,
                 mode = { "n", "v" },
                 desc = "Optimize Code(ask)",
             },
             {
                 "<leader>am",
-                function()
-                    require("avante.api").ask({ question = ai.prompts.summarize() })
-                end,
+                function() require("avante.api").ask({ question = ai.prompts.summarize() }) end,
                 mode = { "n", "v" },
                 desc = "Summarize text(ask)",
             },
             {
                 "<leader>an",
-                function()
-                    require("avante.api").ask({ question = ai.prompts.translate() })
-                end,
+                function() require("avante.api").ask({ question = ai.prompts.translate() }) end,
                 mode = { "n", "v" },
                 desc = "Translate text(ask)",
             },
             {
                 "<leader>ax",
-                function()
-                    require("avante.api").ask({ question = ai.prompts.explain_code() })
-                end,
+                function() require("avante.api").ask({ question = ai.prompts.explain_code() }) end,
                 mode = { "n", "v" },
                 desc = "Explain Code(ask)",
             },
             {
                 "<leader>ac",
-                function()
-                    require("avante.api").ask({ question = ai.prompts.complete_code() })
-                end,
+                function() require("avante.api").ask({ question = ai.prompts.complete_code() }) end,
                 mode = { "n", "v" },
                 desc = "Complete Code(ask)",
             },
             {
                 "<leader>ad",
-                function()
-                    require("avante.api").ask({ question = ai.prompts.add_docstring() })
-                end,
+                function() require("avante.api").ask({ question = ai.prompts.add_docstring() }) end,
                 mode = { "n", "v" },
                 desc = "Docstring(ask)",
             },
             {
                 "<leader>ab",
-                function()
-                    require("avante.api").ask({ question = ai.prompts.fix_bugs() })
-                end,
+                function() require("avante.api").ask({ question = ai.prompts.fix_bugs() }) end,
                 mode = { "n", "v" },
                 desc = "Fix Bugs(ask)",
             },
             {
                 "<leader>au",
-                function()
-                    require("avante.api").ask({ question = ai.prompts.add_tests() })
-                end,
+                function() require("avante.api").ask({ question = ai.prompts.add_tests() }) end,
                 mode = { "n", "v" },
                 desc = "Add Tests(ask)",
             },

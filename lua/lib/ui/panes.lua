@@ -77,6 +77,7 @@ return {
         { title = "Outline", ft = "sagaoutline", size = { width = 0.18 } },
         { title = "Outline", ft = "Outline", size = { width = 0.18 } },
         { title = "Code Companion", ft = "codecompanion", size = { width = 70 } },
+        { title = "Copilot", ft = "copilot-chat", size = { width = 70 } },
         -- { title = "Avante", ft = "Avante", size = { width = 70 } },
     },
 }

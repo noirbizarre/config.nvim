@@ -45,6 +45,7 @@ return {
             -- LSP
             { "<leader>li", "<cmd>Telescope lsp_incoming_calls<cr>", desc = "Incoming calls" },
             { "<leader>lo", "<cmd>Telescope lsp_outgoing_calls<cr>", desc = "Outgoing calls" },
+            { "<leader>lf", "<cmd>Telescope lsp_references<cr>", desc = "References" },
             { "<leader>ls", "<cmd>Telescope lsp_document_symbols<cr>", desc = "Document Symbols" },
             { "<leader>lw", "<cmd>Telescope lsp_workspace_symbols<cr>", desc = "Workspace Symbols" },
             { "<leader>lgi", "<cmd>Telescope lsp_implementations<cr>", desc = "Go to implementation" },

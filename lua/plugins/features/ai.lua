@@ -64,9 +64,9 @@ return {
             "CopilotChatAgents",
         },
         keys = {
-            {"<leader>ii", "<cmd>CopilotChatToggle<cr>", desc = "Toggle Copilot Chat"},
-            {"<leader>im", "<cmd>CopilotChatModels<cr>", desc = "Copilot Chat Models"},
-            {"<leader>ia", "<cmd>CopilotChatAgents<cr>", desc = "Copilot Chat Agents"},
+            { "<leader>ii", "<cmd>CopilotChatToggle<cr>", desc = "Toggle Copilot Chat" },
+            { "<leader>im", "<cmd>CopilotChatModels<cr>", desc = "Copilot Chat Models" },
+            { "<leader>ia", "<cmd>CopilotChatAgents<cr>", desc = "Copilot Chat Agents" },
         },
         opts = {
             -- See Configuration section for options

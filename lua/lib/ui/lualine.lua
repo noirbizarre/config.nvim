@@ -59,6 +59,7 @@ return {
             "fileformat",
             "encoding",
             get_yaml_schema,
+            "copilot",
         },
         lualine_y = { "progress" },
         lualine_z = { "location", { "harpoon2", no_harpoon = "" } },

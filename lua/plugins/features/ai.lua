@@ -1,43 +1,12 @@
 local ai = require("lib.ai")
 
 return {
-    --- ChatGPT
-    --- https://github.com/jackMort/ChatGPT.nvim
-    {
-        "jackMort/ChatGPT.nvim",
-        dependencies = {
-            "MunifTanjim/nui.nvim",
-            "nvim-lua/plenary.nvim",
-            "nvim-telescope/telescope.nvim",
-        },
-        cmd = {
-            "ChatGPT",
-            "ChatGPTActAs",
-            "ChatGPTEditWithInstructions",
-        },
-        config = function()
-            require("chatgpt").setup({
-                keymaps = {
-                    close = { "<C-c>", "<Esc>" },
-                    yank_last = "<C-y>",
-                    scroll_up = "<C-u>",
-                    scroll_down = "<C-d>",
-                    toggle_settings = "<C-o>",
-                    new_session = "<C-n>",
-                    cycle_windows = "<C-m>",
-                },
-            })
-        end,
-    },
     --- Copilot
     --- https://github.com/zbirenbaum/copilot.lua
     {
         "zbirenbaum/copilot.lua",
         cmd = "Copilot",
         event = "InsertEnter",
-        -- config = function()
-        --     require("copilot").setup({})
-        -- end,
         opts = {},
     },
     --- CopilotChat
@@ -46,7 +15,7 @@ return {
         "CopilotC-Nvim/CopilotChat.nvim",
         branch = "canary",
         dependencies = {
-            { "github/copilot.vim" }, -- or zbirenbaum/copilot.lua
+            { "zbirenbaum/copilot.lua" },
             { "nvim-lua/plenary.nvim" }, -- for curl, log wrapper
         },
         build = "make tiktoken", -- Only on MacOS or Linux
@@ -215,9 +184,6 @@ return {
         opts = {
             provider = "copilot",
             auto_suggestions_provider = "copilot",
-            claude = {
-                -- api_key_name = "cmd:op read op://Personal/Anthropic/tokens/neovim --no-newline",
-            },
         },
     },
 }

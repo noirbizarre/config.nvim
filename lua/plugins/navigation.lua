@@ -8,6 +8,7 @@ return {
             { "nvim-telescope/telescope-fzf-native.nvim", build = "make" },
             "nvim-telescope/telescope-frecency.nvim",
             "LinArcX/telescope-env.nvim",
+            "benfowler/telescope-luasnip.nvim",
         },
         branch = "0.1.x", -- or tag = '0.1.0',
         cmd = "Telescope",
@@ -41,6 +42,7 @@ return {
             },
             { "<leader>kg", "<cmd>Telescope live_grep<cr>", desc = "Live Grep" },
             { "<leader>ky", "<cmd>Telescope yaml_schema<cr>", desc = "YAML Schema" },
+            { "<leader>ks", "<cmd>Telescope luasnip<cr>", desc = "YAML Schema" },
 
             -- LSP
             { "<leader>li", "<cmd>Telescope lsp_incoming_calls<cr>", desc = "Incoming calls" },
@@ -143,6 +145,7 @@ return {
             telescope.load_extension("yaml_schema")
             telescope.load_extension("env")
             telescope.load_extension("frecency")
+            telescope.load_extension("luasnip")
         end,
     },
     {

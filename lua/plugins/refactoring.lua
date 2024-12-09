@@ -137,5 +137,41 @@ return {
     {
         "jake-stewart/multicursor.nvim",
         branch = "1.0",
+        keys = function()
+            local mc = require("multicursor-nvim")
+            return {
+                {
+                    "<leader>mn",
+                    function() mc.matchAddCursor(1) end,
+                    mode = { "n", "v" },
+                    desc = "Add next match",
+                },
+                {
+                    "<leader>ms",
+                    function() mc.matchSkipCursor(1) end,
+                    mode = { "n", "v" },
+                    desc = "Skip next match",
+                },
+                {
+                    "<leader>mN",
+                    function() mc.matchAddCursor(-1) end,
+                    mode = { "n", "v" },
+                    desc = "Add previous match",
+                },
+                {
+                    "<leader>mS",
+                    function() mc.matchSkipCursor(-1) end,
+                    mode = { "n", "v" },
+                    desc = "Skip next match",
+                },
+                { "<leader>mA", mc.matchAllAddCursors, mode = { "n", "v" }, desc = "Add all matches" },
+                { "<c-leftmouse>", mc.handleMouse, desc = "Add/Remove cursor with mouse" },
+                { "<leader>mi", mc.insertVisual, mode = { "v" }, desc = "Insert cursor to each line of selection" },
+                { "<leader>ma", mc.appendVisual, mode = { "v" }, desc = "Append cursor to each line of selection" },
+                { "<leader>mM", mc.matchCursors, mode = { "v" }, desc = "Match new cursors within selection by regex" },
+                { "<leader>mx", mc.clearCursors, desc = "Clear cursors" },
+            }
+        end,
+        config = function() require("multicursor-nvim").setup() end,
     },
 }

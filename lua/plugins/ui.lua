@@ -11,6 +11,9 @@ return {
             require("solarized-osaka").setup({
                 transparent = true, -- Disable setting background
                 dim_inactive = true, -- Non focused panes set to alternative background
+                styles = {
+                    floats = "transparent",
+                },
             })
 
             vim.cmd("colorscheme solarized-osaka")

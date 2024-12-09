@@ -58,6 +58,12 @@ return {
                 function() vim.lsp.buf.code_action() end,
                 desc = "Code Action",
             },
+
+            -- Git 
+            { "<leader>gc", "<cmd>Telescope git_commits<cr>", desc="List all commits" },
+            { "<leader>gf", "<cmd>Telescope git_bcommits<cr>", desc="Current buffer history"},
+            { "<leader>gb", "<cmd>Telescope git_branches<cr>", desc="Git branches"},
+            { "<leader>gs", "<cmd>Telescope git_status<cr>", desc="Git status"},
         },
         config = function()
             local telescope = require("telescope")

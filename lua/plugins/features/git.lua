@@ -11,51 +11,78 @@ return {
             "DiffviewToggleFiles",
             "DiffviewFocusFiles",
         },
+        keys = {
+            { "<leader>gd", "<cmd>DiffviewOpen<cr>", desc = "Repo Diffview", nowait = true },
+            { "<leader>gh", "<cmd>DiffviewFileHistory<cr>", desc = "Repo history" },
+            -- { "<leader>gf", "<cmd>DiffviewFileHistory --follow %<cr>", desc = "File history" },
+            { "<leader>gm", "<cmd>DiffviewOpen main<cr>", desc = "Diff with main" },
+        },
     },
     -- Git integration for buffers
     -- https://github.com/lewis6991/gitsigns.nvim
     {
         "lewis6991/gitsigns.nvim",
-        event = { 'BufReadPre', 'BufNewFile' },
+        event = { "BufReadPre", "BufNewFile" },
         opts = {
-            
+            on_attach = function(bufnr)
+                local gitsigns = require("gitsigns")
+                local wk = require("which-key")
+
+                wk.add({
+                    buffer = bufnr,
+                    group = "git",
+                    -- Navigation
+                    {
+                        "]g",
+                        function()
+                            if vim.wo.diff then
+                                vim.cmd.normal({ "]c", bang = true })
+                            else
+                                gitsigns.nav_hunk("next")
+                            end
+                        end,
+                        desc = "Next hunk",
+                    },
+
+                    {
+                        "[g",
+                        function()
+                            if vim.wo.diff then
+                                vim.cmd.normal({ "[c", bang = true })
+                            else
+                                gitsigns.nav_hunk("prev")
+                            end
+                        end,
+                        desc = "Previous hunk",
+                    },
+                    -- Actions
+                    { "<leader>gA", gitsigns.stage_buffer, desc = "Stage buffer" },
+                    { "<leader>gR", gitsigns.reset_buffer, desc = "Reset buffer" },
+                    { "<leader>ga", gitsigns.stage_hunk, desc = "Stage hunk" },
+                    { "<leader>gr", gitsigns.reset_hunk, desc = "Reset hunk" },
+                    { "<leader>gu", gitsigns.undo_stage_hunk, desc = "Undo stage hunk" },
+                    {
+                        "<leader>ga",
+                        function() gitsigns.stage_hunk({ vim.fn.line("."), vim.fn.line("v") }) end,
+                        mode = "v",
+                        desc = "Stage selection",
+                    },
+                    {
+                        "<leader>gr",
+                        function() gitsigns.reset_hunk({ vim.fn.line("."), vim.fn.line("v") }) end,
+                        mode = "v",
+                        desc = "Reset selection",
+                    },
+                })
+            end,
         },
     },
-    --- https://github.com/NeogitOrg/neogit
     {
-        "NeogitOrg/neogit",
-        cmd = "Neogit",
+        "FabijanZulj/blame.nvim",
         keys = {
-            { "<leader>gp", "<cmd>Neogit <cr>", mode = { "n", "v" }, desc = "Neogit" },
-            {
-                "<leader>gl",
-                function()
-                    require("neogit").action("log", "log_current", {"--graph"})()
-                end,
-                mode = { "n", "v" },
-                desc = "Neogit logs",
-            },
+            { "<leader>gy", "<cmd>BlameToggle<cr>", desc = "Blame" },
         },
-        dependencies = {
-            "nvim-lua/plenary.nvim",         -- required
-            "sindrets/diffview.nvim",        -- optional - Diff integration
-            "nvim-telescope/telescope.nvim", -- optional
-        },
-        opts = {
-            kind = "vsplit",
-            -- graph_style = "unicode",
-            graph_style = "kitty",
-            section = { "", "" },
-            item = { "", "" },
-            hunk = { "", "" },
-            -- log_view = {
-            --     kind = "vsplit",
-            -- },
-            integrations = {
-                diffview = true,
-                telescope = true,
-            },
-        }
+        opts = {},
     },
     -- Octo -- Github Issues & pull requests
     -- https://github.com/pwntester/octo.nvim
@@ -67,8 +94,27 @@ return {
             "nvim-tree/nvim-web-devicons",
         },
         opts = {},
-        -- config = function()
-        --     require("octo").setup()
-        -- end,
+    },
+    -- Gist support
+    -- https://github.com/rawnly/gist.nvim
+    {
+        "Rawnly/gist.nvim",
+        dependencies = {
+            -- `GistsList` opens the selected gif in a terminal buffer,
+            -- nvim-unception uses neovim remote rpc functionality to open the gist in an actual buffer
+            -- and prevents neovim buffer inception
+            {
+                "samjwill/nvim-unception",
+                lazy = false,
+                init = function() vim.g.unception_block_while_host_edits = true end,
+            },
+        },
+        cmd = { "GistCreate", "GistCreateFromFile", "GistsList" },
+        keys = {
+            { "<leader>gil", "<cmd>GistsList<cr>", desc = "Lists gists" },
+            { "<leader>gic", "<cmd>GistsCreate<cr>", desc = "Create a gist" },
+            { "<leader>gif", "<cmd>GistsCreateFromFile<cr>", desc = "Create a gist from the current file" },
+        },
+        config = true,
     },
 }

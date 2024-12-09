@@ -6,32 +6,24 @@ return {
         keys = {
             {
                 "<leader>rp",
-                function()
-                    require("refactoring").debug.printf({})
-                end,
+                function() require("refactoring").debug.printf({}) end,
                 desc = "Print statement",
             },
             {
                 "<leader>rd",
-                function()
-                    require("refactoring").debug.print_var({})
-                end,
+                function() require("refactoring").debug.print_var({}) end,
                 mode = { "n", "x" },
                 desc = "Print var statement",
             },
             {
                 "<leader>rc",
-                function()
-                    require("refactoring").debug.cleanup({})
-                end,
+                function() require("refactoring").debug.cleanup({}) end,
                 desc = "Clear print statements",
             },
             -- Telescope menu
             {
                 "<leader>kr",
-                function()
-                    require("telescope").extensions.refactoring.refactors()
-                end,
+                function() require("telescope").extensions.refactoring.refactors() end,
                 mode = { "n", "x" },
                 desc = "Refactor",
             },
@@ -44,9 +36,7 @@ return {
                 python = { 'print(f"🔎 %.0s{%s=}")' },
             },
         },
-        init = function()
-            require("telescope").load_extension("refactoring")
-        end,
+        init = function() require("telescope").load_extension("refactoring") end,
     },
     --- Comments
     --- https://github.com/numToStr/Comment.nvim
@@ -70,9 +60,7 @@ return {
         keys = {
             {
                 "<leader>rf",
-                function()
-                    require("conform").format({ async = true })
-                end,
+                function() require("conform").format({ async = true }) end,
                 desc = "Format buffer",
             },
         },
@@ -100,7 +88,7 @@ return {
     },
     --- https://github.com/zapling/mason-conform.nvim
     {
-       "zapling/mason-conform.nvim",
+        "zapling/mason-conform.nvim",
         dependencies = {
             "williamboman/mason.nvim",
             "stevearc/conform.nvim",

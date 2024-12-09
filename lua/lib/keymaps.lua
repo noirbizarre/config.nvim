@@ -1,12 +1,14 @@
 return {
     --- Common reusable groups
     { "<leader>a", group = "Avante", icon = "󱚣" },
+    { "<leader>b", group = "Buffers", icon = "📔" },
     { "<leader>c", group = "CodeCompanion", icon = "" },
     { "<leader>d", group = "Debug", icon = "" },
     { "<leader>g", group = "Git", icon = ""},
-    { "<leader>i", group = "CoPilot", icon = ""},
     { "<leader>h", group = "Harpoon", icon = "" },
+    { "<leader>i", group = "CoPilot", icon = ""},
     { "<leader>k", group = "Telescope", icon = "" },
+    { "<leader>m", group = "Multicursor", icon = "" },
     { "<leader>s", group = "Search", icon = "󱈇" },
     { "<leader>t", group = "Test", icon = "󰤑" },
     { "<leader>x", group = "Trouble", icon = "🚦" },

@@ -139,6 +139,23 @@ return {
                     },
                 },
             })
+            lspconfig.ltex_plus.setup({
+                settings = {
+                    ltex = {
+                        checkFrequency = "save",
+                        language = "en-US",
+                        languageToolHttpServerUri = "https://api.languagetoolplus.com/",
+                        languageToolOrg = {
+                            username = vim.env.LANGUETOOL_USER,
+                            apikey = vim.env.LANGUETOOL_APIKEY,
+                        },
+                        additionalRules = {
+                            enablePickyRules = true,
+                            motherTongue = "fr",
+                        },
+                    },
+                },
+            })
 
             -- replace the default lsp diagnostic symbols
             for name, icon in pairs(icons.diagnostics) do

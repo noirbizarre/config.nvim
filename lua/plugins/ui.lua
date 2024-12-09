@@ -250,4 +250,20 @@ return {
             spec = require("lib.keymaps"),
         },
     },
+    -- Better inline diagnostic
+    -- https://github.com/rachartier/tiny-inline-diagnostic.nvim
+    {
+        "rachartier/tiny-inline-diagnostic.nvim",
+        event = { "VeryLazy", "LspAttach" },
+        priority = 1000, -- needs to be loaded in first
+        config = function()
+            vim.diagnostic.config({ virtual_text = false }) -- Disable the builtin diagnostic
+            require("tiny-inline-diagnostic").setup({
+                options = {
+                    show_source = true,
+                    -- use_icons_from_diagnostic = true,
+                },
+            })
+        end,
+    },
 }

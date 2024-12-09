@@ -214,7 +214,7 @@ return {
                     },
                 },
             },
-            'AndreM222/copilot-lualine',
+            "AndreM222/copilot-lualine",
         },
         event = "VeryLazy",
         opts = require("lib.ui.lualine"),

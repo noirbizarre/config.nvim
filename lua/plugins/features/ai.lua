@@ -7,7 +7,12 @@ return {
         "zbirenbaum/copilot.lua",
         cmd = "Copilot",
         event = "InsertEnter",
-        opts = {},
+        opts = {
+            filetypes = {
+                yaml = true,
+                markdown = true,
+            },
+        },
     },
     --- CopilotChat
     --- https://github.com/CopilotC-Nvim/CopilotChat.nvim
@@ -184,6 +189,9 @@ return {
         opts = {
             provider = "copilot",
             auto_suggestions_provider = "copilot",
+            copilot = {
+                model = "claude-3.5-sonnet",
+            },
         },
     },
 }

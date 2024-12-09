@@ -166,7 +166,19 @@ return {
         dependencies = "nvim-treesitter/nvim-treesitter",
         event = { "BufReadPost", "BufNewFile" },
         opts = {
-            indent = { char = "│", tab_char = "│" },
+            indent = {
+                char = "│",
+                tab_char = "│",
+                highlight = {
+                    "TSRainbowRed",
+                    "TSRainbowYellow",
+                    "TSRainbowBlue",
+                    "TSRainbowOrange",
+                    "TSRainbowGreen",
+                    "TSRainbowViolet",
+                    "TSRainbowCyan",
+                },
+            },
             scope = { enabled = false },
             exclude = { filetypes = { "lazy", "dashboard", "mason" } },
         },

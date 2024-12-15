@@ -40,6 +40,12 @@ return {
         { "<leader>rN", ":'<,'>sort! n<cr>", mode = "x", desc = "Sort (Num DESC)", icon = "" },
     },
 
+    -- Terminal
+    {
+        mode = "t",
+        { "<Esc>" , proxy="<C-\\><C-n>", desc = "Exit terminal mode"},
+    },
+
     -- Hidden hacks
     {
         hidden = true,

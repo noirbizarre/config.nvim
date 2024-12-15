@@ -6,24 +6,30 @@ return {
             ft = "toggleterm",
             size = { height = 0.4 },
             -- exclude floating windows
-            filter = function(buf, win)
-                return vim.api.nvim_win_get_config(win).relative == ""
-            end,
+            filter = function(buf, win) return vim.api.nvim_win_get_config(win).relative == "" end,
         },
         {
             ft = "lazyterm",
             title = "LazyTerm",
             size = { height = 0.4 },
-            filter = function(buf)
-                return not vim.b[buf].lazyterm_cmd
+            filter = function(buf) return not vim.b[buf].lazyterm_cmd end,
+        },
+        {
+            ft = "snacks_terminal",
+            size = { height = 0.4 },
+            title = "Terminal #%{b:snacks_terminal.id}",
+            -- title = "%{b:snacks_terminal.id}: %{b:term_title}",
+            filter = function(_buf, win)
+                return vim.w[win].snacks_win
+                    and vim.w[win].snacks_win.position == "bottom"
+                    and vim.w[win].snacks_win.relative == "editor"
+                    and not vim.w[win].trouble_preview
             end,
         },
         {
             ft = "noice",
             size = { height = 0.4 },
-            filter = function(buf, win)
-                return vim.api.nvim_win_get_config(win).relative == ""
-            end,
+            filter = function(buf, win) return vim.api.nvim_win_get_config(win).relative == "" end,
         },
         "trouble",
         { ft = "qf", title = "QuickFix" },
@@ -31,9 +37,7 @@ return {
             ft = "help",
             size = { height = 20 },
             -- only show help buffers
-            filter = function(buf)
-                return vim.bo[buf].buftype == "help"
-            end,
+            filter = function(buf) return vim.bo[buf].buftype == "help" end,
         },
         { title = "Neotest Output", ft = "neotest-output-panel", size = { height = 15 } },
         -- { ft = "spectre_panel", size = { height = 0.4 } },
@@ -43,17 +47,13 @@ return {
         {
             title = "Files",
             ft = "neo-tree",
-            filter = function(buf)
-                return vim.b[buf].neo_tree_source == "filesystem"
-            end,
+            filter = function(buf) return vim.b[buf].neo_tree_source == "filesystem" end,
             size = { height = 0.5 },
         },
         {
             title = "Git",
             ft = "neo-tree",
-            filter = function(buf)
-                return vim.b[buf].neo_tree_source == "git_status"
-            end,
+            filter = function(buf) return vim.b[buf].neo_tree_source == "git_status" end,
             pinned = true,
             collapsed = true, -- show window as closed/collapsed on start
             open = "Neotree position=right git_status",
@@ -61,9 +61,7 @@ return {
         {
             title = "Buffers",
             ft = "neo-tree",
-            filter = function(buf)
-                return vim.b[buf].neo_tree_source == "buffers"
-            end,
+            filter = function(buf) return vim.b[buf].neo_tree_source == "buffers" end,
             pinned = true,
             collapsed = true, -- show window as closed/collapsed on start
             open = "Neotree position=top buffers",

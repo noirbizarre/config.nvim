@@ -83,7 +83,7 @@ return {
                 -- cmdline = {},
                 completion = {
                     -- remember to enable your providers here
-                    enabled_providers = { "lsp", "path", "snippets", "ecolog", "buffer", "emoji", },
+                    enabled_providers = { "lsp", "path", "snippets", "ecolog", "buffer", "emoji" },
                 },
                 providers = {
                     emoji = { name = "emoji", module = "blink.compat.source" },

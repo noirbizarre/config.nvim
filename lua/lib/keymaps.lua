@@ -4,9 +4,9 @@ return {
     { "<leader>b", group = "Buffers", icon = "📔" },
     { "<leader>c", group = "CodeCompanion", icon = "" },
     { "<leader>d", group = "Debug", icon = "" },
-    { "<leader>g", group = "Git", icon = ""},
+    { "<leader>g", group = "Git", icon = "" },
     { "<leader>h", group = "Harpoon", icon = "" },
-    { "<leader>i", group = "CoPilot", icon = ""},
+    { "<leader>i", group = "CoPilot", icon = "" },
     { "<leader>k", group = "Telescope", icon = "" },
     { "<leader>m", group = "Multicursor", icon = "" },
     { "<leader>s", group = "Search", icon = "󱈇" },
@@ -16,7 +16,7 @@ return {
     {
         group = "Clipboard",
         { "<leader>y", '"+y', mode = "v", desc = "Copy to system clipboard", icon = "󰆏" },
-        { "<leader>p", '"+p', mode = {"n", "v"}, desc = "Paste from system clipboard", icon = ""},
+        { "<leader>p", '"+p', mode = { "n", "v" }, desc = "Paste from system clipboard", icon = "" },
     },
 
     {
@@ -43,12 +43,12 @@ return {
     -- Terminal
     {
         mode = "t",
-        { "<Esc>" , proxy="<C-\\><C-n>", desc = "Exit terminal mode"},
+        { "<Esc>", proxy = "<C-\\><C-n>", desc = "Exit terminal mode" },
     },
 
     -- Hidden hacks
     {
         hidden = true,
-        { "<Esc>", "<cmd>nohls<CR>", desc = "Clear search highlighting"},
+        { "<Esc>", "<cmd>nohls<CR>", desc = "Clear search highlighting" },
     },
 }

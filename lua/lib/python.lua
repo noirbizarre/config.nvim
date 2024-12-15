@@ -6,9 +6,7 @@ M.mason_post_install = function(pkg)
         return
     end
 
-    vim.schedule(function()
-        vim.api.nvim_command(":PylspInstall pylsp-mypy python-lsp-ruff python-lsp-black")
-    end)
+    vim.schedule(function() vim.api.nvim_command(":PylspInstall pylsp-mypy python-lsp-ruff python-lsp-black") end)
 
     -- local venv = vim.fn.stdpath("data") .. "/mason/packages/python-lsp-server/venv"
     -- local job = require("plenary.job")

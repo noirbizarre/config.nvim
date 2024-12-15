@@ -9,15 +9,15 @@ return {
             opts = {
                 rocks = { "magick" },
             },
-        }
+        },
     },
     -- https://github.com/OXY2DEV/markview.nvim
     {
         "OXY2DEV/markview.nvim",
-        lazy = false,      -- Recommended
+        lazy = false, -- Recommended
         dependencies = {
             "nvim-treesitter/nvim-treesitter",
-            "nvim-tree/nvim-web-devicons"
+            "nvim-tree/nvim-web-devicons",
         },
         ft = { "markdown", "Avante", "codecompanion" },
         opts = {
@@ -27,10 +27,10 @@ return {
             hybrid_modes = { "i" },
 
             callbacks = {
-                on_enable = function (_, win)
-                    vim.wo[win].conceallevel = 2;
-                    vim.wo[win].concealcursor = "nc";
-                end
+                on_enable = function(_, win)
+                    vim.wo[win].conceallevel = 2
+                    vim.wo[win].concealcursor = "nc"
+                end,
             },
         },
     },

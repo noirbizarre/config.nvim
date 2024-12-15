@@ -61,8 +61,8 @@ vim.opt.foldlevelstart = 99
 
 ---@diagnostic disable: missing-fields
 vim.opt.fillchars = {
-  foldclose = "",
-  eob = " ",
+    foldclose = "",
+    eob = " ",
 }
 
 -- Disable some builtin providers

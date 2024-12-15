@@ -12,9 +12,7 @@ return {
         keys = {
             {
                 "<leader>we",
-                function()
-                    require("edgy").toggle()
-                end,
+                function() require("edgy").toggle() end,
                 desc = "Edgy Toggle",
             },
             -- stylua: ignore
@@ -34,21 +32,13 @@ return {
             },
             keys = {
                 -- increase width
-                ["<c-Right>"] = function(win)
-                    win:resize("width", 2)
-                end,
+                ["<c-Right>"] = function(win) win:resize("width", 2) end,
                 -- decrease width
-                ["<c-Left>"] = function(win)
-                    win:resize("width", -2)
-                end,
+                ["<c-Left>"] = function(win) win:resize("width", -2) end,
                 -- increase height
-                ["<c-Up>"] = function(win)
-                    win:resize("height", 2)
-                end,
+                ["<c-Up>"] = function(win) win:resize("height", 2) end,
                 -- decrease height
-                ["<c-Down>"] = function(win)
-                    win:resize("height", -2)
-                end,
+                ["<c-Down>"] = function(win) win:resize("height", -2) end,
             },
             bottom = panes.bottom,
             left = panes.left,
@@ -70,9 +60,7 @@ return {
         },
         cmd = "Neotree",
         opts = function()
-            local function on_move(data)
-                Snacks.rename.on_rename_file(data.source, data.destination)
-            end
+            local function on_move(data) Snacks.rename.on_rename_file(data.source, data.destination) end
             local events = require("neo-tree.events")
             return {
                 close_if_last_window = true,

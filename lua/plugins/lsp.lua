@@ -29,7 +29,6 @@ return {
             "b0o/schemastore.nvim",
             "williamboman/mason.nvim",
             "williamboman/mason-lspconfig.nvim",
-            "onsails/lspkind-nvim",
             "someone-stole-my-name/yaml-companion.nvim",
             --- NeoConf - Configure LSP from workspace neoconf.json
             --- https://github.com/folke/neoconf.nvim

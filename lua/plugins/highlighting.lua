@@ -161,36 +161,12 @@ return {
             })
         end,
     },
-    -- https://github.com/lukas-reineke/indent-blankline.nvim
-    {
-        "lukas-reineke/indent-blankline.nvim",
-        main = "ibl",
-        dependencies = "nvim-treesitter/nvim-treesitter",
-        event = { "BufReadPost", "BufNewFile" },
-        opts = {
-            indent = {
-                char = "",
-                tab_char = "",
-                highlight = {
-                    "TSRainbowRed",
-                    "TSRainbowYellow",
-                    "TSRainbowBlue",
-                    "TSRainbowOrange",
-                    "TSRainbowGreen",
-                    "TSRainbowViolet",
-                    "TSRainbowCyan",
-                },
-            },
-            scope = { enabled = false },
-            exclude = { filetypes = filetypes.internals },
-        },
-    },
-
+    -- https://github.com/folke/todo-comments.nvim
     {
         "folke/todo-comments.nvim",
         dependencies = { "nvim-lua/plenary.nvim" },
         cmd = { "TodoTrouble", "TodoTelescope" },
-        -- event = "LazyFile",
+        lazy = false,
         config = true,
         -- stylua: ignore
         keys = {

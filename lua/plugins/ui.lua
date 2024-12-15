@@ -1,4 +1,5 @@
 local ascii = require("lib.ui.ascii")
+local ft = require("lib.filetypes")
 
 return {
     --- Solarized Osaka
@@ -64,7 +65,7 @@ return {
                 function() Snacks.rename() end,
                 desc = "Rename File",
             },
-            { "<c-/>",      function() Snacks.terminal() end, desc = "Toggle Terminal" },
+            { "<c-/>", function() Snacks.terminal() end, desc = "Toggle Terminal" },
             -- { "<c-_>",      function() Snacks.terminal() end, desc = "which_key_ignore" },
             {
                 "]]",
@@ -150,6 +151,45 @@ return {
             notifier = {
                 enabled = true,
                 timeout = 3000,
+            },
+            indent = {
+                enabled = true,
+                indent = {
+                    enabled = true,
+                    char = "",
+                    hl = {
+                        "TSRainbowRed",
+                        "TSRainbowYellow",
+                        "TSRainbowBlue",
+                        "TSRainbowOrange",
+                        "TSRainbowGreen",
+                        "TSRainbowViolet",
+                        "TSRainbowCyan",
+                    },
+                },
+                scope = {
+                    enabled = true,
+                    char = "┆",
+                },
+                chunk = {
+                    enabled = true,
+                    char = {
+                        -- corner_top = "┌",
+                        -- corner_bottom = "└",
+                        corner_top = "╭",
+                        corner_bottom = "╰",
+                        horizontal = "┄",
+                        vertical = "┆",
+                        arrow = "",
+                    },
+                },
+                -- filter for buffers to enable indent guides
+                filter = function(buf)
+                    return vim.g.snacks_indent ~= false
+                        and vim.b[buf].snacks_indent ~= false
+                        and vim.bo[buf].buftype == ""
+                        and not vim.tbl_contains(ft.internals, vim.bo.filetype)
+                end,
             },
             quickfile = { enabled = true },
             statuscolumn = { enabled = true },

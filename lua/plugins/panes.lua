@@ -84,7 +84,7 @@ return {
                     { event = events.FILE_RENAMED, handler = on_move },
                 },
                 sort_case_insensitive = true,
-                open_files_do_not_replace_types = { "terminal", "Trouble", "qf", "edgy" },
+                open_files_do_not_replace_types = { "terminal", "Trouble", "trouble", "qf", "Outline", "edgy" },
                 filesystem = {
                     filtered_items = {
                         hide_dotfiles = false,
@@ -101,7 +101,7 @@ return {
                     symlink_target = { enabled = true },
                 },
                 window = {
-                    width = 70,
+                    width = 0.2,
                 },
             }
         end,

@@ -12,7 +12,7 @@ return {
                 transparent = true, -- Disable setting background
                 dim_inactive = true, -- Non focused panes set to alternative background
                 styles = {
-                    floats = "transparent",
+                    -- floats = "transparent",
                 },
             })
 
@@ -127,6 +127,7 @@ return {
                         icon = " ",
                         title = "Recent Files",
                         section = "recent_files",
+                        cwd = true,
                         indent = 2,
                         padding = 1,
                     },
@@ -264,6 +265,7 @@ return {
         config = function()
             vim.diagnostic.config({ virtual_text = false }) -- Disable the builtin diagnostic
             require("tiny-inline-diagnostic").setup({
+                preset = "powerline",
                 options = {
                     show_source = true,
                     -- use_icons_from_diagnostic = true,

@@ -45,6 +45,26 @@ vim.opt.swapfile = false
 -- Set python3 interpreter
 vim.g.python3_host_prog = "/usr/bin/python3"
 
+vim.opt.termguicolors = true -- True color support
+vim.opt.undofile = true
+vim.opt.undolevels = 10000
+vim.opt.wildmode = "longest:full,full" -- Command-line completion mode
+vim.opt.winminwidth = 5 -- Minimum window width
+vim.opt.wrap = false -- Disable line wrap
+vim.opt.smoothscroll = true
+
+--- Folding
+vim.opt.foldexpr = "v:lua.require'lib.ui.utils'.foldexpr()"
+vim.opt.foldmethod = "expr"
+vim.opt.foldtext = ""
+vim.opt.foldlevelstart = 99
+
+---@diagnostic disable: missing-fields
+vim.opt.fillchars = {
+  foldclose = "",
+  eob = " ",
+}
+
 -- Disable some builtin providers
 vim.g.loaded_python_provider = 0
 vim.g.loaded_ruby_provider = 0

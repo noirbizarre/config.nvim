@@ -1,3 +1,5 @@
+local filetypes = require("lib.filetypes")
+
 return {
     {
         "nvim-treesitter/nvim-treesitter",
@@ -167,8 +169,8 @@ return {
         event = { "BufReadPost", "BufNewFile" },
         opts = {
             indent = {
-                char = "│",
-                tab_char = "│",
+                char = "",
+                tab_char = "",
                 highlight = {
                     "TSRainbowRed",
                     "TSRainbowYellow",
@@ -180,7 +182,7 @@ return {
                 },
             },
             scope = { enabled = false },
-            exclude = { filetypes = { "lazy", "dashboard", "mason" } },
+            exclude = { filetypes = filetypes.internals },
         },
     },
 

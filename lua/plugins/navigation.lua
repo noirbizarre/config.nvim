@@ -59,39 +59,19 @@ return {
                 desc = "Code Action",
             },
 
-            -- Git 
-            { "<leader>gc", "<cmd>Telescope git_commits<cr>", desc="List all commits" },
-            { "<leader>gf", "<cmd>Telescope git_bcommits<cr>", desc="Current buffer history"},
-            { "<leader>gb", "<cmd>Telescope git_branches<cr>", desc="Git branches"},
-            { "<leader>gs", "<cmd>Telescope git_status<cr>", desc="Git status"},
+            -- Git
+            { "<leader>gc", "<cmd>Telescope git_commits<cr>", desc = "List all commits" },
+            { "<leader>gf", "<cmd>Telescope git_bcommits<cr>", desc = "Current buffer history" },
+            { "<leader>gb", "<cmd>Telescope git_branches<cr>", desc = "Git branches" },
+            { "<leader>gs", "<cmd>Telescope git_status<cr>", desc = "Git status" },
         },
         config = function()
             local telescope = require("telescope")
             local actions = require("telescope.actions")
             local action_layout = require("telescope.actions.layout")
-            local config = require("telescope.config")
-
-            -- Clone the default Telescope configuration
-            local vimgrep_args = { unpack(config.values.vimgrep_arguments) }
-
-            -- I want to search in hidden/dot files.
-            table.insert(vimgrep_args, "--hidden")
-            table.insert(vimgrep_args, "--follow")
-            table.insert(vimgrep_args, "--no-ignore-vcs")
-            table.insert(vimgrep_args, "--glob")
-            table.insert(vimgrep_args, "!**/.git/*")
-            table.insert(vimgrep_args, "--glob")
-            table.insert(vimgrep_args, "!**/.venv/*")
-            table.insert(vimgrep_args, "--glob")
-            table.insert(vimgrep_args, "!**/node_modules/*")
-
-            -- Don't exclude git ignored files
-            -- table.insert(vimgrep_arguments, "--unrestricted")
 
             telescope.setup({
                 defaults = {
-                    -- `hidden = true` is not supported in text grep commands.
-                    vimgrep_arguments = vimgrep_args,
                     prompt_prefix = "  ",
                     selection_caret = " ",
                     selection_strategy = "reset",
@@ -108,6 +88,7 @@ return {
                         "build",
                         "dist",
                         "__pycache__",
+                        ".*_cache",
                     },
                     mappings = {
                         n = {

@@ -52,6 +52,7 @@ return {
         dependencies = {
             "rafamadriz/friendly-snippets",
             "hrsh7th/cmp-emoji",
+            "giuxtaposition/blink-cmp-copilot",
         },
         version = "v0.*",
 
@@ -83,11 +84,22 @@ return {
                 -- cmdline = {},
                 completion = {
                     -- remember to enable your providers here
-                    enabled_providers = { "lsp", "path", "snippets", "ecolog", "buffer", "emoji" },
+                    enabled_providers = {
+                        "lsp",
+                        "path",
+                        "snippets",
+                        "buffer",
+                        "copilot",
+                        "ecolog",
+                        "emoji",
+                        "codecompanion",
+                    },
                 },
                 providers = {
                     emoji = { name = "emoji", module = "blink.compat.source" },
                     ecolog = { name = "ecolog", module = "ecolog.integrations.cmp.blink_cmp" },
+                    copilot = { name = "copilot", module = "blink-cmp-copilot" },
+                    codecompanion = { name = "CodeCompanion", module = "codecompanion.providers.completion.blink" },
                 },
             },
 

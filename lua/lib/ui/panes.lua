@@ -48,7 +48,7 @@ return {
             title = "Files",
             ft = "neo-tree",
             filter = function(buf) return vim.b[buf].neo_tree_source == "filesystem" end,
-            size = { height = 0.5 },
+            size = { height = 0.5, width = 0.15 },
         },
         {
             title = "Git",
@@ -74,8 +74,8 @@ return {
         { title = "Search & replace", ft = "grug-far", size = { width = 0.25 } },
         { title = "Outline", ft = "sagaoutline", size = { width = 0.18 } },
         { title = "Outline", ft = "Outline", size = { width = 0.18 } },
-        { title = "Code Companion", ft = "codecompanion", size = { width = 70 } },
-        { title = "Copilot", ft = "copilot-chat", size = { width = 70 } },
+        { title = "Code Companion", ft = "codecompanion", size = { width = 0.25 } },
+        { title = "Copilot", ft = "copilot-chat", size = { width = 0.25 } },
         -- { title = "Avante", ft = "Avante", size = { width = 70 } },
     },
 }

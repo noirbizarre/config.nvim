@@ -19,10 +19,10 @@ return {
             "nvim-treesitter/nvim-treesitter",
             "nvim-tree/nvim-web-devicons",
         },
-        ft = { "markdown", "Avante", "codecompanion" },
+        ft = { "markdown", "Avante", "codecompanion", "copilot-chat" },
         opts = {
             buf_ignore = {},
-            filetypes = { "markdown", "Avante", "codecompanion" },
+            filetypes = { "markdown", "Avante", "codecompanion", "copilot-chat" },
             modes = { "n", "i", "no", "c" },
             hybrid_modes = { "i" },
 

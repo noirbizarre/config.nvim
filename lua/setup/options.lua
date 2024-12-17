@@ -53,6 +53,9 @@ vim.opt.winminwidth = 5 -- Minimum window width
 vim.opt.wrap = false -- Disable line wrap
 vim.opt.smoothscroll = true
 
+-- Clipboard
+vim.opt.clipboard = vim.env.SSH_TTY and "" or "unnamedplus" -- Sync with system clipboard
+
 --- Folding
 vim.opt.foldexpr = "v:lua.require'lib.ui.utils'.foldexpr()"
 vim.opt.foldmethod = "expr"

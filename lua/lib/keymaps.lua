@@ -14,12 +14,6 @@ return {
     { "<leader>x", group = "Trouble", icon = "🚦" },
 
     {
-        group = "Clipboard",
-        { "<leader>y", '"+y', mode = "v", desc = "Copy to system clipboard", icon = "󰆏" },
-        { "<leader>p", '"+p', mode = { "n", "v" }, desc = "Paste from system clipboard", icon = "" },
-    },
-
-    {
         group = "Session",
         { "<leader>qq", "<cmd>qa!<cr>", mode = { "n", "v" }, desc = "Quit without saving", icon = "󰈆" },
     },

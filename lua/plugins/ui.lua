@@ -13,7 +13,7 @@ return {
                 transparent = true, -- Disable setting background
                 dim_inactive = true, -- Non focused panes set to alternative background
                 styles = {
-                    -- floats = "transparent",
+                    sidebars = "transparent",
                 },
             })
 

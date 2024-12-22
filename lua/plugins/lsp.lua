@@ -36,11 +36,15 @@ return {
             --- NeoDev - Lua dev helpers
             --- https://github.com/folke/neodev.nvim
             { "folke/neodev.nvim", config = true },
+            --- For LSP Cpabilities
+            --- See: https://cmp.saghen.dev/installation.html
+            "saghen/blink.cmp",
         },
 
         config = function()
             local lspconfig = require("lspconfig")
             local icons = require("lib.ui.icons")
+            local capabilities = require("blink.cmp").get_lsp_capabilities()
 
             -- YANL companion
             -- cf. https://www.arthurkoziel.com/json-schemas-in-neovim/
@@ -67,6 +71,7 @@ return {
                 },
 
                 lspconfig = {
+                    capabilities = capabilities,
                     settings = {
                         yaml = {
                             validate = true,
@@ -91,17 +96,19 @@ return {
                 },
             })
 
-            lspconfig.bashls.setup({})
-            lspconfig.lua_ls.setup({})
+            lspconfig.bashls.setup({ capabilities = capabilities })
+            lspconfig.lua_ls.setup({ capabilities = capabilities })
             lspconfig.basedpyright.setup({
+                capabilities = capabilities,
                 settings = {
                     basedpyright = {
                         typeCheckingMode = "standard",
                     },
                 },
             })
-            lspconfig.ruff.setup({})
+            lspconfig.ruff.setup({ capabilities = capabilities })
             lspconfig.jsonls.setup({
+                capabilities = capabilities,
                 settings = {
                     json = {
                         schemas = require("schemastore").json.schemas(),
@@ -110,6 +117,7 @@ return {
                 },
             })
             lspconfig.rust_analyzer.setup({
+                capabilities = capabilities,
                 settings = {
                     ["rust-analyzer"] = {
                         cargo = { allFeatures = true },
@@ -120,14 +128,15 @@ return {
                     },
                 },
             })
-            lspconfig.helm_ls.setup({})
-            lspconfig.taplo.setup({})
-            lspconfig.vale_ls.setup({})
-            lspconfig.vimls.setup({})
-            lspconfig.jinja_lsp.setup({})
+            lspconfig.helm_ls.setup({ capabilities = capabilities })
+            lspconfig.taplo.setup({ capabilities = capabilities })
+            lspconfig.vale_ls.setup({ capabilities = capabilities })
+            lspconfig.vimls.setup({ capabilities = capabilities })
+            lspconfig.jinja_lsp.setup({ capabilities = capabilities })
             lspconfig.yamlls.setup(yaml_cfg)
-            lspconfig.docker_compose_language_service.setup({})
+            lspconfig.docker_compose_language_service.setup({ capabilities = capabilities })
             lspconfig.dockerls.setup({
+                capabilities = capabilities,
                 settings = {
                     docker = {
                         languageserver = {
@@ -139,6 +148,7 @@ return {
                 },
             })
             lspconfig.ltex_plus.setup({
+                capabilities = capabilities,
                 settings = {
                     ltex = {
                         checkFrequency = "save",

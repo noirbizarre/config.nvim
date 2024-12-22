@@ -120,7 +120,7 @@ return {
         },
         --- https://github.com/yetone/avante.nvim/wiki/Recipe-and-Tricks#advanced-shortcuts-for-frequently-used-queries-756
         keys = {
-            -- { "<leader>aa", ":AvanteAsk<CR>", desc = "Toggle Avante" },
+            { "<leader>aa", ":AvanteAsk<CR>", desc = "Toggle Avante" },
             { "<leader>a<BS>", ":AvanteClear<CR>", desc = "Clear Avante" },
             -- Custom prompts
             {

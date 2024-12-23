@@ -6,39 +6,20 @@ return {
     {
         "L3MON4D3/LuaSnip",
         dependencies = {
-            "rafamadriz/friendly-snippets",
+            {
+                "rafamadriz/friendly-snippets",
+                config = function()
+                    require("luasnip.loaders.from_vscode").lazy_load()
+                    require("luasnip.loaders.from_vscode").lazy_load({
+                        paths = { vim.fn.stdpath("config") .. "/snippets" },
+                    })
+                end,
+            },
         },
         opts = {
             history = true,
             delete_check_events = "TextChanged",
         },
-        -- stylua: ignore
-        keys = {
-            {
-                "<tab>",
-                function()
-                    return require("luasnip").jumpable(1) and "<Plug>luasnip-jump-next" or "<tab>"
-                end,
-                expr = true,
-                silent = true,
-                mode = "i"
-            },
-            {
-                "<tab>",
-                function()
-                    require("luasnip").jump(1)
-                end,
-                mode = "s"
-            },
-            {
-                "<s-tab>",
-                function()
-                    require("luasnip").jump(-1)
-                end,
-                mode = {"i", "s"}
-            },
-        },
-        config = function() require("luasnip.loaders.from_vscode").lazy_load() end,
     },
     --- Blink nvim-cmp compatibility layer
     --- https://github.com/saghen/blink.compat
@@ -52,7 +33,7 @@ return {
         "saghen/blink.cmp",
         lazy = false, -- lazy loading handled internally
         dependencies = {
-            "rafamadriz/friendly-snippets",
+            "L3MON4D3/LuaSnip",
             "hrsh7th/cmp-emoji",
             "giuxtaposition/blink-cmp-copilot",
         },
@@ -72,13 +53,15 @@ return {
                 default = {
                     "lsp",
                     "path",
-                    "snippets",
+                    "luasnip",
                     "buffer",
                     "copilot",
                     "ecolog",
                     "emoji",
                     "codecompanion",
                 },
+                -- Disable cmdline completions
+                cmdline = {},
                 providers = {
                     emoji = { name = "emoji", module = "blink.compat.source" },
                     ecolog = { name = "ecolog", module = "ecolog.integrations.cmp.blink_cmp" },
@@ -101,11 +84,30 @@ return {
                 },
             },
             completion = {
+                accept = {
+                    -- experimental auto-brackets support
+                    auto_brackets = {
+                        enabled = true,
+                    },
+                },
                 documentation = {
                     -- Controls whether the documentation window will automatically show when selecting a completion item
                     auto_show = true,
                     auto_show_delay_ms = 500,
                 },
+                list = {
+                    selection = "auto_insert",
+                },
+            },
+            snippets = {
+                expand = function(snippet) require("luasnip").lsp_expand(snippet) end,
+                active = function(filter)
+                    if filter and filter.direction then
+                        return require("luasnip").jumpable(filter.direction)
+                    end
+                    return require("luasnip").in_snippet()
+                end,
+                jump = function(direction) require("luasnip").jump(direction) end,
             },
 
             -- experimental signature help support
@@ -117,11 +119,6 @@ return {
     },
     {
         "philosofonusus/ecolog.nvim",
-        -- dependencies = {
-        --     "hrsh7th/nvim-cmp", -- Optional: for autocompletion support (recommended)
-        -- },
-        -- Optional: you can add some keybindings
-        -- (I personally use lspsaga so check out lspsaga integration or lsp integration for a smoother experience without separate keybindings)
         keys = {
             { "<leader>eg", "<cmd>EcologGoto<cr>", desc = "Go to env file" },
             { "<leader>ep", "<cmd>EcologPeek<cr>", desc = "Ecolog peek variable" },

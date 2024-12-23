@@ -42,7 +42,7 @@ return {
             },
             { "<leader>kg", "<cmd>Telescope live_grep<cr>", desc = "Live Grep" },
             { "<leader>ky", "<cmd>Telescope yaml_schema<cr>", desc = "YAML Schema" },
-            { "<leader>ks", "<cmd>Telescope luasnip<cr>", desc = "YAML Schema" },
+            { "<leader>ks", "<cmd>Telescope luasnip<cr>", desc = "Snippets" },
 
             -- LSP
             { "<leader>li", "<cmd>Telescope lsp_incoming_calls<cr>", desc = "Incoming calls" },

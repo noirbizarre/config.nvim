@@ -203,4 +203,11 @@ return {
             dap.listeners.before.event_exited.dapui_config = function() dapui.close() end
         end,
     },
+    --- Breakpoint persistence
+    --- https://github.com/daic0r/dap-helper.nvim
+    {
+        "daic0r/dap-helper.nvim",
+        dependencies = { "rcarriga/nvim-dap-ui", "mfussenegger/nvim-dap" },
+        opts = {},
+    },
 }

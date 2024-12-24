@@ -185,7 +185,7 @@ return {
 
     -- colorizer
     {
-        "NvChad/nvim-colorizer.lua",
+        "catgoose/nvim-colorizer.lua",
         event = "BufReadPre",
         config = {
             filetypes = { "*", "!lazy" },

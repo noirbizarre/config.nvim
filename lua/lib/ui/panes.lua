@@ -1,5 +1,5 @@
 --- Edgy panels definitions
-return {
+local opts = {
     bottom = {
         -- toggleterm / lazyterm at the bottom with a height of 40% of the screen
         {
@@ -31,7 +31,7 @@ return {
             size = { height = 0.4 },
             filter = function(buf, win) return vim.api.nvim_win_get_config(win).relative == "" end,
         },
-        "trouble",
+        "Trouble",
         { ft = "qf", title = "QuickFix" },
         {
             ft = "help",
@@ -49,26 +49,28 @@ return {
             ft = "neo-tree",
             filter = function(buf) return vim.b[buf].neo_tree_source == "filesystem" end,
             size = { height = 0.5, width = 0.15 },
+            pinned = true,
+            open = "Neotree show position=left filesystem",
         },
         {
             title = "Git",
             ft = "neo-tree",
             filter = function(buf) return vim.b[buf].neo_tree_source == "git_status" end,
             pinned = true,
-            collapsed = true, -- show window as closed/collapsed on start
-            open = "Neotree position=right git_status",
+            -- collapsed = true, -- show window as closed/collapsed on start
+            open = "Neotree show position=left git_status",
         },
         {
             title = "Buffers",
             ft = "neo-tree",
             filter = function(buf) return vim.b[buf].neo_tree_source == "buffers" end,
             pinned = true,
-            collapsed = true, -- show window as closed/collapsed on start
-            open = "Neotree position=top buffers",
+            -- collapsed = true, -- show window as closed/collapsed on start
+            open = "Neotree show position=left buffers",
         },
         { title = "Tests", ft = "neotest-summary" },
         -- any other neo-tree windows
-        "neo-tree",
+        -- "neo-tree",
     },
     right = {
         { title = "Search & replace", ft = "grug-far", size = { width = 0.25 } },
@@ -79,3 +81,20 @@ return {
         -- { title = "Avante", ft = "Avante", size = { width = 70 } },
     },
 }
+
+-- trouble
+for _, pos in ipairs({ "top", "bottom", "left", "right" }) do
+    opts[pos] = opts[pos] or {}
+    table.insert(opts[pos], {
+        ft = "trouble",
+        filter = function(_buf, win)
+            return vim.w[win].trouble
+                and vim.w[win].trouble.position == pos
+                and vim.w[win].trouble.type == "split"
+                and vim.w[win].trouble.relative == "editor"
+                and not vim.w[win].trouble_preview
+        end,
+    })
+end
+
+return opts

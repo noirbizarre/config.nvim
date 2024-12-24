@@ -43,6 +43,9 @@ return {
             bottom = panes.bottom,
             left = panes.left,
             right = panes.right,
+            wo = {
+                winhighlight = "WinBar:EdgyWinBar,,WinBarNC:EdgyWinBar",
+            },
         },
     },
     --- Left tree pane
@@ -150,7 +153,11 @@ return {
             },
         },
         opts = {
-            use_diagnostic_signs = true,
+            modes = {
+                lsp = {
+                    win = { position = "right" },
+                },
+            },
         },
     },
 }

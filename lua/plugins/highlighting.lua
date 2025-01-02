@@ -187,7 +187,7 @@ return {
     {
         "catgoose/nvim-colorizer.lua",
         event = "BufReadPre",
-        config = {
+        opts = {
             filetypes = { "*", "!lazy" },
             buftype = { "*", "!prompt", "!nofile" },
             user_default_options = {

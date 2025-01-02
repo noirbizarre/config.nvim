@@ -30,12 +30,19 @@ return {
             "williamboman/mason.nvim",
             "williamboman/mason-lspconfig.nvim",
             "someone-stole-my-name/yaml-companion.nvim",
-            --- NeoConf - Configure LSP from workspace neoconf.json
-            --- https://github.com/folke/neoconf.nvim
-            { "folke/neoconf.nvim", config = true },
-            --- NeoDev - Lua dev helpers
-            --- https://github.com/folke/neodev.nvim
-            { "folke/neodev.nvim", config = true },
+            --  Faster LuaLS setup for Neovim
+            -- https://github.com/folke/lazydev.nvim
+            {
+                "folke/lazydev.nvim",
+                ft = "lua", -- only load on lua files
+                opts = {
+                    library = {
+                        -- See the configuration section for more details
+                        -- Load luvit types when the `vim.uv` word is found
+                        { path = "${3rd}/luv/library", words = { "vim%.uv" } },
+                    },
+                },
+            },
             --- For LSP Cpabilities
             --- See: https://cmp.saghen.dev/installation.html
             "saghen/blink.cmp",
@@ -133,6 +140,7 @@ return {
             lspconfig.vale_ls.setup({ capabilities = capabilities })
             lspconfig.vimls.setup({ capabilities = capabilities })
             lspconfig.jinja_lsp.setup({ capabilities = capabilities })
+            lspconfig.marksman.setup({ capabilities = capabilities })
             lspconfig.yamlls.setup(yaml_cfg)
             lspconfig.docker_compose_language_service.setup({ capabilities = capabilities })
             lspconfig.dockerls.setup({

@@ -13,7 +13,6 @@ return {
             "nvim-neotest/neotest-go",
             "nvim-neotest/neotest-python",
             "rouge8/neotest-rust",
-            --- https://github.com/HiPhish/neotest-busted
             "HiPhish/neotest-busted",
         },
         ft = {

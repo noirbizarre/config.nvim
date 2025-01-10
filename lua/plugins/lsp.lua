@@ -141,6 +141,7 @@ return {
             lspconfig.vimls.setup({ capabilities = capabilities })
             lspconfig.jinja_lsp.setup({ capabilities = capabilities })
             lspconfig.marksman.setup({ capabilities = capabilities })
+            lspconfig.clangd.setup({ capabilities = capabilities })
             lspconfig.yamlls.setup(yaml_cfg)
             lspconfig.docker_compose_language_service.setup({ capabilities = capabilities })
             lspconfig.dockerls.setup({

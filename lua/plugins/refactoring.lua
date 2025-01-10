@@ -45,11 +45,37 @@ return {
         lazy = false,
         config = true,
     },
+    --- NeoGen
+    --- https://github.com/danymat/neogen
+    {
+        "danymat/neogen",
+        cmd = "Neogen",
+        keys = {
+            { "<leader>rg", "<cmd>Neogen<cr>", desc = "Generate annotations" },
+        },
+        opts = {
+            snippet_engine = "luasnip",
+        },
+    },
     -- https://github.com/echasnovski/mini.nvim/blob/main/readmes/mini-move.md
     {
         "echasnovski/mini.move",
         version = false,
         config = true,
+        opts = {
+            mappings = {
+                -- Move visual selection in Visual mode. Defaults are Alt (Meta) + hjkl.
+                left = "<M-H>",
+                right = "<M-L>",
+                down = "<M-J>",
+                up = "<M-K>",
+                -- Move current line in Normal mode
+                line_left = "<M-H>",
+                line_right = "<M-L>",
+                line_down = "<M-J>",
+                line_up = "<M-K>",
+            },
+        },
     },
     -- Format
     -- https://github.com/stevearc/conform.nvim

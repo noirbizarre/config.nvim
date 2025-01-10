@@ -256,4 +256,16 @@ return {
             },
         },
     },
+    --- Quickfix improvements
+    --- https://github.com/stevearc/quicker.nvim
+    {
+        "stevearc/quicker.nvim",
+        event = "FileType qf",
+        keys = {
+            { "<leader>qq", function() require("quicker").toggle() end, desc = "Toggle quickfix" },
+        },
+        ---@module "quicker"
+        ---@type quicker.SetupOptions
+        opts = {},
+    },
 }

@@ -16,7 +16,20 @@ return {
 
     {
         group = "Session",
-        { "<leader>qq", "<cmd>qa!<cr>", mode = { "n", "v" }, desc = "Quit without saving", icon = "󰈆" },
+        {
+            "<leader>QQ",
+            "<cmd>qa!<cr>",
+            mode = { "n", "v" },
+            desc = "Quit without saving",
+            icon = { icon = "󰈆", color = "red" },
+        },
+        {
+            "<leader><esc><esc>",
+            "<cmd>qa!<cr>",
+            mode = { "n", "v" },
+            desc = "Quit without saving",
+            icon = { icon = "󰈆", color = "red" },
+        },
     },
 
     { "<leader>l", group = "LSP", icon = "󰘦" },
@@ -33,6 +46,15 @@ return {
         { "<leader>rS", ":'<,'>sort!<cr>", mode = "x", desc = "Sort (Alpha DESC)", icon = "" },
         { "<leader>rn", ":'<,'>sort n<cr>", mode = "x", desc = "Sort (Num ASC)", icon = "" },
         { "<leader>rN", ":'<,'>sort! n<cr>", mode = "x", desc = "Sort (Num DESC)", icon = "" },
+    },
+
+    { "<leader>q", group = "Quickfix", icon = "󱒋" },
+    {
+        group = "Quickfix",
+        { "<leader>qo", "<cmd>copen<cr>", desc = "Open quickfix list", icon = "󱒋" },
+        { "<leader>qc", "<cmd>cclose<cr>", desc = "Close quickfix list", icon = "󱒋" },
+        { "<leader>qn", "<cmd>cnext<cr>", desc = "Next quickfix item", icon = "󰮱" },
+        { "<leader>qN", "<cmd>cprev<cr>", desc = "Previous quickfix item", icon = "󰮳" },
     },
 
     -- Terminal

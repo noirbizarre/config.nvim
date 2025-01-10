@@ -21,12 +21,6 @@ return {
             delete_check_events = "TextChanged",
         },
     },
-    --- Blink nvim-cmp compatibility layer
-    --- https://github.com/saghen/blink.compat
-    {
-        "saghen/blink.compat",
-        opts = {},
-    },
     --- Blink completion engine
     --- https://github.com/Saghen/blink.cmp
     {
@@ -34,8 +28,14 @@ return {
         lazy = false, -- lazy loading handled internally
         dependencies = {
             "L3MON4D3/LuaSnip",
-            "hrsh7th/cmp-emoji",
+            "moyiz/blink-emoji.nvim",
             "giuxtaposition/blink-cmp-copilot",
+            --- Coloful Menu (highlight in completions)
+            --- https://github.com/xzbdmw/colorful-menu.nvim
+            {
+                "xzbdmw/colorful-menu.nvim",
+                opts = {},
+            },
         },
         version = "v0.*",
         ---@module 'blink.cmp'
@@ -53,7 +53,7 @@ return {
                 default = {
                     "lsp",
                     "path",
-                    "luasnip",
+                    "snippets",
                     "buffer",
                     "copilot",
                     "ecolog",
@@ -63,7 +63,13 @@ return {
                 -- Disable cmdline completions
                 cmdline = {},
                 providers = {
-                    emoji = { name = "emoji", module = "blink.compat.source" },
+                    -- emoji = { name = "emoji", module = "blink.compat.source" },
+                    emoji = {
+                        module = "blink-emoji",
+                        name = "Emoji",
+                        score_offset = 15, -- Tune by preference
+                        opts = { insert = true }, -- Insert emoji (default) or complete its name
+                    },
                     ecolog = { name = "ecolog", module = "ecolog.integrations.cmp.blink_cmp" },
                     codecompanion = { name = "CodeCompanion", module = "codecompanion.providers.completion.blink" },
                     copilot = {
@@ -96,18 +102,30 @@ return {
                     auto_show_delay_ms = 500,
                 },
                 list = {
-                    selection = "auto_insert",
+                    selection = {
+                        -- auto_insert = true
+                        preselect = false,
+                    },
+                },
+                menu = {
+                    draw = {
+                        -- We don't need label_description now because label and label_description are already
+                        -- conbined together in label by colorful-menu.nvim.
+                        columns = { { "kind_icon" }, { "label", gap = 1 } },
+                        components = {
+                            label = {
+                                width = { fill = true, max = 60 },
+                                text = function(ctx) return require("colorful-menu").blink_components_text(ctx) end,
+                                highlight = function(ctx)
+                                    return require("colorful-menu").blink_components_highlight(ctx)
+                                end,
+                            },
+                        },
+                    },
                 },
             },
             snippets = {
-                expand = function(snippet) require("luasnip").lsp_expand(snippet) end,
-                active = function(filter)
-                    if filter and filter.direction then
-                        return require("luasnip").jumpable(filter.direction)
-                    end
-                    return require("luasnip").in_snippet()
-                end,
-                jump = function(direction) require("luasnip").jump(direction) end,
+                preset = "luasnip",
             },
 
             -- experimental signature help support

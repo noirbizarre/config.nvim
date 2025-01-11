@@ -125,23 +125,32 @@ return {
     --- https://github.com/MagicDuck/grug-far.nvim
     {
         "MagicDuck/grug-far.nvim",
+        cmd = "GrugFar",
         keys = {
-            { "<leader>ss", '<cmd>:lua require("grug-far").open({ transient = true })<CR>', desc = "Search & replace" },
+            {
+                "<leader>ss",
+                function() require("grug-far").open({ transient = true }) end,
+                mode = { "n", "v" },
+                desc = "Search & replace",
+            },
             {
                 "<leader>S",
-                '<cmd>:lua require("grug-far").toggle_instance({ instanceName="far", staticTitle="Find and Replace" })<CR>',
+                function()
+                    require("grug-far").toggle_instance({ instanceName = "far", staticTitle = "Find and Replace" })
+                end,
+                mode = { "n", "v" },
                 desc = "Toggle Grug-Far",
             },
             {
                 "<leader>sw",
-                '<cmd>lua require("spectre").open_visual({select_word=true})<CR>',
+                function()
+                    require("grug-far").open({
+                        prefills = {
+                            search = vim.fn.expand("<cword>"),
+                        },
+                    })
+                end,
                 desc = "Search current word",
-            },
-            { "<leader>sw", '<cmd>lua require("spectre").open_visual()<CR>', mode = "v", desc = "Search current word" },
-            {
-                "<leader>sp",
-                '<cmd>lua require("spectre").open_file_search({select_word=true})<CR>',
-                desc = "Search on current file",
             },
         },
         opts = { headerMaxWidth = 100 },

@@ -3,11 +3,19 @@ vim.filetype.add({
         jinja = "jinja",
         jinja2 = "jinja",
         j2 = "jinja",
+        alias = "sh",
     },
     pattern = {
-        -- [".*%.github/workflows/.*%.yml"] = "yaml.ghaction",
-        -- [".*%.github/workflows/.*%.yaml"] = "yaml.ghaction",
+        [".*/kitty/.+%.conf"] = "kitty",
+        [".*/hypr/.+%.conf"] = "hyprlang",
+        -- dotfiles
+        [".*/%.local/bin/*"] = "sh",
+        [".*/%.alias%.d/.+%.alias"] = "sh",
+        [".*/%.env%.d/.+%.path"] = "sh",
+        -- ["%.env%.[%w_.-]+"] = "sh",
+        [".*/.+%.secret"] = "sh",
     },
 })
 
+vim.treesitter.language.register("bash", "kitty")
 vim.treesitter.language.register("properties", { "jproperties" })

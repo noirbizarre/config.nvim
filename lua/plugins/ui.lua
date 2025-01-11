@@ -14,7 +14,37 @@ return {
                 dim_inactive = true, -- Non focused panes set to alternative background
                 styles = {
                     sidebars = "transparent",
+                    floats = "trnsparent",
                 },
+                ---@param hl Highlights
+                ---@param c ColorScheme
+                on_highlights = function(hl, c)
+                    --- Transparent Telescope
+                    hl.TelescopeNormal = {
+                        bg = c.bg_dark,
+                        fg = c.fg_dark,
+                    }
+                    hl.TelescopeBorder = {
+                        bg = c.bg_dark,
+                        fg = c.bg_dark,
+                    }
+                    hl.TelescopePreviewTitle = {
+                        bg = c.bg_dark,
+                        fg = c.bg_dark,
+                    }
+                    hl.TelescopeResultsTitle = {
+                        bg = c.bg_dark,
+                        fg = c.bg_dark,
+                    }
+                    --- Reusable rainbow values
+                    hl.RainbowRed = { fg = c.red }
+                    hl.RainbowOrange = { fg = c.orange }
+                    hl.RainbowYellow = { fg = c.yellow }
+                    hl.RainbowGreen = { fg = c.green }
+                    hl.RainbowBlue = { fg = c.blue }
+                    hl.RainbowViolet = { fg = c.violet }
+                    hl.RainbowCyan = { fg = c.cyan }
+                end,
             })
 
             vim.cmd("colorscheme solarized-osaka")
@@ -158,13 +188,13 @@ return {
                     enabled = true,
                     char = "",
                     hl = {
-                        "TSRainbowRed",
-                        "TSRainbowYellow",
-                        "TSRainbowBlue",
-                        "TSRainbowOrange",
-                        "TSRainbowGreen",
-                        "TSRainbowViolet",
-                        "TSRainbowCyan",
+                        "RainbowRed",
+                        "RainbowYellow",
+                        "RainbowBlue",
+                        "RainbowOrange",
+                        "RainbowGreen",
+                        "RainbowViolet",
+                        "RainbowCyan",
                     },
                 },
                 scope = {

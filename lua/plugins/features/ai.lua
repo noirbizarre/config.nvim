@@ -56,8 +56,6 @@ return {
             "nvim-lua/plenary.nvim",
             "nvim-treesitter/nvim-treesitter",
             "nvim-telescope/telescope.nvim", -- Optional: For using slash commands
-            "OXY2DEV/markview.nvim",
-            -- { "stevearc/dressing.nvim", opts = {} }, -- Optional: Improves `vim.ui.select`
             --- For copilot provider
             "zbirenbaum/copilot.lua",
         },
@@ -104,7 +102,6 @@ return {
             "nvim-lua/plenary.nvim",
             "MunifTanjim/nui.nvim",
             "nvim-tree/nvim-web-devicons",
-            "OXY2DEV/markview.nvim",
             --- For copilot provider
             "zbirenbaum/copilot.lua",
         },

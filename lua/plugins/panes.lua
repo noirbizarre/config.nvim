@@ -97,7 +97,7 @@ return {
             }
         end,
     },
-    --- Symbools outline
+    --- Symbols outline
     --- https://github.com/hedyhli/outline.nvim
     {
         "hedyhli/outline.nvim",

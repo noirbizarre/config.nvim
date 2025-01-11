@@ -42,9 +42,6 @@ vim.opt.sessionoptions = "buffers,curdir,folds,help,tabpages,winsize,terminal"
 -- Disable swap files
 vim.opt.swapfile = false
 
--- Set python3 interpreter
-vim.g.python3_host_prog = "/usr/bin/python3"
-
 vim.opt.termguicolors = true -- True color support
 vim.opt.undofile = true
 vim.opt.undolevels = 10000

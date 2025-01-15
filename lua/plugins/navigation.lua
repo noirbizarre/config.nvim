@@ -8,7 +8,6 @@ return {
             { "nvim-telescope/telescope-fzf-native.nvim", build = "make" },
             "nvim-telescope/telescope-frecency.nvim",
             "nvim-telescope/telescope-live-grep-args.nvim",
-            "LinArcX/telescope-env.nvim",
             "benfowler/telescope-luasnip.nvim",
         },
         branch = "0.1.x", -- or tag = '0.1.0',
@@ -165,7 +164,6 @@ return {
                 },
             })
             telescope.load_extension("ecolog")
-            telescope.load_extension("env")
             telescope.load_extension("frecency")
             telescope.load_extension("fzf")
             telescope.load_extension("live_grep_args")

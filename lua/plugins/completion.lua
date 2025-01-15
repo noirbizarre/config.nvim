@@ -141,31 +141,41 @@ return {
             { "<leader>eg", "<cmd>EcologGoto<cr>", desc = "Go to env file" },
             { "<leader>ep", "<cmd>EcologPeek<cr>", desc = "Ecolog peek variable" },
             { "<leader>es", "<cmd>EcologSelect<cr>", desc = "Switch env file" },
-            { "<leader>et", "<cmd>Telescope ecolog env<cr>", desc = "Telescope environment variable picker" },
+            { "<leader>ke", "<cmd>Telescope ecolog env<cr>", desc = "Telescope environment variable picker" },
         },
         -- Lazy loading is done internally
         lazy = false,
         opts = {
+            load_shell = {
+                enabled = true, -- Enable shell variable loading
+                override = false, -- When false, .env files take precedence over shell variables
+                filter = function(key, value)
+                    --- Filter out shell variables that start with '__'
+                    return key:match("^__") == nil
+                end,
+            },
             integrations = {
                 blink_cmp = true,
             },
             -- Enables shelter mode for sensitive values
             shelter = {
                 configuration = {
-                    partial_mode = false, -- false by default, disables partial mode, for more control check out shelter partial mode
-                    mask_char = "*", -- Character used for masking
+                    mask_char = "•", -- Character used for masking
+                    default_mode = "none",
+                    patterns = {
+                        ["*_TOKEN"] = "partial", -- Always fully mask TOKEN variables
+                        ["*_API_KEY"] = "partial", -- Use partial masking for API keys
+                    },
                 },
-                modules = {
-                    cmp = true, -- Mask values in completion
-                    peek = false, -- Mask values in peek view
-                    files = false, -- Mask values in files
-                    telescope = false, -- Mask values in telescope
+                modules = { --- Mask values in
+                    cmp = true,
+                    peek = false,
+                    files = false,
+                    telescope = true,
+                    telescope_previewer = true,
                 },
             },
-            -- true by default, enables built-in types (database_url, url, etc.)
-            types = true,
             path = vim.fn.getcwd(), -- Path to search for .env files
-            preferred_environment = "development", -- Optional: prioritize specific env files
         },
     },
     {

@@ -13,22 +13,21 @@ return {
         branch = "0.1.x", -- or tag = '0.1.0',
         cmd = "Telescope",
         keys = {
-            { "<C-k>", "<cmd>Telescope find_files<cr>", desc = "Telescope" },
-            { "<leader>kf", "<cmd>Telescope find_files<cr>", desc = "Find files" },
-            { "<leader>km", "<cmd>Telescope marks<cr>", desc = "Find files" },
-            {
-                "<leader>kb",
-                function()
-                    require("telescope.builtin").buffers({
-                        sort_mru = true,
-                        sort_lastused = true,
-                        initial_mode = "normal",
-                    })
-                end,
-                desc = "Buffers",
-            },
-            { "<leader>ke", "<cmd>Telescope env<cr>", desc = "Environment variables" },
-            { "<leader>kk", "<cmd>Telescope keymaps<cr>", desc = "Keymaps" },
+            -- { "<C-k>", "<cmd>Telescope find_files<cr>", desc = "Telescope" },
+            -- { "<leader>kf", "<cmd>Telescope find_files<cr>", desc = "Find files" },
+            -- { "<leader>km", "<cmd>Telescope marks<cr>", desc = "Find files" },
+            -- {
+            --     "<leader>kb",
+            --     function()
+            --         require("telescope.builtin").buffers({
+            --             sort_mru = true,
+            --             sort_lastused = true,
+            --             initial_mode = "normal",
+            --         })
+            --     end,
+            --     desc = "Buffers",
+            -- },
+            -- { "<leader>kk", "<cmd>Telescope keymaps<cr>", desc = "Keymaps" },
             {
                 "<leader>k;",
                 function()
@@ -47,27 +46,6 @@ return {
             },
             { "<leader>ky", "<cmd>Telescope yaml_schema<cr>", desc = "YAML Schema" },
             { "<leader>ks", "<cmd>Telescope luasnip<cr>", desc = "Snippets" },
-
-            -- LSP
-            { "<leader>li", "<cmd>Telescope lsp_incoming_calls<cr>", desc = "Incoming calls" },
-            { "<leader>lo", "<cmd>Telescope lsp_outgoing_calls<cr>", desc = "Outgoing calls" },
-            { "<leader>lf", "<cmd>Telescope lsp_references<cr>", desc = "References" },
-            { "<leader>ls", "<cmd>Telescope lsp_document_symbols<cr>", desc = "Document Symbols" },
-            { "<leader>lw", "<cmd>Telescope lsp_workspace_symbols<cr>", desc = "Workspace Symbols" },
-            { "<leader>lgi", "<cmd>Telescope lsp_implementations<cr>", desc = "Go to implementation" },
-            { "<leader>lgd", "<cmd>Telescope lsp_definitions<cr>", desc = "Go to definition" },
-            { "<leader>lgt", "<cmd>Telescope lsp_type_definitions<cr>", desc = "Go to type definition" },
-            {
-                "<leader>la",
-                function() vim.lsp.buf.code_action() end,
-                desc = "Code Action",
-            },
-
-            -- Git
-            { "<leader>gc", "<cmd>Telescope git_commits<cr>", desc = "List all commits" },
-            { "<leader>gf", "<cmd>Telescope git_bcommits<cr>", desc = "Current buffer history" },
-            { "<leader>gb", "<cmd>Telescope git_branches<cr>", desc = "Git branches" },
-            { "<leader>gs", "<cmd>Telescope git_status<cr>", desc = "Git status" },
         },
         config = function()
             local telescope = require("telescope")
@@ -84,8 +62,8 @@ return {
                     layout_strategy = "horizontal",
                     file_ignore_patterns = {
                         "node_modules",
-                        ".venv",
-                        "venv",
+                        ".venv/",
+                        "venv/",
                         ".git/",
                         ".pdm-build",
                         "target",

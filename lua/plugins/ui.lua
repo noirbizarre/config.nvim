@@ -85,11 +85,11 @@ return {
                 desc = "Git Browse",
             },
             -- { "<leader>gf", function() Snacks.lazygit.log_file() end, desc = "Lazygit Current File History" },
-            {
-                "<leader>gl",
-                function() Snacks.lazygit.log() end,
-                desc = "Lazygit Log (cwd)",
-            },
+            -- {
+            --     "<leader>gl",
+            --     function() Snacks.lazygit.log() end,
+            --     desc = "Lazygit Log (cwd)",
+            -- },
             {
                 "<leader>cR",
                 function() Snacks.rename() end,
@@ -109,6 +109,32 @@ return {
                 desc = "Prev Reference",
                 mode = { "n", "t" },
             },
+            --- Base Pickers
+            { "<C-k>", function() Snacks.picker.files() end, desc = "File picker" },
+            { "<leader>kf", function() Snacks.picker.files() end, desc = "File picker" },
+            { "<leader>bb", function() Snacks.picker.buffers() end, desc = "Buffers" },
+            { "<leader>kb", function() Snacks.picker.buffers() end, desc = "Buffers" },
+            { "<leader>km", function() Snacks.picker.marks() end, desc = "Marks" },
+            { "<leader>kk", function() Snacks.picker.keymaps() end, desc = "Keymaps" },
+            { "<leader>kc", function() Snacks.picker.command_history() end, desc = "Command history" },
+            --- LSP
+            { "gd", function() Snacks.picker.lsp_definitions() end, desc = "Goto Definition" },
+            { "gr", function() Snacks.picker.lsp_references() end, nowait = true, desc = "References" },
+            { "gi", function() Snacks.picker.lsp_implementations() end, desc = "Goto Implementation" },
+            { "gt", function() Snacks.picker.lsp_type_definitions() end, desc = "Goto Type Definition" },
+            { "<leader>lf", function() Snacks.picker.lsp_references() end, desc = "References" },
+            { "<leader>ls", function() Snacks.picker.lsp_symbols() end, desc = "LSP Symbols" },
+            {
+                "<leader>la",
+                function() vim.lsp.buf.code_action() end,
+                desc = "Code Action",
+            },
+            --- Git
+            { "<leader>gc", function() Snacks.picker.git_log() end, desc = "History" },
+            { "<leader>gf", function() Snacks.picker.git_log_file() end, desc = "Current buffer history" },
+            { "<leader>gl", function() Snacks.picker.git_log_line() end, desc = "Current line history" },
+            -- { "<leader>gb", function() Snacks.picker.git_log() end, desc = "Git branches" },
+            { "<leader>gs", function() Snacks.picker.git_status() end, desc = "Git Status" },
         },
         opts = {
             bigfile = { enabled = true },
@@ -122,19 +148,19 @@ return {
                             icon = " ",
                             key = "f",
                             desc = "Find File",
-                            action = ":lua Snacks.dashboard.pick('files')",
+                            action = ":lua Snacks.picker.files()",
                         },
                         {
                             icon = " ",
                             key = "g",
                             desc = "Find Text",
-                            action = ":lua Snacks.dashboard.pick('live_grep')",
+                            action = ":lua Snacks.picker.grep()",
                         },
                         {
                             icon = " ",
                             key = "r",
                             desc = "Recent Files",
-                            action = ":lua Snacks.dashboard.pick('oldfiles')",
+                            action = ":lua Snacks.picker.recent()",
                         },
                         { icon = " ", key = "s", desc = "Restore Session", section = "session" },
                         { icon = "󰒲 ", key = "l", desc = "Lazy", action = ":Lazy", enabled = package.loaded.lazy },
@@ -220,6 +246,17 @@ return {
                         and vim.bo[buf].buftype == ""
                         and not vim.tbl_contains(ft.internals, vim.bo.filetype)
                 end,
+            },
+            picker = {
+                prompt = " ",
+                win = {
+                    -- input window
+                    input = {
+                        keys = {
+                            ["<Esc>"] = { "close", mode = { "n", "i" } },
+                        },
+                    },
+                },
             },
             quickfile = { enabled = true },
             statuscolumn = { enabled = true },

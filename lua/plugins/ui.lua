@@ -26,7 +26,7 @@ return {
                     }
                     hl.TelescopeBorder = {
                         bg = c.bg_dark,
-                        fg = c.bg_dark,
+                        fg = c.base02,
                     }
                     hl.TelescopePreviewTitle = {
                         bg = c.bg_dark,

@@ -6,6 +6,7 @@ return {
     { "<leader>c", group = "CodeCompanion", icon = "" },
     { "<leader>d", group = "Debug", icon = "" },
     { "<leader>g", group = "Git", icon = "" },
+    { "<leader>gx", group = "Git conflicts", icon = "" },
     { "<leader>h", group = "Harpoon", icon = "" },
     { "<leader>i", group = "CoPilot", icon = "" },
     { "<leader>k", group = "Pickers", icon = "" },

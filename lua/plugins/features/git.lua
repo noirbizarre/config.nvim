@@ -18,6 +18,31 @@ return {
             { "<leader>gm", "<cmd>DiffviewOpen main<cr>", desc = "Diff with main" },
         },
     },
+    {
+        "akinsho/git-conflict.nvim",
+        version = "v2.1.0",
+        event = "BufRead",
+        cmd = {
+            "GitConflictChooseOurs",
+            "GitConflictChooseTheirs",
+            "GitConflictChooseBoth",
+            "GitConflictChooseNone",
+            "GitConflictNextConflict",
+            "GitConflictPrevConflict",
+            "GitConflictListQf",
+        },
+        keys = {
+            -- { "]g", "<cmd>GitConflictNextConflict<cr>", desc = "Next Conflict" },
+            -- { "[g", "<cmd>GitConflictPrevConflict<cr>", desc = "Previous Conflict" },
+            { "<leader>gxq", "<cmd>GitConflictListQf<cr>", desc = "List Conflicts" },
+            { "<leader>gxr", "<cmd>GitConflictRefresh<cr>", desc = "Refresh Conflicts" },
+            { "<leader>gxo", "<cmd>GitConflictChooseOurs<cr>", desc = "Choose ours" },
+            { "<leader>gxt", "<cmd>GitConflictChooseTheirs<cr>", desc = "Choose theirs" },
+            { "<leader>gxb", "<cmd>GitConflictChooseBoth<cr>", desc = "Choose both" },
+            { "<leader>gxn", "<cmd>GitConflictChooseNone<cr>", desc = "Choose none" },
+        },
+        config = true,
+    },
     -- Git integration for buffers
     -- https://github.com/lewis6991/gitsigns.nvim
     {

@@ -141,7 +141,7 @@ return {
             { "<leader>eg", "<cmd>EcologGoto<cr>", desc = "Go to env file" },
             { "<leader>ep", "<cmd>EcologPeek<cr>", desc = "Ecolog peek variable" },
             { "<leader>es", "<cmd>EcologSelect<cr>", desc = "Switch env file" },
-            { "<leader>ke", "<cmd>Telescope ecolog env<cr>", desc = "Telescope environment variable picker" },
+            { "<leader>ke", "<cmd>EcologSnacks<cr>", desc = "Telescope environment variable picker" },
         },
         -- Lazy loading is done internally
         lazy = false,
@@ -156,6 +156,17 @@ return {
             },
             integrations = {
                 blink_cmp = true,
+                snacks = {
+                    shelter = {
+                        mask_on_copy = false, -- Whether to mask values when copying
+                    },
+                    keys = {
+                        copy_value = "<C-y>", -- Copy variable value to clipboard
+                        copy_name = "<C-u>", -- Copy variable name to clipboard
+                        append_value = "<C-a>", -- Append value at cursor position
+                        append_name = "<CR>", -- Append name at cursor position
+                    },
+                },
             },
             -- Enables shelter mode for sensitive values
             shelter = {
@@ -173,6 +184,7 @@ return {
                     files = false,
                     telescope = true,
                     telescope_previewer = true,
+                    snacks = true,
                     snacks_previewer = true,
                 },
             },

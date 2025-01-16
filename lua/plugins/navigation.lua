@@ -6,28 +6,11 @@ return {
             "nvim-treesitter/nvim-treesitter",
             "someone-stole-my-name/yaml-companion.nvim",
             { "nvim-telescope/telescope-fzf-native.nvim", build = "make" },
-            "nvim-telescope/telescope-frecency.nvim",
-            "nvim-telescope/telescope-live-grep-args.nvim",
             "benfowler/telescope-luasnip.nvim",
         },
         branch = "0.1.x", -- or tag = '0.1.0',
         cmd = "Telescope",
         keys = {
-            -- { "<C-k>", "<cmd>Telescope find_files<cr>", desc = "Telescope" },
-            -- { "<leader>kf", "<cmd>Telescope find_files<cr>", desc = "Find files" },
-            -- { "<leader>km", "<cmd>Telescope marks<cr>", desc = "Find files" },
-            -- {
-            --     "<leader>kb",
-            --     function()
-            --         require("telescope.builtin").buffers({
-            --             sort_mru = true,
-            --             sort_lastused = true,
-            --             initial_mode = "normal",
-            --         })
-            --     end,
-            --     desc = "Buffers",
-            -- },
-            -- { "<leader>kk", "<cmd>Telescope keymaps<cr>", desc = "Keymaps" },
             {
                 "<leader>k;",
                 function()
@@ -39,11 +22,6 @@ return {
                 end,
                 desc = "Emojis",
             },
-            {
-                "<leader>kg",
-                function() require("telescope").extensions.live_grep_args.live_grep_args() end,
-                desc = "Live Grep",
-            },
             { "<leader>ky", "<cmd>Telescope yaml_schema<cr>", desc = "YAML Schema" },
             { "<leader>ks", "<cmd>Telescope luasnip<cr>", desc = "Snippets" },
         },
@@ -51,7 +29,6 @@ return {
             local telescope = require("telescope")
             local actions = require("telescope.actions")
             local action_layout = require("telescope.actions.layout")
-            local lga_actions = require("telescope-live-grep-args.actions")
 
             telescope.setup({
                 defaults = {
@@ -76,13 +53,10 @@ return {
                     mappings = {
                         n = {
                             ["<M-p>"] = action_layout.toggle_preview,
-                            ["<c-d>"] = actions.delete_buffer + actions.move_to_top,
-                            ["d"] = actions.delete_buffer + actions.move_to_top,
                         },
                         i = {
                             ["<esc>"] = actions.close,
                             ["<C-u>"] = false,
-                            ["<c-d>"] = actions.delete_buffer + actions.move_to_top,
                             ["<M-p>"] = action_layout.toggle_preview,
                         },
                     },
@@ -91,22 +65,6 @@ return {
                         horizontal = {
                             prompt_position = "top",
                             preview_width = 0.5,
-                        },
-                    },
-                },
-                pickers = {
-                    find_files = {
-                        hidden = true,
-                        find_command = {
-                            "rg",
-                            "--files",
-                            "--color",
-                            "never",
-                            "--hidden",
-                            "--no-ignore-vcs",
-                            "--follow",
-                            "-g",
-                            "!{.venv,node_modules,.git,.*_cache,dist,.tox,__pycache__,**.pyc,**.min.js}",
                         },
                     },
                 },
@@ -128,23 +86,10 @@ return {
                             append_name = "<CR>",
                         },
                     },
-                    live_grep_args = {
-                        auto_quoting = true, -- enable/disable auto-quoting
-                        mappings = { -- extend mappings
-                            i = {
-                                ["<C-k>"] = lga_actions.quote_prompt(),
-                                ["<C-i>"] = lga_actions.quote_prompt({ postfix = " --iglob " }),
-                                -- freeze the current list and start a fuzzy search in the frozen list
-                                ["<C-space>"] = actions.to_fuzzy_refine,
-                            },
-                        },
-                    },
                 },
             })
             telescope.load_extension("ecolog")
-            telescope.load_extension("frecency")
             telescope.load_extension("fzf")
-            telescope.load_extension("live_grep_args")
             telescope.load_extension("luasnip")
             telescope.load_extension("yaml_schema")
         end,

@@ -173,6 +173,7 @@ return {
                     files = false,
                     telescope = true,
                     telescope_previewer = true,
+                    snacks_previewer = true,
                 },
             },
             path = vim.fn.getcwd(), -- Path to search for .env files

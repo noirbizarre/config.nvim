@@ -97,21 +97,6 @@ return {
             }
         end,
     },
-    --- Symbols outline
-    --- https://github.com/hedyhli/outline.nvim
-    {
-        "hedyhli/outline.nvim",
-        lazy = true,
-        cmd = { "Outline", "OutlineOpen" },
-        keys = { -- Example mapping to toggle outline
-            { "<leader>o", "<cmd>Outline<CR>", desc = "Toggle outline" },
-        },
-        opts = {
-            preview_window = {
-                auto_preview = true,
-            },
-        },
-    },
     --- Dianostic
     ---
     {

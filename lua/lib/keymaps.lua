@@ -8,7 +8,7 @@ return {
     { "<leader>g", group = "Git", icon = "" },
     { "<leader>h", group = "Harpoon", icon = "" },
     { "<leader>i", group = "CoPilot", icon = "" },
-    { "<leader>k", group = "Telescope", icon = "" },
+    { "<leader>k", group = "Pickers", icon = "" },
     { "<leader>m", group = "Markdown", icon = "" },
     { "<leader>M", group = "Multicursor", icon = "" },
     { "<leader>s", group = "Search", icon = "󱈇" },
@@ -36,8 +36,9 @@ return {
     { "<leader>l", group = "LSP", icon = "󰘦" },
     {
         group = "LSP",
-        { "<leader>lh", function() vim.lsp.buf.hover() end, desc = "Hover" },
-        { "<leader>lr", function() vim.lsp.buf.rename() end, desc = "Rename" },
+        { "<leader>lh", function() vim.lsp.buf.hover() end, desc = "Hover", icon = "" },
+        { "<leader>lr", function() vim.lsp.buf.rename() end, desc = "Rename", icon = "" },
+        { "<leader>la", function() vim.lsp.buf.code_action() end, desc = "Code Action", icon = "" },
     },
 
     { "<leader>r", group = "Refactoring", icon = "󰑕" },

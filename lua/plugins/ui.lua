@@ -44,6 +44,27 @@ return {
                     hl.RainbowBlue = { fg = c.blue }
                     hl.RainbowViolet = { fg = c.violet }
                     hl.RainbowCyan = { fg = c.cyan }
+
+                    --- Snacks
+                    hl.SnacksPicker = {
+                        bg = c.bg_dark,
+                        fg = c.blue300,
+                    }
+                    hl.SnacksPickerPrompt = {
+                        fg = c.magenta300,
+                    }
+                    hl.SnacksPickerTitle = {
+                        bg = c.bg_dark,
+                        fg = c.magenta300,
+                    }
+                    hl.SnacksPickerPreviewTitle = {
+                        bg = c.bg_dark,
+                        fg = c.cyan300,
+                    }
+                    hl.SnacksPickerBorder = {
+                        bg = c.bg_dark,
+                        fg = c.blue300,
+                    }
                 end,
             })
 
@@ -57,43 +78,49 @@ return {
         priority = 1000,
         lazy = false,
         keys = {
+            --- Base Pickers
+            { "<C-k>", function() Snacks.picker.files() end, desc = "File picker" },
+            { "<leader>kf", function() Snacks.picker.files() end, desc = "File picker" },
+            { "<leader>kg", function() Snacks.picker.grep() end, desc = "Live grep" },
+            {
+                "<leader>kw",
+                function() Snacks.picker.grep_word() end,
+                desc = "Visual selection or word",
+                mode = { "n", "x" },
+            },
+            { "<leader>kb", function() Snacks.picker.buffers() end, desc = "Buffers" },
+            { "<leader>km", function() Snacks.picker.marks() end, desc = "Marks" },
+            { "<leader>kj", function() Snacks.picker.jumps() end, desc = "Jumps" },
+            { "<leader>kk", function() Snacks.picker.keymaps() end, desc = "Keymaps" },
+            { "<leader>kh", function() Snacks.picker.help() end, desc = "Help Pages" },
+            { "<leader>kc", function() Snacks.picker.command_history() end, desc = "Command history" },
+            --- LSP
+            { "gd", function() Snacks.picker.lsp_definitions() end, desc = "Go to Definition" },
+            { "gi", function() Snacks.picker.lsp_implementations() end, desc = "Go to Implementation" },
+            { "gt", function() Snacks.picker.lsp_type_definitions() end, desc = "Go to Type Definition" },
+            { "<leader>lf", function() Snacks.picker.lsp_references() end, desc = "References" },
+            { "<leader>ls", function() Snacks.picker.lsp_symbols() end, desc = "Symbols" },
+            { "<leader>ld", function() Snacks.picker.diagnostics() end, desc = "Diagnostics" },
+            --- Git
+            { "<leader>gc", function() Snacks.picker.git_log() end, desc = "History" },
+            { "<leader>gf", function() Snacks.picker.git_log_file() end, desc = "Current buffer history" },
+            { "<leader>gl", function() Snacks.picker.git_log_line() end, desc = "Current line history" },
+            { "<leader>gs", function() Snacks.picker.git_status() end, desc = "Git Status" },
+            { "<leader>gg", function() Snacks.lazygit() end, desc = "Lazygit" },
+            { "<leader>gY", function() Snacks.git.blame_line() end, desc = "Git Blame Line" },
+            { "<leader>gB", function() Snacks.gitbrowse() end, desc = "Git Browse" },
+            --- Buffers
+            { "<leader>bb", function() Snacks.picker.buffers() end, desc = "Buffers" },
+            { "<leader>bd", function() Snacks.bufdelete() end, desc = "Delete Buffer" },
+            { "<leader>bs", function() Snacks.scratch() end, desc = "Toggle Scratch Buffer" },
+            { "<leader>bS", function() Snacks.scratch.select() end, desc = "Select Scratch Buffer" },
+            --- Refactoring
+            { "<leader>rR", function() Snacks.rename.rename_file() end, desc = "Rename File" },
+            --- UI & Motions
             {
                 "<leader>un",
                 function() Snacks.notifier.hide() end,
                 desc = "Dismiss All Notifications",
-            },
-            {
-                "<leader>bd",
-                function() Snacks.bufdelete() end,
-                desc = "Delete Buffer",
-            },
-            { "<leader>bs", function() Snacks.scratch() end, desc = "Toggle Scratch Buffer" },
-            { "<leader>bS", function() Snacks.scratch.select() end, desc = "Select Scratch Buffer" },
-            {
-                "<leader>gg",
-                function() Snacks.lazygit() end,
-                desc = "Lazygit",
-            },
-            {
-                "<leader>gY",
-                function() Snacks.git.blame_line() end,
-                desc = "Git Blame Line",
-            },
-            {
-                "<leader>gB",
-                function() Snacks.gitbrowse() end,
-                desc = "Git Browse",
-            },
-            -- { "<leader>gf", function() Snacks.lazygit.log_file() end, desc = "Lazygit Current File History" },
-            -- {
-            --     "<leader>gl",
-            --     function() Snacks.lazygit.log() end,
-            --     desc = "Lazygit Log (cwd)",
-            -- },
-            {
-                "<leader>cR",
-                function() Snacks.rename() end,
-                desc = "Rename File",
             },
             { "<c-/>", function() Snacks.terminal() end, desc = "Toggle Terminal" },
             -- { "<c-_>",      function() Snacks.terminal() end, desc = "which_key_ignore" },
@@ -109,32 +136,6 @@ return {
                 desc = "Prev Reference",
                 mode = { "n", "t" },
             },
-            --- Base Pickers
-            { "<C-k>", function() Snacks.picker.files() end, desc = "File picker" },
-            { "<leader>kf", function() Snacks.picker.files() end, desc = "File picker" },
-            { "<leader>bb", function() Snacks.picker.buffers() end, desc = "Buffers" },
-            { "<leader>kb", function() Snacks.picker.buffers() end, desc = "Buffers" },
-            { "<leader>km", function() Snacks.picker.marks() end, desc = "Marks" },
-            { "<leader>kk", function() Snacks.picker.keymaps() end, desc = "Keymaps" },
-            { "<leader>kc", function() Snacks.picker.command_history() end, desc = "Command history" },
-            --- LSP
-            { "gd", function() Snacks.picker.lsp_definitions() end, desc = "Goto Definition" },
-            { "gr", function() Snacks.picker.lsp_references() end, nowait = true, desc = "References" },
-            { "gi", function() Snacks.picker.lsp_implementations() end, desc = "Goto Implementation" },
-            { "gt", function() Snacks.picker.lsp_type_definitions() end, desc = "Goto Type Definition" },
-            { "<leader>lf", function() Snacks.picker.lsp_references() end, desc = "References" },
-            { "<leader>ls", function() Snacks.picker.lsp_symbols() end, desc = "LSP Symbols" },
-            {
-                "<leader>la",
-                function() vim.lsp.buf.code_action() end,
-                desc = "Code Action",
-            },
-            --- Git
-            { "<leader>gc", function() Snacks.picker.git_log() end, desc = "History" },
-            { "<leader>gf", function() Snacks.picker.git_log_file() end, desc = "Current buffer history" },
-            { "<leader>gl", function() Snacks.picker.git_log_line() end, desc = "Current line history" },
-            -- { "<leader>gb", function() Snacks.picker.git_log() end, desc = "Git branches" },
-            { "<leader>gs", function() Snacks.picker.git_status() end, desc = "Git Status" },
         },
         opts = {
             bigfile = { enabled = true },
@@ -248,12 +249,42 @@ return {
                 end,
             },
             picker = {
-                prompt = " ",
+                prompt = "   ",
+                sources = {
+                    files = {
+                        hidden = true,
+                    },
+                    grep = {
+                        hidden = true,
+                    },
+                    lsp_symbols = {
+                        filter = {
+                            default = true,
+                        },
+                    },
+                },
                 win = {
                     -- input window
                     input = {
                         keys = {
-                            ["<Esc>"] = { "close", mode = { "n", "i" } },
+                            -- ["<Esc>"] = { "close", mode = { "n", "i" } },
+                            ["<c-l>"] = { "toggle_live", mode = { "i", "n" } },
+                            ["<c-i>"] = { "toggle_ignored", mode = { "i", "n" } },
+                            ["<c-h>"] = { "toggle_hidden", mode = { "i", "n" } },
+                            ["<PageDown>"] = { "list_scroll_down", mode = { "i", "n" } },
+                            ["<PageUp>"] = { "list_scroll_up", mode = { "i", "n" } },
+                        },
+                    },
+                    list = {
+                        keys = {
+                            ["<PageDown>"] = "list_scroll_down",
+                            ["<PageUp>"] = "list_scroll_up",
+                        },
+                    },
+                    preview = {
+                        keys = {
+                            ["<PageDown>"] = "preview_scroll_down",
+                            ["<PageUp>"] = "preview_scroll_up",
                         },
                     },
                 },

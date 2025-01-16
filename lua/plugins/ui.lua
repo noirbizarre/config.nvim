@@ -79,7 +79,7 @@ return {
         lazy = false,
         keys = {
             --- Base Pickers
-            { "<C-k>", function() Snacks.picker.files() end, desc = "File picker" },
+            { "<C-k>", function() Snacks.picker.smart() end, desc = "SmartfFile picker" },
             { "<leader>kf", function() Snacks.picker.files() end, desc = "File picker" },
             { "<leader>kg", function() Snacks.picker.grep() end, desc = "Live grep" },
             {
@@ -93,6 +93,7 @@ return {
             { "<leader>kj", function() Snacks.picker.jumps() end, desc = "Jumps" },
             { "<leader>kk", function() Snacks.picker.keymaps() end, desc = "Keymaps" },
             { "<leader>kh", function() Snacks.picker.help() end, desc = "Help Pages" },
+            { "<leader>kq", function() Snacks.picker.qflist() end, desc = "Quickfixes" },
             { "<leader>kc", function() Snacks.picker.command_history() end, desc = "Command history" },
             --- LSP
             { "gd", function() Snacks.picker.lsp_definitions() end, desc = "Go to Definition" },
@@ -149,7 +150,7 @@ return {
                             icon = " ",
                             key = "f",
                             desc = "Find File",
-                            action = ":lua Snacks.picker.files()",
+                            action = ":lua Snacks.picker.smart()",
                         },
                         {
                             icon = " ",
@@ -188,8 +189,8 @@ return {
                         cwd = true,
                         indent = 2,
                         padding = 1,
+                        limit = 8,
                     },
-                    -- { pane = 2, icon = " ", title = "Projects", section = "projects", indent = 2, padding = 1 },
                     {
                         pane = 2,
                         icon = " ",

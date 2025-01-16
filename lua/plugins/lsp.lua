@@ -255,14 +255,23 @@ return {
         dependencies = { "neovim/nvim-lspconfig", "nvim-telescope/telescope.nvim", "mfussenegger/nvim-dap-python" },
         -- event = 'VeryLazy', -- Optional: needed only if you want to type `:VenvSelect` without a keymapping
         keys = {
-            -- Keymap to open VenvSelector to pick a venv.
-            { "<leader>vs", "<cmd>VenvSelect<cr>", desc = "Select virtualenv", ft = "python" },
-            -- Keymap to retrieve the venv from a cache (the one previously used for the same project directory).
-            { "<leader>vc", "<cmd>VenvSelectCached<cr>", ft = "python" },
+            { "<leader>lv", "<cmd>VenvSelect<cr>", desc = "Select virtualenv", ft = "python" },
         },
         ft = "python",
+        ---@type venv-selector.Config
         opts = {
-            name = { "venv", ".venv" },
+            settings = {
+                options = {
+                    -- If you put the callback here as a global option, its used for all searches (including the default ones by the plugin)
+                    on_telescope_result_callback = function(filename)
+                        filename = filename:gsub(os.getenv("HOME"), "~")
+                        filename = filename:gsub("/bin/python", "")
+                        return filename
+                    end,
+                },
+                notify_user_on_venv_activation = true,
+                debug = true,
+            },
         },
     },
 }

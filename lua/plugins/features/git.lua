@@ -13,7 +13,7 @@ return {
         },
         keys = {
             { "<leader>gd", "<cmd>DiffviewOpen<cr>", desc = "Repo Diffview", nowait = true },
-            { "<leader>gh", "<cmd>DiffviewFileHistory<cr>", desc = "Repo history" },
+            -- { "<leader>gh", "<cmd>DiffviewFileHistory<cr>", desc = "Repo history" },
             -- { "<leader>gf", "<cmd>DiffviewFileHistory --follow %<cr>", desc = "File history" },
             { "<leader>gm", "<cmd>DiffviewOpen main<cr>", desc = "Diff with main" },
         },
@@ -94,27 +94,5 @@ return {
             "nvim-tree/nvim-web-devicons",
         },
         opts = {},
-    },
-    -- Gist support
-    -- https://github.com/rawnly/gist.nvim
-    {
-        "Rawnly/gist.nvim",
-        dependencies = {
-            -- `GistsList` opens the selected gif in a terminal buffer,
-            -- nvim-unception uses neovim remote rpc functionality to open the gist in an actual buffer
-            -- and prevents neovim buffer inception
-            {
-                "samjwill/nvim-unception",
-                lazy = false,
-                init = function() vim.g.unception_block_while_host_edits = true end,
-            },
-        },
-        cmd = { "GistCreate", "GistCreateFromFile", "GistsList" },
-        keys = {
-            { "<leader>gil", "<cmd>GistsList<cr>", desc = "Lists gists" },
-            { "<leader>gic", "<cmd>GistsCreate<cr>", desc = "Create a gist" },
-            { "<leader>gif", "<cmd>GistsCreateFromFile<cr>", desc = "Create a gist from the current file" },
-        },
-        config = true,
     },
 }

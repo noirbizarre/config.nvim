@@ -42,6 +42,14 @@ return {
             { "<leader>ii", "<cmd>CopilotChatToggle<cr>", desc = "Toggle Copilot Chat" },
             { "<leader>im", "<cmd>CopilotChatModels<cr>", desc = "Copilot Chat Models" },
             { "<leader>ia", "<cmd>CopilotChatAgents<cr>", desc = "Copilot Chat Agents" },
+            {
+                "<leader>ik",
+                function()
+                    local actions = require("CopilotChat.actions")
+                    require("CopilotChat/integrations/snacks").pick(actions.prompt_actions())
+                end,
+                desc = "Copilot Chat Actions",
+            },
         },
         opts = {
             -- See Configuration section for options
@@ -192,6 +200,9 @@ return {
             auto_suggestions_provider = "copilot",
             copilot = {
                 model = "claude-3.5-sonnet",
+            },
+            file_selector = {
+                provider = "snacks",
             },
         },
     },

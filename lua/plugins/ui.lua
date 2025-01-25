@@ -79,7 +79,7 @@ return {
         lazy = false,
         keys = {
             --- Base Pickers
-            { "<C-k>", function() Snacks.picker.smart() end, desc = "SmartfFile picker" },
+            { "<C-k>", function() Snacks.picker.smart() end, desc = "Smart file picker" },
             { "<leader>kf", function() Snacks.picker.files() end, desc = "File picker" },
             { "<leader>kg", function() Snacks.picker.grep() end, desc = "Live grep" },
             {
@@ -95,18 +95,22 @@ return {
             { "<leader>kh", function() Snacks.picker.help() end, desc = "Help Pages" },
             { "<leader>kq", function() Snacks.picker.qflist() end, desc = "Quickfixes" },
             { "<leader>kc", function() Snacks.picker.command_history() end, desc = "Command history" },
+            { "<leader>ku", function() Snacks.picker.undo() end, desc = "Undo tree" },
+            { "<leader>kl", function() Snacks.picker.spelling() end, desc = "Spelling" },
             --- LSP
             { "gd", function() Snacks.picker.lsp_definitions() end, desc = "Go to Definition" },
             { "gi", function() Snacks.picker.lsp_implementations() end, desc = "Go to Implementation" },
             { "gt", function() Snacks.picker.lsp_type_definitions() end, desc = "Go to Type Definition" },
             { "<leader>lf", function() Snacks.picker.lsp_references() end, desc = "References" },
             { "<leader>ls", function() Snacks.picker.lsp_symbols() end, desc = "Symbols" },
+            { "<leader>lw", function() Snacks.picker.lsp_workspace_symbols() end, desc = "Workspace symbols" },
             { "<leader>ld", function() Snacks.picker.diagnostics() end, desc = "Diagnostics" },
             --- Git
             { "<leader>gc", function() Snacks.picker.git_log() end, desc = "History" },
             { "<leader>gf", function() Snacks.picker.git_log_file() end, desc = "Current buffer history" },
             { "<leader>gl", function() Snacks.picker.git_log_line() end, desc = "Current line history" },
             { "<leader>gs", function() Snacks.picker.git_status() end, desc = "Git Status" },
+            { "<leader>gb", function() Snacks.picker.git_branches() end, desc = "Git Branches" },
             { "<leader>gg", function() Snacks.lazygit() end, desc = "Lazygit" },
             { "<leader>gY", function() Snacks.git.blame_line() end, desc = "Git Blame Line" },
             { "<leader>gB", function() Snacks.gitbrowse() end, desc = "Git Browse" },
@@ -118,6 +122,8 @@ return {
             --- Refactoring
             { "<leader>rR", function() Snacks.rename.rename_file() end, desc = "Rename File" },
             --- UI & Motions
+            { "<leader>z", function() Snacks.zen() end, desc = "Toggle Zen Mode" },
+            { "<leader>Z", function() Snacks.zen.zoom() end, desc = "Toggle Zoom" },
             {
                 "<leader>un",
                 function() Snacks.notifier.hide() end,
@@ -136,6 +142,12 @@ return {
                 function() Snacks.words.jump(-vim.v.count1) end,
                 desc = "Prev Reference",
                 mode = { "n", "t" },
+            },
+            -- custom pickers
+            {
+                "<leader>k;",
+                function() Snacks.picker.icons() end,
+                desc = "Emojis",
             },
         },
         opts = {

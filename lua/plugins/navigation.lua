@@ -11,17 +11,6 @@ return {
         branch = "0.1.x", -- or tag = '0.1.0',
         cmd = "Telescope",
         keys = {
-            {
-                "<leader>k;",
-                function()
-                    require("telescope.builtin").symbols({
-                        sources = { "emoji", "gitmoji", "nerd", "math" },
-                        layout_strategy = "vertical",
-                        layout_config = { width = 0.3, height = 0.5 },
-                    })
-                end,
-                desc = "Emojis",
-            },
             { "<leader>ky", "<cmd>Telescope yaml_schema<cr>", desc = "YAML Schema" },
             { "<leader>ks", "<cmd>Telescope luasnip<cr>", desc = "Snippets" },
         },

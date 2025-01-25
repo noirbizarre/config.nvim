@@ -37,7 +37,9 @@ require("lazy").setup({
     -- Configure any other settings here. See the documentation for more details.
     -- colorscheme that will be used when installing plugins.
     install = { colorscheme = { "solarized-osaka" } },
-    dev = { path = "~/Workspace/neovim" },
+    dev = {
+        path = "~/Workspaces/neovim",
+    },
     -- automatically check for plugin updates
     -- checker = { enabled = true },
     performance = {

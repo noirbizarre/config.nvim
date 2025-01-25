@@ -42,6 +42,10 @@ vim.opt.sessionoptions = "buffers,curdir,folds,help,tabpages,winsize,terminal"
 -- Disable swap files
 vim.opt.swapfile = false
 
+-- Format options
+-- https://neovim.io/doc/user/options.html#'formatoptions'
+vim.opt.formatoptions = "jcroqlnt" -- tcqj
+
 vim.opt.termguicolors = true -- True color support
 vim.opt.undofile = true
 vim.opt.undolevels = 10000

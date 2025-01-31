@@ -79,7 +79,7 @@ return {
         lazy = false,
         keys = {
             --- Base Pickers
-            { "<C-k>", function() Snacks.picker.smart() end, desc = "Smart file picker" },
+            { "<C-k>", function() Snacks.picker.files() end, desc = "File picker" },
             { "<leader>kf", function() Snacks.picker.files() end, desc = "File picker" },
             { "<leader>kg", function() Snacks.picker.grep() end, desc = "Live grep" },
             {
@@ -162,7 +162,7 @@ return {
                             icon = " ",
                             key = "f",
                             desc = "Find File",
-                            action = ":lua Snacks.picker.smart()",
+                            action = ":lua Snacks.picker.files()",
                         },
                         {
                             icon = " ",

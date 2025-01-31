@@ -15,7 +15,7 @@ return {
     -- https://github.com/OXY2DEV/markview.nvim
     {
         "OXY2DEV/markview.nvim",
-        -- lazy = false, -- Recommended
+        dev = false,
         dependencies = {
             "nvim-treesitter/nvim-treesitter",
             "nvim-tree/nvim-web-devicons",
@@ -37,7 +37,7 @@ return {
         },
         opts = {
             preview = {
-                buf_ignore = {},
+                ignore_buftypes = {},
                 filetypes = { "markdown", "Avante", "codecompanion", "copilot-chat" },
                 modes = { "n", "i", "no", "c" },
                 hybrid_modes = { "i" },

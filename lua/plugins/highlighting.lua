@@ -116,6 +116,13 @@ return {
         opts = { pattern = "*" },
         dependencies = { "nvim-treesitter/nvim-treesitter" },
     },
+    --- Display current code context as sticky header
+    {
+        "nvim-treesitter/nvim-treesitter-context",
+        opts = {
+            mode = "topline",
+        },
+    },
 
     --- Highlight other uses of the word under the cursor
     --- https://github.com/RRethy/vim-illuminate

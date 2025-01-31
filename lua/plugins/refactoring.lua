@@ -45,16 +45,19 @@ return {
         lazy = false,
         config = true,
     },
-    --- NeoGen
-    --- https://github.com/danymat/neogen
+    --- Codedocs - Generate docstrings
     {
-        "danymat/neogen",
-        cmd = "Neogen",
+        "jeangiraldoo/codedocs.nvim",
+        cmd = "Codedocs",
         keys = {
-            { "<leader>rg", "<cmd>Neogen<cr>", desc = "Generate annotations" },
+            {
+                "<leader>rh",
+                function() require("codedocs").insert_docs() end,
+                desc = "Insert a docstring",
+            },
         },
         opts = {
-            snippet_engine = "luasnip",
+            default_styles = { python = "reST" },
         },
     },
     -- https://github.com/echasnovski/mini.nvim/blob/main/readmes/mini-move.md

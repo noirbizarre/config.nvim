@@ -325,6 +325,22 @@ return {
         },
     },
 
+    --- Menu
+    { "nvzone/volt", lazy = true },
+    {
+        "nvzone/menu",
+        lazy = true,
+        keys = {
+            -- mouse users + nvimtree users!
+            { "<RightMouse>", function() require("lib.ui.menus").context_menu() end, mode = { "n", "v" } },
+        },
+    },
+    --- Color Picker
+    {
+        "nvzone/minty",
+        cmd = { "Shades", "Huefy" },
+    },
+
     --- Highly experimental plugin that completely replaces the UI for messages, cmdline and the popupmenu
     --- https://github.com/folke/noice.nvim
     {

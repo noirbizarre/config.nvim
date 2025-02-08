@@ -246,6 +246,18 @@ return {
                         end
                     end,
                 },
+                gha = {
+                    name = "GitHub Actions",
+                    filetype = { "yaml" },
+                    handle = function(mode, line, _)
+                        local helper = require("gx.helper")
+                        local pattern = "([^%s~/@\"']*/[^%s~/@]*)@[^%s~@\"']*"
+                        local repo = helper.find(line, mode, pattern)
+                        if repo then
+                            return "https://github.com/" .. repo
+                        end
+                    end,
+                },
             },
         },
     },

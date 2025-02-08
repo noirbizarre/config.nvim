@@ -4,6 +4,7 @@ vim.filetype.add({
         jinja2 = "jinja",
         j2 = "jinja",
         alias = "sh",
+        wiz = "yaml",
     },
     pattern = {
         [".*/kitty/.+%.conf"] = "kitty",

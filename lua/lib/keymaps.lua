@@ -11,7 +11,7 @@ return {
     { "<leader>i", group = "CoPilot", icon = "" },
     { "<leader>k", group = "Pickers", icon = "" },
     { "<leader>m", group = "Markdown", icon = "" },
-    { "<leader>M", group = "Multicursor", icon = "" },
+    { "<leader>\\", group = "Multicursor", icon = "" },
     { "<leader>s", group = "Search", icon = "󱈇" },
     { "<leader>t", group = "Test", icon = "󰤑" },
     { "<leader>x", group = "Trouble", icon = "🚦" },

@@ -43,6 +43,14 @@ return {
                     },
                 },
             },
+            {
+                "barreiroleo/ltex_extra.nvim",
+                branch = "dev",
+                -- ft = { "markdown", "tex" },
+                opts = {
+                    load_langs = { "en-US", "fr-FR" },
+                },
+            },
             --- For LSP Cpabilities
             --- See: https://cmp.saghen.dev/installation.html
             "saghen/blink.cmp",
@@ -161,7 +169,7 @@ return {
                 settings = {
                     ltex = {
                         checkFrequency = "save",
-                        language = "en-US",
+                        language = { "en-US", "fr-FR" },
                         languageToolHttpServerUri = "https://api.languagetoolplus.com/",
                         languageToolOrg = {
                             username = vim.env.LANGUETOOL_USER,
@@ -169,7 +177,7 @@ return {
                         },
                         additionalRules = {
                             enablePickyRules = true,
-                            motherTongue = "fr",
+                            motherTongue = { "fr-FR" },
                         },
                     },
                 },

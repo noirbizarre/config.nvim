@@ -12,10 +12,10 @@ return {
             "DiffviewFocusFiles",
         },
         keys = {
-            { "<leader>gd", "<cmd>DiffviewOpen<cr>", desc = "Repo Diffview", nowait = true },
+            { "<leader>gD", "<cmd>DiffviewOpen<cr>", desc = "Repo Diffview", nowait = true },
             -- { "<leader>gh", "<cmd>DiffviewFileHistory<cr>", desc = "Repo history" },
             -- { "<leader>gf", "<cmd>DiffviewFileHistory --follow %<cr>", desc = "File history" },
-            { "<leader>gm", "<cmd>DiffviewOpen main<cr>", desc = "Diff with main" },
+            { "<leader>gM", "<cmd>DiffviewOpen main<cr>", desc = "Diff with main" },
         },
     },
     {

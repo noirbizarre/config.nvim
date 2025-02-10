@@ -106,7 +106,7 @@ return {
             { "<leader>lw", function() Snacks.picker.lsp_workspace_symbols() end, desc = "Workspace symbols" },
             { "<leader>ld", function() Snacks.picker.diagnostics() end, desc = "Diagnostics" },
             --- Git
-            { "<leader>gc", function() Snacks.picker.git_log() end, desc = "History" },
+            { "<leader>gh", function() Snacks.picker.git_log() end, desc = "History" },
             { "<leader>gf", function() Snacks.picker.git_log_file() end, desc = "Current buffer history" },
             { "<leader>gl", function() Snacks.picker.git_log_line() end, desc = "Current line history" },
             { "<leader>gs", function() Snacks.picker.git_status() end, desc = "Git Status" },
@@ -116,6 +116,10 @@ return {
             { "<leader>gg", function() Snacks.lazygit() end, desc = "Lazygit" },
             { "<leader>gY", function() Snacks.git.blame_line() end, desc = "Git Blame Line" },
             { "<leader>gB", function() Snacks.gitbrowse() end, desc = "Git Browse" },
+            { "<leader>gcc", function() Snacks.terminal("git commit") end, desc = "Git Commit" },
+            { "<leader>gca", function() Snacks.terminal("git commit --all") end, desc = "Git Commit All" },
+            { "<leader>gcz", function() Snacks.terminal("cz commit") end, desc = "Git Commit(izen)" },
+            { "<leader>gp", function() Snacks.terminal("git add -p") end, desc = "Git Partial Add" },
             --- Buffers
             { "<leader>bb", function() Snacks.picker.buffers() end, desc = "Buffers" },
             { "<leader>bd", function() Snacks.bufdelete() end, desc = "Delete Buffer" },

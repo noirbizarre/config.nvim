@@ -169,7 +169,7 @@ return {
                 settings = {
                     ltex = {
                         checkFrequency = "save",
-                        language = { "en-US", "fr-FR" },
+                        language = { "en-US", "fr" },
                         languageToolHttpServerUri = "https://api.languagetoolplus.com/",
                         languageToolOrg = {
                             username = vim.env.LANGUETOOL_USER,
@@ -177,7 +177,7 @@ return {
                         },
                         additionalRules = {
                             enablePickyRules = true,
-                            motherTongue = { "fr-FR" },
+                            motherTongue = { "fr" },
                         },
                     },
                 },

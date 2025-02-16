@@ -1,6 +1,8 @@
 local ascii = require("lib.ui.ascii")
 local ft = require("lib.filetypes")
 
+local gitwin = { win = { width = 0.4, height = 0.4 } }
+
 return {
     --- Solarized Osaka
     --- https://github.com/craftzdog/solarized-osaka.nvim
@@ -116,9 +118,10 @@ return {
             { "<leader>gg", function() Snacks.lazygit() end, desc = "Lazygit" },
             { "<leader>gY", function() Snacks.git.blame_line() end, desc = "Git Blame Line" },
             { "<leader>gB", function() Snacks.gitbrowse() end, desc = "Git Browse" },
-            { "<leader>gcc", function() Snacks.terminal("git commit") end, desc = "Git Commit" },
-            { "<leader>gca", function() Snacks.terminal("git commit --all") end, desc = "Git Commit All" },
-            { "<leader>gcz", function() Snacks.terminal("cz commit") end, desc = "Git Commit(izen)" },
+            { "<leader>gcc", function() Snacks.terminal("git commit", gitwin) end, desc = "Git Commit" },
+            { "<leader>gca", function() Snacks.terminal("git amend", gitwin) end, desc = "Git Commit Amend" },
+            { "<leader>gcA", function() Snacks.terminal("git commit --all", gitwin) end, desc = "Git Commit All" },
+            { "<leader>gcz", function() Snacks.terminal("cz commit", gitwin) end, desc = "Git Commit(izen)" },
             { "<leader>gp", function() Snacks.terminal("git add -p") end, desc = "Git Partial Add" },
             --- Buffers
             { "<leader>bb", function() Snacks.picker.buffers() end, desc = "Buffers" },

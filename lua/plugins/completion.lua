@@ -60,8 +60,6 @@ return {
                     "emoji",
                     "codecompanion",
                 },
-                -- Disable cmdline completions
-                cmdline = {},
                 providers = {
                     -- emoji = { name = "emoji", module = "blink.compat.source" },
                     emoji = {
@@ -121,6 +119,10 @@ return {
             },
             snippets = {
                 preset = "luasnip",
+            },
+            -- Disable cmdline completions
+            cmdline = {
+                sources = {},
             },
 
             -- experimental signature help support

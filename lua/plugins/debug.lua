@@ -4,6 +4,7 @@ return {
         dependencies = {
             "mfussenegger/nvim-dap-python",
             "theHamsta/nvim-dap-virtual-text",
+            "lucaSartore/nvim-dap-exception-breakpoints",
         },
         event = "BufReadPre",
         keys = {
@@ -202,6 +203,18 @@ return {
             dap.listeners.before.event_terminated.dapui_config = function() dapui.close() end
             dap.listeners.before.event_exited.dapui_config = function() dapui.close() end
         end,
+    },
+    {
+        "lucaSartore/nvim-dap-exception-breakpoints",
+        dependencies = { "mfussenegger/nvim-dap" },
+        keys = {
+            {
+                "<leader>de",
+                function() require("nvim-dap-exception-breakpoints")() end,
+                desc = "Toggle Exception Breakpoints",
+            },
+        },
+        config = function() local set_exception_breakpoints = require("nvim-dap-exception-breakpoints") end,
     },
     --- Breakpoint persistence
     --- https://github.com/daic0r/dap-helper.nvim

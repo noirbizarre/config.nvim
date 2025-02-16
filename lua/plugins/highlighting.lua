@@ -224,7 +224,7 @@ return {
     },
     {
         "rachartier/tiny-glimmer.nvim",
-        event = "TextYankPost",
+        event = "VeryLazy",
         opts = {
             -- your configuration
         },

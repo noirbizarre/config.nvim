@@ -45,7 +45,7 @@ return {
                 "graphql",
                 "hcl",
                 "helm",
-                "help",
+                -- "help",
                 "html",
                 "http",
                 "ini",

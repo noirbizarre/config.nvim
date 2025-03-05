@@ -117,7 +117,11 @@ return {
                 capabilities = capabilities,
                 settings = {
                     basedpyright = {
-                        typeCheckingMode = "standard",
+                        analysis = {
+                            autoImportCompletions = true,
+                            diagnosticMode = "workspace",
+                            typeCheckingMode = "standard",
+                        },
                     },
                 },
             })

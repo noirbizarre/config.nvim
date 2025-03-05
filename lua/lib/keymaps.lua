@@ -40,6 +40,12 @@ return {
         { "<leader>lh", function() vim.lsp.buf.hover() end, desc = "Hover", icon = "" },
         { "<leader>lr", function() vim.lsp.buf.rename() end, desc = "Rename", icon = "" },
         { "<leader>la", function() vim.lsp.buf.code_action() end, desc = "Code Action", icon = "" },
+        {
+            "<leader>li",
+            function() vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled({ 0 }), { 0 }) end,
+            desc = "Toggle LSP inlays",
+            icon = "",
+        },
     },
 
     { "<leader>r", group = "Refactoring", icon = "󰑕" },

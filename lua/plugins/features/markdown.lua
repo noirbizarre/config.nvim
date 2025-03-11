@@ -28,14 +28,9 @@ return {
                 ignore_buftypes = {},
                 filetypes = { "markdown", "Avante", "codecompanion", "copilot-chat" },
                 modes = { "n", "i", "no", "c" },
-                hybrid_modes = { "i" },
+                hybrid_modes = { "n", "i" },
+                linewise_hybrid_mode = true,
                 icon_provider = "devicons",
-                callbacks = {
-                    on_enable = function(_, win)
-                        vim.wo[win].conceallevel = 2
-                        vim.wo[win].concealcursor = "nc"
-                    end,
-                },
             },
             markdown = {
                 code_blocks = {

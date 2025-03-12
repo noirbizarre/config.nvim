@@ -99,6 +99,8 @@ return {
             { "<leader>kc", function() Snacks.picker.command_history() end, desc = "Command history" },
             { "<leader>ku", function() Snacks.picker.undo() end, desc = "Undo tree" },
             { "<leader>kl", function() Snacks.picker.spelling() end, desc = "Spelling" },
+            { "<leader>kv", function() Snacks.picker.registers() end, desc = "Registers" },
+            { "<leader>k,", function() Snacks.picker.resume() end, desc = "Resume" },
             --- LSP
             { "gd", function() Snacks.picker.lsp_definitions() end, desc = "Go to Definition" },
             { "gi", function() Snacks.picker.lsp_implementations() end, desc = "Go to Implementation" },

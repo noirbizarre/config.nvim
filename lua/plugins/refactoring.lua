@@ -23,7 +23,7 @@ return {
             -- Telescope menu
             {
                 "<leader>kr",
-                function() require("telescope").extensions.refactoring.refactors() end,
+                function() require("refactoring").select_refactor() end,
                 mode = { "n", "x" },
                 desc = "Refactor",
             },
@@ -36,7 +36,6 @@ return {
                 python = { 'print(f"🔎 %.0s{%s=}")' },
             },
         },
-        init = function() require("telescope").load_extension("refactoring") end,
     },
     --- Comments
     --- https://github.com/numToStr/Comment.nvim

@@ -113,7 +113,7 @@ return {
             },
             -- Disable cmdline completions
             cmdline = {
-                sources = {},
+                enabled = false,
             },
 
             -- experimental signature help support

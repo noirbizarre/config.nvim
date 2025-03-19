@@ -278,6 +278,11 @@ return {
             },
             picker = {
                 prompt = "   ",
+                formatters = {
+                    file = {
+                        truncate = 80,
+                    },
+                },
                 sources = {
                     files = {
                         hidden = true,

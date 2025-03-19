@@ -28,7 +28,6 @@ return {
         lazy = false, -- lazy loading handled internally
         dependencies = {
             "L3MON4D3/LuaSnip",
-            "moyiz/blink-emoji.nvim",
             "fang2hou/blink-copilot",
             --- Colorful Menu (highlight in completions)
             --- https://github.com/xzbdmw/colorful-menu.nvim
@@ -57,17 +56,9 @@ return {
                     "buffer",
                     "copilot",
                     "ecolog",
-                    "emoji",
                     "codecompanion",
                 },
                 providers = {
-                    -- emoji = { name = "emoji", module = "blink.compat.source" },
-                    emoji = {
-                        module = "blink-emoji",
-                        name = "Emoji",
-                        score_offset = 15, -- Tune by preference
-                        opts = { insert = true }, -- Insert emoji (default) or complete its name
-                    },
                     ecolog = { name = "ecolog", module = "ecolog.integrations.cmp.blink_cmp" },
                     codecompanion = { name = "CodeCompanion", module = "codecompanion.providers.completion.blink" },
                     copilot = {

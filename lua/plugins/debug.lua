@@ -5,6 +5,11 @@ return {
             "mfussenegger/nvim-dap-python",
             "theHamsta/nvim-dap-virtual-text",
             "lucaSartore/nvim-dap-exception-breakpoints",
+            {
+                "Joakker/lua-json5",
+                lazy = true,
+                build = vim.fn.has("win32") == 1 and "powershell ./install.ps1" or "./install.sh",
+            },
         },
         event = "BufReadPre",
         keys = {
@@ -116,6 +121,9 @@ return {
         },
         config = function()
             require("nvim-dap-virtual-text").setup()
+
+            -- Compat with VSCode JSONC-based launch.json
+            require("dap.ext.vscode").json_decode = require("json5").parse
 
             -- Better gutter signs
             vim.api.nvim_set_hl(0, "DapBreakpoint", { ctermbg = 0, fg = "#993939" }) --, bg='#31353f' })

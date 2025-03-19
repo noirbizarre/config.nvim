@@ -9,6 +9,8 @@ vim.filetype.add({
     pattern = {
         [".*/kitty/.+%.conf"] = "kitty",
         [".*/hypr/.+%.conf"] = "hyprlang",
+        -- VSCode JSONC
+        [".*/%.vscode/.+%.json"] = "jsonc",
         -- dotfiles
         [".*/%.local/bin/*"] = "sh",
         [".*/%.alias%.d/.+%.alias"] = "sh",

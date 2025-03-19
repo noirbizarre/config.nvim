@@ -67,6 +67,10 @@ return {
                         bg = c.bg_dark,
                         fg = c.blue300,
                     }
+
+                    -- Tree Sitter Context
+                    hl.TreesitterContext = { bg = c.base03 }
+                    hl.TreesitterContextBottom = { underline = true }
                 end,
             })
 

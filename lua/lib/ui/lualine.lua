@@ -47,10 +47,22 @@ return {
     },
     sections = {
         lualine_a = { "mode" },
-        lualine_b = { "branch" },
+        lualine_b = {
+            {
+                "branch",
+                on_click = function() Snacks.picker.git_branches() end,
+            },
+        },
         lualine_c = {
-            "diff",
-            { "diagnostics", sources = { "nvim_diagnostic" } },
+            {
+                "diff",
+                on_click = function() Snacks.picker.git_diff() end,
+            },
+            {
+                "diagnostics",
+                sources = { "nvim_diagnostic" },
+                on_click = function() Snacks.picker.diagnostics() end,
+            },
             "overseer",
         },
         lualine_x = {
@@ -59,7 +71,11 @@ return {
             "fileformat",
             "encoding",
             get_yaml_schema,
-            "copilot",
+            {
+                "copilot",
+                show_colors = true,
+                on_click = function() vim.cmd("Copilot toggle") end,
+            },
         },
         lualine_y = { "progress" },
         lualine_z = { "location", { "harpoon2", no_harpoon = "" } },
@@ -76,14 +92,18 @@ return {
         lualine_a = {
             {
                 dirs,
-                on_click = function() require("telescope.builtin").find_files() end,
+                on_click = function() Snacks.picker.files() end,
             },
         },
         lualine_b = {
             { "filetype", colored = true, icon_only = true, separator = "", padding = { left = 1, right = 0 } },
             {
                 "filename",
-                on_click = function() require("telescope.builtin").find_files() end,
+                on_click = function()
+                    local dir = vim.fn.expand("%:h")
+                    vim.print(dir)
+                    Snacks.picker.files({ dirs = { dir } })
+                end,
                 color = { gui = "bold" },
                 padding = { left = 0, right = 1 },
                 file_status = false,
@@ -91,7 +111,7 @@ return {
             },
             {
                 modified,
-                on_click = function() require("telescope.builtin").find_files() end,
+                on_click = function() Snacks.picker.files() end,
                 draw_empty = true,
                 padding = { left = 0, right = 1 },
                 color = { fg = "orange" },
@@ -100,7 +120,7 @@ return {
         lualine_c = {
             {
                 "navic",
-                on_click = function() require("telescope.builtin").lsp_document_symbols() end,
+                on_click = function() Snacks.picker.lsp_symbols() end,
                 color_correction = "dynamic",
             },
         },
@@ -115,19 +135,19 @@ return {
         lualine_c = {
             {
                 dirs,
-                on_click = function() require("telescope.builtin").find_files() end,
+                on_click = function() Snacks.picker.files() end,
             },
             { "filetype", colored = true, icon_only = true, separator = "", padding = { left = 1, right = 0 } },
             {
                 "filename",
-                on_click = function() require("telescope.builtin").find_files() end,
+                on_click = function() Snacks.picker.files() end,
                 padding = { left = 0, right = 1 },
                 file_status = false,
                 separator = "",
             },
             {
                 modified,
-                on_click = function() require("telescope.builtin").find_files() end,
+                on_click = function() Snacks.picker.files() end,
                 draw_empty = true,
                 padding = { left = 0, right = 1 },
                 color = { fg = "orange" },

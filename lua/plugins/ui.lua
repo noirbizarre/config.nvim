@@ -276,6 +276,7 @@ return {
                         and not vim.tbl_contains(ft.internals, vim.bo.filetype)
                 end,
             },
+            input = { enabled = true },
             picker = {
                 prompt = "   ",
                 formatters = {
@@ -323,6 +324,8 @@ return {
                 },
             },
             quickfile = { enabled = true },
+            scope = { enabled = true },
+            scroll = { enabled = true },
             statuscolumn = { enabled = true },
             words = { enabled = true },
             styles = {

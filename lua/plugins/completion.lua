@@ -29,6 +29,7 @@ return {
         dependencies = {
             "L3MON4D3/LuaSnip",
             "fang2hou/blink-copilot",
+            "Kaiser-Yang/blink-cmp-avante",
             --- Colorful Menu (highlight in completions)
             --- https://github.com/xzbdmw/colorful-menu.nvim
             {
@@ -50,6 +51,7 @@ return {
             },
             sources = {
                 default = {
+                    "avante",
                     "lsp",
                     "path",
                     "snippets",
@@ -59,7 +61,7 @@ return {
                     "codecompanion",
                 },
                 providers = {
-                    ecolog = { name = "ecolog", module = "ecolog.integrations.cmp.blink_cmp" },
+                    avante = { name = "Avante", module = "blink-cmp-avante" },
                     codecompanion = { name = "CodeCompanion", module = "codecompanion.providers.completion.blink" },
                     copilot = {
                         name = "copilot",
@@ -71,6 +73,7 @@ return {
                             max_attempts = 3,
                         },
                     },
+                    ecolog = { name = "ecolog", module = "ecolog.integrations.cmp.blink_cmp" },
                 },
             },
             completion = {

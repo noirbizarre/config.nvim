@@ -5,6 +5,7 @@ return {
     internals = {
         "Avante",
         "AvanteInput",
+        "AvanteSelectedFiles",
         "NeogitStatus",
         "NvimTree",
         "Outline",

@@ -272,18 +272,11 @@ return {
         ft = "python",
         ---@type venv-selector.Config
         opts = {
-            settings = {
-                options = {
-                    -- If you put the callback here as a global option, its used for all searches (including the default ones by the plugin)
-                    on_telescope_result_callback = function(filename)
-                        filename = filename:gsub(os.getenv("HOME"), "~")
-                        filename = filename:gsub("/bin/python", "")
-                        return filename
-                    end,
-                },
-                notify_user_on_venv_activation = true,
-                debug = true,
+            options = {
+                picker = "native",
             },
+            notify_user_on_venv_activation = true,
+            -- debug = true,
         },
     },
 }

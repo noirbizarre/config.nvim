@@ -80,7 +80,7 @@ return {
                 accept = {
                     -- experimental auto-brackets support
                     auto_brackets = {
-                        enabled = true,
+                        enabled = false,
                     },
                 },
                 documentation = {
@@ -88,6 +88,7 @@ return {
                     auto_show = true,
                     auto_show_delay_ms = 500,
                 },
+                keyword = { range = "full" },
                 list = {
                     selection = {
                         -- auto_insert = true
@@ -110,6 +111,9 @@ return {
                         },
                     },
                 },
+                trigger = {
+                    show_in_snippet = false,
+                },
             },
             snippets = {
                 preset = "luasnip",
@@ -120,7 +124,10 @@ return {
             },
 
             -- experimental signature help support
-            signature = { enabled = true },
+            signature = {
+                enabled = true,
+                window = { border = "single" },
+            },
         },
         -- allows extending the providers array elsewhere in your config
         -- without having to redefine it

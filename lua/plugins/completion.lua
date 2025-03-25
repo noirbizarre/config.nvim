@@ -37,7 +37,7 @@ return {
                 opts = {},
             },
         },
-        version = "v0.*",
+        version = "1.*",
         ---@module 'blink.cmp'
         ---@type blink.cmp.Config
         ---@diagnostic disable: missing-fields

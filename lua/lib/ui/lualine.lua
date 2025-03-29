@@ -13,13 +13,14 @@ local function get_yaml_schema()
 end
 
 local function dirs()
+    local utils = require("lualine.utils.utils")
     local filename = vim.fn.expand("%:~:.")
     local parts = {}
     for part in string.gmatch(filename, "[^/]+") do
         table.insert(parts, part)
     end
     table.remove(parts)
-    return table.concat(parts, " " .. icons.ui.powerline.inner_separators.left .. " ")
+    return utils.stl_escape(table.concat(parts, " " .. icons.ui.powerline.inner_separators.left .. " "))
 end
 
 local function modified()

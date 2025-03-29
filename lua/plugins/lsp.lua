@@ -58,8 +58,21 @@ return {
 
         config = function()
             local lspconfig = require("lspconfig")
+            local configs = require("lspconfig.configs")
             local icons = require("lib.ui.icons")
             local capabilities = require("blink.cmp").get_lsp_capabilities()
+
+            -- Exclude big directories from being watched
+            vim.lsp._watchfiles._poll_exclude_pattern = vim.lsp._watchfiles._poll_exclude_pattern
+                -- Standard cache dirs
+                + vim.glob.to_lpeg("**/.*_cache/**")
+                -- Virtualenv (Need LSP restart)
+                + vim.glob.to_lpeg("**/.venv/**")
+                -- JS/TS
+                + vim.glob.to_lpeg("**/.yarn/**")
+                + vim.glob.to_lpeg("**/node_modules/**")
+                -- rust build assets
+                + vim.glob.to_lpeg("**/target/**")
 
             -- YANL companion
             -- cf. https://www.arthurkoziel.com/json-schemas-in-neovim/

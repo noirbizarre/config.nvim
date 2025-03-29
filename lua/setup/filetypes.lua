@@ -7,6 +7,8 @@ vim.filetype.add({
         wiz = "yaml",
     },
     pattern = {
+        -- Helm Charts
+        [".*/templates/.+%.yaml"] = "helm",
         [".*/kitty/.+%.conf"] = "kitty",
         [".*/hypr/.+%.conf"] = "hyprlang",
         -- VSCode JSONC

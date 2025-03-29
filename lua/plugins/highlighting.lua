@@ -51,6 +51,8 @@ return {
                 "ini",
                 "java",
                 "javascript",
+                "jinja",
+                "jinja_inline",
                 "jq",
                 "jsdoc",
                 "json",
@@ -141,11 +143,6 @@ return {
             { "<leader>xT", "<cmd>TodoTrouble keywords=TODO,FIX,FIXME<cr>", desc = "Todo/Fix/Fixme (Trouble)" },
         },
     },
-    -- Jinja
-    {
-        "HiPhish/jinja.vim",
-    },
-
     -- colorizer
     {
         "catgoose/nvim-colorizer.lua",

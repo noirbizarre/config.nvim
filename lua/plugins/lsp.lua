@@ -201,13 +201,6 @@ return {
                 },
             })
 
-            local hls = {
-                [vim.diagnostic.severity.ERROR] = "DiagnosticSignError",
-                [vim.diagnostic.severity.WARN] = "DiagnosticSignWarn",
-                [vim.diagnostic.severity.HINT] = "DiagnosticSignHint",
-                [vim.diagnostic.severity.INFO] = "DiagnosticSignInfo",
-            }
-
             vim.diagnostic.config({
                 signs = {
                     text = {
@@ -216,8 +209,12 @@ return {
                         [vim.diagnostic.severity.HINT] = icons.diagnostics.Hint,
                         [vim.diagnostic.severity.INFO] = icons.diagnostics.Info,
                     },
-                    linehl = hls,
-                    numhl = hls,
+                    numhl = {
+                        [vim.diagnostic.severity.ERROR] = "DiagnosticSignError",
+                        [vim.diagnostic.severity.WARN] = "DiagnosticSignWarn",
+                        [vim.diagnostic.severity.HINT] = "DiagnosticSignHint",
+                        [vim.diagnostic.severity.INFO] = "DiagnosticSignInfo",
+                    },
                 },
                 severity_sort = true,
                 -- virtual_lines = true,

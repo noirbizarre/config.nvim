@@ -1,24 +1,20 @@
 local icons = require("lib.ui.icons")
 
 return {
-    --- Snippets
-    --- https://github.com/L3MON4D3/LuaSnip
+    --- Snippet editor
     {
-        "L3MON4D3/LuaSnip",
-        dependencies = {
+        "chrisgrieser/nvim-scissors",
+        keys = {
+            { "<leader>se", function() require("scissors").editSnippet() end, desc = "Snippet: Edit" },
             {
-                "rafamadriz/friendly-snippets",
-                config = function()
-                    require("luasnip.loaders.from_vscode").lazy_load()
-                    require("luasnip.loaders.from_vscode").lazy_load({
-                        paths = { vim.fn.stdpath("config") .. "/snippets" },
-                    })
-                end,
+                "<leader>sa",
+                function() require("scissors").addNewSnippet() end,
+                mode = { "n", "x" },
+                desc = "Snippet: Add",
             },
         },
         opts = {
-            history = true,
-            delete_check_events = "TextChanged",
+            snippetDir = vim.fn.stdpath("config") .. "/snippets",
         },
     },
     --- Blink completion engine
@@ -27,7 +23,7 @@ return {
         "saghen/blink.cmp",
         lazy = false, -- lazy loading handled internally
         dependencies = {
-            "L3MON4D3/LuaSnip",
+            "rafamadriz/friendly-snippets",
             "fang2hou/blink-copilot",
             "Kaiser-Yang/blink-cmp-avante",
             --- Colorful Menu (highlight in completions)
@@ -114,9 +110,6 @@ return {
                 trigger = {
                     show_in_snippet = false,
                 },
-            },
-            snippets = {
-                preset = "luasnip",
             },
             -- Disable cmdline completions
             cmdline = {

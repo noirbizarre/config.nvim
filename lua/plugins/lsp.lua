@@ -201,21 +201,27 @@ return {
                 },
             })
 
-            -- replace the default lsp diagnostic symbols
-            for name, icon in pairs(icons.diagnostics) do
-                local hl = "DiagnosticSign" .. name
-                vim.fn.sign_define(hl, { text = icon, numhl = hl, texthl = hl })
-            end
+            local hls = {
+                [vim.diagnostic.severity.ERROR] = "DiagnosticSignError",
+                [vim.diagnostic.severity.WARN] = "DiagnosticSignWarn",
+                [vim.diagnostic.severity.HINT] = "DiagnosticSignHint",
+                [vim.diagnostic.severity.INFO] = "DiagnosticSignInfo",
+            }
 
-            vim.lsp.handlers["textDocument/publishDiagnostics"] =
-                vim.lsp.with(vim.lsp.diagnostic.on_publish_diagnostics, {
-                    signs = true,
-                    severity_sort = true,
-                    symbols = true,
-                    underline = true,
-                    update_in_insert = false,
-                    -- virtual_text = true,
-                })
+            vim.diagnostic.config({
+                signs = {
+                    text = {
+                        [vim.diagnostic.severity.ERROR] = icons.diagnostics.Error,
+                        [vim.diagnostic.severity.WARN] = icons.diagnostics.Warn,
+                        [vim.diagnostic.severity.HINT] = icons.diagnostics.Hint,
+                        [vim.diagnostic.severity.INFO] = icons.diagnostics.Info,
+                    },
+                    linehl = hls,
+                    numhl = hls,
+                },
+                severity_sort = true,
+                -- virtual_lines = true,
+            })
         end,
     },
 

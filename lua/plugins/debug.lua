@@ -3,34 +3,38 @@ return {
         "mfussenegger/nvim-dap",
         dependencies = {
             "mfussenegger/nvim-dap-python",
-            "theHamsta/nvim-dap-virtual-text",
-            "lucaSartore/nvim-dap-exception-breakpoints",
+            { "theHamsta/nvim-dap-virtual-text", opts = {} },
             {
                 "Joakker/lua-json5",
                 lazy = true,
                 build = vim.fn.has("win32") == 1 and "powershell ./install.ps1" or "./install.sh",
+            },
+            {
+                "igorlfs/nvim-dap-view",
+                branch = "feat/scopes",
+                opts = {
+                    winbar = {
+                        sections = { "scopes", "watches", "exceptions", "breakpoints", "threads", "repl" },
+                        default_section = "scopes",
+                    },
+                },
             },
         },
         event = "BufReadPre",
         keys = {
             {
                 "<leader>dB",
-                function() require("dap").set_breakpoint(vim.fn.input("Breakpoint condition: ")) end,
+                function() require("lib.dap").set_conditional_breakpoint() end,
                 desc = "Breakpoint Condition",
             },
             {
                 "<leader>db",
-                function() require("dap").toggle_breakpoint() end,
+                function() require("lib.dap").toggle_breakpoint() end,
                 desc = "Toggle Breakpoint",
             },
             {
-                "<leader>dc",
-                function() require("dap").continue() end,
-                desc = "Continue",
-            },
-            {
                 "<leader>dl",
-                function() require("dap").set_breakpoint(nil, nil, vim.fn.input("Log point message: ")) end,
+                function() require("lib.dap").set_log_point() end,
                 desc = "Set Log Point",
             },
             {
@@ -44,11 +48,6 @@ return {
                 desc = "Go to line (no execute)",
             },
             {
-                "<leader>di",
-                function() require("dap").step_into() end,
-                desc = "Step Into",
-            },
-            {
                 "<leader>dj",
                 function() require("dap").down() end,
                 desc = "Down",
@@ -59,24 +58,9 @@ return {
                 desc = "Up",
             },
             {
-                "<leader>do",
-                function() require("dap").step_out() end,
-                desc = "Step Out",
-            },
-            {
-                "<leader>dn",
-                function() require("dap").step_over() end,
-                desc = "Step Over",
-            },
-            {
                 "<leader>dp",
                 function() require("dap").pause() end,
                 desc = "Pause",
-            },
-            {
-                "<leader>dr",
-                function() require("dap").repl.toggle() end,
-                desc = "Toggle REPL",
             },
             {
                 "<leader>ds",
@@ -95,7 +79,7 @@ return {
             },
             {
                 "<leader>dR",
-                function() require("dap").clear_breakpoints() end,
+                function() require("lib.dao").clear_breakpoints() end,
                 desc = "Removes all breakpoints",
             },
             {
@@ -118,9 +102,20 @@ return {
                 function() require("dap").step_out() end,
                 desc = "Step out",
             },
+            {
+                "<leader>dd",
+                function() require("dap-view").toggle(true) end,
+                desc = "Toggle DAP View",
+            },
+            {
+                "<leader>de",
+                function() require("dap-view").add_expr() end,
+                desc = "Watch expression",
+                mode = { "n", "v" },
+            },
         },
         config = function()
-            require("nvim-dap-virtual-text").setup()
+            local dap, dv = require("dap"), require("dap-view")
 
             -- Compat with VSCode JSONC-based launch.json
             require("dap.ext.vscode").json_decode = require("json5").parse
@@ -130,105 +125,37 @@ return {
             vim.api.nvim_set_hl(0, "DapLogPoint", { ctermbg = 0, fg = "#61afef" }) -- , bg='#31353f' })
             vim.api.nvim_set_hl(0, "DapStopped", { ctermbg = 0, fg = "#98c379" }) -- , bg='#31353f' })
 
-            vim.fn.sign_define(
-                "DapBreakpoint",
-                { text = "", texthl = "DapBreakpoint", linehl = "DapBreakpoint", numhl = "DapBreakpoint" }
-            )
+            vim.fn.sign_define("DapBreakpoint", { text = "", texthl = "DapBreakpoint", numhl = "DapBreakpoint" })
             vim.fn.sign_define(
                 "DapBreakpointCondition",
-                { text = "", texthl = "DapBreakpoint", linehl = "DapBreakpoint", numhl = "DapBreakpoint" }
+                { text = "", texthl = "DapBreakpoint", numhl = "DapBreakpoint" }
             )
             vim.fn.sign_define(
                 "DapBreakpointRejected",
                 { text = "", texthl = "DapBreakpoint", linehl = "DapBreakpoint", numhl = "DapBreakpoint" }
             )
-            vim.fn.sign_define(
-                "DapLogPoint",
-                { text = "", texthl = "DapLogPoint", linehl = "DapLogPoint", numhl = "DapLogPoint" }
-            )
+            vim.fn.sign_define("DapLogPoint", { text = "", texthl = "DapLogPoint", numhl = "DapLogPoint" })
             vim.fn.sign_define(
                 "DapStopped",
                 { text = "", texthl = "DapStopped", linehl = "DapStopped", numhl = "DapStopped" }
             )
 
+            --- Auto Toggle DAP View
+            dap.listeners.before.attach["dap-view-config"] = function() dv.open() end
+            dap.listeners.before.launch["dap-view-config"] = function() dv.open() end
+            dap.listeners.before.event_terminated["dap-view-config"] = function() dv.close() end
+            dap.listeners.before.event_exited["dap-view-config"] = function() dv.close() end
+
             -- Python adapter settings
             -- uses the debugypy installation by mason
-            local debugpyPythonPath = require("mason-registry").get_package("debugpy"):get_install_path()
-                .. "/venv/bin/python3"
-            require("dap-python").setup(debugpyPythonPath, {}) ---@diagnostic disable-line: missing-fields
-        end,
-    },
-    {
-        "rcarriga/nvim-dap-ui",
-        dependencies = {
-            "nvim-neotest/nvim-nio",
-            "mfussenegger/nvim-dap",
-        },
-        keys = {
-            {
-                "<leader>dd",
-                function() require("dapui").toggle({}) end,
-                desc = "Toggle DAP UI",
-            },
-            {
-                "<leader>de",
-                function() require("dapui").eval() end,
-                desc = "Eval",
-                mode = { "n", "v" },
-            },
-        },
-        config = function()
-            local dap = require("dap")
-            local dapui = require("dapui")
+            local debugpy = require("mason-registry").get_package("debugpy")
+            local debugpy_python_path = debugpy:get_install_path() .. "/venv/bin/python"
+            require("dap-python").setup(debugpy_python_path)
 
-            ---@diagnostic disable: missing-fields
-            dapui.setup({
-                layouts = {
-                    {
-                        elements = {
-                            { id = "scopes", size = 0.25 },
-                            "stacks",
-                            "watches",
-                            "breakpoints",
-                        },
-                        size = 40,
-                        position = "left",
-                    },
-                    {
-                        elements = {
-                            "repl",
-                            "console",
-                        },
-                        size = 0.25,
-                        position = "bottom",
-                    },
-                },
+            -- Restore session breakpoints
+            vim.api.nvim_create_autocmd("SessionLoadPost", {
+                callback = function() require("lib.dap").load_breakpoints() end,
             })
-
-            -- Auto toggle DAP UI
-            dap.listeners.before.attach.dapui_config = function() dapui.open() end
-            dap.listeners.before.launch.dapui_config = function() dapui.open() end
-            dap.listeners.before.event_terminated.dapui_config = function() dapui.close() end
-            dap.listeners.before.event_exited.dapui_config = function() dapui.close() end
         end,
-    },
-    {
-        "lucaSartore/nvim-dap-exception-breakpoints",
-        dependencies = { "mfussenegger/nvim-dap" },
-        keys = {
-            {
-                "<leader>de",
-                function() require("nvim-dap-exception-breakpoints")() end,
-                desc = "Toggle Exception Breakpoints",
-            },
-        },
-        config = function() local set_exception_breakpoints = require("nvim-dap-exception-breakpoints") end,
-    },
-    --- Breakpoint persistence
-    --- https://github.com/daic0r/dap-helper.nvim
-    {
-        "daic0r/dap-helper.nvim",
-        dependencies = { "rcarriga/nvim-dap-ui", "mfussenegger/nvim-dap" },
-        opts = {},
     },
 }

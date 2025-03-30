@@ -37,7 +37,7 @@ vim.opt.expandtab = true
 vim.opt.backspace = [[indent,eol,start]]
 
 -- Session Persistence
-vim.opt.sessionoptions = "buffers,curdir,folds,help,tabpages,winsize,terminal"
+vim.opt.sessionoptions = "buffers,curdir,folds,help,tabpages,winsize,globals"
 
 -- Disable swap files
 vim.opt.swapfile = false

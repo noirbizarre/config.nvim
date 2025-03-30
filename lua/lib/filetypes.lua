@@ -15,6 +15,8 @@ return {
         "copilot-chat",
         "dap-console",
         "dap-repl",
+        "dap-view",
+        "dap-view-term",
         "dapui_breakpoints",
         "dapui_console",
         "dapui_scopes",

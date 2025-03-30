@@ -133,7 +133,7 @@ return {
                     basedpyright = {
                         analysis = {
                             autoImportCompletions = true,
-                            diagnosticMode = "workspace",
+                            -- diagnosticMode = "workspace",
                             typeCheckingMode = "standard",
                         },
                     },

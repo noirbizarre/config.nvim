@@ -102,7 +102,6 @@ return {
                 "filename",
                 on_click = function()
                     local dir = vim.fn.expand("%:h")
-                    vim.print(dir)
                     Snacks.picker.files({ dirs = { dir } })
                 end,
                 color = { gui = "bold" },

@@ -343,7 +343,7 @@ return {
         opts = {
             select = {
                 -- Priority list of preferred vim.select implementations
-                backend = { "telescope", "nui", "fzf", "builtin" },
+                backend = { "nui", "builtin" },
             },
         },
     },

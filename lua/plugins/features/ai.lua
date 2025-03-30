@@ -37,19 +37,13 @@ return {
             "CopilotChatDebugInfo",
             "CopilotChatModels",
             "CopilotChatAgents",
+            "CopilotChatPrompts",
         },
         keys = {
             { "<leader>ii", "<cmd>CopilotChatToggle<cr>", desc = "Toggle Copilot Chat" },
             { "<leader>im", "<cmd>CopilotChatModels<cr>", desc = "Copilot Chat Models" },
             { "<leader>ia", "<cmd>CopilotChatAgents<cr>", desc = "Copilot Chat Agents" },
-            {
-                "<leader>ik",
-                function()
-                    local actions = require("CopilotChat.actions")
-                    require("CopilotChat/integrations/snacks").pick(actions.prompt_actions())
-                end,
-                desc = "Copilot Chat Actions",
-            },
+            { "<leader>ik", "<cmd>CopilotChatPrompts<cr>", desc = "Copilot Chat Prompts" },
         },
         opts = {
             -- See Configuration section for options
@@ -63,7 +57,6 @@ return {
         dependencies = {
             "nvim-lua/plenary.nvim",
             "nvim-treesitter/nvim-treesitter",
-            "nvim-telescope/telescope.nvim", -- Optional: For using slash commands
             --- For copilot provider
             "zbirenbaum/copilot.lua",
         },
@@ -78,12 +71,11 @@ return {
             { "<leader>cc", ":CodeCompanionChat Toggle<cr>", mode = { "n", "v" }, desc = "Code Companion chat" },
             { "<leader>ca", ":CodeCompanionActions<cr>", mode = { "n", "v" }, desc = "Code Companion actions" },
             { "<leader>cA", ":CodeCompanionChat Add<cr>", mode = { "v" }, desc = "Code Companion add to chat" },
-            -- { "<leader>kc", ":Telescope codecompanion<cr>", mode = { 'n', 'v' }, desc = "Code Companion action (telescope)"},
         },
         opts = {
             display = {
                 action_palette = {
-                    provider = "telescope",
+                    provider = "default",
                 },
                 chat = {
                     render_headers = false,

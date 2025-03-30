@@ -20,7 +20,6 @@ return {
                 function() require("refactoring").debug.cleanup({}) end,
                 desc = "Clear print statements",
             },
-            -- Telescope menu
             {
                 "<leader>kr",
                 function() require("refactoring").select_refactor() end,

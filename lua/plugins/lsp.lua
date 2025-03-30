@@ -55,6 +55,9 @@ return {
             --- See: https://cmp.saghen.dev/installation.html
             "saghen/blink.cmp",
         },
+        keys = {
+            { "<leader>ky", function() require("yaml-companion").open_ui_select() end, desc = "YAML Schema" },
+        },
 
         config = function()
             local lspconfig = require("lspconfig")
@@ -82,10 +85,8 @@ return {
                     kubernetes = { enabled = true },
                 },
 
-                -- schemas available in Telescope picker
+                -- schemas available in the picker
                 schemas = {
-                    -- not loaded automatically, manually select with
-                    -- :Telescope yaml_schema
                     {
                         name = "Argo CD Application",
                         uri = "https://raw.githubusercontent.com/datreeio/CRDs-catalog/main/argoproj.io/application_v1alpha1.json",
@@ -277,7 +278,7 @@ return {
         "linux-cultist/venv-selector.nvim",
         branch = "regexp",
         lazy = false,
-        dependencies = { "neovim/nvim-lspconfig", "nvim-telescope/telescope.nvim", "mfussenegger/nvim-dap-python" },
+        dependencies = { "neovim/nvim-lspconfig", "mfussenegger/nvim-dap-python" },
         -- event = 'VeryLazy', -- Optional: needed only if you want to type `:VenvSelect` without a keymapping
         keys = {
             { "<leader>lv", "<cmd>VenvSelect<cr>", desc = "Select virtualenv", ft = "python" },

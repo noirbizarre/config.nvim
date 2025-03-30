@@ -132,7 +132,7 @@ return {
             { "<leader>eg", "<cmd>EcologGoto<cr>", desc = "Go to env file" },
             { "<leader>ep", "<cmd>EcologPeek<cr>", desc = "Ecolog peek variable" },
             { "<leader>es", "<cmd>EcologSelect<cr>", desc = "Switch env file" },
-            { "<leader>ke", "<cmd>EcologSnacks<cr>", desc = "Telescope environment variable picker" },
+            { "<leader>ke", "<cmd>EcologSnacks<cr>", desc = "Environment variable picker" },
         },
         -- Lazy loading is done internally
         lazy = false,
@@ -173,8 +173,6 @@ return {
                     cmp = true,
                     peek = false,
                     files = false,
-                    telescope = true,
-                    telescope_previewer = true,
                     snacks = true,
                     snacks_previewer = true,
                 },

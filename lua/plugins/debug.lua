@@ -79,7 +79,7 @@ return {
             },
             {
                 "<leader>dR",
-                function() require("lib.dao").clear_breakpoints() end,
+                function() require("lib.dap").clear_breakpoints() end,
                 desc = "Removes all breakpoints",
             },
             {

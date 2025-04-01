@@ -1,23 +1,4 @@
 return {
-    --- https://github.com/sindrets/diffview.nvim
-    {
-        "sindrets/diffview.nvim",
-        dependencies = {
-            "nvim-tree/nvim-web-devicons",
-        },
-        cmd = {
-            "DiffviewOpen",
-            "DiffviewClose",
-            "DiffviewToggleFiles",
-            "DiffviewFocusFiles",
-        },
-        keys = {
-            { "<leader>gD", "<cmd>DiffviewOpen<cr>", desc = "Repo Diffview", nowait = true },
-            -- { "<leader>gh", "<cmd>DiffviewFileHistory<cr>", desc = "Repo history" },
-            -- { "<leader>gf", "<cmd>DiffviewFileHistory --follow %<cr>", desc = "File history" },
-            { "<leader>gM", "<cmd>DiffviewOpen main<cr>", desc = "Diff with main" },
-        },
-    },
     {
         "akinsho/git-conflict.nvim",
         version = "v2.1.0",
@@ -32,8 +13,8 @@ return {
             "GitConflictListQf",
         },
         keys = {
-            -- { "]g", "<cmd>GitConflictNextConflict<cr>", desc = "Next Conflict" },
-            -- { "[g", "<cmd>GitConflictPrevConflict<cr>", desc = "Previous Conflict" },
+            { "]x", "<cmd>GitConflictNextConflict<cr>", desc = "Next Conflict" },
+            { "[x", "<cmd>GitConflictPrevConflict<cr>", desc = "Previous Conflict" },
             { "<leader>gxq", "<cmd>GitConflictListQf<cr>", desc = "List Conflicts" },
             { "<leader>gxr", "<cmd>GitConflictRefresh<cr>", desc = "Refresh Conflicts" },
             { "<leader>gxo", "<cmd>GitConflictChooseOurs<cr>", desc = "Choose ours" },
@@ -48,7 +29,15 @@ return {
     {
         "lewis6991/gitsigns.nvim",
         event = { "BufReadPre", "BufNewFile" },
+        keys = {
+            { "<leader>gY", "<cmd>Gitsigns toggle_current_line_blame<cr>", desc = "Toggle line blame" },
+            { "<leader>gy", "<cmd>Gitsigns blame<cr>", desc = "Blame" },
+        },
         opts = {
+            current_line_blame_opts = {
+                virt_text_pos = "right_align",
+                delay = 100,
+            },
             on_attach = function(bufnr)
                 local gitsigns = require("gitsigns")
                 local wk = require("which-key")
@@ -102,15 +91,7 @@ return {
             end,
         },
     },
-    {
-        "FabijanZulj/blame.nvim",
-        keys = {
-            { "<leader>gy", "<cmd>BlameToggle<cr>", desc = "Blame" },
-        },
-        opts = {},
-    },
     -- Octo -- Github Issues & pull requests
-    -- https://github.com/pwntester/octo.nvim
     {
         "pwntester/octo.nvim",
         requires = {

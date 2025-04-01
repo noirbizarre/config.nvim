@@ -1,6 +1,5 @@
 return {
     --- The Refactoring library based off the Refactoring book by Martin Fowler
-    --- https://github.com/ThePrimeagen/refactoring.nvim
     {
         "ThePrimeagen/refactoring.nvim",
         keys = {
@@ -37,7 +36,6 @@ return {
         },
     },
     --- Comments
-    --- https://github.com/numToStr/Comment.nvim
     {
         "numToStr/Comment.nvim",
         lazy = false,
@@ -58,7 +56,7 @@ return {
             default_styles = { python = "reST" },
         },
     },
-    -- https://github.com/echasnovski/mini.nvim/blob/main/readmes/mini-move.md
+    -- Move selection
     {
         "echasnovski/mini.move",
         version = false,
@@ -79,7 +77,6 @@ return {
         },
     },
     -- Format
-    -- https://github.com/stevearc/conform.nvim
     {
         "stevearc/conform.nvim",
         event = "BufWritePre",
@@ -113,7 +110,7 @@ return {
             notify_on_error = true,
         },
     },
-    --- https://github.com/zapling/mason-conform.nvim
+    --- Install formatters
     {
         "zapling/mason-conform.nvim",
         dependencies = {
@@ -123,7 +120,6 @@ return {
         config = true,
     },
     --- Global search and replace
-    --- https://github.com/MagicDuck/grug-far.nvim
     {
         "MagicDuck/grug-far.nvim",
         cmd = "GrugFar",
@@ -157,7 +153,6 @@ return {
         opts = { headerMaxWidth = 100 },
     },
     --- Multicursor support
-    --- https://github.com/jake-stewart/multicursor.nvim
     {
         "jake-stewart/multicursor.nvim",
         branch = "1.0",

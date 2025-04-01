@@ -122,7 +122,6 @@ return {
             { "<leader>gb", function() Snacks.picker.git_branches() end, desc = "Git Branches" },
             { "<leader>gd", function() Snacks.picker.git_diff() end, desc = "Git Diff" },
             { "<leader>gg", function() Snacks.lazygit() end, desc = "Lazygit" },
-            { "<leader>gY", function() Snacks.git.blame_line() end, desc = "Git Blame Line" },
             { "<leader>gB", function() Snacks.gitbrowse() end, desc = "Git Browse" },
             { "<leader>gcc", function() Snacks.terminal("git commit", gitwin) end, desc = "Git Commit" },
             { "<leader>gca", function() Snacks.terminal("git amend", gitwin) end, desc = "Git Commit Amend" },

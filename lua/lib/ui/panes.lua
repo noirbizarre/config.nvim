@@ -74,6 +74,7 @@ local opts = {
     },
     right = {
         { title = "Debug", ft = "dap-view", size = { width = 0.25 }, wo = { winbar = false } },
+        { title = "Debug", ft = "dap-repl", size = { width = 0.25 }, wo = { winbar = false } },
         { title = "Debug Term", ft = "dap-view-term", size = { width = 0.25 }, wo = { winbar = false } },
         { title = "Search & replace", ft = "grug-far", size = { width = 0.25 } },
         { title = "Outline", ft = "sagaoutline", size = { width = 0.18 } },

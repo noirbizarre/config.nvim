@@ -145,6 +145,16 @@ return {
             dap.listeners.before.launch["dap-view-config"] = function() dv.open() end
             dap.listeners.before.event_terminated["dap-view-config"] = function() dv.close() end
             dap.listeners.before.event_exited["dap-view-config"] = function() dv.close() end
+            dap.listeners.after.event_initialized["dap-view-close-console"] = function(session)
+                session.on_close["custom.terminal-autoclose"] = function()
+                    for _, buf in ipairs(vim.api.nvim_list_bufs()) do
+                        local bufname = vim.api.nvim_buf_get_name(buf)
+                        if bufname:find("%[dap%-terminal%]") then
+                            vim.api.nvim_buf_delete(buf, { force = true })
+                        end
+                    end
+                end
+            end
 
             -- Python adapter settings
             -- uses the debugypy installation by mason

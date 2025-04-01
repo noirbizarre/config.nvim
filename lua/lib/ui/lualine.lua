@@ -39,6 +39,7 @@ return {
         section_separators = icons.ui.powerline.separators,
         component_separators = icons.ui.powerline.inner_separators,
         icons_enabled = true,
+        always_show_tabline = false,
         globalstatus = true,
         disabled_focus = filetypes.internals,
         disabled_filetypes = {
@@ -88,6 +89,19 @@ return {
         lualine_x = {},
         lualine_y = {},
         lualine_z = { "location" },
+    },
+    tabline = {
+        lualine_a = {
+            {
+                "tabs",
+                mode = "tabs",
+            },
+        },
+        lualine_b = {},
+        lualine_c = {},
+        lualine_x = {},
+        lualine_y = {},
+        lualine_z = {},
     },
     winbar = {
         lualine_a = {

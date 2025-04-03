@@ -88,6 +88,16 @@ return {
                 inline = {
                     adapter = "copilot",
                 },
+                tools = {
+                    ["mcp"] = {
+                        -- Prevent mcphub from loading before needed
+                        callback = function() return require("mcphub.extensions.codecompanion") end,
+                        description = "Call tools and resources from the MCP Servers",
+                        opts = {
+                            requires_approval = true,
+                        },
+                    },
+                },
             },
         },
     },
@@ -195,6 +205,36 @@ return {
             },
             file_selector = {
                 provider = "snacks",
+            },
+        },
+        system_prompt = function()
+            local hub = require("mcphub").get_hub_instance()
+            return hub:get_active_servers_prompt()
+        end,
+        -- The custom_tools type supports both a list and a function that returns a list. Using a function here prevents requiring mcphub before it's loaded
+        custom_tools = function()
+            return {
+                require("mcphub.extensions.avante").mcp_tool(),
+            }
+        end,
+    },
+    --- MCP support
+    {
+        "ravitemer/mcphub.nvim",
+        dependencies = {
+            "nvim-lua/plenary.nvim", -- Required for Job and HTTP requests
+        },
+        -- comment the following line to ensure hub will be ready at the earliest
+        cmd = "MCPHub", -- lazy load by default
+        -- build = "npm install -g mcp-hub@latest", -- Installs required mcp-hub npm module
+        -- uncomment this if you don't want mcp-hub to be available globally or can't use -g
+        build = "bundled_build.lua", -- Use this and set use_bundled_binary = true in opts  (see Advanced configuration)
+        opts = {
+            config = vim.fn.stdpath("config") .. "/data/mcphub.json",
+            use_bundled_binary = true,
+            extensions = {
+                avante = {},
+                codecompanion = {},
             },
         },
     },

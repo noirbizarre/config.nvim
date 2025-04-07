@@ -426,7 +426,10 @@ return {
             "AndreM222/copilot-lualine",
         },
         event = "VeryLazy",
-        opts = require("lib.ui.lualine"),
+        opts = function()
+            --- Allows to requires other plugins
+            return require("lib.ui.lualine")
+        end,
     },
     --- Set and display key bindings
     --- https://github.com/folke/which-key.nvim

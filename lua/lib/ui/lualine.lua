@@ -78,6 +78,7 @@ return {
                 show_colors = true,
                 on_click = function() vim.cmd("Copilot toggle") end,
             },
+            { require("mcphub.extensions.lualine") },
         },
         lualine_y = { "progress" },
         lualine_z = { "location", { "harpoon2", no_harpoon = "" } },

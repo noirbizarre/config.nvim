@@ -201,22 +201,34 @@ return {
             provider = "copilot",
             auto_suggestions_provider = "copilot",
             copilot = {
-                model = "claude-3.7-sonnet-thought",
+                model = "claude-3.7-sonnet",
             },
             file_selector = {
                 provider = "snacks",
             },
+            system_prompt = function()
+                local hub = require("mcphub").get_hub_instance()
+                return hub:get_active_servers_prompt()
+            end,
+            -- The custom_tools type supports both a list and a function that returns a list. Using a function here prevents requiring mcphub before it's loaded
+            custom_tools = function()
+                return {
+                    require("mcphub.extensions.avante").mcp_tool(),
+                }
+            end,
+            disabled_tools = {
+                "list_files",
+                "search_files",
+                "read_file",
+                "create_file",
+                "rename_file",
+                "delete_file",
+                "create_dir",
+                "rename_dir",
+                "delete_dir",
+                "bash",
+            },
         },
-        system_prompt = function()
-            local hub = require("mcphub").get_hub_instance()
-            return hub:get_active_servers_prompt()
-        end,
-        -- The custom_tools type supports both a list and a function that returns a list. Using a function here prevents requiring mcphub before it's loaded
-        custom_tools = function()
-            return {
-                require("mcphub.extensions.avante").mcp_tool(),
-            }
-        end,
     },
     --- MCP support
     {
@@ -230,11 +242,18 @@ return {
         -- uncomment this if you don't want mcp-hub to be available globally or can't use -g
         build = "bundled_build.lua", -- Use this and set use_bundled_binary = true in opts  (see Advanced configuration)
         opts = {
-            config = vim.fn.stdpath("config") .. "/data/mcphub.json",
+            config = os.getenv("MCP_SERVERS_CONF") or (vim.fn.stdpath("config") .. "/data/mcphub.json"),
             use_bundled_binary = true,
             extensions = {
                 avante = {},
                 codecompanion = {},
+            },
+            -- Logging configuration
+            log = {
+                level = vim.log.levels.INFO,
+                to_file = true,
+                file_path = vim.fn.stdpath("state") .. "/mcphub.log",
+                -- prefix = "MCPHub",
             },
         },
     },

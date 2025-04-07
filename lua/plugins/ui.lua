@@ -16,7 +16,7 @@ return {
                 dim_inactive = true, -- Non focused panes set to alternative background
                 styles = {
                     sidebars = "transparent",
-                    floats = "trnsparent",
+                    -- floats = "transparent",
                 },
                 ---@param hl Highlights
                 ---@param c ColorScheme
@@ -71,6 +71,14 @@ return {
                     -- Tree Sitter Context
                     hl.TreesitterContext = { bg = c.base03 }
                     hl.TreesitterContextBottom = { underline = true }
+
+                    -- Avante
+                    hl.AvanteSidebarNormal = { link = "Normal" }
+                    hl.AvanteReversedTitle = { bg = c.bg_dark }
+                    -- hl.AvanteReversedSubtitle = { fg = c.bg_dark,  bg  = c.bg_dark }
+                    -- hl.AvanteReversedThirdTitle = { fg = c.blue300 }
+                    hl.AvanteSidebarWinSeparator = { link = "WinSeparator" }
+                    hl.AvanteSidebarWinHorizontalSeparator = { link = "WinSeparator" }
                 end,
             })
 

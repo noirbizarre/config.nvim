@@ -28,7 +28,11 @@ require("lazy").setup({
                 "MasonUninstallAll",
                 "MasonLog",
             },
-            config = true,
+            opts = {
+                -- ui = {
+                --     border = "rounded",
+                -- },
+            },
         },
         -- import your plugins
         { import = "plugins" },
@@ -56,4 +60,7 @@ require("lazy").setup({
             },
         },
     },
+    -- ui = {
+    --     border = "rounded",
+    -- },
 })

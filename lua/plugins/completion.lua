@@ -15,6 +15,10 @@ return {
         },
         opts = {
             snippetDir = vim.fn.stdpath("config") .. "/snippets",
+            snippetSelection = {
+                picker = "snacks",
+            },
+            jsonFormatter = "jq",
         },
     },
     --- Blink completion engine

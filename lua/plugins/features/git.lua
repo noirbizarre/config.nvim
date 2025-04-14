@@ -74,7 +74,6 @@ return {
                     { "<leader>gR", gitsigns.reset_buffer, desc = "Reset buffer" },
                     { "<leader>ga", gitsigns.stage_hunk, desc = "Stage hunk" },
                     { "<leader>gr", gitsigns.reset_hunk, desc = "Reset hunk" },
-                    { "<leader>gu", gitsigns.undo_stage_hunk, desc = "Undo stage hunk" },
                     {
                         "<leader>ga",
                         function() gitsigns.stage_hunk({ vim.fn.line("."), vim.fn.line("v") }) end,

@@ -245,6 +245,7 @@ return {
                 enabled = true,
                 timeout = 3000,
             },
+            image = {},
             indent = {
                 enabled = true,
                 indent = {

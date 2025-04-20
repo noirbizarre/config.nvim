@@ -70,7 +70,7 @@ return {
                 "ninja",
                 "nix",
                 "norg",
-                "org",
+                -- "org",
                 "php",
                 "po",
                 "printf",

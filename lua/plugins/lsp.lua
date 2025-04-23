@@ -149,18 +149,6 @@ return {
                     },
                 },
             })
-            lspconfig.rust_analyzer.setup({
-                capabilities = capabilities,
-                settings = {
-                    ["rust-analyzer"] = {
-                        cargo = { allFeatures = true },
-                        checkOnSave = {
-                            command = "clippy",
-                            extraArgs = { "--no-deps" },
-                        },
-                    },
-                },
-            })
             lspconfig.helm_ls.setup({ capabilities = capabilities })
             lspconfig.taplo.setup({ capabilities = capabilities })
             lspconfig.vale_ls.setup({ capabilities = capabilities })

@@ -12,7 +12,6 @@ return {
             "haydenmeade/neotest-jest",
             "nvim-neotest/neotest-go",
             "nvim-neotest/neotest-python",
-            "rouge8/neotest-rust",
             "HiPhish/neotest-busted",
         },
         ft = {
@@ -96,8 +95,8 @@ return {
                     }),
                     require("neotest-jest"),
                     require("neotest-go"),
-                    require("neotest-rust"),
                     require("neotest-busted"),
+                    require("rustaceanvim.neotest"),
                 },
             })
         end,

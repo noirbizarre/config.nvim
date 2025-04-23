@@ -17,6 +17,7 @@ vim.filetype.add({
         [".*/%.local/bin/*"] = "sh",
         [".*/%.alias%.d/.+%.alias"] = "sh",
         [".*/%.env%.d/.+%.path"] = "sh",
+        [".*/%.config/tmux/.+%.conf"] = "tmux",
         -- ["%.env%.[%w_.-]+"] = "sh",
         [".*/.+%.secret"] = "sh",
     },

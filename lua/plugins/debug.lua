@@ -11,7 +11,7 @@ return {
             },
             {
                 "igorlfs/nvim-dap-view",
-                dev = true,
+                -- dev = true,
                 opts = {
                     winbar = {
                         sections = { "scopes", "watches", "exceptions", "breakpoints", "threads", "repl" },

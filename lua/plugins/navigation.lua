@@ -94,18 +94,6 @@ return {
         ---@type quicker.SetupOptions
         opts = {},
     },
-    {
-        "swaits/zellij-nav.nvim",
-        -- lazy = true,
-        event = "VeryLazy",
-        keys = {
-            { "<M-h>", "<cmd>ZellijNavigateLeftTab<cr>", { silent = true, desc = "Navigate left or tab" } },
-            { "<M-j>", "<cmd>ZellijNavigateDown<cr>", { silent = true, desc = "Navigate down" } },
-            { "<M-k>", "<cmd>ZellijNavigateUp<cr>", { silent = true, desc = "Navigate up" } },
-            { "<M-l>", "<cmd>ZellijNavigateRightTab<cr>", { silent = true, desc = "Navigate right or tab" } },
-        },
-        opts = {},
-    },
     --- detect and open links
     {
         "chrishrb/gx.nvim",

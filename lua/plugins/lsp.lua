@@ -1,9 +1,9 @@
 return {
-    --- https://github.com/williamboman/mason-lspconfig.nvim
     {
-        "williamboman/mason-lspconfig.nvim",
+        "mason-org/mason-lspconfig.nvim",
+        version = "1.x", -- TODO: Migrate to Mason 2.x
         dependencies = {
-            "williamboman/mason.nvim",
+            "mason-org/mason.nvim",
         },
         cmd = {
             "LspInstall",
@@ -27,8 +27,8 @@ return {
         dependencies = {
             -- json schemas
             "b0o/schemastore.nvim",
-            "williamboman/mason.nvim",
-            "williamboman/mason-lspconfig.nvim",
+            "mason-org/mason.nvim",
+            "mason-org/mason-lspconfig.nvim",
             "someone-stole-my-name/yaml-companion.nvim",
             --  Faster LuaLS setup for Neovim
             -- https://github.com/folke/lazydev.nvim
@@ -252,11 +252,11 @@ return {
             }
         end,
     },
-    --- https://github.com/rshkarin/mason-nvim-lint
+    --- Automatically install linters
     {
         "rshkarin/mason-nvim-lint",
         dependencies = {
-            "williamboman/mason.nvim",
+            "mason-org/mason.nvim",
             "mfussenegger/nvim-lint",
         },
         opts = {

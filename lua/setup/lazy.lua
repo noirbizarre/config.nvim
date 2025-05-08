@@ -18,9 +18,9 @@ vim.opt.rtp:prepend(lazypath)
 require("lazy").setup({
     spec = {
         --- Mason - Fetch binaries
-        --- https://github.com/williamboman/mason.nvim
         {
-            "williamboman/mason.nvim",
+            "mason-org/mason.nvim",
+            version = "1.x", -- TODO: Migrate to Mason 2.x
             cmd = {
                 "Mason",
                 "MasonInstall",

@@ -20,7 +20,7 @@ require("lazy").setup({
         --- Mason - Fetch binaries
         {
             "mason-org/mason.nvim",
-            version = "1.x", -- TODO: Migrate to Mason 2.x
+            version = "^1.0.0", -- TODO: Migrate to Mason 2.x
             cmd = {
                 "Mason",
                 "MasonInstall",

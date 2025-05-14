@@ -20,7 +20,7 @@ return {
                 desc = "Clear print statements",
             },
             {
-                "<leader>kr",
+                "<leader>rr",
                 function() require("refactoring").select_refactor() end,
                 mode = { "n", "x" },
                 desc = "Refactor",

@@ -16,40 +16,6 @@ return {
             panel = { enabled = false },
         },
     },
-    --- CopilotChat
-    --- https://github.com/CopilotC-Nvim/CopilotChat.nvim
-    {
-        "CopilotC-Nvim/CopilotChat.nvim",
-        dependencies = {
-            { "zbirenbaum/copilot.lua" },
-            { "nvim-lua/plenary.nvim" }, -- for curl, log wrapper
-        },
-        build = "make tiktoken", -- Only on MacOS or Linux
-        cmd = {
-            "CopilotChat",
-            "CopilotChatOpen",
-            "CopilotChatClose",
-            "CopilotChatToggle",
-            "CopilotChatStop",
-            "CopilotChatReset",
-            "CopilotChatSave",
-            "CopilotChatLoad",
-            "CopilotChatDebugInfo",
-            "CopilotChatModels",
-            "CopilotChatAgents",
-            "CopilotChatPrompts",
-        },
-        keys = {
-            { "<leader>ii", "<cmd>CopilotChatToggle<cr>", desc = "Toggle Copilot Chat" },
-            { "<leader>im", "<cmd>CopilotChatModels<cr>", desc = "Copilot Chat Models" },
-            { "<leader>ia", "<cmd>CopilotChatAgents<cr>", desc = "Copilot Chat Agents" },
-            { "<leader>ik", "<cmd>CopilotChatPrompts<cr>", desc = "Copilot Chat Prompts" },
-        },
-        opts = {
-            -- See Configuration section for options
-        },
-        -- See Commands section for default commands if you want to lazy load on them
-    },
     --- CodeCompanion
     --- https://github.com/olimorris/codecompanion.nvim
     {

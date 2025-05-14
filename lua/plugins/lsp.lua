@@ -60,10 +60,27 @@ return {
         },
 
         config = function()
-            local lspconfig = require("lspconfig")
-            local configs = require("lspconfig.configs")
             local icons = require("lib.ui.icons")
-            local capabilities = require("blink.cmp").get_lsp_capabilities()
+
+            vim.lsp.enable({
+                "basedpyright",
+                "bashls",
+                "clangd",
+                "docker_compose_language_service",
+                "dockerls",
+                "helm_ls",
+                "jinja_lsp",
+                "jsonls",
+                "ltex_plus",
+                "lua_ls",
+                "marksman",
+                "ruff",
+                "taplo",
+                -- "ty",
+                "vale_ls",
+                "vimls",
+                "yamlls",
+            })
 
             -- Exclude big directories from being watched
             vim.lsp._watchfiles._poll_exclude_pattern = vim.lsp._watchfiles._poll_exclude_pattern
@@ -76,6 +93,63 @@ return {
                 + vim.glob.to_lpeg("**/node_modules/**")
                 -- rust build assets
                 + vim.glob.to_lpeg("**/target/**")
+
+            vim.lsp.config("ty", {
+                ty = {
+                    experimental = {
+                        completions = {
+                            enable = true,
+                        },
+                    },
+                },
+            })
+            vim.lsp.config("basedpyright", {
+                settings = {
+                    basedpyright = {
+                        analysis = {
+                            autoImportCompletions = true,
+                            -- diagnosticMode = "workspace",
+                            typeCheckingMode = "standard",
+                        },
+                    },
+                },
+            })
+            vim.lsp.config("jsonls", {
+                settings = {
+                    json = {
+                        schemas = require("schemastore").json.schemas(),
+                        validate = { enable = true },
+                    },
+                },
+            })
+            vim.lsp.config("dockerls", {
+                settings = {
+                    docker = {
+                        languageserver = {
+                            formatter = {
+                                ignoreMultilineInstructions = true,
+                            },
+                        },
+                    },
+                },
+            })
+            vim.lsp.config("ltex_plus", {
+                settings = {
+                    ltex = {
+                        checkFrequency = "save",
+                        language = { "en-US", "fr" },
+                        languageToolHttpServerUri = "https://api.languagetoolplus.com/",
+                        languageToolOrg = {
+                            username = vim.env.LANGUETOOL_USER,
+                            apikey = vim.env.LANGUETOOL_APIKEY,
+                        },
+                        additionalRules = {
+                            enablePickyRules = true,
+                            motherTongue = { "fr" },
+                        },
+                    },
+                },
+            })
 
             -- YANL companion
             -- cf. https://www.arthurkoziel.com/json-schemas-in-neovim/
@@ -100,7 +174,7 @@ return {
                 },
 
                 lspconfig = {
-                    capabilities = capabilities,
+                    -- capabilities = capabilities,
                     settings = {
                         yaml = {
                             validate = true,
@@ -124,70 +198,7 @@ return {
                     },
                 },
             })
-
-            lspconfig.bashls.setup({ capabilities = capabilities })
-            lspconfig.lua_ls.setup({ capabilities = capabilities })
-            lspconfig.basedpyright.setup({
-                capabilities = capabilities,
-                settings = {
-                    basedpyright = {
-                        analysis = {
-                            autoImportCompletions = true,
-                            -- diagnosticMode = "workspace",
-                            typeCheckingMode = "standard",
-                        },
-                    },
-                },
-            })
-            lspconfig.ruff.setup({ capabilities = capabilities })
-            lspconfig.jsonls.setup({
-                capabilities = capabilities,
-                settings = {
-                    json = {
-                        schemas = require("schemastore").json.schemas(),
-                        validate = { enable = true },
-                    },
-                },
-            })
-            lspconfig.helm_ls.setup({ capabilities = capabilities })
-            lspconfig.taplo.setup({ capabilities = capabilities })
-            lspconfig.vale_ls.setup({ capabilities = capabilities })
-            lspconfig.vimls.setup({ capabilities = capabilities })
-            lspconfig.jinja_lsp.setup({ capabilities = capabilities })
-            lspconfig.marksman.setup({ capabilities = capabilities })
-            lspconfig.clangd.setup({ capabilities = capabilities })
-            lspconfig.yamlls.setup(yaml_cfg)
-            lspconfig.docker_compose_language_service.setup({ capabilities = capabilities })
-            lspconfig.dockerls.setup({
-                capabilities = capabilities,
-                settings = {
-                    docker = {
-                        languageserver = {
-                            formatter = {
-                                ignoreMultilineInstructions = true,
-                            },
-                        },
-                    },
-                },
-            })
-            lspconfig.ltex_plus.setup({
-                capabilities = capabilities,
-                settings = {
-                    ltex = {
-                        checkFrequency = "save",
-                        language = { "en-US", "fr" },
-                        languageToolHttpServerUri = "https://api.languagetoolplus.com/",
-                        languageToolOrg = {
-                            username = vim.env.LANGUETOOL_USER,
-                            apikey = vim.env.LANGUETOOL_APIKEY,
-                        },
-                        additionalRules = {
-                            enablePickyRules = true,
-                            motherTongue = { "fr" },
-                        },
-                    },
-                },
-            })
+            vim.lsp.config("yamlls", yaml_cfg)
 
             vim.diagnostic.config({
                 signs = {

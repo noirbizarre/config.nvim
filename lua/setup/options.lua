@@ -44,7 +44,7 @@ vim.opt.swapfile = false
 
 -- Format options
 -- https://neovim.io/doc/user/options.html#'formatoptions'
-vim.opt.formatoptions = "jcroqlnt" -- tcqj
+vim.opt.formatoptions = "jroqln" -- tcqj
 
 vim.opt.termguicolors = true -- True color support
 vim.opt.undofile = true

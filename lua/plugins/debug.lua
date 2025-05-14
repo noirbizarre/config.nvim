@@ -202,10 +202,7 @@ return {
             end
 
             -- Python adapter settings
-            -- uses the debugypy installation by mason
-            local debugpy = require("mason-registry").get_package("debugpy")
-            local debugpy_python_path = debugpy:get_install_path() .. "/venv/bin/python"
-            require("dap-python").setup(debugpy_python_path)
+            require("dap-python").setup(vim.fn.exepath("debugpy-adapter"))
 
             -- Restore session breakpoints
             vim.api.nvim_create_autocmd("SessionLoadPost", {

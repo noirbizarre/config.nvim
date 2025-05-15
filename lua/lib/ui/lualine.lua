@@ -48,7 +48,21 @@ return {
         },
     },
     sections = {
-        lualine_a = { "mode" },
+        lualine_a = {
+            "mode",
+            {
+                "macro",
+                fmt = function()
+                    local reg = vim.fn.reg_recording()
+                    if reg ~= "" then
+                        return "  @" .. reg
+                    end
+                    return nil
+                end,
+                color = { fg = "#b60000", bold = true },
+                draw_empty = false,
+            },
+        },
         lualine_b = {
             {
                 "branch",

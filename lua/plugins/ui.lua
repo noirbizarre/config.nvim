@@ -5,7 +5,6 @@ local gitwin = { win = { width = 0.4, height = 0.4 } }
 
 return {
     --- Solarized Osaka
-    --- https://github.com/craftzdog/solarized-osaka.nvim
     {
         "craftzdog/solarized-osaka.nvim",
         lazy = false,
@@ -86,7 +85,6 @@ return {
         end,
     },
     --- A collection of small QoL plugins for Neovim
-    --- https://github.com/folke/snacks.nvim
     {
         "folke/snacks.nvim",
         priority = 1000,
@@ -346,7 +344,6 @@ return {
     },
 
     --- Override Input and Select
-    --- https://github.com/stevearc/dressing.nvim
     {
         "stevearc/dressing.nvim",
         opts = {
@@ -371,10 +368,33 @@ return {
     {
         "nvzone/minty",
         cmd = { "Shades", "Huefy" },
+        keys = {
+            {
+                "<leader>uc",
+                function() require("minty.huefy").open() end,
+                mode = { "n", "v" },
+                desc = "Color picker",
+            },
+        },
+        opts = {
+            huefy = {
+                -- border = false
+                mappings = function(bufs) -- bufs is a table cuz 2 bufs!
+                    local wk = require("which-key")
+                    local api = require("minty.huefy.api")
+
+                    for _, buf in ipairs(bufs) do
+                        wk.add({
+                            buffer = buf,
+                            { "C-s", api.save_color, desc = "Save color" },
+                        })
+                    end
+                end,
+            },
+        },
     },
 
     --- Highly experimental plugin that completely replaces the UI for messages, cmdline and the popupmenu
-    --- https://github.com/folke/noice.nvim
     {
         "folke/noice.nvim",
         event = "VeryLazy",
@@ -416,7 +436,6 @@ return {
         },
     },
     --- Bottom status bar
-    --- https://github.com/nvim-lualine/lualine.nvim
     {
         "nvim-lualine/lualine.nvim",
         dependencies = {
@@ -441,7 +460,6 @@ return {
         end,
     },
     --- Set and display key bindings
-    --- https://github.com/folke/which-key.nvim
     {
         "folke/which-key.nvim",
         cmd = "WhichKey",
@@ -460,7 +478,6 @@ return {
         },
     },
     -- Better inline diagnostic
-    -- https://github.com/rachartier/tiny-inline-diagnostic.nvim
     {
         "rachartier/tiny-inline-diagnostic.nvim",
         event = { "VeryLazy", "LspAttach" },

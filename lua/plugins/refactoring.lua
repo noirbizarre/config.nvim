@@ -194,8 +194,54 @@ return {
                     desc = "Match new cursors within selection by regex",
                 },
                 { "<leader>\\x", mc.clearCursors, desc = "Clear cursors" },
+                -- Add and remove cursors with control + left click.
+                { "<c-leftmouse>", mc.handleMouse, desc = "Add/Remove cursor with mouse" },
+                { "<c-leftdrag>", mc.handleMouseDrag, desc = "Drag to add cursors" },
+                { "<c-leftrelease>", mc.handleMouseRelease, desc = "Release mouse to add cursors" },
+                -- Operators
+                -- { "gm", mc.addCursorOperator, desc = "Multicursor motion operator" },
+                -- { "g\\", mc.operator, desc = "Multicursor operator" },
             }
         end,
-        config = function() require("multicursor-nvim").setup() end,
+        config = function()
+            local mc = require("multicursor-nvim")
+            mc.setup()
+
+            -- Mappings defined in a keymap layer only apply when there are
+            -- multiple cursors. This lets you have overlapping mappings.
+            mc.addKeymapLayer(function(layerSet)
+                -- Select a different cursor as the main one.
+                layerSet({ "n", "x" }, "<left>", mc.prevCursor)
+                layerSet({ "n", "x" }, "<right>", mc.nextCursor)
+
+                -- Delete the main cursor.
+                layerSet({ "n", "x" }, "<leader>x", mc.deleteCursor)
+
+                -- Enable and clear cursors using escape.
+                layerSet("n", "<esc>", function()
+                    if not mc.cursorsEnabled() then
+                        mc.enableCursors()
+                    else
+                        mc.clearCursors()
+                    end
+                end)
+            end)
+        end,
+    },
+    --- Add live visual selection to multicursor
+    {
+        "zaucy/mcos.nvim",
+        dependencies = {
+            "jake-stewart/multicursor.nvim",
+        },
+        keys = {
+            {
+                "<leader>\\v",
+                function() require("mcos").bufkeymapfunc() end,
+                mode = { "n", "v" },
+                desc = "Multicursor Visual Selection",
+            },
+        },
+        opts = {},
     },
 }

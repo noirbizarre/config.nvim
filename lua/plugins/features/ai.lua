@@ -2,7 +2,6 @@ local ai = require("lib.ai")
 
 return {
     --- Copilot
-    --- https://github.com/zbirenbaum/copilot.lua
     {
         "zbirenbaum/copilot.lua",
         cmd = "Copilot",
@@ -17,7 +16,6 @@ return {
         },
     },
     --- CodeCompanion
-    --- https://github.com/olimorris/codecompanion.nvim
     {
         "olimorris/codecompanion.nvim",
         dependencies = {
@@ -169,7 +167,8 @@ return {
             provider = "copilot",
             auto_suggestions_provider = "copilot",
             copilot = {
-                model = "claude-3.7-sonnet",
+                model = "gpt-4.1",
+                -- model = "claude-3.7-sonnet",
             },
             file_selector = {
                 provider = "snacks",
@@ -250,7 +249,7 @@ return {
                     __inherited_from = "copilot",
                     model = "gpt-4.1",
                     display_name = "copilot/gpt-4.1",
-                    max_tokens = 32768,
+                    max_tokens = 128000,
                     -- disable_tools = true,
                 },
                 ["copilot/gemini-2.0"] = {

@@ -111,6 +111,17 @@ return {
             { "<leader>kl", function() Snacks.picker.spelling() end, desc = "Spelling" },
             { "<leader>kv", function() Snacks.picker.registers() end, desc = "Registers" },
             { "<leader>k,", function() Snacks.picker.resume() end, desc = "Resume" },
+            {
+                "<leader>k;",
+                function() Snacks.picker.icons() end,
+                desc = "Emojis",
+            },
+            {
+                "<M-;>",
+                function() Snacks.picker.icons() end,
+                desc = "Emojis",
+                mode = { "n", "i" },
+            },
             --- LSP
             { "gd", function() Snacks.picker.lsp_definitions() end, desc = "Go to Definition" },
             { "gi", function() Snacks.picker.lsp_implementations() end, desc = "Go to Implementation" },
@@ -129,6 +140,12 @@ return {
             { "<leader>gd", function() Snacks.picker.git_diff() end, desc = "Git Diff" },
             { "<leader>gg", function() Snacks.lazygit() end, desc = "Lazygit" },
             { "<leader>gB", function() Snacks.gitbrowse() end, mode = { "n", "v" }, desc = "Git Browse" },
+            {
+                "<leader>gM",
+                function() Snacks.gitbrowse({ what = "file", branch = "main" }) end,
+                mode = { "n", "v" },
+                desc = "Git Browse (main)",
+            },
             { "<leader>gcc", function() Snacks.terminal("git commit", gitwin) end, desc = "Git Commit" },
             { "<leader>gca", function() Snacks.terminal("git amend", gitwin) end, desc = "Git Commit Amend" },
             { "<leader>gcA", function() Snacks.terminal("git commit --all", gitwin) end, desc = "Git Commit All" },
@@ -162,12 +179,6 @@ return {
                 function() Snacks.words.jump(-vim.v.count1) end,
                 desc = "Prev Reference",
                 mode = { "n", "t" },
-            },
-            -- custom pickers
-            {
-                "<leader>k;",
-                function() Snacks.picker.icons() end,
-                desc = "Emojis",
             },
         },
         opts = {
@@ -311,6 +322,7 @@ return {
                             -- ["<Esc>"] = { "close", mode = { "n", "i" } },
                             ["<c-l>"] = { "toggle_live", mode = { "i", "n" } },
                             ["<c-i>"] = { "toggle_ignored", mode = { "i", "n" } },
+                            ["<c-r>"] = { "toggle_ignored", mode = { "i", "n" } },
                             ["<c-h>"] = { "toggle_hidden", mode = { "i", "n" } },
                             ["<PageDown>"] = { "list_scroll_down", mode = { "i", "n" } },
                             ["<PageUp>"] = { "list_scroll_up", mode = { "i", "n" } },
@@ -338,6 +350,18 @@ return {
             styles = {
                 notification = {
                     wo = { wrap = true }, -- Wrap notifications
+                },
+            },
+            zen = {
+                win = {
+                    backdrop = {
+                        transparent = true,
+                        bg = "#003345",
+                        -- bg = "#e5e9f0",
+                        blend = 60,
+                    },
+                    wo = { winhighlight = "NormalFloat:Normal" },
+                    width = 140,
                 },
             },
         },

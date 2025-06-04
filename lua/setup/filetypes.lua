@@ -5,6 +5,7 @@ vim.filetype.add({
         j2 = "jinja",
         alias = "sh",
         wiz = "yaml",
+        avanterules = "jinja.markdown",
     },
     pattern = {
         -- Helm Charts

@@ -95,10 +95,14 @@ return {
                 + vim.glob.to_lpeg("**/target/**")
 
             vim.lsp.config("ty", {
-                ty = {
-                    experimental = {
-                        completions = {
-                            enable = true,
+                init_options = {
+                    settings = {
+                        ty = {
+                            experimental = {
+                                completions = {
+                                    enable = true,
+                                },
+                            },
                         },
                     },
                 },

@@ -166,10 +166,6 @@ return {
         opts = {
             provider = "copilot",
             auto_suggestions_provider = "copilot",
-            copilot = {
-                model = "gpt-4.1",
-                -- model = "claude-3.7-sonnet",
-            },
             file_selector = {
                 provider = "snacks",
             },
@@ -195,7 +191,11 @@ return {
                 "delete_dir",
                 "bash",
             },
-            vendors = {
+            providers = {
+                copilot = {
+                    model = "gpt-4.1",
+                    -- model = "claude-3.7-sonnet",
+                },
                 -- ["copilot/claude-3.5"] = {
                 --     __inherited_from = "copilot",
                 --     model = "claude-3.5-sonnet",
@@ -214,56 +214,56 @@ return {
                     __inherited_from = "copilot",
                     model = "claude-3.7-sonnet-thought",
                     display_name = "copilot/claude-3.7-thought",
-                    max_tokens = 65536,
+                    extra_request_body = { max_tokens = 65536 },
                     -- disable_tools = true,
                 },
                 ["copilot/o1"] = {
                     __inherited_from = "copilot",
                     model = "o1",
                     display_name = "copilot/o1",
-                    max_tokens = 100000,
+                    extra_request_body = { max_tokens = 100000 },
                     -- disable_tools = true,
                 },
                 ["copilot/o1-mini"] = {
                     __inherited_from = "copilot",
                     model = "o1-mini",
                     display_name = "copilot/o1-mini",
-                    max_tokens = 100000,
+                    extra_request_body = { max_tokens = 100000 },
                     -- disable_tools = true,
                 },
                 ["copilot/o3-mini"] = {
                     __inherited_from = "copilot",
                     model = "o3-mini",
                     display_name = "copilot/o3-mini",
-                    max_tokens = 100000,
+                    extra_request_body = { max_tokens = 100000 },
                     -- disable_tools = true,
                 },
                 ["copilot/o4-mini"] = {
                     __inherited_from = "copilot",
                     model = "o4-mini",
                     display_name = "copilot/o4-mini",
-                    max_tokens = 100000,
+                    extra_request_body = { max_tokens = 100000 },
                     -- disable_tools = true,
                 },
                 ["copilot/gpt-4.1"] = {
                     __inherited_from = "copilot",
                     model = "gpt-4.1",
                     display_name = "copilot/gpt-4.1",
-                    max_tokens = 128000,
+                    extra_request_body = { max_tokens = 128000 },
                     -- disable_tools = true,
                 },
                 ["copilot/gemini-2.0"] = {
                     __inherited_from = "copilot",
                     model = "gemini-2.0-flash-001",
                     display_name = "copilot/gemini-2.0-flash",
-                    max_tokens = 8192,
+                    extra_request_body = { max_tokens = 8192 },
                     -- disable_tools = true,
                 },
                 ["copilot/gemini-2.5"] = {
                     __inherited_from = "copilot",
                     model = "gemini-2.5-pro",
                     display_name = "copilot/gemini-2.5-pro",
-                    max_tokens = 65536,
+                    extra_request_body = { max_tokens = 65536 },
                     -- disable_tools = true,
                 },
             },

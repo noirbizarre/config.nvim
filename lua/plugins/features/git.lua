@@ -99,6 +99,10 @@ return {
         },
         opts = {
             picker = "snacks",
+            use_local_fs = true,
+            picker_config = {
+                use_emojis = true,
+            },
         },
     },
 }

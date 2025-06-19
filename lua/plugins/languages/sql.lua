@@ -1,10 +1,13 @@
 return {
     --- Interactive DB client
-    --- https://github.com/kndndrj/nvim-dbee
     {
         "kndndrj/nvim-dbee",
         dependencies = {
             "MunifTanjim/nui.nvim",
+        },
+        keys = {
+            { "<leader>DD", function() require("dbee").toggle() end, desc = "Toggle DBee" },
+            { "<leader>DB", function() require("dbee").toggle() end, desc = "Toggle DBee" },
         },
         build = function()
             -- Install tries to automatically detect the install method.
@@ -12,8 +15,14 @@ return {
             --    "curl", "wget", "bitsadmin", "go"
             require("dbee").install()
         end,
-        config = function()
-            require("dbee").setup(--[[optional config]])
+        opts = function()
+            local sources = require("dbee.sources")
+            return {
+                sources = {
+                    sources.EnvSource:new("DBEE_CONNECTIONS"),
+                    sources.FileSource:new(vim.uv.cwd() .. "/.nvim/dbee.json"),
+                },
+            }
         end,
     },
 }

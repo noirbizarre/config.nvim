@@ -83,7 +83,6 @@ return {
         },
     },
     --- Quickfix improvements
-    --- https://github.com/stevearc/quicker.nvim
     {
         "stevearc/quicker.nvim",
         event = "FileType qf",
@@ -102,6 +101,7 @@ return {
         },
         cmd = { "Browse" },
         opts = {
+            select_prompt = false,
             handlers = {
                 plugin = true,
                 github = true,

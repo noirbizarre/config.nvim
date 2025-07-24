@@ -57,7 +57,6 @@ return {
                     "snippets",
                     "buffer",
                     "copilot",
-                    "ecolog",
                     "codecompanion",
                 },
                 providers = {
@@ -73,7 +72,6 @@ return {
                             max_attempts = 3,
                         },
                     },
-                    ecolog = { name = "ecolog", module = "ecolog.integrations.cmp.blink_cmp" },
                 },
             },
             completion = {

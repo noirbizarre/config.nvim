@@ -16,14 +16,35 @@ return {
                     winbar = {
                         sections = { "scopes", "watches", "exceptions", "breakpoints", "threads", "repl" },
                         default_section = "scopes",
-                        headers = {
-                            breakpoints = " Breakpoints",
-                            scopes = " Scopes",
-                            exceptions = " Exceptions",
-                            watches = "  Watches",
-                            threads = " Threads",
-                            repl = " REPL",
-                            console = " Console",
+                        base_sections = {
+                            breakpoints = {
+                                label = " Breakpoints",
+                                short_label = " ",
+                            },
+                            scopes = {
+                                label = " Scopes",
+                                short_label = " ",
+                            },
+                            exceptions = {
+                                label = "󰢃 Exceptions",
+                                short_label = "󰢃 ",
+                            },
+                            watches = {
+                                label = "󰛐 Watches",
+                                short_label = "󰛐 ",
+                            },
+                            threads = {
+                                label = "󱉯 Threads",
+                                short_label = "󱉯 ",
+                            },
+                            repl = {
+                                label = " REPL",
+                                short_label = " ",
+                            },
+                            console = {
+                                label = " Console",
+                                short_label = " ",
+                            },
                         },
                         controls = {
                             enabled = true,
@@ -56,11 +77,11 @@ return {
                                     end,
                                 },
                             },
-                            icons = {
-                                play = "",
-                                terminate = "",
-                            },
                         },
+                    },
+                    icons = {
+                        play = "",
+                        terminate = "",
                     },
                 },
             },

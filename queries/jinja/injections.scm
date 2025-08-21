@@ -1,9 +1,9 @@
 ;; extends
 
-((words) @injection.content
+((content) @injection.content
   (#inject-jinja!)
   (#set! injection.combined))
-
+;
 ; ((inline) @injection.content
 ;   (#inject-jinja!)
 ;   (#set! injection.combined))

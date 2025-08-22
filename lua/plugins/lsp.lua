@@ -77,7 +77,6 @@ return {
                 "ruff",
                 "taplo",
                 -- "ty",
-                "vale_ls",
                 "vimls",
                 "yamlls",
             })
@@ -142,11 +141,6 @@ return {
                     ltex = {
                         checkFrequency = "save",
                         language = { "en-US", "fr" },
-                        languageToolHttpServerUri = "https://api.languagetoolplus.com/",
-                        languageToolOrg = {
-                            username = vim.env.LANGUETOOL_USER,
-                            apikey = vim.env.LANGUETOOL_APIKEY,
-                        },
                         additionalRules = {
                             enablePickyRules = true,
                             motherTongue = { "fr" },

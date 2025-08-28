@@ -276,7 +276,6 @@ return {
     -- https://github.com/linux-cultist/venv-selector.nvim
     {
         "linux-cultist/venv-selector.nvim",
-        branch = "regexp",
         lazy = false,
         dependencies = { "neovim/nvim-lspconfig", "mfussenegger/nvim-dap-python" },
         -- event = 'VeryLazy', -- Optional: needed only if you want to type `:VenvSelect` without a keymapping

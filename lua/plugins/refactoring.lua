@@ -58,7 +58,7 @@ return {
     },
     -- Move selection
     {
-        "echasnovski/mini.move",
+        "nvim-mini/mini.move",
         version = false,
         config = true,
         opts = {

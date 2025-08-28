@@ -12,6 +12,7 @@ vim.filetype.add({
         [".*/templates/.+%.yaml"] = "helm",
         [".*/kitty/.+%.conf"] = "kitty",
         [".*/hypr/.+%.conf"] = "hyprlang",
+        [".*/hypr%.conf"] = "hyprlang",
         -- VSCode JSONC
         [".*/%.vscode/.+%.json"] = "jsonc",
         -- dotfiles

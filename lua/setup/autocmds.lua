@@ -22,3 +22,17 @@ vim.api.nvim_create_autocmd("BufEnter", {
         end
     end,
 })
+
+-- Relative numbering on focused buffer only
+vim.api.nvim_create_autocmd({ "BufEnter", "FocusGained", "InsertLeave" }, {
+    pattern = "*",
+    callback = function()
+        if not vim.tbl_contains(ft.internals, vim.bo.filetype) then
+            vim.wo.relativenumber = true
+        end
+    end,
+})
+vim.api.nvim_create_autocmd({ "BufLeave", "FocusLost", "InsertEnter" }, {
+    pattern = "*",
+    callback = function() vim.wo.relativenumber = false end,
+})

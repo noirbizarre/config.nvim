@@ -96,6 +96,7 @@ return {
                 javascript = { "prettier" },
                 javascriptreact = { "prettier" },
                 json = { "prettier" },
+                jsonc = { "prettier" },
                 lua = { "stylua" },
                 markdown = { "prettier" },
                 python = { "ruff_organize_imports", "ruff_format" },

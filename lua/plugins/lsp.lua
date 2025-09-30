@@ -75,6 +75,7 @@ return {
                 "lua_ls",
                 "marksman",
                 "ruff",
+                "sqlls",
                 "taplo",
                 -- "ty",
                 "vimls",

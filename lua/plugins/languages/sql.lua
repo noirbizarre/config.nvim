@@ -2,6 +2,7 @@ return {
     --- Interactive DB client
     {
         "kndndrj/nvim-dbee",
+        branch = "master",
         dependencies = {
             "MunifTanjim/nui.nvim",
         },
@@ -17,12 +18,26 @@ return {
         end,
         opts = function()
             local sources = require("dbee.sources")
+            local providers = {
+                sources.EnvSource:new("DBEE_CONNECTIONS"),
+            }
+            local local_config = vim.uv.cwd() .. "/.nvim/dbee.json"
+            if vim.uv.fs_stat(local_config) then
+                table.insert(providers, sources.FileSource:new(local_config))
+            end
+            if vim.env.DBEE_JSON ~= nil then
+                table.insert(providers, sources.FileSource:new(vim.env.DBEE_JSON))
+            end
+
             return {
-                sources = {
-                    sources.EnvSource:new("DBEE_CONNECTIONS"),
-                    sources.FileSource:new(vim.uv.cwd() .. "/.nvim/dbee.json"),
-                },
+                sources = providers,
             }
         end,
     },
+    -- {
+    --     "xemptuous/sqlua.nvim",
+    --     lazy = true,
+    --     cmd = {"SQLua", "SQLuaEdit"},
+    --     opts = {},
+    -- },
 }

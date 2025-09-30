@@ -81,6 +81,8 @@ local opts = {
         { title = "Outline", ft = "Outline", size = { width = 0.18 } },
         { title = "Code Companion", ft = "codecompanion", size = { width = 0.25 } },
         { title = "Copilot", ft = "copilot-chat", size = { width = 0.25 } },
+        { title = "OpenCode", ft = "opencode_output", size = { width = 0.25 } },
+        { title = "OpenCode", ft = "opencode_input", size = { width = 0.25 } },
         -- { title = "Avante", ft = "Avante", size = { width = 70 } },
     },
 }

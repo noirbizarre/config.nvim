@@ -1,3 +1,5 @@
+local filetypes = { "markdown", "Avante", "codecompanion", "copilot-chat", "opencode_output" }
+
 return {
     -- Inline Markdown rendering
     -- https://github.com/OXY2DEV/markview.nvim
@@ -15,7 +17,7 @@ return {
             "CodeEdit",
             "CheckboxToggle",
         },
-        ft = { "markdown", "Avante", "codecompanion", "copilot-chat" },
+        ft = filetypes,
         keys = {
             { "<leader>mc", "<cmd>CodeCreate<cr>", desc = "Create code block" },
             { "<leader>me", "<cmd>CodeEdit<cr>", desc = "Edit code block" },
@@ -26,7 +28,7 @@ return {
         opts = {
             preview = {
                 ignore_buftypes = {},
-                filetypes = { "markdown", "Avante", "codecompanion", "copilot-chat" },
+                filetypes = filetypes,
                 modes = { "n", "i", "no", "c" },
                 hybrid_modes = { "n", "i" },
                 linewise_hybrid_mode = true,

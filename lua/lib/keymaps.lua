@@ -4,6 +4,7 @@ return {
     { "<leader>ap", group = "Avante prompts", icon = "󱚣" },
     { "<leader>b", group = "Buffers", icon = "📔" },
     { "<leader>c", group = "CodeCompanion", icon = "" },
+    { "<leader>o", group = "OpenCode", icon = "" },
     { "<leader>d", group = "Debug", icon = "" },
     { "<leader>g", group = "Git", icon = "" },
     { "<leader>gx", group = "Git conflicts", icon = "" },

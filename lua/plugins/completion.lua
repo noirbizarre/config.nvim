@@ -29,7 +29,6 @@ return {
         dependencies = {
             "rafamadriz/friendly-snippets",
             "fang2hou/blink-copilot",
-            "Kaiser-Yang/blink-cmp-avante",
             --- Colorful Menu (highlight in completions)
             --- https://github.com/xzbdmw/colorful-menu.nvim
             {
@@ -51,17 +50,13 @@ return {
             },
             sources = {
                 default = {
-                    "avante",
                     "lsp",
                     "path",
                     "snippets",
                     "buffer",
                     "copilot",
-                    "codecompanion",
                 },
                 providers = {
-                    avante = { name = "Avante", module = "blink-cmp-avante" },
-                    codecompanion = { name = "CodeCompanion", module = "codecompanion.providers.completion.blink" },
                     copilot = {
                         name = "copilot",
                         module = "blink-copilot",

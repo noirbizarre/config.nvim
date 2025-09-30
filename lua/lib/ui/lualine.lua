@@ -136,7 +136,7 @@ return {
             { mcphub, color = mcphub_color },
         },
         lualine_y = { "progress" },
-        lualine_z = { "location", { "harpoon2", no_harpoon = "" } },
+        lualine_z = { "location" },
     },
     inactive_sections = {
         lualine_a = {},

@@ -1,87 +1,13 @@
 return {
-    {
-        "ThePrimeagen/harpoon",
-        branch = "harpoon2",
-        dependencies = {
-            "nvim-lua/plenary.nvim",
-            "letieu/harpoon-lualine",
-        },
-        keys = {
-            {
-                "<leader>hh",
-                function()
-                    local harpoon = require("harpoon")
-                    harpoon.ui:toggle_quick_menu(harpoon:list())
-                end,
-                desc = "Toggle menu",
-            },
-            { "<leader>ha", function() require("harpoon"):list():add() end, desc = "Add file" },
-            { "<leader>hd", function() require("harpoon"):list():remove() end, desc = "Remove file" },
-            { "<leader>hk", function() require("harpoon"):list():next() end, desc = "Next file" },
-            {
-                "<leader>hj",
-                function() require("harpoon"):list():prev() end,
-                desc = "Previous file",
-            },
-            {
-                "<leader>h1",
-                function() require("harpoon"):list():select(1) end,
-                desc = "Go to file 1",
-            },
-            {
-                "<leader>h2",
-                function() require("harpoon"):list():select(2) end,
-                desc = "Go to file 2",
-            },
-            {
-                "<leader>h3",
-                function() require("harpoon"):list():select(3) end,
-                desc = "Go to file 3",
-            },
-            {
-                "<leader>h4",
-                function() require("harpoon"):list():select(4) end,
-                desc = "Go to file 4",
-            },
-            {
-                "<leader>h5",
-                function() require("harpoon"):list():select(5) end,
-                desc = "Go to file 5",
-            },
-            --- AZERTY compat' until new laptop
-            {
-                "<leader>h&",
-                function() require("harpoon"):list():select(1) end,
-                desc = "Go to file 1",
-            },
-            {
-                "<leader>hé",
-                function() require("harpoon"):list():select(2) end,
-                desc = "Go to file 2",
-            },
-            {
-                '<leader>h"',
-                function() require("harpoon"):list():select(3) end,
-                desc = "Go to file 3",
-            },
-            {
-                "<leader>h'",
-                function() require("harpoon"):list():select(4) end,
-                desc = "Go to file 4",
-            },
-            {
-                "<leader>h(",
-                function() require("harpoon"):list():select(5) end,
-                desc = "Go to file 5",
-            },
-        },
-        opts = {
-            settings = {
-                save_on_toggle = true,
-                sync_on_ui_close = true,
-            },
-        },
-    },
+    -- {
+    --     "noirbizarre/markers.nvim",
+    --     dev = true,
+    --     keys = {
+    --         { "<leader>j", function() require("markers").quickjump() end, desc = "Markers quick jump" },
+    --         { "<leader>Bm", function() require("markers").test() end, desc = "Markers test function" },
+    --     },
+    --     opts = {},
+    -- },
     --- Quickfix improvements
     {
         "stevearc/quicker.nvim",

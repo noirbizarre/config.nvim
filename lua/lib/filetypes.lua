@@ -35,6 +35,7 @@ return {
         "noice",
         "notify",
         "qf",
+        "sidekick_terminal",
         "snacks_dashboard",
         "snacks_notif",
         "snacks_notif_history",

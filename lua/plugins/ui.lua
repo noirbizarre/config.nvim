@@ -367,17 +367,6 @@ return {
         },
     },
 
-    --- Override Input and Select
-    {
-        "stevearc/dressing.nvim",
-        opts = {
-            select = {
-                -- Priority list of preferred vim.select implementations
-                backend = { "nui", "builtin" },
-            },
-        },
-    },
-
     --- Menu
     { "nvzone/volt", lazy = true },
     {

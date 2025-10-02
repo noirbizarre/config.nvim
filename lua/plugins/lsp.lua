@@ -1,16 +1,38 @@
+local LSPs = {
+    "basedpyright",
+    "bashls",
+    "clangd",
+    "docker_compose_language_service",
+    "dockerls",
+    "helm_ls",
+    "jinja_lsp",
+    "jsonls",
+    "ltex_plus",
+    "lua_ls",
+    "marksman",
+    "ruff",
+    "sqlls",
+    "tombi",
+    -- "taplo",
+    -- "ty",
+    "vimls",
+    "yamlls",
+}
+
 return {
     {
         "mason-org/mason-lspconfig.nvim",
-        version = "^1.0.0", -- TODO: Migrate to Mason 2.x
         dependencies = {
             "mason-org/mason.nvim",
+            "neovim/nvim-lspconfig",
         },
         cmd = {
             "LspInstall",
             "LspUninstall",
         },
         opts = {
-            automatic_installation = true,
+            automatic_enable = false,
+            ensure_installed = LSPs,
         },
     },
 
@@ -28,7 +50,6 @@ return {
             -- json schemas
             "b0o/schemastore.nvim",
             "mason-org/mason.nvim",
-            "mason-org/mason-lspconfig.nvim",
             "someone-stole-my-name/yaml-companion.nvim",
             --  Faster LuaLS setup for Neovim
             -- https://github.com/folke/lazydev.nvim
@@ -62,25 +83,7 @@ return {
         config = function()
             local icons = require("lib.ui.icons")
 
-            vim.lsp.enable({
-                "basedpyright",
-                "bashls",
-                "clangd",
-                "docker_compose_language_service",
-                "dockerls",
-                "helm_ls",
-                "jinja_lsp",
-                "jsonls",
-                "ltex_plus",
-                "lua_ls",
-                "marksman",
-                "ruff",
-                "sqlls",
-                "taplo",
-                -- "ty",
-                "vimls",
-                "yamlls",
-            })
+            vim.lsp.enable(LSPs)
 
             -- Exclude big directories from being watched
             vim.lsp._watchfiles._poll_exclude_pattern = vim.lsp._watchfiles._poll_exclude_pattern

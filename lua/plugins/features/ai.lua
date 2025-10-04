@@ -38,6 +38,12 @@ return {
                 desc = "Ask opencode about selection",
                 mode = "v",
             },
+            {
+                "<leader>ob",
+                function() require("opencode").ask("@buffer: ") end,
+                desc = "Ask opencode about @buffer",
+                mode = "n",
+            },
             { "<leader>ot", function() require("opencode").toggle() end, desc = "Toggle embedded opencode" },
             { "<leader>on", function() require("opencode").command("session_new") end, desc = "New session" },
             { "<leader>oy", function() require("opencode").command("messages_copy") end, desc = "Copy last message" },

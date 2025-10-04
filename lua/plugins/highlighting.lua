@@ -138,29 +138,20 @@ return {
             { "<leader>xT", "<cmd>TodoTrouble keywords=TODO,FIX,FIXME<cr>", desc = "Todo/Fix/Fixme (Trouble)" },
         },
     },
-    -- colorizer
     {
-        "catgoose/nvim-colorizer.lua",
-        event = "BufReadPre",
-        opts = {
-            filetypes = { "*", "!lazy" },
-            buftype = { "*", "!prompt", "!nofile" },
-            user_default_options = {
-                RGB = true, -- #RGB hex codes
-                RRGGBB = true, -- #RRGGBB hex codes
-                names = false, -- "Name" codes like Blue
-                RRGGBBAA = true, -- #RRGGBBAA hex codes
-                AARRGGBB = false, -- 0xAARRGGBB hex codes
-                rgb_fn = true, -- CSS rgb() and rgba() functions
-                hsl_fn = true, -- CSS hsl() and hsla() functions
-                css = false, -- Enable all CSS features: rgb_fn, hsl_fn, names, RGB, RRGGBB
-                css_fn = true, -- Enable all CSS *functions*: rgb_fn, hsl_fn
-                -- Available modes: foreground, background,  virtualtext
-                mode = "background", -- Set the display mode.
-                virtualtext = "■",
-                tailwind = true, -- Enable tailwind colors
+        "eero-lehtinen/oklch-color-picker.nvim",
+        event = "VeryLazy",
+        branch = "master", -- Remove on next version bump
+        keys = {
+            -- One handed keymap recommended, you will be using the mouse
+            {
+                "<leader>uc",
+                function() require("oklch-color-picker").pick_under_cursor() end,
+                desc = "Color pick under cursor",
             },
         },
+        ---@type oklch.Opts
+        opts = {},
     },
     {
         "rachartier/tiny-glimmer.nvim",

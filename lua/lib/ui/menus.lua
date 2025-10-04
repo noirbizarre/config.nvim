@@ -17,7 +17,6 @@ end
 
 --- Default menu
 M.default = function()
-    local minty = require("minty.utils")
     local items = {
         {
             name = "Format Buffer",
@@ -68,11 +67,12 @@ M.default = function()
             end,
         },
     }
-    if minty.hex_on_cursor() ~= nil then
+    local oklch = require("oklch-color-picker")
+    if oklch.color_under_cursor() ~= nil then
         items[#items + 1] = SEPARATOR
         items[#items + 1] = {
             name = "  Color Picker",
-            cmd = function() require("minty.huefy").open() end,
+            cmd = function() oklch.pick_under_cursor() end,
             hl = "RainbowViolet",
         }
     end

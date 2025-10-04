@@ -377,35 +377,6 @@ return {
             { "<RightMouse>", function() require("lib.ui.menus").context_menu() end, mode = { "n", "v" } },
         },
     },
-    --- Color Picker
-    {
-        "nvzone/minty",
-        cmd = { "Shades", "Huefy" },
-        keys = {
-            {
-                "<leader>uc",
-                function() require("minty.huefy").open() end,
-                mode = { "n", "v" },
-                desc = "Color picker",
-            },
-        },
-        opts = {
-            huefy = {
-                -- border = false
-                mappings = function(bufs) -- bufs is a table cuz 2 bufs!
-                    local wk = require("which-key")
-                    local api = require("minty.huefy.api")
-
-                    for _, buf in ipairs(bufs) do
-                        wk.add({
-                            buffer = buf,
-                            { "C-s", api.save_color, desc = "Save color" },
-                        })
-                    end
-                end,
-            },
-        },
-    },
 
     --- Highly experimental plugin that completely replaces the UI for messages, cmdline and the popupmenu
     {

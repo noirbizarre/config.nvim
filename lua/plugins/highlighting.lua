@@ -141,7 +141,6 @@ return {
     {
         "eero-lehtinen/oklch-color-picker.nvim",
         event = "VeryLazy",
-        branch = "master", -- Remove on next version bump
         keys = {
             -- One handed keymap recommended, you will be using the mouse
             {

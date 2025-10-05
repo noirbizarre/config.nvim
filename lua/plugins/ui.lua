@@ -12,11 +12,13 @@ return {
         config = function()
             require("solarized-osaka").setup({
                 transparent = true, -- Disable setting background
+                terminal_colors = false,
                 dim_inactive = true, -- Non focused panes set to alternative background
                 styles = {
                     sidebars = "transparent",
                     -- floats = "transparent",
                 },
+                sidebars = { "qf", "help", "sidekick_terminal", "snacks_terminal", "terminal" },
                 ---@param hl Highlights
                 ---@param c ColorScheme
                 on_highlights = function(hl, c)
@@ -78,6 +80,9 @@ return {
                     -- hl.AvanteReversedThirdTitle = { fg = c.blue300 }
                     hl.AvanteSidebarWinSeparator = { link = "WinSeparator" }
                     hl.AvanteSidebarWinHorizontalSeparator = { link = "WinSeparator" }
+
+                    hl.SidekickChat = { link = "Normal" }
+                    hl.EdgyNormal = { link = "Normal" }
                 end,
             })
 

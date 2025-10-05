@@ -3,7 +3,6 @@ local panes = require("lib.ui.panes")
 return {
     {
         "folke/edgy.nvim",
-        -- enabled = false,
         event = "VeryLazy",
         init = function()
             vim.opt.laststatus = 3
@@ -20,12 +19,6 @@ return {
         },
         opts = {
             animate = { enabled = false },
-            -- options = {
-            --     left = { size = 30 },
-            --     bottom = { size = 10 },
-            --     right = { size = 30 },
-            --     top = { size = 10 },
-            -- },
             icons = {
                 closed = " ",
                 open = " ",
@@ -43,9 +36,6 @@ return {
             bottom = panes.bottom,
             left = panes.left,
             right = panes.right,
-            wo = {
-                winhighlight = "WinBar:EdgyWinBar,,WinBarNC:EdgyWinBar",
-            },
         },
     },
     --- Left tree pane

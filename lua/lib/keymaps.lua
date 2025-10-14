@@ -1,7 +1,7 @@
 return {
     --- Common reusable groups
     { "<leader>b", group = "Buffers", icon = "📔" },
-    { "<leader>o", group = "OpenCode", icon = "" },
+    { "<leader>a", group = "AI", icon = "" },
     { "<leader>d", group = "Debug", icon = "" },
     { "<leader>g", group = "Git", icon = "" },
     { "<leader>gx", group = "Git conflicts", icon = "" },

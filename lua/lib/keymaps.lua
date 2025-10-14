@@ -5,7 +5,6 @@ return {
     { "<leader>d", group = "Debug", icon = "" },
     { "<leader>g", group = "Git", icon = "" },
     { "<leader>gx", group = "Git conflicts", icon = "" },
-    { "<leader>h", group = "Harpoon", icon = "" },
     { "<leader>k", group = "Pickers", icon = "" },
     { "<leader>m", group = "Markdown", icon = "" },
     { "<leader>\\", group = "Multicursor", icon = "" },

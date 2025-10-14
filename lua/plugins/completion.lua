@@ -22,7 +22,6 @@ return {
         },
     },
     --- Blink completion engine
-    --- https://github.com/Saghen/blink.cmp
     {
         "saghen/blink.cmp",
         lazy = false, -- lazy loading handled internally
@@ -30,7 +29,6 @@ return {
             "rafamadriz/friendly-snippets",
             "fang2hou/blink-copilot",
             --- Colorful Menu (highlight in completions)
-            --- https://github.com/xzbdmw/colorful-menu.nvim
             {
                 "xzbdmw/colorful-menu.nvim",
                 opts = {},

@@ -23,6 +23,8 @@ vim.filetype.add({
         -- ["%.env%.[%w_.-]+"] = "sh",
         [".*/.+%.secret"] = "sh",
         -- Known templates
+        [".*/.+%.jinja%..+"] = "jinja",
+        [".*/.+%.j2%..+"] = "jinja",
         [".*/copier%.yml"] = "jinja.yaml",
     },
 })
@@ -39,7 +41,7 @@ vim.treesitter.query.add_directive("inject-jinja!", function(_, _, bufnr, _, met
         basename = basename:gsub("%." .. ext, "")
     end
 
-    local ft = vim.filetype.match({ filename = basename })
+    local ft = vim.filetype.match({ filename = basename, buf = bufnr })
     if ft ~= nil then
         local raw_ft = ft:gsub("jinja", ""):gsub("%.", "")
         metadata["injection.language"] = raw_ft

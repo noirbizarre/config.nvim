@@ -4,6 +4,7 @@ local LSPs = {
     "clangd",
     "docker_compose_language_service",
     "dockerls",
+    "gh_actions_ls",
     "helm_ls",
     "jinja_lsp",
     "jsonls",
@@ -140,6 +141,11 @@ return {
                     },
                 },
             })
+            vim.lsp.config("gh_actions_ls", {
+                init_options = {
+                    sessionToken = vim.env.GITHUB_TOKEN,
+                },
+            })
             vim.lsp.config("ltex_plus", {
                 settings = {
                     ltex = {
@@ -247,7 +253,6 @@ return {
             end
             lint.linters_by_ft = {
                 dockerfile = { "hadolint" },
-                ["yaml.github"] = { "actionlint" },
                 json = { "jsonlint" },
                 lua = { selene_or_luacheck() },
                 markdown = { "vale" },

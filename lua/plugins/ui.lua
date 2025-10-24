@@ -134,6 +134,7 @@ return {
             { "<leader>lf", function() Snacks.picker.lsp_references() end, desc = "References" },
             { "<leader>ls", function() Snacks.picker.lsp_symbols() end, desc = "Symbols" },
             { "<leader>lw", function() Snacks.picker.lsp_workspace_symbols() end, desc = "Workspace symbols" },
+            { "<leader>lc", function() Snacks.picker.lsp_incoming_calls() end, desc = "Incoming calls" },
             { "<leader>ld", function() Snacks.picker.diagnostics() end, desc = "Diagnostics" },
             --- Git
             { "<leader>gh", function() Snacks.picker.git_log() end, desc = "History" },

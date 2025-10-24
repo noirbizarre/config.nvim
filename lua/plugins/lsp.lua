@@ -224,7 +224,6 @@ return {
     },
 
     --- Linters
-    --- https://github.com/mfussenegger/nvim-lint
     {
         "mfussenegger/nvim-lint",
         event = {
@@ -240,28 +239,23 @@ return {
         },
         config = function()
             local lint = require("lint")
+            local selene_or_luacheck = function()
+                if vim.fs.find({ ".luacheckrc" }, { path = vim.uv.cwd(), upward = true })[1] then
+                    return "luacheck"
+                end
+                return "selene"
+            end
             lint.linters_by_ft = {
-                text = { "vale" },
+                dockerfile = { "hadolint" },
+                ["yaml.github"] = { "actionlint" },
                 json = { "jsonlint" },
+                lua = { selene_or_luacheck() },
                 markdown = { "vale" },
                 rst = { "vale" },
                 ruby = { "ruby" },
-                dockerfile = { "hadolint" },
+                sql = { "sqlfluff" },
                 terraform = { "tflint" },
-                lua = { "selene", "luacheck" },
-            }
-            lint.linters = {
-                selene = {
-                    condition = function(ctx)
-                        local root = vim.uv.cwd()
-                        return vim.fs.find({ "selene.toml" }, { path = root, upward = true })[1]
-                    end,
-                },
-                luacheck = {
-                    condition = function(ctx)
-                        return vim.fs.find({ ".luacheckrc" }, { path = vim.uv.cwd(), upward = true })[1]
-                    end,
-                },
+                text = { "vale" },
             }
         end,
     },

@@ -51,6 +51,7 @@ vim.opt.undofile = true
 vim.opt.undolevels = 10000
 vim.opt.wildmode = "longest:full,full" -- Command-line completion mode
 vim.opt.winminwidth = 5 -- Minimum window width
+vim.opt.equalalways = true
 -- vim.opt.winborder = "rounded"
 vim.opt.wrap = false -- Disable line wrap
 vim.opt.smoothscroll = true

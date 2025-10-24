@@ -21,7 +21,7 @@ return {
             },
             {
                 "<leader>rr",
-                function() require("refactoring").select_refactor() end,
+                function() require("refactoring").select_refactor({ prefer_ex_cmd = true }) end,
                 mode = { "n", "x" },
                 desc = "Refactor",
             },

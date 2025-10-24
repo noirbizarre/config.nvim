@@ -53,7 +53,23 @@ return {
             },
         },
         opts = {
-            default_styles = { python = "reST" },
+            default_styles = {
+                { python = "Google" },
+            },
+            styles = {
+                python = {
+                    Google = {
+                        func = {
+                            params = {
+                                include_type = false,
+                            },
+                            return_type = {
+                                include_type = false,
+                            },
+                        },
+                    },
+                },
+            },
         },
     },
     -- Move selection
@@ -91,6 +107,7 @@ return {
         opts = {
             formatters_by_ft = {
                 css = { "prettier" },
+                dockerfile = { "dockerfmt" },
                 graphql = { "prettier" },
                 html = { "prettier" },
                 javascript = { "prettier" },
@@ -98,11 +115,13 @@ return {
                 json = { "prettier" },
                 jsonc = { "prettier" },
                 lua = { "stylua" },
-                markdown = { "prettier" },
+                markdown = { "markdownlint-cli2" },
                 python = { "ruff_organize_imports", "ruff_format" },
                 rust = { "rustfmt" },
                 sh = { "shfmt" },
+                sql = { "sqlfluff" },
                 svelte = { "prettier" },
+                toml = { "tombi" },
                 typescript = { "prettier" },
                 typescriptreact = { "prettier" },
                 yaml = { "prettier" },

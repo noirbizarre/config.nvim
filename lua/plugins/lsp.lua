@@ -275,24 +275,4 @@ return {
             ignore_install = { "janet", "inko", "clj-kondo", "ruby" },
         },
     },
-    -- Virtualenv auto selection and picker
-    -- https://github.com/linux-cultist/venv-selector.nvim
-    {
-        "linux-cultist/venv-selector.nvim",
-        lazy = false,
-        dependencies = { "neovim/nvim-lspconfig", "mfussenegger/nvim-dap-python" },
-        -- event = 'VeryLazy', -- Optional: needed only if you want to type `:VenvSelect` without a keymapping
-        keys = {
-            { "<leader>lv", "<cmd>VenvSelect<cr>", desc = "Select virtualenv", ft = "python" },
-        },
-        ft = "python",
-        ---@type venv-selector.Config
-        opts = {
-            options = {
-                picker = "native",
-            },
-            notify_user_on_venv_activation = true,
-            -- debug = true,
-        },
-    },
 }

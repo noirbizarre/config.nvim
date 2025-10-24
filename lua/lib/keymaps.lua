@@ -11,7 +11,6 @@ return {
     { "<leader>s", group = "Search", icon = "󱈇" },
     { "<leader>t", group = "Test", icon = "󰤑" },
     { "<leader>u", group = "Misc. Utils", icon = "" },
-    { "<leader>x", group = "Trouble", icon = "🚦" },
 
     {
         group = "Session",

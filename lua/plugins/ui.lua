@@ -429,7 +429,6 @@ return {
         "nvim-lualine/lualine.nvim",
         dependencies = {
             "nvim-tree/nvim-web-devicons",
-            "someone-stole-my-name/yaml-companion.nvim",
             {
                 "SmiteshP/nvim-navic",
                 opts = {

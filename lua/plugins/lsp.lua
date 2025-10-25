@@ -51,9 +51,14 @@ return {
             -- json schemas
             "b0o/schemastore.nvim",
             "mason-org/mason.nvim",
-            "someone-stole-my-name/yaml-companion.nvim",
+            {
+                "cenk1cenk2/schema-companion.nvim",
+                dependencies = {
+                    { "nvim-lua/plenary.nvim" },
+                },
+                opts = {},
+            },
             --  Faster LuaLS setup for Neovim
-            -- https://github.com/folke/lazydev.nvim
             {
                 "folke/lazydev.nvim",
                 ft = "lua", -- only load on lua files
@@ -78,11 +83,17 @@ return {
             "saghen/blink.cmp",
         },
         keys = {
-            { "<leader>ky", function() require("yaml-companion").open_ui_select() end, desc = "YAML Schema" },
+            {
+                "<leader>ks",
+                function() require("schema-companion").select_matching_schema() end,
+                desc = "Select a matching Schema",
+            },
+            { "<leader>kS", function() require("schema-companion").select_schema() end, desc = "Select any Schema" },
         },
 
         config = function()
             local icons = require("lib.ui.icons")
+            local schema_companion = require("schema-companion")
 
             vim.lsp.enable(LSPs)
 
@@ -159,54 +170,32 @@ return {
                 },
             })
 
-            -- YANL companion
-            -- cf. https://www.arthurkoziel.com/json-schemas-in-neovim/
-            local yaml_cfg = require("yaml-companion").setup({
-                -- detect k8s schemas based on file content
-                builtin_matchers = {
-                    kubernetes = { enabled = true },
-                },
-
-                -- schemas available in the picker
-                schemas = {
-                    {
-                        name = "Argo CD Application",
-                        uri = "https://raw.githubusercontent.com/datreeio/CRDs-catalog/main/argoproj.io/application_v1alpha1.json",
-                    },
-                    -- schemas below are automatically loaded, but added
-                    -- them here so that they show up in the statusline
-                    {
-                        name = "GitHub Workflow",
-                        uri = "https://json.schemastore.org/github-workflow.json",
-                    },
-                },
-
-                lspconfig = {
-                    -- capabilities = capabilities,
-                    settings = {
-                        yaml = {
-                            validate = true,
-                            schemaStore = {
-                                enable = false,
-                                url = "",
-                            },
-                            -- schemas from store, matched by filename
-                            -- loaded automatically
-                            schemas = require("schemastore").yaml.schemas({
-                                extra = {
-                                    {
-                                        url = "https://raw.githubusercontent.com/datreeio/CRDs-catalog/main/argoproj.io/application_v1alpha1.json",
-                                        name = "Argo CD Application",
-                                        description = "Argo CD Application Schema (v1alpha1)",
-                                        fileMatch = "argocd-application.yaml",
-                                    },
+            vim.lsp.config(
+                "yamlls",
+                schema_companion.setup_client(
+                    schema_companion.adapters.yamlls.setup({
+                        sources = {
+                            schema_companion.sources.matchers.kubernetes.setup({ version = "master" }),
+                            schema_companion.sources.lsp.setup(),
+                            schema_companion.sources.schemas.setup({
+                                {
+                                    uri = "https://raw.githubusercontent.com/datreeio/CRDs-catalog/main/argoproj.io/application_v1alpha1.json",
+                                    name = "Argo CD Application",
+                                    description = "Argo CD Application Schema (v1alpha1)",
+                                    fileMatch = "argocd-application.yaml",
                                 },
                             }),
                         },
-                    },
-                },
-            })
-            vim.lsp.config("yamlls", yaml_cfg)
+                    }),
+                    {
+                        settings = {
+                            yaml = {
+                                validate = true,
+                            },
+                        },
+                    }
+                )
+            )
 
             vim.diagnostic.config({
                 signs = {

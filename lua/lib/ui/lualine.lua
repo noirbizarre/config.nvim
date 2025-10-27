@@ -5,11 +5,11 @@ local filetypes = require("lib.filetypes")
 table.unpack = table.unpack or unpack -- 5.1 compatibility
 
 local function get_yaml_schema()
-    local schema = require("yaml-companion").get_buf_schema(0)
-    if schema.result[1].name == "none" then
+    local schema = require("schema-companion").get_current_schemas()
+    if schema == nil then
         return ""
     end
-    return schema.result[1].name
+    return schema:sub(0, 128)
 end
 
 local function dirs()

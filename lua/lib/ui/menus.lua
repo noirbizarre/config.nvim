@@ -9,8 +9,15 @@ M.context_menu = function()
 
     -- clicked buf
     local buf = vim.api.nvim_win_get_buf(vim.fn.getmousepos().winid)
-    local options = vim.bo[buf].ft == "neo-tree" and M.neotree() or M.default()
-    -- local options = vim.bo[buf].ft == "NvimTree" and "nvimtree" or M.default()
+    local ft = vim.bo[buf].ft
+    local options
+    if ft == "neo-tree" then
+        options = M.neotree()
+    elseif ft == "snacks_picker_list" then
+        options = M.snacks_explorer()
+    else
+        options = M.default()
+    end
 
     require("menu").open(options, { mouse = true })
 end
@@ -287,6 +294,87 @@ M.gitsigns = function()
             name = "Toggle Deleted",
             cmd = "Gitsigns toggle_deleted",
             rtxt = "td",
+        },
+    }
+end
+
+M.snacks_explorer = function()
+    local explorer = Snacks.picker.get({ source = "explorer" })[1] or false
+    local actions = require("snacks.explorer.actions").actions
+    local picker_actions = require("snacks.picker.actions")
+    local item = explorer.finder.items[explorer.list.cursor]
+
+    return {
+        {
+            name = "  New",
+            cmd = function()
+                vim.defer_fn(function() actions.explorer_add(explorer) end, 1)
+            end,
+            rtxt = "a",
+        },
+        SEPARATOR,
+        {
+            name = "  Open in window",
+            cmd = function() picker_actions.jump(explorer, nil, {}) end,
+            rtxt = "o",
+        },
+        {
+            name = "  Open in vertical split",
+            cmd = function() picker_actions.jump(explorer, nil, picker_actions.vsplit) end,
+            rtxt = "v",
+        },
+        {
+            name = "  Open in horizontal split",
+            cmd = function() picker_actions.jump(explorer, nil, picker_actions.split) end,
+            rtxt = "s",
+        },
+        {
+            name = "  Open in OS",
+            cmd = function() vim.ui.open(item.file) end,
+            rtxt = "O",
+        },
+        SEPARATOR,
+        {
+            name = "  Paste",
+            cmd = function()
+                vim.defer_fn(function() actions.explorer_paste(explorer) end, 1)
+            end,
+            rtxt = "p",
+        },
+        -- {
+        --     name = "  Copy",
+        --     cmd = function() fs.copy_to_clipboard(state) end,
+        --     rtxt = "c",
+        -- },
+        {
+            name = "󰴠  Copy path",
+            cmd = function() vim.fn.setreg("+", item.file) end,
+            rtxt = "gy",
+        },
+        SEPARATOR,
+        {
+            name = "  Open in terminal",
+            hl = "ExGreen",
+            cmd = function()
+                local dir = item.dir and item.file or vim.fn.fnamemodify(item.file, ":h")
+                Snacks.terminal(nil, { cwd = dir })
+            end,
+        },
+        SEPARATOR,
+        {
+            name = "  Rename",
+            cmd = function()
+                vim.defer_fn(function() actions.explorer_rename(explorer) end, 1)
+            end,
+            rtxt = "r",
+        },
+        {
+            name = "  Delete",
+            hl = "ExRed",
+            cmd = function()
+                vim.defer_fn(function() actions.explorer_del(explorer) end, 1)
+            end,
+            rtxt = "d",
         },
     }
 end

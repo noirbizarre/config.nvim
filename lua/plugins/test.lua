@@ -83,8 +83,8 @@ return {
                 desc = "Neotest: Summary",
             },
         },
-        config = function()
-            require("neotest").setup({
+        opts = function()
+            return {
                 adapters = {
                     require("neotest-python")({
                         dap = {
@@ -98,7 +98,7 @@ return {
                     require("neotest-busted"),
                     require("rustaceanvim.neotest"),
                 },
-            })
+            }
         end,
     },
 }

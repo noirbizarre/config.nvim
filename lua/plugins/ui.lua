@@ -58,15 +58,24 @@ return {
                     }
                     hl.SnacksPickerTitle = {
                         bg = c.bg_dark,
-                        fg = c.magenta300,
+                        fg = c.cyan300,
+                        -- fg = c.magenta300,
                     }
                     hl.SnacksPickerPreviewTitle = {
-                        bg = c.bg_dark,
-                        fg = c.cyan300,
+                        link = "SnacksPickerTitle",
                     }
                     hl.SnacksPickerBorder = {
                         bg = c.bg_dark,
                         fg = c.blue300,
+                    }
+                    hl.SnacksGhBorder = {
+                        link = "SnacksPickerBorder",
+                    }
+                    hl.SnacksGhNormalFloat = {
+                        link = "Normal",
+                    }
+                    hl.SnacksGhTitle = {
+                        link = "SnacksPickerPreviewTitle",
                     }
 
                     -- Tree Sitter Context
@@ -107,6 +116,7 @@ return {
             },
             { "<leader>kb", function() Snacks.picker.buffers() end, desc = "Buffers" },
             { "<leader>km", function() Snacks.picker.marks() end, desc = "Marks" },
+            { "<leader>kn", function() Snacks.picker.noice() end, desc = "Noice" },
             { "<leader>kj", function() Snacks.picker.jumps() end, desc = "Jumps" },
             { "<leader>kk", function() Snacks.picker.keymaps() end, desc = "Keymaps" },
             { "<leader>kh", function() Snacks.picker.help() end, desc = "Help Pages" },
@@ -157,6 +167,8 @@ return {
             { "<leader>gcA", function() Snacks.terminal("git commit --all", gitwin) end, desc = "Git Commit All" },
             { "<leader>gcz", function() Snacks.terminal("cz commit", gitwin) end, desc = "Git Commit(izen)" },
             { "<leader>gp", function() Snacks.terminal("git add -p") end, desc = "Git Partial Add" },
+            { "<leader>gi", function() Snacks.picker.gh_issue() end, desc = "GitHub Issues" },
+            { "<leader>gI", function() Snacks.picker.gh_pr() end, desc = "GitHub Pull Requests" },
             --- Buffers
             { "<leader>bb", function() Snacks.picker.buffers() end, desc = "Buffers" },
             { "<leader>bd", function() Snacks.bufdelete() end, desc = "Delete Buffer" },
@@ -344,6 +356,7 @@ return {
                             ["<PageDown>"] = "preview_scroll_down",
                             ["<PageUp>"] = "preview_scroll_up",
                         },
+                        footer_keys = true,
                     },
                 },
             },

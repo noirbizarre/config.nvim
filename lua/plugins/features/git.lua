@@ -89,19 +89,4 @@ return {
             end,
         },
     },
-    -- Octo -- Github Issues & pull requests
-    {
-        "pwntester/octo.nvim",
-        requires = {
-            "nvim-lua/plenary.nvim",
-            "nvim-tree/nvim-web-devicons",
-        },
-        opts = {
-            picker = "snacks",
-            use_local_fs = true,
-            picker_config = {
-                use_emojis = true,
-            },
-        },
-    },
 }

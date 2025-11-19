@@ -3,34 +3,15 @@ vim.filetype.add({
         jinja = "jinja",
         jinja2 = "jinja",
         j2 = "jinja",
-        alias = "sh",
-        wiz = "yaml",
         avanterules = "jinja.markdown",
     },
     pattern = {
-        -- Helm Charts
-        [".*/templates/.+%.yaml"] = "helm",
-        [".*/kitty/.+%.conf"] = "kitty",
-        [".*/hypr/.+%.conf"] = "hyprlang",
-        [".*/hypr%.conf"] = "hyprlang",
-        -- VSCode JSONC
-        [".*/%.vscode/.+%.json"] = "jsonc",
-        -- dotfiles
-        [".*/%.local/bin/*"] = "sh",
-        [".*/%.alias%.d/.+%.alias"] = "sh",
-        [".*/%.env%.d/.+%.path"] = "sh",
-        [".*/%.config/tmux/.+%.conf"] = "tmux",
-        -- ["%.env%.[%w_.-]+"] = "sh",
-        [".*/.+%.secret"] = "sh",
         -- Known templates
         [".*/.+%.jinja%..+"] = "jinja",
         [".*/.+%.j2%..+"] = "jinja",
         [".*/copier%.yml"] = "jinja.yaml",
     },
 })
-
-vim.treesitter.language.register("bash", "kitty")
-vim.treesitter.language.register("properties", { "jproperties" })
 
 vim.treesitter.query.add_directive("inject-jinja!", function(_, _, bufnr, _, metadata)
     if type(bufnr) ~= "number" or not vim.api.nvim_buf_is_valid(bufnr) then
@@ -47,3 +28,20 @@ vim.treesitter.query.add_directive("inject-jinja!", function(_, _, bufnr, _, met
         metadata["injection.language"] = raw_ft
     end
 end, {})
+
+local LSPs = {
+    "jinja_lsp",
+}
+
+return {
+    {
+        "mason-org/mason-lspconfig.nvim",
+        opts = {
+            ensure_installed = LSPs,
+        },
+    },
+    {
+        "neovim/nvim-lspconfig",
+        opts = function() vim.lsp.enable(LSPs) end,
+    },
+}

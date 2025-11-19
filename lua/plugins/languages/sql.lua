@@ -1,3 +1,7 @@
+local LSPs = {
+    "sqlls",
+}
+
 return {
     --- Interactive DB client
     {
@@ -40,4 +44,30 @@ return {
     --     cmd = {"SQLua", "SQLuaEdit"},
     --     opts = {},
     -- },
+    {
+        "mason-org/mason-lspconfig.nvim",
+        opts = {
+            ensure_installed = LSPs,
+        },
+    },
+    {
+        "neovim/nvim-lspconfig",
+        opts = function() vim.lsp.enable(LSPs) end,
+    },
+    {
+        "mfussenegger/nvim-lint",
+        opts = {
+            linters_by_ft = {
+                sql = { "sqlfluff" },
+            },
+        },
+    },
+    {
+        "stevearc/conform.nvim",
+        opts = {
+            formatters_by_ft = {
+                sql = { "sqlfluff" },
+            },
+        },
+    },
 }

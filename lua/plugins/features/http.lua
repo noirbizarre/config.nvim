@@ -13,4 +13,20 @@ return {
         global_keymaps_prefix = "<leader>R",
         kulala_keymaps_prefix = "",
     },
+    {
+        "stevearc/conform.nvim",
+        opts = {
+            formatters = {
+                kulala = {
+                    command = "kulala-fmt",
+                    args = { "format", "$FILENAME" },
+                    stdin = false,
+                },
+            },
+            formatters_by_ft = {
+                graphql = { "prettier" },
+                http = { "kulala" },
+            },
+        },
+    },
 }

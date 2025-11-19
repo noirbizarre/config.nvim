@@ -1,23 +1,6 @@
 local LSPs = {
-    "basedpyright",
-    "bashls",
     "clangd",
-    "docker_compose_language_service",
-    "dockerls",
-    "gh_actions_ls",
-    "helm_ls",
-    "jinja_lsp",
-    "jsonls",
-    "ltex_plus",
-    "lua_ls",
-    "marksman",
-    "ruff",
-    "sqlls",
-    "tombi",
-    -- "taplo",
-    -- "ty",
     "vimls",
-    "yamlls",
 }
 
 return {
@@ -35,8 +18,8 @@ return {
             automatic_enable = false,
             ensure_installed = LSPs,
         },
+        opts_extend = { "ensure_installed" },
     },
-
     -- lsp servers
     {
         "neovim/nvim-lspconfig",
@@ -53,30 +36,11 @@ return {
             "mason-org/mason.nvim",
             {
                 "cenk1cenk2/schema-companion.nvim",
+                -- dev = true,
                 dependencies = {
                     { "nvim-lua/plenary.nvim" },
                 },
                 opts = {},
-            },
-            --  Faster LuaLS setup for Neovim
-            {
-                "folke/lazydev.nvim",
-                ft = "lua", -- only load on lua files
-                opts = {
-                    library = {
-                        -- See the configuration section for more details
-                        -- Load luvit types when the `vim.uv` word is found
-                        { path = "${3rd}/luv/library", words = { "vim%.uv" } },
-                    },
-                },
-            },
-            {
-                "barreiroleo/ltex_extra.nvim",
-                branch = "dev",
-                -- ft = { "markdown", "tex" },
-                opts = {
-                    load_langs = { "en-US", "fr-FR" },
-                },
             },
             --- For LSP Cpabilities
             --- See: https://cmp.saghen.dev/installation.html
@@ -93,8 +57,6 @@ return {
 
         config = function()
             local icons = require("lib.ui.icons")
-            local schema_companion = require("schema-companion")
-
             vim.lsp.enable(LSPs)
 
             -- Exclude big directories from being watched
@@ -108,94 +70,6 @@ return {
                 + vim.glob.to_lpeg("**/node_modules/**")
                 -- rust build assets
                 + vim.glob.to_lpeg("**/target/**")
-
-            vim.lsp.config("ty", {
-                init_options = {
-                    settings = {
-                        ty = {
-                            experimental = {
-                                completions = {
-                                    enable = true,
-                                },
-                            },
-                        },
-                    },
-                },
-            })
-            vim.lsp.config("basedpyright", {
-                settings = {
-                    basedpyright = {
-                        analysis = {
-                            autoImportCompletions = true,
-                            -- diagnosticMode = "workspace",
-                            typeCheckingMode = "standard",
-                        },
-                    },
-                },
-            })
-            vim.lsp.config("jsonls", {
-                settings = {
-                    json = {
-                        schemas = require("schemastore").json.schemas(),
-                        validate = { enable = true },
-                    },
-                },
-            })
-            vim.lsp.config("dockerls", {
-                settings = {
-                    docker = {
-                        languageserver = {
-                            formatter = {
-                                ignoreMultilineInstructions = true,
-                            },
-                        },
-                    },
-                },
-            })
-            vim.lsp.config("gh_actions_ls", {
-                init_options = {
-                    sessionToken = vim.env.GITHUB_TOKEN,
-                },
-            })
-            vim.lsp.config("ltex_plus", {
-                settings = {
-                    ltex = {
-                        checkFrequency = "save",
-                        language = { "en-US", "fr" },
-                        additionalRules = {
-                            enablePickyRules = true,
-                            motherTongue = { "fr" },
-                        },
-                    },
-                },
-            })
-
-            vim.lsp.config(
-                "yamlls",
-                schema_companion.setup_client(
-                    schema_companion.adapters.yamlls.setup({
-                        sources = {
-                            schema_companion.sources.matchers.kubernetes.setup({ version = "master" }),
-                            schema_companion.sources.lsp.setup(),
-                            schema_companion.sources.schemas.setup({
-                                {
-                                    uri = "https://raw.githubusercontent.com/datreeio/CRDs-catalog/main/argoproj.io/application_v1alpha1.json",
-                                    name = "Argo CD Application",
-                                    description = "Argo CD Application Schema (v1alpha1)",
-                                    fileMatch = "argocd-application.yaml",
-                                },
-                            }),
-                        },
-                    }),
-                    {
-                        settings = {
-                            yaml = {
-                                validate = true,
-                            },
-                        },
-                    }
-                )
-            )
 
             vim.diagnostic.config({
                 signs = {
@@ -232,25 +106,14 @@ return {
                 desc = "Lint",
             },
         },
-        config = function()
-            local lint = require("lint")
-            local selene_or_luacheck = function()
-                if vim.fs.find({ ".luacheckrc" }, { path = vim.uv.cwd(), upward = true })[1] then
-                    return "luacheck"
-                end
-                return "selene"
-            end
-            lint.linters_by_ft = {
-                dockerfile = { "hadolint" },
-                json = { "jsonlint" },
-                lua = { selene_or_luacheck() },
-                markdown = { "vale" },
-                rst = { "vale" },
-                ruby = { "ruby" },
-                sql = { "sqlfluff" },
-                terraform = { "tflint" },
+        opts = {
+            linters_by_ft = {
                 text = { "vale" },
-            }
+            },
+        },
+        config = function(_, opts)
+            local lint = require("lint")
+            lint.linters_by_ft = opts.linters_by_ft or {}
         end,
     },
     --- Automatically install linters

@@ -42,6 +42,8 @@ return {
             desc = "Toggle LSP inlays",
             icon = "",
         },
+        { "<leader>lc", vim.lsp.codelens.run, desc = "Run Codelens", mode = { "n", "x" } },
+        { "<leader>lC", vim.lsp.codelens.refresh, desc = "Refresh & Display Codelens", mode = { "n" } },
     },
 
     { "<leader>r", group = "Refactoring", icon = "󰑕" },

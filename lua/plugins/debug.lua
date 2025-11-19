@@ -2,7 +2,6 @@ return {
     {
         "mfussenegger/nvim-dap",
         dependencies = {
-            "mfussenegger/nvim-dap-python",
             { "theHamsta/nvim-dap-virtual-text", opts = {} },
             {
                 "Joakker/lua-json5",
@@ -221,9 +220,6 @@ return {
                     end
                 end
             end
-
-            -- Python adapter settings
-            require("dap-python").setup(vim.fn.exepath("debugpy-adapter"))
 
             -- Restore session breakpoints
             vim.api.nvim_create_autocmd("SessionLoadPost", {

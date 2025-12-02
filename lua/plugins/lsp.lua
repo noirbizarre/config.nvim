@@ -78,9 +78,10 @@ return {
                 + vim.glob.to_lpeg("**/.venv/**")
                 -- JS/TS
                 + vim.glob.to_lpeg("**/.yarn/**")
-                + vim.glob.to_lpeg("**/node_modules/**")
                 -- rust build assets
                 + vim.glob.to_lpeg("**/target/**")
+                + vim.glob.to_lpeg("**/build/**")
+                + vim.glob.to_lpeg("**/dist/**")
 
             vim.diagnostic.config({
                 signs = {

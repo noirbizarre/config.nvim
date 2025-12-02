@@ -92,6 +92,8 @@ return {
 
                     hl.SidekickChat = { link = "Normal" }
                     hl.EdgyNormal = { link = "Normal" }
+
+                    hl.WhichKeyIcon = { link = "@markup.list" }
                 end,
             })
 

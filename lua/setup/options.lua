@@ -42,6 +42,9 @@ vim.opt.sessionoptions = "buffers,curdir,folds,help,tabpages,winsize,globals"
 -- Disable swap files
 vim.opt.swapfile = false
 
+-- Treat dash as `word` textobject part
+vim.opt.iskeyword = "@,48-57,_,192-255,-"
+
 -- Format options
 -- https://neovim.io/doc/user/options.html#'formatoptions'
 vim.opt.formatoptions = "jroqln" -- tcqj

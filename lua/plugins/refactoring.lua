@@ -4,34 +4,10 @@ return {
         "ThePrimeagen/refactoring.nvim",
         keys = {
             {
-                "<leader>rp",
-                function() require("refactoring").debug.printf({}) end,
-                desc = "Print statement",
-            },
-            {
-                "<leader>rd",
-                function() require("refactoring").debug.print_var({}) end,
-                mode = { "n", "x" },
-                desc = "Print var statement",
-            },
-            {
-                "<leader>rc",
-                function() require("refactoring").debug.cleanup({}) end,
-                desc = "Clear print statements",
-            },
-            {
                 "<leader>rr",
                 function() require("refactoring").select_refactor({ prefer_ex_cmd = true }) end,
                 mode = { "n", "x" },
                 desc = "Refactor",
-            },
-        },
-        opts = {
-            printf_statements = {
-                python = { 'print(f"🔎 [%s]=> {locals()=}")' },
-            },
-            print_var_statements = {
-                python = { 'print(f"🔎 %.0s{%s=}")' },
             },
         },
     },

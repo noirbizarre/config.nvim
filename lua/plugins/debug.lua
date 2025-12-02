@@ -1,5 +1,19 @@
 return {
     {
+        "folke/which-key.nvim",
+        opts = {
+            spec = {
+                { "<leader>d", group = "Debug", icon = " " },
+                { "<leader>dp", group = "Debug Printing", icon = " " },
+            },
+            icons = {
+                rules = {
+                    { pattern = "print", icon = " " },
+                },
+            },
+        },
+    },
+    {
         "mfussenegger/nvim-dap",
         dependencies = {
             { "theHamsta/nvim-dap-virtual-text", opts = {} },
@@ -123,7 +137,7 @@ return {
                 desc = "Up",
             },
             {
-                "<leader>dp",
+                "<leader>dP",
                 function() require("dap").pause() end,
                 desc = "Pause",
             },
@@ -226,5 +240,35 @@ return {
                 callback = function() require("lib.dap").load_breakpoints() end,
             })
         end,
+    },
+    -- Debug printing helper
+    {
+        "ThePrimeagen/refactoring.nvim",
+        keys = {
+            {
+                "<leader>dpp",
+                function() require("refactoring").debug.printf({}) end,
+                desc = "Print statement",
+            },
+            {
+                "<leader>dpv",
+                function() require("refactoring").debug.print_var({}) end,
+                mode = { "n", "x" },
+                desc = "Print var statement",
+            },
+            {
+                "<leader>dpx",
+                function() require("refactoring").debug.cleanup({}) end,
+                desc = "Clear print statements",
+            },
+        },
+        opts = {
+            printf_statements = {
+                python = { 'print(f"🔎 [%s]=> {locals()=}")' },
+            },
+            print_var_statements = {
+                python = { 'print(f"🔎 %.0s{%s=}")' },
+            },
+        },
     },
 }

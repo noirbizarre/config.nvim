@@ -502,21 +502,22 @@ return {
         opts = {
             spec = require("lib.keymaps"),
         },
+        opts_extend = { "spec", "icons.rules" },
     },
     -- Better inline diagnostic
     {
         "rachartier/tiny-inline-diagnostic.nvim",
         event = { "VeryLazy", "LspAttach" },
         priority = 1000, -- needs to be loaded in first
-        config = function()
+        opts = function()
             vim.diagnostic.config({ virtual_text = false }) -- Disable the builtin diagnostic
-            require("tiny-inline-diagnostic").setup({
+            return {
                 preset = "powerline",
                 options = {
                     show_source = true,
                     -- use_icons_from_diagnostic = true,
                 },
-            })
+            }
         end,
     },
 }

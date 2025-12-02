@@ -56,6 +56,17 @@ return {
         },
 
         config = function()
+            -- Force file watching support even on backends that do not
+            -- See:
+            --  - https://github.com/neovim/neovim/issues/23291
+            --  - https://github.com/neovim/neovim/pull/28690
+            local original_make_capabilities = vim.lsp.protocol.make_client_capabilities
+            vim.lsp.protocol.make_client_capabilities = function()
+                local capabilities = original_make_capabilities()
+                capabilities.workspace.didChangeWatchedFiles.dynamicRegistration = true
+                return capabilities
+            end
+
             local icons = require("lib.ui.icons")
             vim.lsp.enable(LSPs)
 

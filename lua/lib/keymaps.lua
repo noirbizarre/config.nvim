@@ -74,5 +74,7 @@ return {
     {
         hidden = true,
         { "<Esc>", "<cmd>nohls<CR>", desc = "Clear search highlighting" },
+        { "<C-a>", "<Esc>ggVG", desc = "Select all content" },
+        { "<M-a>", "<cmd>%y<CR>", desc = "Copy all content" },
     },
 }

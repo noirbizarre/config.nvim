@@ -122,6 +122,7 @@ return {
             { "<leader>kj", function() Snacks.picker.jumps() end, desc = "Jumps" },
             { "<leader>kk", function() Snacks.picker.keymaps() end, desc = "Keymaps" },
             { "<leader>kh", function() Snacks.picker.help() end, desc = "Help Pages" },
+            { "<leader>kH", function() Snacks.picker.highlights() end, desc = "Highlights" },
             { "<leader>kq", function() Snacks.picker.qflist() end, desc = "Quickfixes" },
             { "<leader>kc", function() Snacks.picker.command_history() end, desc = "Command history" },
             { "<leader>ku", function() Snacks.picker.undo() end, desc = "Undo tree" },

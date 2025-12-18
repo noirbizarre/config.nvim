@@ -1,10 +1,11 @@
 return {
-    {
-        "mfussenegger/nvim-lint",
-        opts = {
-            linters_by_ft = {
-                terraform = { "tflint" },
-            },
+    "noirbizarre/ensure.nvim",
+    opts = {
+        linters = {
+            terraform = { "tflint" },
+        },
+        lsp = {
+            enable = { "terraformls" },
         },
     },
 }

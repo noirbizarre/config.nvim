@@ -1,25 +1,4 @@
-local LSPs = {
-    "clangd",
-    "vimls",
-}
-
 return {
-    {
-        "mason-org/mason-lspconfig.nvim",
-        dependencies = {
-            "mason-org/mason.nvim",
-            "neovim/nvim-lspconfig",
-        },
-        cmd = {
-            "LspInstall",
-            "LspUninstall",
-        },
-        opts = {
-            automatic_enable = false,
-            ensure_installed = LSPs,
-        },
-        opts_extend = { "ensure_installed" },
-    },
     -- lsp servers
     {
         "neovim/nvim-lspconfig",
@@ -68,7 +47,7 @@ return {
             end
 
             local icons = require("lib.ui.icons")
-            vim.lsp.enable(LSPs)
+            -- vim.lsp.enable(LSPs)
 
             -- Exclude big directories from being watched
             vim.lsp._watchfiles._poll_exclude_pattern = vim.lsp._watchfiles._poll_exclude_pattern
@@ -125,18 +104,9 @@ return {
         },
         config = function(_, opts)
             local lint = require("lint")
-            lint.linters_by_ft = opts.linters_by_ft or {}
+            for ft, linters in pairs(opts.linters_by_ft) do
+                lint.linters_by_ft[ft] = linters
+            end
         end,
-    },
-    --- Automatically install linters
-    {
-        "rshkarin/mason-nvim-lint",
-        dependencies = {
-            "mason-org/mason.nvim",
-            "mfussenegger/nvim-lint",
-        },
-        opts = {
-            ignore_install = { "janet", "inko", "clj-kondo", "ruby" },
-        },
     },
 }

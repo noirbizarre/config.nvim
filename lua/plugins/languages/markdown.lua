@@ -1,9 +1,16 @@
 local filetypes = { "markdown", "Avante", "codecompanion", "copilot-chat", "opencode_output" }
-local LSPs = {
-    "marksman",
-}
 
 return {
+    {
+        "noirbizarre/ensure.nvim",
+        opts = {
+            linters = { markdown = "vale" },
+            formatters = { markdown = "markdownlint-cli2" },
+            lsp = {
+                enable = { "marksman" },
+            },
+        },
+    },
     -- Inline Markdown rendering
     {
         "OXY2DEV/markview.nvim",
@@ -89,31 +96,5 @@ return {
                 height = { 0.2, 0.75 },
             })
         end,
-    },
-    {
-        "mason-org/mason-lspconfig.nvim",
-        opts = {
-            ensure_installed = LSPs,
-        },
-    },
-    {
-        "neovim/nvim-lspconfig",
-        opts = function() vim.lsp.enable(LSPs) end,
-    },
-    {
-        "mfussenegger/nvim-lint",
-        opts = {
-            linters_by_ft = {
-                markdown = { "vale" },
-            },
-        },
-    },
-    {
-        "stevearc/conform.nvim",
-        opts = {
-            formatters_by_ft = {
-                markdown = { "markdownlint-cli2" },
-            },
-        },
     },
 }

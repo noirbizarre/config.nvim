@@ -14,18 +14,11 @@ return {
         kulala_keymaps_prefix = "",
     },
     {
-        "stevearc/conform.nvim",
+        "noribizarre/ensure.nvim",
         opts = {
             formatters = {
-                kulala = {
-                    command = "kulala-fmt",
-                    args = { "format", "$FILENAME" },
-                    stdin = false,
-                },
-            },
-            formatters_by_ft = {
+                http = { "kulala-fmt" },
                 graphql = { "prettier" },
-                http = { "kulala" },
             },
         },
     },

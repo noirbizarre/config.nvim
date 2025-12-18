@@ -1,46 +1,49 @@
+vim.filetype.add({
+    extension = {
+        -- Textual custom CSS (https://textual.textualize.io/guide/CSS/)
+        -- switch https://github.com/cachebag/nvim-tcss if not enough
+        tcss = "css",
+    },
+})
+
 return {
     {
-        "mason-org/mason-lspconfig.nvim",
-        ensure_installed = {
-            "basedpyright",
-            "ruff",
-            -- "ty",
-        },
-    },
-    {
-        "neovim/nvim-lspconfig",
-        opts = function()
-            vim.lsp.enable({
-                "basedpyright",
-                "ruff",
-                -- "ty",
-            })
-
-            vim.lsp.config("ty", {
-                init_options = {
+        "noirbizarre/ensure.nvim",
+        opts = {
+            packages = { python = "debugpy" },
+            parsers = {
+                "pymanifest",
+                "python",
+            },
+            formatters = {
+                python = { "ruff_organize_imports", "ruff_format" },
+            },
+            lsp = {
+                enable = {
+                    -- "basedpyright",
+                    "ruff",
+                    "ty",
+                },
+                ty = {
                     settings = {
                         ty = {
-                            experimental = {
-                                completions = {
-                                    enable = true,
-                                },
+                            diagnosticMode = "workspace",
+                        },
+                    },
+                },
+                basedpyright = {
+                    settings = {
+                        basedpyright = {
+                            analysis = {
+                                autoImportCompletions = true,
+                                -- diagnosticMode = "workspace",
+                                typeCheckingMode = "standard",
                             },
                         },
                     },
                 },
-            })
-            vim.lsp.config("basedpyright", {
-                settings = {
-                    basedpyright = {
-                        analysis = {
-                            autoImportCompletions = true,
-                            diagnosticMode = "workspace",
-                            typeCheckingMode = "standard",
-                        },
-                    },
-                },
-            })
-        end,
+            },
+        },
     },
     {
         "nvim-neotest/neotest",
@@ -70,13 +73,5 @@ return {
             -- Python adapter settings
             require("dap-python").setup(vim.fn.exepath("debugpy-adapter"))
         end,
-    },
-    {
-        "stevearc/conform.nvim",
-        opts = {
-            formatters_by_ft = {
-                python = { "ruff_organize_imports", "ruff_format" },
-            },
-        },
     },
 }

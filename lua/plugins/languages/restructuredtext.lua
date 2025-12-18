@@ -1,10 +1,8 @@
 return {
-    {
-        "mfussenegger/nvim-lint",
-        opts = {
-            linters_by_ft = {
-                rst = { "vale" },
-            },
+    "noirbizarre/ensure.nvim",
+    opts = {
+        linters = {
+            rst = { "vale" },
         },
     },
 }

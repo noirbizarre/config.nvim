@@ -87,15 +87,6 @@ return {
             notify_on_error = true,
         },
     },
-    --- Install formatters
-    {
-        "zapling/mason-conform.nvim",
-        dependencies = {
-            "mason-org/mason.nvim",
-            "stevearc/conform.nvim",
-        },
-        config = true,
-    },
     --- Global search and replace
     {
         "MagicDuck/grug-far.nvim",

@@ -37,6 +37,16 @@ require("lazy").setup({
         { import = "plugins" },
         { import = "plugins.features" },
         { import = "plugins.languages" },
+        {
+            "noirbizarre/ensure.nvim",
+            -- dev = true,
+            ---@type ensure.SetupOpts
+            opts = {
+                ignore = {
+                    packages = { "janet", "inko" },
+                },
+            },
+        },
     },
     -- Configure any other settings here. See the documentation for more details.
     -- colorscheme that will be used when installing plugins.

@@ -4,19 +4,17 @@ vim.filetype.add({
     },
 })
 
-local LSPs = {
-    "helm_ls",
-}
-
 return {
-    {
-        "mason-org/mason-lspconfig.nvim",
-        opts = {
-            ensure_installed = LSPs,
+    "noirbizarre/ensure.nvim",
+    opts = {
+        linters = {
+            markdown = { "vale" },
         },
-    },
-    {
-        "neovim/nvim-lspconfig",
-        opts = function() vim.lsp.enable(LSPs) end,
+        formatters = {
+            markdown = { "markdownlint-cli2" },
+        },
+        lsp = {
+            enable = { "helm_ls" },
+        },
     },
 }

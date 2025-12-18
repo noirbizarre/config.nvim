@@ -1,8 +1,8 @@
 return {
     "noirbizarre/ensure.nvim",
     opts = {
-        formatters = {
-            css = { "prettier" },
+        lsp = {
+            enable = { "clangd" },
         },
     },
 }

@@ -1,7 +1,3 @@
-local LSPs = {
-    "lua_ls",
-}
-
 local selene_or_luacheck = function()
     if vim.fs.find({ ".luacheckrc" }, { path = vim.uv.cwd(), upward = true })[1] then
         return "luacheck"
@@ -11,13 +7,7 @@ end
 
 return {
     {
-        "mason-org/mason-lspconfig.nvim",
-        opts = {
-            ensure_installed = LSPs,
-        },
-    },
-    {
-        "neovim/nvim-lspconfig",
+        "noirbizarre/ensure.nvim",
         dependencies = {
             --  Faster LuaLS setup for Neovim
             {
@@ -32,7 +22,17 @@ return {
                 },
             },
         },
-        opts = function() vim.lsp.enable(LSPs) end,
+        opts = {
+            linters = {
+                lua = { selene_or_luacheck() },
+            },
+            formatters = {
+                lua = { "stylua" },
+            },
+            lsp = {
+                enable = { "lua_ls" },
+            },
+        },
     },
     {
         "nvim-neotest/neotest",
@@ -41,21 +41,5 @@ return {
         },
         ft = "lua",
         opts = function(_, opts) table.insert(opts.adapters, require("neotest-busted")) end,
-    },
-    {
-        "mfussenegger/nvim-lint",
-        opts = {
-            linters_by_ft = {
-                lua = { selene_or_luacheck() },
-            },
-        },
-    },
-    {
-        "stevearc/conform.nvim",
-        opts = {
-            formatters_by_ft = {
-                lua = { "stylua" },
-            },
-        },
     },
 }

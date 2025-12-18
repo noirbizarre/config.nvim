@@ -16,26 +16,20 @@ vim.filetype.add({
 
 vim.treesitter.language.register("bash", "kitty")
 
-local LSPs = {
-    "bashls",
-}
-
 return {
     {
-        "mason-org/mason-lspconfig.nvim",
+        "noibizarre/ensure.nvim",
         opts = {
-            ensure_installed = LSPs,
-        },
-    },
-    {
-        "neovim/nvim-lspconfig",
-        opts = function() vim.lsp.enable(LSPs) end,
-    },
-    {
-        "stevearc/conform.nvim",
-        opts = {
-            formatters_by_ft = {
+            parsers = {
+                "bash",
+            },
+            formatters = {
                 sh = { "shfmt" },
+            },
+            lsp = {
+                enable = {
+                    "bashls",
+                },
             },
         },
     },

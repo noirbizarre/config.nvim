@@ -1,29 +1,17 @@
-local LSPs = {
-    "ltex_plus",
-}
-
 return {
-    {
-        "mason-org/mason-lspconfig.nvim",
+    "noirbizare/ensure.nvim",
+    dependencies = {
+        "barreiroleo/ltex_extra.nvim",
+        branch = "dev",
+        -- ft = { "markdown", "tex" },
         opts = {
-            ensure_installed = LSPs,
+            load_langs = { "en-US", "fr-FR" },
         },
     },
-    {
-        "neovim/nvim-lspconfig",
-        dependencies = {
-            {
-                "barreiroleo/ltex_extra.nvim",
-                branch = "dev",
-                -- ft = { "markdown", "tex" },
-                opts = {
-                    load_langs = { "en-US", "fr-FR" },
-                },
-            },
-        },
-        opts = function()
-            vim.lsp.enable(LSPs)
-            vim.lsp.config("ltex_plus", {
+    opts = {
+        lsp = {
+            enable = { "ltex_plus" },
+            ltex_plus = {
                 settings = {
                     ltex = {
                         checkFrequency = "save",
@@ -34,7 +22,7 @@ return {
                         },
                     },
                 },
-            })
-        end,
+            },
+        },
     },
 }

@@ -29,19 +29,11 @@ vim.treesitter.query.add_directive("inject-jinja!", function(_, _, bufnr, _, met
     end
 end, {})
 
-local LSPs = {
-    "jinja_lsp",
-}
-
 return {
-    {
-        "mason-org/mason-lspconfig.nvim",
-        opts = {
-            ensure_installed = LSPs,
+    "noirbizare/ensure.nvim",
+    opts = {
+        lsp = {
+            enable = { "jinja_lsp" },
         },
-    },
-    {
-        "neovim/nvim-lspconfig",
-        opts = function() vim.lsp.enable(LSPs) end,
     },
 }

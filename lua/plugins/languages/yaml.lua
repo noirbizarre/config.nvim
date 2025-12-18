@@ -5,21 +5,16 @@ vim.filetype.add({
 })
 
 return {
-    {
-        "mason-org/mason-lspconfig.nvim",
-        opts = {
-            ensure_installed = { "yamlls" },
+    "noirbizare/ensure.nvim",
+    opts = {
+        formatters = {
+            yaml = { "prettier" },
         },
-    },
-    {
-        "neovim/nvim-lspconfig",
-        opts = function()
-            local schema_companion = require("schema-companion")
-
-            vim.lsp.enable("yamlls")
-            vim.lsp.config(
-                "yamlls",
-                schema_companion.setup_client(
+        lsp = {
+            enable = { "yamlls" },
+            yamlls = function()
+                local schema_companion = require("schema-companion")
+                return schema_companion.setup_client(
                     schema_companion.adapters.yamlls.setup({
                         sources = {
                             schema_companion.sources.matchers.kubernetes.setup({ version = "master" }),
@@ -34,6 +29,7 @@ return {
                             }),
                         },
                     }),
+                    ---@diagnostic disable-next-line: missing-fields
                     {
                         settings = {
                             yaml = {
@@ -42,15 +38,7 @@ return {
                         },
                     }
                 )
-            )
-        end,
-    },
-    {
-        "stevearc/conform.nvim",
-        opts = {
-            formatters_by_ft = {
-                yaml = { "prettier" },
-            },
+            end,
         },
     },
 }

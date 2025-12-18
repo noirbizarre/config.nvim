@@ -37,6 +37,17 @@ require("lazy").setup({
         { import = "plugins" },
         { import = "plugins.features" },
         { import = "plugins.languages" },
+        {
+            "noibizarre/ensure.nvim",
+            dependencies = {
+                "mason-org/mason.nvim",
+                "neovim/nvim-lspconfig",
+                "nvim-treesitter/nvim-treesitter",
+                "stevearc/conform.nvim",
+                "mfussenegger/nvim-lint",
+            },
+            dev = true,
+        },
     },
     -- Configure any other settings here. See the documentation for more details.
     -- colorscheme that will be used when installing plugins.

@@ -14,6 +14,7 @@ return {
     },
     {
         "folke/sidekick.nvim",
+        dev = true,
         opts = {
             cli = {
                 mux = {

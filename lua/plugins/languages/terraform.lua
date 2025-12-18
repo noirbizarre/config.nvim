@@ -1,10 +1,8 @@
 return {
-    {
-        "mfussenegger/nvim-lint",
-        opts = {
-            linters_by_ft = {
-                terraform = { "tflint" },
-            },
+    "noirbizare/ensure.nvim",
+    opts = {
+        linters = {
+            terraform = { "tflint" },
         },
     },
 }

@@ -1,10 +1,8 @@
 return {
-    {
-        "stevearc/conform.nvim",
-        opts = {
-            formatters_by_ft = {
-                html = { "prettier" },
-            },
+    "noirbizare/ensure.nvim",
+    opts = {
+        formatters = {
+            html = { "prettier" },
         },
     },
 }

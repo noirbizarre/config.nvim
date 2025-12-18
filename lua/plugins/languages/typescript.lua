@@ -1,17 +1,24 @@
-local LSPs = {
-    "vtsls",
-}
-
 return {
     {
-        "mason-org/mason-lspconfig.nvim",
+        "noirbizare/ensure.nvim",
         opts = {
-            ensure_installed = LSPs,
+            -- parsers = {
+            --     "javascript",
+            --     "svelte",
+            --     "tsx",
+            --     "typescript",
+            --     "vue",
+            -- },
+            formatters = {
+                javascript = { "prettier" },
+                javascriptreact = { "prettier" },
+                typescript = { "prettier" },
+                typescriptreact = { "prettier" },
+            },
+            lsp = {
+                enable = { "vtsls" },
+            },
         },
-    },
-    {
-        "neovim/nvim-lspconfig",
-        opts = function() vim.lsp.enable(LSPs) end,
     },
     {
         "nvim-neotest/neotest",
@@ -27,14 +34,5 @@ return {
             "typescriptreact",
         },
         opts = function(_, opts) table.insert(opts.adapters, require("neotest-jest")) end,
-    },
-    {
-        "stevearc/conform.nvim",
-        opts = {
-            javascript = { "prettier" },
-            javascriptreact = { "prettier" },
-            typescript = { "prettier" },
-            typescriptreact = { "prettier" },
-        },
     },
 }

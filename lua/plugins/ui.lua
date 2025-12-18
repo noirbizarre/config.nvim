@@ -105,6 +105,7 @@ return {
         "folke/snacks.nvim",
         priority = 1000,
         lazy = false,
+        dev = true,
         keys = {
             --- Base Pickers
             { "<C-k>", function() Snacks.picker.files() end, desc = "File picker" },
@@ -124,7 +125,8 @@ return {
             { "<leader>kh", function() Snacks.picker.help() end, desc = "Help Pages" },
             { "<leader>kH", function() Snacks.picker.highlights() end, desc = "Highlights" },
             { "<leader>kq", function() Snacks.picker.qflist() end, desc = "Quickfixes" },
-            { "<leader>kc", function() Snacks.picker.command_history() end, desc = "Command history" },
+            { "<leader>kc", function() Snacks.picker.commands() end, desc = "Commands" },
+            { "<leader>kC", function() Snacks.picker.command_history() end, desc = "Command history" },
             { "<leader>ku", function() Snacks.picker.undo() end, desc = "Undo tree" },
             { "<leader>kl", function() Snacks.picker.spelling() end, desc = "Spelling" },
             { "<leader>kv", function() Snacks.picker.registers() end, desc = "Registers" },
@@ -354,6 +356,11 @@ return {
                                 "Struct",
                                 "Trait",
                             },
+                        },
+                    },
+                    explorer = {
+                        layout = {
+                            hidden = { "input", "preview" },
                         },
                     },
                 },

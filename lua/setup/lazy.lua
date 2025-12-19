@@ -47,6 +47,11 @@ require("lazy").setup({
                 "mfussenegger/nvim-lint",
             },
             dev = true,
+            opts = {
+                ignore = {
+                    packages = {"janet", "inko"}
+                },
+            },
         },
     },
     -- Configure any other settings here. See the documentation for more details.

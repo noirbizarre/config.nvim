@@ -5,21 +5,22 @@ return {
             dockerfile = { "hadolint" },
         },
         formatters = {
-            dockerfile = { "dockerfmt" },
+            -- TODO: ask for Mason publication of dockerfmt
+            -- dockerfile = { "dockerfmt" },
         },
         lsp = {
-            enable = { "dockerls", "docker_compose_language_service" },
-            dockerls = {
-                settings = {
-                    docker = {
-                        languageserver = {
-                            formatter = {
-                                ignoreMultilineInstructions = true,
-                            },
-                        },
-                    },
-                },
-            },
+            enable = { "docker_language_server" },
+            -- dockerls = {
+            --     settings = {
+            --         docker = {
+            --             languageserver = {
+            --                 formatter = {
+            --                     ignoreMultilineInstructions = true,
+            --                 },
+            --             },
+            --         },
+            --     },
+            -- },
         },
     },
 }

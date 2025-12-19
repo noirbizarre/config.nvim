@@ -29,4 +29,12 @@ return {
             },
         },
     },
+        {
+            "noibizarre/ensure.nvim",
+            opts = {
+                ignore = {
+                    packages = {"kulala"}
+                },
+            },
+        },
 }

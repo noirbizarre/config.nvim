@@ -24,6 +24,15 @@ return {
                 },
             },
         },
+        config = function(_, opts)
+            require("sidekick").setup(opts)
+            if vim.env.__MISE_SESSION then
+                --- Use mise if a mise session is detected
+                for _, tool in pairs(require("sidekick.config").cli.tools) do
+                    tool.cmd = vim.list_extend({ "mise", "exec", "--no-prepare", "--raw", "--" }, tool.cmd)
+                end
+            end
+        end,
         keys = {
             {
                 "<tab>",

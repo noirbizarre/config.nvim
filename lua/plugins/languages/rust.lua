@@ -23,10 +23,13 @@ return {
         opts = function(_, opts) table.insert(opts.adapters, require("rustaceanvim.neotest")) end,
     },
     {
-        "stevearc/conform.nvim",
+        "noirbizarre/ensure.nvim",
         opts = {
-            formatters_by_ft = {
+            formatters = {
                 rust = { "rustfmt" },
+            },
+            ignore = {
+                packages = { "rustfmt" },
             },
         },
     },

@@ -45,6 +45,9 @@ require("lazy").setup({
                 ignore = {
                     packages = { "janet", "inko" },
                 },
+                lsp = {
+                    auto = true,
+                },
             },
         },
     },

@@ -11,7 +11,7 @@
   "copilot.lua": { "branch": "master", "commit": "e78d1ffebdf6ccb6fd8be4e6898030c1cf5f9b64" },
   "ecolog.nvim": { "branch": "main", "commit": "0053fb4f597d4f734b0ce0f84edc2e7a288bfc57" },
   "edgy.nvim": { "branch": "main", "commit": "8bfd2808994a988c975694122f68624b8a219f5f" },
-  "ensure.nvim": { "branch": "main", "commit": "99b81d7a74a178118b335156492a686dee9c5e62" },
+  "ensure.nvim": { "branch": "main", "commit": "965d082cf97eb7250c86c59ed4226dee6e962529" },
   "flash.nvim": { "branch": "main", "commit": "fcea7ff883235d9024dc41e638f164a450c14ca2" },
   "friendly-snippets": { "branch": "main", "commit": "572f5660cf05f8cd8834e096d7b4c921ba18e175" },
   "git-conflict.nvim": { "branch": "main", "commit": "4bbfdd92d547d2862a75b4e80afaf30e73f7bbb4" },

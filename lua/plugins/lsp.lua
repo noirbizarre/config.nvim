@@ -47,14 +47,14 @@ return {
             end
 
             local icons = require("lib.ui.icons")
-            -- vim.lsp.enable(LSPs)
 
             -- Exclude big directories from being watched
             vim.lsp._watchfiles._poll_exclude_pattern = vim.lsp._watchfiles._poll_exclude_pattern
                 -- Standard cache dirs
                 + vim.glob.to_lpeg("**/.*_cache/**")
                 -- Virtualenv (Need LSP restart)
-                + vim.glob.to_lpeg("**/.venv/**")
+                -- + vim.glob.to_lpeg("**/.venv/**")
+                + vim.glob.to_lpeg("**/.tox/**")
                 -- JS/TS
                 + vim.glob.to_lpeg("**/.yarn/**")
                 -- rust build assets

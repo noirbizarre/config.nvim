@@ -55,6 +55,7 @@ return {
                 -- Virtualenv (Need LSP restart)
                 -- + vim.glob.to_lpeg("**/.venv/**")
                 + vim.glob.to_lpeg("**/.tox/**")
+                + vim.glob.to_lpeg("**/__pycache__/**")
                 -- JS/TS
                 + vim.glob.to_lpeg("**/.yarn/**")
                 -- rust build assets

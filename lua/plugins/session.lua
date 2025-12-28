@@ -10,9 +10,19 @@ return {
     {
         "folke/persistence.nvim",
         event = "BufReadPre", -- this will only start session saving when an actual file was opened
-        opts = {
-            -- add any custom options here
-        },
+        config = function()
+            local persistence = require("persistence")
+            persistence.setup({})
+
+            vim.api.nvim_create_autocmd({ "BufWritePost", "BufDelete", "BufAdd" }, {
+                group = vim.api.nvim_create_augroup("persistence_auto_save", { clear = true }),
+                callback = function()
+                    if persistence.active() then
+                        persistence.save()
+                    end
+                end,
+            })
+        end,
     },
 
     --- Privileges escalation

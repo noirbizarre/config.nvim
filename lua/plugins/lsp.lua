@@ -98,16 +98,9 @@ return {
                 desc = "Lint",
             },
         },
-        opts = {
-            linters_by_ft = {
-                text = { "vale" },
-            },
-        },
-        config = function(_, opts)
+        config = function()
             local lint = require("lint")
-            for ft, linters in pairs(opts.linters_by_ft) do
-                lint.linters_by_ft[ft] = linters
-            end
+            lint.linters_by_ft = { text = { "vale" } } --clear the default
         end,
     },
 }

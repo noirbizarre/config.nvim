@@ -1,10 +1,7 @@
 return {
-    __extend = true,
     --- Common reusable groups
     { "<leader>b", group = "Buffers", icon = "📔" },
     { "<leader>a", group = "AI", icon = "" },
-    { "<leader>g", group = "Git", icon = "" },
-    { "<leader>gx", group = "Git conflicts", icon = "" },
     { "<leader>k", group = "Pickers", icon = "" },
     { "<leader>m", group = "Markdown", icon = "" },
     { "<leader>\\", group = "Multicursor", icon = "" },

@@ -1,15 +1,13 @@
 local ascii = require("lib.ui.ascii")
 local ft = require("lib.filetypes")
 
-local gitwin = { win = { width = 0.4, height = 0.4 } }
-
 return {
     --- Solarized Osaka
     {
         "craftzdog/solarized-osaka.nvim",
         lazy = false,
         priority = 1000,
-        config = function()
+        config = function(_, opts)
             require("solarized-osaka").setup({
                 transparent = true, -- Disable setting background
                 terminal_colors = false,
@@ -19,81 +17,40 @@ return {
                     -- floats = "transparent",
                 },
                 sidebars = { "qf", "help", "sidekick_terminal", "snacks_terminal", "terminal" },
-                ---@param hl Highlights
-                ---@param c ColorScheme
-                on_highlights = function(hl, c)
-                    --- Transparent Telescope
-                    hl.TelescopeNormal = {
-                        bg = c.bg_dark,
-                        fg = c.fg_dark,
-                    }
-                    hl.TelescopeBorder = {
-                        bg = c.bg_dark,
-                        fg = c.base02,
-                    }
-                    hl.TelescopePreviewTitle = {
-                        bg = c.bg_dark,
-                        fg = c.bg_dark,
-                    }
-                    hl.TelescopeResultsTitle = {
-                        bg = c.bg_dark,
-                        fg = c.bg_dark,
-                    }
+                ---@param highlights table<string, vim.api.keyset.highlight|string>
+                ---@param colors ColorScheme
+                on_highlights = function(highlights, colors)
                     --- Reusable rainbow values
-                    hl.RainbowRed = { fg = c.red }
-                    hl.RainbowOrange = { fg = c.orange }
-                    hl.RainbowYellow = { fg = c.yellow }
-                    hl.RainbowGreen = { fg = c.green }
-                    hl.RainbowBlue = { fg = c.blue }
-                    hl.RainbowViolet = { fg = c.violet }
-                    hl.RainbowCyan = { fg = c.cyan }
+                    highlights.RainbowRed = { fg = colors.red }
+                    highlights.RainbowOrange = { fg = colors.orange }
+                    highlights.RainbowYellow = { fg = colors.yellow }
+                    highlights.RainbowGreen = { fg = colors.green }
+                    highlights.RainbowBlue = { fg = colors.blue }
+                    highlights.RainbowViolet = { fg = colors.violet }
+                    highlights.RainbowCyan = { fg = colors.cyan }
 
                     --- Snacks
-                    hl.SnacksPicker = {
-                        bg = c.bg_dark,
-                        fg = c.blue300,
-                    }
-                    hl.SnacksPickerPrompt = {
-                        fg = c.magenta300,
-                    }
-                    hl.SnacksPickerTitle = {
-                        bg = c.bg_dark,
-                        fg = c.cyan300,
-                        -- fg = c.magenta300,
-                    }
-                    hl.SnacksPickerPreviewTitle = {
-                        link = "SnacksPickerTitle",
-                    }
-                    hl.SnacksPickerBorder = {
-                        bg = c.bg_dark,
-                        fg = c.blue300,
-                    }
-                    hl.SnacksGhBorder = {
-                        link = "SnacksPickerBorder",
-                    }
-                    hl.SnacksGhNormalFloat = {
-                        link = "Normal",
-                    }
-                    hl.SnacksGhTitle = {
-                        link = "SnacksPickerPreviewTitle",
-                    }
+                    highlights.SnacksPicker = { fg = colors.blue300 }
+                    highlights.SnacksPickerPrompt = { fg = colors.magenta300 }
+                    highlights.SnacksPickerTitle = { fg = colors.cyan300 }
+                    highlights.SnacksPickerPreviewTitle = "SnacksPickerTitle"
+                    highlights.SnacksPickerBorder = { fg = colors.blue300 }
+                    highlights.SnacksGhBorder = "SnacksPickerBorder"
+                    highlights.SnacksGhNormalFloat = "Normal"
+                    highlights.SnacksGhTitle = "SnacksPickerPreviewTitle"
 
                     -- Tree Sitter Context
-                    hl.TreesitterContext = { bg = c.base03 }
-                    hl.TreesitterContextBottom = { underline = true }
+                    highlights.TreesitterContext = { bg = colors.base03 }
+                    highlights.TreesitterContextBottom = { underline = true }
 
-                    -- Avante
-                    hl.AvanteSidebarNormal = { link = "Normal" }
-                    hl.AvanteReversedTitle = { bg = c.bg_dark }
-                    -- hl.AvanteReversedSubtitle = { fg = c.bg_dark,  bg  = c.bg_dark }
-                    -- hl.AvanteReversedThirdTitle = { fg = c.blue300 }
-                    hl.AvanteSidebarWinSeparator = { link = "WinSeparator" }
-                    hl.AvanteSidebarWinHorizontalSeparator = { link = "WinSeparator" }
+                    highlights.SidekickChat = "Normal"
+                    highlights.EdgyNormal = "Normal"
 
-                    hl.SidekickChat = { link = "Normal" }
-                    hl.EdgyNormal = { link = "Normal" }
+                    highlights.WhichKeyIcon = { default = true, link = "@markup.list" }
 
-                    hl.WhichKeyIcon = { link = "@markup.list" }
+                    for group, highlight in pairs(opts.highlights or {}) do
+                        highlights[group] = highlight
+                    end
                 end,
             })
 
@@ -155,30 +112,6 @@ return {
             { "<leader>lw", function() Snacks.picker.lsp_workspace_symbols() end, desc = "Workspace symbols" },
             { "<leader>lc", function() Snacks.picker.lsp_incoming_calls() end, desc = "Incoming calls" },
             { "<leader>ld", function() Snacks.picker.diagnostics() end, desc = "Diagnostics" },
-            --- Git
-            { "<leader>gh", function() Snacks.picker.git_log() end, desc = "History" },
-            { "<leader>gf", function() Snacks.picker.git_log_file() end, desc = "Current buffer history" },
-            { "<leader>gl", function() Snacks.picker.git_log_line() end, desc = "Current line history" },
-            { "<leader>gs", function() Snacks.picker.git_status() end, desc = "Git Status" },
-            { "<leader>gt", function() Snacks.picker.git_stash() end, desc = "Git Stash" },
-            { "<leader>gb", function() Snacks.picker.git_branches() end, desc = "Git Branches" },
-            { "<leader>gd", function() Snacks.picker.git_diff({ group = true }) end, desc = "Git Diff" },
-            { "<leader>gD", function() Snacks.picker.git_diff() end, desc = "Git Diff (Hunks)" },
-            { "<leader>gg", function() Snacks.lazygit() end, desc = "Lazygit" },
-            { "<leader>gB", function() Snacks.gitbrowse() end, mode = { "n", "v" }, desc = "Git Browse" },
-            {
-                "<leader>gM",
-                function() Snacks.gitbrowse({ what = "file", branch = "main" }) end,
-                mode = { "n", "v" },
-                desc = "Git Browse (main)",
-            },
-            { "<leader>gcc", function() Snacks.terminal("git commit", gitwin) end, desc = "Git Commit" },
-            { "<leader>gca", function() Snacks.terminal("git amend", gitwin) end, desc = "Git Commit Amend" },
-            { "<leader>gcA", function() Snacks.terminal("git commit --all", gitwin) end, desc = "Git Commit All" },
-            { "<leader>gcz", function() Snacks.terminal("cz commit", gitwin) end, desc = "Git Commit(izen)" },
-            { "<leader>gp", function() Snacks.terminal("git add -p") end, desc = "Git Partial Add" },
-            { "<leader>gi", function() Snacks.picker.gh_issue() end, desc = "GitHub Issues" },
-            { "<leader>gI", function() Snacks.picker.gh_pr() end, desc = "GitHub Pull Requests" },
             --- Buffers
             { "<leader>bb", function() Snacks.picker.buffers() end, desc = "Buffers" },
             { "<leader>bd", function() Snacks.bufdelete() end, desc = "Delete Buffer" },

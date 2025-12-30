@@ -79,16 +79,35 @@ local function get_repos_config()
 end
 
 return {
-    "noirbizarre/ensure.nvim",
-    opts = {
-        lsp = {
-            enable = { "gh_actions_ls" },
-            gh_actions_ls = {
-                init_options = {
-                    sessionToken = vim.env.GITHUB_TOKEN,
-                    repos = get_repos_config(),
+    {
+        "folke/which-key.nvim",
+        opts = {
+            icons = {
+                rules = {
+                    { pattern = "Github", icon = "" },
                 },
             },
+        },
+    },
+    {
+        "noirbizarre/ensure.nvim",
+        opts = {
+            lsp = {
+                enable = { "gh_actions_ls" },
+                gh_actions_ls = {
+                    init_options = {
+                        sessionToken = vim.env.GITHUB_TOKEN,
+                        repos = get_repos_config(),
+                    },
+                },
+            },
+        },
+    },
+    {
+        "folke/snacks.nvim",
+        keys = {
+            { "<leader>gi", function() Snacks.picker.gh_issue() end, desc = "GitHub Issues" },
+            { "<leader>gI", function() Snacks.picker.gh_pr() end, desc = "GitHub Pull Requests" },
         },
     },
 }

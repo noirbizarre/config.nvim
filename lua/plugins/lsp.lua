@@ -1,4 +1,69 @@
 return {
+    {
+        "folke/which-key.nvim",
+        opts = {
+            spec = {
+                { "<leader>l", group = "LSP", icon = "󰘦" },
+                {
+                    group = "LSP",
+                    { "<leader>lh", function() vim.lsp.buf.hover() end, desc = "Hover", icon = "󰯗" },
+                    { "<leader>lr", function() vim.lsp.buf.rename() end, desc = "Rename", icon = "" },
+                    {
+                        "<leader>la",
+                        function() vim.lsp.buf.code_action() end,
+                        desc = "Code Action",
+                        icon = { icon = "", color = "yellow" },
+                    },
+                    {
+                        "<leader>li",
+                        function() vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled({ 0 }), { 0 }) end,
+                        desc = "Toggle LSP inlays",
+                        icon = "",
+                    },
+                    {
+                        "<leader>lc",
+                        vim.lsp.codelens.run,
+                        desc = "Run Codelens",
+                        mode = { "n", "x" },
+                        icon = { icon = "󱡴", color = "azure" },
+                    },
+                    {
+                        "<leader>lC",
+                        vim.lsp.codelens.refresh,
+                        desc = "Refresh & Display Codelens",
+                        mode = { "n" },
+                        icon = { icon = "󱡴", color = "blue" },
+                    },
+                },
+            },
+            icons = {
+                rules = {
+                    { pattern = "Go to", icon = "" },
+                    { pattern = "References", icon = "" },
+                    { pattern = "Symbols", icon = "" },
+                    { pattern = "Diagnostics", icon = "", color = "yellow" },
+                },
+            },
+        },
+    },
+    {
+        "folke/snacks.nvim",
+        keys = {
+            { "gd", function() Snacks.picker.lsp_definitions() end, desc = "Go to Definition" },
+            { "gi", function() Snacks.picker.lsp_implementations() end, desc = "Go to Implementation" },
+            { "gt", function() Snacks.picker.lsp_type_definitions() end, desc = "Go to Type Definition" },
+            { "<leader>lf", function() Snacks.picker.lsp_references() end, desc = "References" },
+            { "<leader>ls", function() Snacks.picker.lsp_symbols() end, desc = "Symbols" },
+            {
+                "<leader>lS",
+                function() Snacks.picker.lsp_symbols({ filter = { default = true } }) end,
+                desc = "All Symbols",
+            },
+            { "<leader>lw", function() Snacks.picker.lsp_workspace_symbols() end, desc = "Workspace symbols" },
+            { "<leader>lc", function() Snacks.picker.lsp_incoming_calls() end, desc = "Incoming calls" },
+            { "<leader>ld", function() Snacks.picker.diagnostics() end, desc = "Diagnostics" },
+        },
+    },
     -- lsp servers
     {
         "neovim/nvim-lspconfig",
@@ -52,7 +117,7 @@ return {
             vim.lsp._watchfiles._poll_exclude_pattern = vim.lsp._watchfiles._poll_exclude_pattern
                 -- Standard cache dirs
                 + vim.glob.to_lpeg("**/.*_cache/**")
-                -- Virtualenv (Need LSP restart)
+                -- Python
                 -- + vim.glob.to_lpeg("**/.venv/**")
                 + vim.glob.to_lpeg("**/.tox/**")
                 + vim.glob.to_lpeg("**/__pycache__/**")

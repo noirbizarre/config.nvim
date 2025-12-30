@@ -97,20 +97,6 @@ return {
                 desc = "Emojis",
                 mode = { "n", "i" },
             },
-            --- LSP
-            { "gd", function() Snacks.picker.lsp_definitions() end, desc = "Go to Definition" },
-            { "gi", function() Snacks.picker.lsp_implementations() end, desc = "Go to Implementation" },
-            { "gt", function() Snacks.picker.lsp_type_definitions() end, desc = "Go to Type Definition" },
-            { "<leader>lf", function() Snacks.picker.lsp_references() end, desc = "References" },
-            { "<leader>ls", function() Snacks.picker.lsp_symbols() end, desc = "Symbols" },
-            {
-                "<leader>lS",
-                function() Snacks.picker.lsp_symbols({ filter = { default = true } }) end,
-                desc = "All Symbols",
-            },
-            { "<leader>lw", function() Snacks.picker.lsp_workspace_symbols() end, desc = "Workspace symbols" },
-            { "<leader>lc", function() Snacks.picker.lsp_incoming_calls() end, desc = "Incoming calls" },
-            { "<leader>ld", function() Snacks.picker.diagnostics() end, desc = "Diagnostics" },
             --- Buffers
             { "<leader>bb", function() Snacks.picker.buffers() end, desc = "Buffers" },
             { "<leader>bd", function() Snacks.bufdelete() end, desc = "Delete Buffer" },

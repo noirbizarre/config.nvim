@@ -26,22 +26,6 @@ return {
         },
     },
 
-    { "<leader>l", group = "LSP", icon = "󰘦" },
-    {
-        group = "LSP",
-        { "<leader>lh", function() vim.lsp.buf.hover() end, desc = "Hover", icon = "" },
-        { "<leader>lr", function() vim.lsp.buf.rename() end, desc = "Rename", icon = "" },
-        { "<leader>la", function() vim.lsp.buf.code_action() end, desc = "Code Action", icon = "" },
-        {
-            "<leader>li",
-            function() vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled({ 0 }), { 0 }) end,
-            desc = "Toggle LSP inlays",
-            icon = "",
-        },
-        { "<leader>lc", vim.lsp.codelens.run, desc = "Run Codelens", mode = { "n", "x" } },
-        { "<leader>lC", vim.lsp.codelens.refresh, desc = "Refresh & Display Codelens", mode = { "n" } },
-    },
-
     { "<leader>r", group = "Refactoring", icon = "󰑕" },
     {
         group = "Refactoring",

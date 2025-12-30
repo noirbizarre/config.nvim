@@ -46,6 +46,11 @@ return {
                     highlights.EdgyNormal = "Normal"
 
                     highlights.WhichKeyIcon = { default = true, link = "@markup.list" }
+                    highlights.WhichKeyIconAzure = { fg = colors.blue300 }
+                    highlights.WhichKeyIconGreen = { fg = colors.green }
+                    highlights.WhichKeyIconOrange = { fg = colors.orange }
+                    highlights.WhichKeyIconPurple = { fg = colors.violet }
+                    highlights.WhichKeyIconYellow = { fg = colors.yellow }
 
                     for group, highlight in pairs(opts.highlights or {}) do
                         highlights[group] = highlight

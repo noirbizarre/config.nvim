@@ -1,5 +1,13 @@
 return {
     {
+        "folke/which-key.nvim",
+        opts = {
+            spec = {
+                { "<leader>a", group = "AI", icon = "" },
+            },
+        },
+    },
+    {
         "zbirenbaum/copilot.lua",
         cmd = "Copilot",
         event = "InsertEnter",
@@ -88,6 +96,14 @@ return {
                 function() require("sidekick.cli").prompt() end,
                 desc = "Sidekick Ask Prompt",
                 mode = { "n", "v" },
+            },
+        },
+    },
+    {
+        "craftzdog/solarized-osaka.nvim",
+        opts = {
+            highlights = {
+                SidekickChat = "Normal",
             },
         },
     },

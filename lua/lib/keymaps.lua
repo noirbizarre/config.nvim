@@ -1,7 +1,6 @@
 return {
     --- Common reusable groups
     { "<leader>b", group = "Buffers", icon = "📔" },
-    { "<leader>a", group = "AI", icon = "" },
     { "<leader>k", group = "Pickers", icon = "" },
     { "<leader>m", group = "Markdown", icon = "" },
     { "<leader>\\", group = "Multicursor", icon = "" },

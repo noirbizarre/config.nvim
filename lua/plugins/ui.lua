@@ -43,7 +43,6 @@ return {
                     highlights.TreesitterContext = { bg = colors.base03 }
                     highlights.TreesitterContextBottom = { underline = true }
 
-                    highlights.SidekickChat = "Normal"
                     highlights.EdgyNormal = "Normal"
 
                     highlights.WhichKeyIcon = { default = true, link = "@markup.list" }

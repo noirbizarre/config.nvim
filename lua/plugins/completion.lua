@@ -24,7 +24,8 @@ return {
     --- Blink completion engine
     {
         "saghen/blink.cmp",
-        lazy = false, -- lazy loading handled internally
+        event = "InsertEnter",
+        cmd = "BlinkCmp",
         dependencies = {
             "rafamadriz/friendly-snippets",
             "fang2hou/blink-copilot",

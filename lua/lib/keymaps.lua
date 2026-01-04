@@ -8,24 +8,6 @@ return {
     { "<leader>t", group = "Test", icon = "󰤑" },
     { "<leader>u", group = "Misc. Utils", icon = "" },
 
-    {
-        group = "Session",
-        {
-            "<leader>QQ",
-            "<cmd>qa!<cr>",
-            mode = { "n", "v" },
-            desc = "Quit without saving",
-            icon = { icon = "󰈆", color = "red" },
-        },
-        {
-            "<leader><esc><esc>",
-            "<cmd>qa!<cr>",
-            mode = { "n", "v" },
-            desc = "Quit without saving",
-            icon = { icon = "󰈆", color = "red" },
-        },
-    },
-
     { "<leader>r", group = "Refactoring", icon = "󰑕" },
     {
         group = "Refactoring",

@@ -1,8 +1,17 @@
 local filetypes = { "markdown", "Avante", "codecompanion", "copilot-chat", "opencode_output" }
 
 return {
+    {
+        "noirbizarre/ensure.nvim",
+        opts = {
+            linters = { markdown = "vale" },
+            formatters = { markdown = "markdownlint-cli2" },
+            lsp = {
+                enable = { "marksman" },
+            },
+        },
+    },
     -- Inline Markdown rendering
-    -- https://github.com/OXY2DEV/markview.nvim
     {
         "OXY2DEV/markview.nvim",
         dev = false,

@@ -9,22 +9,6 @@ return {
             "nvim-neotest/nvim-nio",
             "antoinemadec/FixCursorHold.nvim",
             "nvim-treesitter/nvim-treesitter",
-            "haydenmeade/neotest-jest",
-            "nvim-neotest/neotest-go",
-            "nvim-neotest/neotest-python",
-            "HiPhish/neotest-busted",
-        },
-        ft = {
-            "go",
-            "javascript",
-            "javascript.jsx",
-            "javascriptreact",
-            "lua",
-            "python",
-            "rust",
-            "typescript",
-            "typescript.tsx",
-            "typescriptreact",
         },
         keys = {
             {
@@ -83,22 +67,8 @@ return {
                 desc = "Neotest: Summary",
             },
         },
-        opts = function()
-            return {
-                adapters = {
-                    require("neotest-python")({
-                        dap = {
-                            console = "integratedTerminal",
-                            justMyCode = false,
-                        },
-                        runner = "pytest",
-                    }),
-                    require("neotest-jest"),
-                    require("neotest-go"),
-                    require("neotest-busted"),
-                    require("rustaceanvim.neotest"),
-                },
-            }
-        end,
+        opts = {
+            adapters = {},
+        },
     },
 }

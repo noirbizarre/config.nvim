@@ -1,8 +1,21 @@
 return {
     {
+        "folke/which-key.nvim",
+        opts = {
+            spec = {
+                { "<leader>d", group = "Debug", icon = " " },
+                { "<leader>dp", group = "Debug Printing", icon = " " },
+            },
+            icons = {
+                rules = {
+                    { pattern = "print", icon = " " },
+                },
+            },
+        },
+    },
+    {
         "mfussenegger/nvim-dap",
         dependencies = {
-            "mfussenegger/nvim-dap-python",
             { "theHamsta/nvim-dap-virtual-text", opts = {} },
             {
                 "Joakker/lua-json5",
@@ -124,7 +137,7 @@ return {
                 desc = "Up",
             },
             {
-                "<leader>dp",
+                "<leader>dP",
                 function() require("dap").pause() end,
                 desc = "Pause",
             },
@@ -222,13 +235,40 @@ return {
                 end
             end
 
-            -- Python adapter settings
-            require("dap-python").setup(vim.fn.exepath("debugpy-adapter"))
-
             -- Restore session breakpoints
             vim.api.nvim_create_autocmd("SessionLoadPost", {
                 callback = function() require("lib.dap").load_breakpoints() end,
             })
         end,
+    },
+    -- Debug printing helper
+    {
+        "ThePrimeagen/refactoring.nvim",
+        keys = {
+            {
+                "<leader>dpp",
+                function() require("refactoring").debug.printf({}) end,
+                desc = "Print statement",
+            },
+            {
+                "<leader>dpv",
+                function() require("refactoring").debug.print_var({}) end,
+                mode = { "n", "x" },
+                desc = "Print var statement",
+            },
+            {
+                "<leader>dpx",
+                function() require("refactoring").debug.cleanup({}) end,
+                desc = "Clear print statements",
+            },
+        },
+        opts = {
+            printf_statements = {
+                python = { 'print(f"🔎 [%s]=> {locals()=}")' },
+            },
+            print_var_statements = {
+                python = { 'print(f"🔎 %.0s{%s=}")' },
+            },
+        },
     },
 }

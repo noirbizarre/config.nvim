@@ -1,4 +1,18 @@
 return {
+    {
+        "noirbizarre/ensure.nvim",
+        opts = {
+            linters = {
+                sql = { "sqlfluff" },
+            },
+            formatters = {
+                sql = { "sqlfluff" },
+            },
+            lsp = {
+                enable = { "sqlls" },
+            },
+        },
+    },
     --- Interactive DB client
     {
         "kndndrj/nvim-dbee",

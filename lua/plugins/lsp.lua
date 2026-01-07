@@ -1,42 +1,69 @@
-local LSPs = {
-    "basedpyright",
-    "bashls",
-    "clangd",
-    "docker_compose_language_service",
-    "dockerls",
-    "gh_actions_ls",
-    "helm_ls",
-    "jinja_lsp",
-    "jsonls",
-    "ltex_plus",
-    "lua_ls",
-    "marksman",
-    "ruff",
-    "sqlls",
-    "tombi",
-    -- "taplo",
-    -- "ty",
-    "vimls",
-    "yamlls",
-}
-
 return {
     {
-        "mason-org/mason-lspconfig.nvim",
-        dependencies = {
-            "mason-org/mason.nvim",
-            "neovim/nvim-lspconfig",
-        },
-        cmd = {
-            "LspInstall",
-            "LspUninstall",
-        },
+        "folke/which-key.nvim",
         opts = {
-            automatic_enable = false,
-            ensure_installed = LSPs,
+            spec = {
+                { "<leader>l", group = "LSP", icon = "󰘦" },
+                {
+                    group = "LSP",
+                    { "<leader>lh", function() vim.lsp.buf.hover() end, desc = "Hover", icon = "󰯗" },
+                    { "<leader>lr", function() vim.lsp.buf.rename() end, desc = "Rename", icon = "" },
+                    {
+                        "<leader>la",
+                        function() vim.lsp.buf.code_action() end,
+                        desc = "Code Action",
+                        icon = { icon = "", color = "yellow" },
+                    },
+                    {
+                        "<leader>li",
+                        function() vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled({ 0 }), { 0 }) end,
+                        desc = "Toggle LSP inlays",
+                        icon = "",
+                    },
+                    {
+                        "<leader>lc",
+                        vim.lsp.codelens.run,
+                        desc = "Run Codelens",
+                        mode = { "n", "x" },
+                        icon = { icon = "󱡴", color = "azure" },
+                    },
+                    {
+                        "<leader>lC",
+                        vim.lsp.codelens.refresh,
+                        desc = "Refresh & Display Codelens",
+                        mode = { "n" },
+                        icon = { icon = "󱡴", color = "blue" },
+                    },
+                },
+            },
+            icons = {
+                rules = {
+                    { pattern = "Go to", icon = "" },
+                    { pattern = "References", icon = "" },
+                    { pattern = "Symbols", icon = "" },
+                    { pattern = "Diagnostics", icon = "", color = "yellow" },
+                },
+            },
         },
     },
-
+    {
+        "folke/snacks.nvim",
+        keys = {
+            { "gd", function() Snacks.picker.lsp_definitions() end, desc = "Go to Definition" },
+            { "gi", function() Snacks.picker.lsp_implementations() end, desc = "Go to Implementation" },
+            { "gt", function() Snacks.picker.lsp_type_definitions() end, desc = "Go to Type Definition" },
+            { "<leader>lf", function() Snacks.picker.lsp_references() end, desc = "References" },
+            { "<leader>ls", function() Snacks.picker.lsp_symbols() end, desc = "Symbols" },
+            {
+                "<leader>lS",
+                function() Snacks.picker.lsp_symbols({ filter = { default = true } }) end,
+                desc = "All Symbols",
+            },
+            { "<leader>lw", function() Snacks.picker.lsp_workspace_symbols() end, desc = "Workspace symbols" },
+            { "<leader>lc", function() Snacks.picker.lsp_incoming_calls() end, desc = "Incoming calls" },
+            { "<leader>ld", function() Snacks.picker.diagnostics() end, desc = "Diagnostics" },
+        },
+    },
     -- lsp servers
     {
         "neovim/nvim-lspconfig",
@@ -53,30 +80,11 @@ return {
             "mason-org/mason.nvim",
             {
                 "cenk1cenk2/schema-companion.nvim",
+                -- dev = true,
                 dependencies = {
                     { "nvim-lua/plenary.nvim" },
                 },
                 opts = {},
-            },
-            --  Faster LuaLS setup for Neovim
-            {
-                "folke/lazydev.nvim",
-                ft = "lua", -- only load on lua files
-                opts = {
-                    library = {
-                        -- See the configuration section for more details
-                        -- Load luvit types when the `vim.uv` word is found
-                        { path = "${3rd}/luv/library", words = { "vim%.uv" } },
-                    },
-                },
-            },
-            {
-                "barreiroleo/ltex_extra.nvim",
-                branch = "dev",
-                -- ft = { "markdown", "tex" },
-                opts = {
-                    load_langs = { "en-US", "fr-FR" },
-                },
             },
             --- For LSP Cpabilities
             --- See: https://cmp.saghen.dev/installation.html
@@ -92,110 +100,33 @@ return {
         },
 
         config = function()
-            local icons = require("lib.ui.icons")
-            local schema_companion = require("schema-companion")
+            -- Force file watching support even on backends that do not
+            -- See:
+            --  - https://github.com/neovim/neovim/issues/23291
+            --  - https://github.com/neovim/neovim/pull/28690
+            local original_make_capabilities = vim.lsp.protocol.make_client_capabilities
+            vim.lsp.protocol.make_client_capabilities = function()
+                local capabilities = original_make_capabilities()
+                capabilities.workspace.didChangeWatchedFiles.dynamicRegistration = true
+                return capabilities
+            end
 
-            vim.lsp.enable(LSPs)
+            local icons = require("lib.ui.icons")
 
             -- Exclude big directories from being watched
             vim.lsp._watchfiles._poll_exclude_pattern = vim.lsp._watchfiles._poll_exclude_pattern
                 -- Standard cache dirs
                 + vim.glob.to_lpeg("**/.*_cache/**")
-                -- Virtualenv (Need LSP restart)
-                + vim.glob.to_lpeg("**/.venv/**")
+                -- Python
+                -- + vim.glob.to_lpeg("**/.venv/**")
+                + vim.glob.to_lpeg("**/.tox/**")
+                + vim.glob.to_lpeg("**/__pycache__/**")
                 -- JS/TS
                 + vim.glob.to_lpeg("**/.yarn/**")
-                + vim.glob.to_lpeg("**/node_modules/**")
                 -- rust build assets
                 + vim.glob.to_lpeg("**/target/**")
-
-            vim.lsp.config("ty", {
-                init_options = {
-                    settings = {
-                        ty = {
-                            experimental = {
-                                completions = {
-                                    enable = true,
-                                },
-                            },
-                        },
-                    },
-                },
-            })
-            vim.lsp.config("basedpyright", {
-                settings = {
-                    basedpyright = {
-                        analysis = {
-                            autoImportCompletions = true,
-                            -- diagnosticMode = "workspace",
-                            typeCheckingMode = "standard",
-                        },
-                    },
-                },
-            })
-            vim.lsp.config("jsonls", {
-                settings = {
-                    json = {
-                        schemas = require("schemastore").json.schemas(),
-                        validate = { enable = true },
-                    },
-                },
-            })
-            vim.lsp.config("dockerls", {
-                settings = {
-                    docker = {
-                        languageserver = {
-                            formatter = {
-                                ignoreMultilineInstructions = true,
-                            },
-                        },
-                    },
-                },
-            })
-            vim.lsp.config("gh_actions_ls", {
-                init_options = {
-                    sessionToken = vim.env.GITHUB_TOKEN,
-                },
-            })
-            vim.lsp.config("ltex_plus", {
-                settings = {
-                    ltex = {
-                        checkFrequency = "save",
-                        language = { "en-US", "fr" },
-                        additionalRules = {
-                            enablePickyRules = true,
-                            motherTongue = { "fr" },
-                        },
-                    },
-                },
-            })
-
-            vim.lsp.config(
-                "yamlls",
-                schema_companion.setup_client(
-                    schema_companion.adapters.yamlls.setup({
-                        sources = {
-                            schema_companion.sources.matchers.kubernetes.setup({ version = "master" }),
-                            schema_companion.sources.lsp.setup(),
-                            schema_companion.sources.schemas.setup({
-                                {
-                                    uri = "https://raw.githubusercontent.com/datreeio/CRDs-catalog/main/argoproj.io/application_v1alpha1.json",
-                                    name = "Argo CD Application",
-                                    description = "Argo CD Application Schema (v1alpha1)",
-                                    fileMatch = "argocd-application.yaml",
-                                },
-                            }),
-                        },
-                    }),
-                    {
-                        settings = {
-                            yaml = {
-                                validate = true,
-                            },
-                        },
-                    }
-                )
-            )
+                + vim.glob.to_lpeg("**/build/**")
+                + vim.glob.to_lpeg("**/dist/**")
 
             vim.diagnostic.config({
                 signs = {
@@ -234,34 +165,7 @@ return {
         },
         config = function()
             local lint = require("lint")
-            local selene_or_luacheck = function()
-                if vim.fs.find({ ".luacheckrc" }, { path = vim.uv.cwd(), upward = true })[1] then
-                    return "luacheck"
-                end
-                return "selene"
-            end
-            lint.linters_by_ft = {
-                dockerfile = { "hadolint" },
-                json = { "jsonlint" },
-                lua = { selene_or_luacheck() },
-                markdown = { "vale" },
-                rst = { "vale" },
-                ruby = { "ruby" },
-                sql = { "sqlfluff" },
-                terraform = { "tflint" },
-                text = { "vale" },
-            }
+            lint.linters_by_ft = { text = { "vale" } } --clear the default
         end,
-    },
-    --- Automatically install linters
-    {
-        "rshkarin/mason-nvim-lint",
-        dependencies = {
-            "mason-org/mason.nvim",
-            "mfussenegger/nvim-lint",
-        },
-        opts = {
-            ignore_install = { "janet", "inko", "clj-kondo", "ruby" },
-        },
     },
 }

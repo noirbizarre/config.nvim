@@ -13,4 +13,13 @@ return {
         global_keymaps_prefix = "<leader>R",
         kulala_keymaps_prefix = "",
     },
+    {
+        "noribizarre/ensure.nvim",
+        opts = {
+            formatters = {
+                http = { "kulala-fmt" },
+                graphql = { "prettier" },
+            },
+        },
+    },
 }

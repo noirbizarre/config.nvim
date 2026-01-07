@@ -1,15 +1,13 @@
 local ascii = require("lib.ui.ascii")
 local ft = require("lib.filetypes")
 
-local gitwin = { win = { width = 0.4, height = 0.4 } }
-
 return {
     --- Solarized Osaka
     {
         "craftzdog/solarized-osaka.nvim",
         lazy = false,
         priority = 1000,
-        config = function()
+        config = function(_, opts)
             require("solarized-osaka").setup({
                 transparent = true, -- Disable setting background
                 terminal_colors = false,
@@ -19,70 +17,44 @@ return {
                     -- floats = "transparent",
                 },
                 sidebars = { "qf", "help", "sidekick_terminal", "snacks_terminal", "terminal" },
-                ---@param hl Highlights
-                ---@param c ColorScheme
-                on_highlights = function(hl, c)
-                    --- Transparent Telescope
-                    hl.TelescopeNormal = {
-                        bg = c.bg_dark,
-                        fg = c.fg_dark,
-                    }
-                    hl.TelescopeBorder = {
-                        bg = c.bg_dark,
-                        fg = c.base02,
-                    }
-                    hl.TelescopePreviewTitle = {
-                        bg = c.bg_dark,
-                        fg = c.bg_dark,
-                    }
-                    hl.TelescopeResultsTitle = {
-                        bg = c.bg_dark,
-                        fg = c.bg_dark,
-                    }
+                ---@param highlights table<string, vim.api.keyset.highlight|string>
+                ---@param colors ColorScheme
+                on_highlights = function(highlights, colors)
                     --- Reusable rainbow values
-                    hl.RainbowRed = { fg = c.red }
-                    hl.RainbowOrange = { fg = c.orange }
-                    hl.RainbowYellow = { fg = c.yellow }
-                    hl.RainbowGreen = { fg = c.green }
-                    hl.RainbowBlue = { fg = c.blue }
-                    hl.RainbowViolet = { fg = c.violet }
-                    hl.RainbowCyan = { fg = c.cyan }
+                    highlights.RainbowRed = { fg = colors.red }
+                    highlights.RainbowOrange = { fg = colors.orange }
+                    highlights.RainbowYellow = { fg = colors.yellow }
+                    highlights.RainbowGreen = { fg = colors.green }
+                    highlights.RainbowBlue = { fg = colors.blue }
+                    highlights.RainbowViolet = { fg = colors.violet }
+                    highlights.RainbowCyan = { fg = colors.cyan }
 
                     --- Snacks
-                    hl.SnacksPicker = {
-                        bg = c.bg_dark,
-                        fg = c.blue300,
-                    }
-                    hl.SnacksPickerPrompt = {
-                        fg = c.magenta300,
-                    }
-                    hl.SnacksPickerTitle = {
-                        bg = c.bg_dark,
-                        fg = c.magenta300,
-                    }
-                    hl.SnacksPickerPreviewTitle = {
-                        bg = c.bg_dark,
-                        fg = c.cyan300,
-                    }
-                    hl.SnacksPickerBorder = {
-                        bg = c.bg_dark,
-                        fg = c.blue300,
-                    }
+                    highlights.SnacksPicker = { fg = colors.blue300 }
+                    highlights.SnacksPickerPrompt = { fg = colors.magenta300 }
+                    highlights.SnacksPickerTitle = { fg = colors.cyan300 }
+                    highlights.SnacksPickerPreviewTitle = "SnacksPickerTitle"
+                    highlights.SnacksPickerBorder = { fg = colors.blue300 }
+                    highlights.SnacksGhBorder = "SnacksPickerBorder"
+                    highlights.SnacksGhNormalFloat = "Normal"
+                    highlights.SnacksGhTitle = "SnacksPickerPreviewTitle"
 
                     -- Tree Sitter Context
-                    hl.TreesitterContext = { bg = c.base03 }
-                    hl.TreesitterContextBottom = { underline = true }
+                    highlights.TreesitterContext = { bg = colors.base03 }
+                    highlights.TreesitterContextBottom = { underline = true }
 
-                    -- Avante
-                    hl.AvanteSidebarNormal = { link = "Normal" }
-                    hl.AvanteReversedTitle = { bg = c.bg_dark }
-                    -- hl.AvanteReversedSubtitle = { fg = c.bg_dark,  bg  = c.bg_dark }
-                    -- hl.AvanteReversedThirdTitle = { fg = c.blue300 }
-                    hl.AvanteSidebarWinSeparator = { link = "WinSeparator" }
-                    hl.AvanteSidebarWinHorizontalSeparator = { link = "WinSeparator" }
+                    highlights.EdgyNormal = "Normal"
 
-                    hl.SidekickChat = { link = "Normal" }
-                    hl.EdgyNormal = { link = "Normal" }
+                    highlights.WhichKeyIcon = { default = true, link = "@markup.list" }
+                    highlights.WhichKeyIconAzure = { fg = colors.blue300 }
+                    highlights.WhichKeyIconGreen = { fg = colors.green }
+                    highlights.WhichKeyIconOrange = { fg = colors.orange }
+                    highlights.WhichKeyIconPurple = { fg = colors.violet }
+                    highlights.WhichKeyIconYellow = { fg = colors.yellow }
+
+                    for group, highlight in pairs(opts.highlights or {}) do
+                        highlights[group] = highlight
+                    end
                 end,
             })
 
@@ -107,11 +79,14 @@ return {
             },
             { "<leader>kb", function() Snacks.picker.buffers() end, desc = "Buffers" },
             { "<leader>km", function() Snacks.picker.marks() end, desc = "Marks" },
+            { "<leader>kn", function() Snacks.picker.noice() end, desc = "Noice" },
             { "<leader>kj", function() Snacks.picker.jumps() end, desc = "Jumps" },
             { "<leader>kk", function() Snacks.picker.keymaps() end, desc = "Keymaps" },
             { "<leader>kh", function() Snacks.picker.help() end, desc = "Help Pages" },
+            { "<leader>kH", function() Snacks.picker.highlights() end, desc = "Highlights" },
             { "<leader>kq", function() Snacks.picker.qflist() end, desc = "Quickfixes" },
-            { "<leader>kc", function() Snacks.picker.command_history() end, desc = "Command history" },
+            { "<leader>kc", function() Snacks.picker.commands() end, desc = "Commands" },
+            { "<leader>kC", function() Snacks.picker.command_history() end, desc = "Command history" },
             { "<leader>ku", function() Snacks.picker.undo() end, desc = "Undo tree" },
             { "<leader>kl", function() Snacks.picker.spelling() end, desc = "Spelling" },
             { "<leader>kv", function() Snacks.picker.registers() end, desc = "Registers" },
@@ -127,36 +102,6 @@ return {
                 desc = "Emojis",
                 mode = { "n", "i" },
             },
-            --- LSP
-            { "gd", function() Snacks.picker.lsp_definitions() end, desc = "Go to Definition" },
-            { "gi", function() Snacks.picker.lsp_implementations() end, desc = "Go to Implementation" },
-            { "gt", function() Snacks.picker.lsp_type_definitions() end, desc = "Go to Type Definition" },
-            { "<leader>lf", function() Snacks.picker.lsp_references() end, desc = "References" },
-            { "<leader>ls", function() Snacks.picker.lsp_symbols() end, desc = "Symbols" },
-            { "<leader>lw", function() Snacks.picker.lsp_workspace_symbols() end, desc = "Workspace symbols" },
-            { "<leader>lc", function() Snacks.picker.lsp_incoming_calls() end, desc = "Incoming calls" },
-            { "<leader>ld", function() Snacks.picker.diagnostics() end, desc = "Diagnostics" },
-            --- Git
-            { "<leader>gh", function() Snacks.picker.git_log() end, desc = "History" },
-            { "<leader>gf", function() Snacks.picker.git_log_file() end, desc = "Current buffer history" },
-            { "<leader>gl", function() Snacks.picker.git_log_line() end, desc = "Current line history" },
-            { "<leader>gs", function() Snacks.picker.git_status() end, desc = "Git Status" },
-            { "<leader>gt", function() Snacks.picker.git_stash() end, desc = "Git Stash" },
-            { "<leader>gb", function() Snacks.picker.git_branches() end, desc = "Git Branches" },
-            { "<leader>gd", function() Snacks.picker.git_diff() end, desc = "Git Diff" },
-            { "<leader>gg", function() Snacks.lazygit() end, desc = "Lazygit" },
-            { "<leader>gB", function() Snacks.gitbrowse() end, mode = { "n", "v" }, desc = "Git Browse" },
-            {
-                "<leader>gM",
-                function() Snacks.gitbrowse({ what = "file", branch = "main" }) end,
-                mode = { "n", "v" },
-                desc = "Git Browse (main)",
-            },
-            { "<leader>gcc", function() Snacks.terminal("git commit", gitwin) end, desc = "Git Commit" },
-            { "<leader>gca", function() Snacks.terminal("git amend", gitwin) end, desc = "Git Commit Amend" },
-            { "<leader>gcA", function() Snacks.terminal("git commit --all", gitwin) end, desc = "Git Commit All" },
-            { "<leader>gcz", function() Snacks.terminal("cz commit", gitwin) end, desc = "Git Commit(izen)" },
-            { "<leader>gp", function() Snacks.terminal("git add -p") end, desc = "Git Partial Add" },
             --- Buffers
             { "<leader>bb", function() Snacks.picker.buffers() end, desc = "Buffers" },
             { "<leader>bd", function() Snacks.bufdelete() end, desc = "Delete Buffer" },
@@ -316,7 +261,28 @@ return {
                     },
                     lsp_symbols = {
                         filter = {
-                            default = true,
+                            -- default = true,
+                            default = {
+                                "Class",
+                                "Constructor",
+                                "Constant",
+                                "Enum",
+                                "Field",
+                                "Function",
+                                "Interface",
+                                "Method",
+                                "Module",
+                                "Namespace",
+                                "Package",
+                                "Property",
+                                "Struct",
+                                "Trait",
+                            },
+                        },
+                    },
+                    explorer = {
+                        layout = {
+                            hidden = { "input", "preview" },
                         },
                     },
                 },
@@ -325,26 +291,30 @@ return {
                     input = {
                         keys = {
                             -- ["<Esc>"] = { "close", mode = { "n", "i" } },
-                            ["<c-l>"] = { "toggle_live", mode = { "i", "n" } },
+                            ["<c-l>"] = { "toggle_live", mode = { "i", "n" }, weight = 90, desc = "Live" },
                             ["<c-i>"] = { "toggle_ignored", mode = { "i", "n" } },
-                            ["<c-r>"] = { "toggle_ignored", mode = { "i", "n" } },
-                            ["<c-h>"] = { "toggle_hidden", mode = { "i", "n" } },
-                            ["<PageDown>"] = { "list_scroll_down", mode = { "i", "n" } },
-                            ["<PageUp>"] = { "list_scroll_up", mode = { "i", "n" } },
+                            ["<c-r>"] = { "toggle_ignored", mode = { "i", "n" }, weight = 90, desc = "Ignored" },
+                            ["<c-h>"] = { "toggle_hidden", mode = { "i", "n" }, weight = 90, desc = "Hidden" },
+                            ["<PageDown>"] = { "list_scroll_down", mode = { "i", "n" }, desc = "Scroll Down" },
+                            ["<PageUp>"] = { "list_scroll_up", mode = { "i", "n" }, desc = "Scroll Up" },
                         },
                     },
                     list = {
                         keys = {
-                            ["<PageDown>"] = "list_scroll_down",
-                            ["<PageUp>"] = "list_scroll_up",
+                            ["<PageDown>"] = { "list_scroll_down", desc = "Scroll Down" },
+                            ["<PageUp>"] = { "list_scroll_up", desc = "Scroll Up" },
                         },
                     },
                     preview = {
                         keys = {
-                            ["<PageDown>"] = "preview_scroll_down",
-                            ["<PageUp>"] = "preview_scroll_up",
+                            ["<PageDown>"] = { "preview_scroll_down", desc = "Scroll Down" },
+                            ["<PageUp>"] = { "preview_scroll_up", desc = "Scroll Up" },
                         },
                     },
+                },
+                layout = {
+                    footer_keys = true,
+                    footer_max_keys = 10,
                 },
             },
             quickfile = { enabled = true },
@@ -464,21 +434,22 @@ return {
         opts = {
             spec = require("lib.keymaps"),
         },
+        opts_extend = { "spec", "icons.rules" },
     },
     -- Better inline diagnostic
     {
         "rachartier/tiny-inline-diagnostic.nvim",
         event = { "VeryLazy", "LspAttach" },
         priority = 1000, -- needs to be loaded in first
-        config = function()
+        opts = function()
             vim.diagnostic.config({ virtual_text = false }) -- Disable the builtin diagnostic
-            require("tiny-inline-diagnostic").setup({
+            return {
                 preset = "powerline",
                 options = {
                     show_source = true,
                     -- use_icons_from_diagnostic = true,
                 },
-            })
+            }
         end,
     },
 }

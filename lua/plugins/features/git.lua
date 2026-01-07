@@ -1,4 +1,16 @@
+local gitwin = { win = { width = 0.4, height = 0.4 } }
+
 return {
+    {
+        "folke/which-key.nvim",
+        opts = {
+            spec = {
+                { "<leader>g", group = "Git", icon = { icon = "", color = "red" } },
+                { "<leader>gc", group = "Git commit", icon = { icon = "", color = "green" } },
+                { "<leader>gx", group = "Git conflicts", icon = "💥" },
+            },
+        },
+    },
     {
         "akinsho/git-conflict.nvim",
         version = "v2.1.0",
@@ -89,19 +101,31 @@ return {
             end,
         },
     },
-    -- Octo -- Github Issues & pull requests
+    --- Pickers
     {
-        "pwntester/octo.nvim",
-        requires = {
-            "nvim-lua/plenary.nvim",
-            "nvim-tree/nvim-web-devicons",
-        },
-        opts = {
-            picker = "snacks",
-            use_local_fs = true,
-            picker_config = {
-                use_emojis = true,
+        "folke/snacks.nvim",
+        keys = {
+            { "<leader>gh", function() Snacks.picker.git_log() end, desc = "History" },
+            { "<leader>gf", function() Snacks.picker.git_log_file() end, desc = "Current buffer history" },
+            { "<leader>gl", function() Snacks.picker.git_log_line() end, desc = "Current line history" },
+            { "<leader>gs", function() Snacks.picker.git_status() end, desc = "Git Status" },
+            { "<leader>gt", function() Snacks.picker.git_stash() end, desc = "Git Stash" },
+            { "<leader>gb", function() Snacks.picker.git_branches() end, desc = "Git Branches" },
+            { "<leader>gd", function() Snacks.picker.git_diff({ group = true }) end, desc = "Git Diff" },
+            { "<leader>gD", function() Snacks.picker.git_diff() end, desc = "Git Diff (Hunks)" },
+            { "<leader>gg", function() Snacks.lazygit() end, desc = "Lazygit" },
+            { "<leader>gB", function() Snacks.gitbrowse() end, mode = { "n", "v" }, desc = "Git Browse" },
+            {
+                "<leader>gM",
+                function() Snacks.gitbrowse({ what = "file", branch = "main" }) end,
+                mode = { "n", "v" },
+                desc = "Git Browse (main)",
             },
+            { "<leader>gcc", function() Snacks.terminal("git commit", gitwin) end, desc = "Git Commit" },
+            { "<leader>gca", function() Snacks.terminal("git amend", gitwin) end, desc = "Git Commit Amend" },
+            { "<leader>gcA", function() Snacks.terminal("git commit --all", gitwin) end, desc = "Git Commit All" },
+            { "<leader>gcz", function() Snacks.terminal("cz commit", gitwin) end, desc = "Git Commit(izen)" },
+            { "<leader>gp", function() Snacks.terminal("git add -p") end, desc = "Git Partial Add" },
         },
     },
 }

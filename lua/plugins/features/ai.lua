@@ -1,5 +1,13 @@
 return {
     {
+        "folke/which-key.nvim",
+        opts = {
+            spec = {
+                { "<leader>a", group = "AI", icon = "" },
+            },
+        },
+    },
+    {
         "zbirenbaum/copilot.lua",
         cmd = "Copilot",
         event = "InsertEnter",
@@ -24,6 +32,15 @@ return {
                 },
             },
         },
+        config = function(_, opts)
+            require("sidekick").setup(opts)
+            if vim.env.__MISE_SESSION then
+                --- Use mise if a mise session is detected
+                for _, tool in pairs(require("sidekick.config").cli.tools) do
+                    tool.cmd = vim.list_extend({ "mise", "exec", "--no-prepare", "--raw", "--" }, tool.cmd)
+                end
+            end
+        end,
         keys = {
             {
                 "<tab>",
@@ -79,6 +96,14 @@ return {
                 function() require("sidekick.cli").prompt() end,
                 desc = "Sidekick Ask Prompt",
                 mode = { "n", "v" },
+            },
+        },
+    },
+    {
+        "craftzdog/solarized-osaka.nvim",
+        opts = {
+            highlights = {
+                SidekickChat = "Normal",
             },
         },
     },

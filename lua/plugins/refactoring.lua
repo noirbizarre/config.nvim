@@ -4,34 +4,10 @@ return {
         "ThePrimeagen/refactoring.nvim",
         keys = {
             {
-                "<leader>rp",
-                function() require("refactoring").debug.printf({}) end,
-                desc = "Print statement",
-            },
-            {
-                "<leader>rd",
-                function() require("refactoring").debug.print_var({}) end,
-                mode = { "n", "x" },
-                desc = "Print var statement",
-            },
-            {
-                "<leader>rc",
-                function() require("refactoring").debug.cleanup({}) end,
-                desc = "Clear print statements",
-            },
-            {
                 "<leader>rr",
                 function() require("refactoring").select_refactor({ prefer_ex_cmd = true }) end,
                 mode = { "n", "x" },
                 desc = "Refactor",
-            },
-        },
-        opts = {
-            printf_statements = {
-                python = { 'print(f"🔎 [%s]=> {locals()=}")' },
-            },
-            print_var_statements = {
-                python = { 'print(f"🔎 %.0s{%s=}")' },
             },
         },
     },
@@ -106,38 +82,10 @@ return {
         },
         opts = {
             formatters_by_ft = {
-                css = { "prettier" },
-                dockerfile = { "dockerfmt" },
-                graphql = { "prettier" },
-                html = { "prettier" },
-                javascript = { "prettier" },
-                javascriptreact = { "prettier" },
-                json = { "prettier" },
-                jsonc = { "prettier" },
-                lua = { "stylua" },
-                markdown = { "markdownlint-cli2" },
-                python = { "ruff_organize_imports", "ruff_format" },
-                rust = { "rustfmt" },
-                sh = { "shfmt" },
-                sql = { "sqlfluff" },
-                svelte = { "prettier" },
-                toml = { "tombi" },
-                typescript = { "prettier" },
-                typescriptreact = { "prettier" },
-                yaml = { "prettier" },
                 ["*"] = { "codespell" },
             },
             notify_on_error = true,
         },
-    },
-    --- Install formatters
-    {
-        "zapling/mason-conform.nvim",
-        dependencies = {
-            "mason-org/mason.nvim",
-            "stevearc/conform.nvim",
-        },
-        config = true,
     },
     --- Global search and replace
     {

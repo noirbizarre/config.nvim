@@ -100,6 +100,30 @@ return {
         },
     },
     {
+        "nvim-lualine/lualine.nvim",
+        opts = function(_, opts)
+            -- Copilot status
+            table.insert(opts.sections.lualine_x, {
+                function() return " " end,
+                color = function()
+                    local status = require("sidekick.status").get()
+                    if status then
+                        return status.kind == "Error" and "StatuslineError" or status.busy and "StatuslineWarn" or nil
+                    end
+                end,
+                cond = function() return require("sidekick.status").get() ~= nil end,
+            })
+            -- CLI session status
+            table.insert(opts.sections.lualine_x, {
+                function()
+                    local status = require("sidekick.status").cli()
+                    return " " .. (#status > 1 and #status or "")
+                end,
+                cond = function() return #require("sidekick.status").cli() > 0 end,
+            })
+        end,
+    },
+    {
         "craftzdog/solarized-osaka.nvim",
         opts = {
             highlights = {

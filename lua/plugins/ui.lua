@@ -52,6 +52,10 @@ return {
                     highlights.WhichKeyIconPurple = { fg = colors.violet }
                     highlights.WhichKeyIconYellow = { fg = colors.yellow }
 
+                    -- Some statusline highlights
+                    highlights.StatuslineError = { fg = colors.red }
+                    highlights.StatuslineWarn = { fg = colors.yellow }
+
                     for group, highlight in pairs(opts.highlights or {}) do
                         highlights[group] = highlight
                     end
@@ -409,7 +413,6 @@ return {
                     },
                 },
             },
-            "AndreM222/copilot-lualine",
         },
         event = "VeryLazy",
         opts = function()

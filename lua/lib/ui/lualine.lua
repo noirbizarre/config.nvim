@@ -87,11 +87,6 @@ return {
             "fileformat",
             "encoding",
             get_yaml_schema,
-            {
-                "copilot",
-                show_colors = true,
-                on_click = function() vim.cmd("Copilot toggle") end,
-            },
         },
         lualine_y = { "progress" },
         lualine_z = { "location" },

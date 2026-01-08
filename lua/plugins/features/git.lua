@@ -128,5 +128,47 @@ return {
             { "<leader>gcz", function() Snacks.terminal("cz commit", gitwin) end, desc = "Git Commit(izen)" },
             { "<leader>gp", function() Snacks.terminal("git add -p") end, desc = "Git Partial Add" },
         },
+        opts = {
+            picker = {
+                sources = {
+                    git_log = {
+                        confirm = "show_commit",
+                    },
+                    git_log_line = {
+                        confirm = "show_commit",
+                    },
+                    git_log_file = {
+                        confirm = "show_commit",
+                    },
+                },
+                actions = {
+                    show_commit = function(_, item)
+                        local win_opts = {
+                            keys = {
+                                -- Go back on left or backspace
+                                ["<left>"] = { "cancel", mode = { "n", "x" } },
+                                ["<bs>"] = { "cancel", mode = { "n", "x" } },
+                                -- Close log and diff on q or esc
+                                ["<q>"] = { "close", mode = { "n", "x" } },
+                                ["<esc>"] = { "close", mode = { "n", "x" } },
+                            },
+                        }
+                        Snacks.picker.git_diff({
+                            group = true,
+                            focus = "list",
+                            base = item.commit,
+                            cmd_args = { item.commit .. "~" },
+                            layout = {
+                                hidden = { "input" },
+                            },
+                            win = {
+                                list = win_opts,
+                                preview = win_opts,
+                            },
+                        })
+                    end,
+                },
+            },
+        },
     },
 }

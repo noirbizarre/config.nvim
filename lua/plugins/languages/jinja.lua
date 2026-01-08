@@ -37,29 +37,31 @@ vim.api.nvim_create_autocmd({ "BufNewFile", "BufRead" }, {
     end,
 })
 
-vim.treesitter.query.add_directive("inject-jinja!", function(_, _, bufnr, _, metadata)
-    if type(bufnr) ~= "number" or not vim.api.nvim_buf_is_valid(bufnr) then
-        return
-    end
-    local ft = vim.bo[bufnr].filetype
-    if ft == nil then
-        return
-    end
-    local raw_ft = nil
-    if ft:find(".jinja", 1, true) ~= nil then
-        raw_ft = ft:gsub("%.jinja", "")
-    elseif ft:find("jinja.", 1, true) ~= nil then
-        raw_ft = ft:gsub("jinja%.", "")
-    end
-    if raw_ft == nil then
-        return
-    end
-    local lang = vim.treesitter.language.get_lang(raw_ft)
-    if lang == nil then
-        return
-    end
-    metadata["injection.language"] = lang
-end, {})
+if not vim.tbl_contains(vim.treesitter.query.list_directives(), "inject-jinja!") then
+    vim.treesitter.query.add_directive("inject-jinja!", function(_, _, bufnr, _, metadata)
+        if type(bufnr) ~= "number" or not vim.api.nvim_buf_is_valid(bufnr) then
+            return
+        end
+        local ft = vim.bo[bufnr].filetype
+        if ft == nil then
+            return
+        end
+        local raw_ft = nil
+        if ft:find(".jinja", 1, true) ~= nil then
+            raw_ft = ft:gsub("%.jinja", "")
+        elseif ft:find("jinja.", 1, true) ~= nil then
+            raw_ft = ft:gsub("jinja%.", "")
+        end
+        if raw_ft == nil then
+            return
+        end
+        local lang = vim.treesitter.language.get_lang(raw_ft)
+        if lang == nil then
+            return
+        end
+        metadata["injection.language"] = lang
+    end, {})
+end
 
 return {
     "noirbizarre/ensure.nvim",

@@ -8,19 +8,6 @@ return {
         },
     },
     {
-        "zbirenbaum/copilot.lua",
-        cmd = "Copilot",
-        event = "InsertEnter",
-        opts = {
-            filetypes = {
-                yaml = true,
-                markdown = true,
-            },
-            suggestion = { enabled = false },
-            panel = { enabled = false },
-        },
-    },
-    {
         "folke/sidekick.nvim",
         opts = {
             cli = {
@@ -128,6 +115,14 @@ return {
         opts = {
             highlights = {
                 SidekickChat = "Normal",
+            },
+        },
+    },
+    {
+        "noirbizarre/ensure.nvim",
+        opts = {
+            lsp = {
+                enable = { "copilot" },
             },
         },
     },

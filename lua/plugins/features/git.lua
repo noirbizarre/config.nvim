@@ -111,6 +111,7 @@ return {
             { "<leader>gs", function() Snacks.picker.git_status() end, desc = "Git Status" },
             { "<leader>gt", function() Snacks.picker.git_stash() end, desc = "Git Stash" },
             { "<leader>gb", function() Snacks.picker.git_branches() end, desc = "Git Branches" },
+            { "<leader>gB", function() Snacks.picker.git_branches({ all = true }) end, desc = "Git Branches (all)" },
             { "<leader>gd", function() Snacks.picker.git_diff({ group = true }) end, desc = "Git Diff" },
             { "<leader>gD", function() Snacks.picker.git_diff() end, desc = "Git Diff (Hunks)" },
             { "<leader>gg", function() Snacks.lazygit() end, desc = "Lazygit" },

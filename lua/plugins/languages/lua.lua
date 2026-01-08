@@ -38,12 +38,8 @@ return {
         "nvim-neotest/neotest",
         dependencies = {
             "HiPhish/neotest-busted",
-            "nvim-neotest/neotest-plenary",
         },
         ft = "lua",
-        opts = function(_, opts)
-            table.insert(opts.adapters, require("neotest-busted"))
-            table.insert(opts.adapters, require("neotest-plenary"))
-        end,
+        opts = function(_, opts) table.insert(opts.adapters, require("neotest-busted")) end,
     },
 }

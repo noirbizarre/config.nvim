@@ -91,11 +91,21 @@ return {
         opts = function(_, opts)
             -- Copilot status
             table.insert(opts.sections.lualine_x, {
-                function() return " " end,
+                function()
+                    local status = require("sidekick.status").get()
+                    if status and (status.kind == "Inactive" or status.kind == "Error") then
+                        return " "
+                    elseif status and status.kind == "Warning" then
+                        return " "
+                    end
+                    return " "
+                end,
                 color = function()
                     local status = require("sidekick.status").get()
-                    if status then
-                        return status.kind == "Error" and "StatuslineError" or status.busy and "StatuslineWarn" or nil
+                    if status and status.kind == "Error" then
+                        return "StatuslineError"
+                    elseif status and status.busy then
+                        return "StatuslineWarn"
                     end
                 end,
                 cond = function() return require("sidekick.status").get() ~= nil end,

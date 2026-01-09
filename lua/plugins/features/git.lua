@@ -36,6 +36,12 @@ return {
         },
         config = true,
     },
+    -- VSCode-like diff viewer
+    {
+        "esmuellert/codediff.nvim",
+        dependencies = { "MunifTanjim/nui.nvim" },
+        cmd = "CodeDiff",
+    },
     -- Git integration for buffers
     {
         "lewis6991/gitsigns.nvim",

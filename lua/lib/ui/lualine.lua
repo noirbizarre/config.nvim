@@ -2,15 +2,8 @@
 --- See: https://github.com/nvim-lualine/lualine.nvim
 local icons = require("lib.ui.icons")
 local filetypes = require("lib.filetypes")
+local schemas = require("lib.schemas")
 table.unpack = table.unpack or unpack -- 5.1 compatibility
-
-local function get_yaml_schema()
-    local schema = require("schema-companion").get_current_schemas()
-    if schema == nil then
-        return ""
-    end
-    return schema:sub(0, 128)
-end
 
 local function dirs()
     local utils = require("lualine.utils.utils")
@@ -84,9 +77,18 @@ return {
         lualine_x = {
             "searchcount",
             "filetype",
-            "fileformat",
+            schemas.statusline,
+            { "fileformat", separator = "", padding = { left = 1 } },
             "encoding",
-            get_yaml_schema,
+            {
+                "lsp_status",
+                icon = " ",
+                symbols = {
+                    done = "",
+                    separator = " " .. icons.ui.powerline.inner_separators.right .. "   ",
+                },
+                ignore_lsp = { "copilot" },
+            },
         },
         lualine_y = { "progress" },
         lualine_z = { "location" },

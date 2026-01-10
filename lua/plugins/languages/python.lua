@@ -16,7 +16,7 @@ return {
                 "python",
             },
             formatters = {
-                python = { "ruff_organize_imports", "ruff_format" },
+                python = { "ruff_fix", "ruff_organize_imports", "ruff_format" },
             },
             lsp = {
                 enable = {

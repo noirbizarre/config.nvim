@@ -23,6 +23,7 @@ return {
                     -- "basedpyright",
                     "ruff",
                     "ty",
+                    "pytest_lsp",
                 },
                 ty = {
                     settings = {
@@ -41,6 +42,11 @@ return {
                             },
                         },
                     },
+                },
+                pytest_lsp = {
+                    cmd = { "pytest-language-server" },
+                    filetypes = { "python" },
+                    root_markers = { "pyproject.toml", "setup.py", "setup.cfg", "pytest.ini", ".git" },
                 },
             },
         },

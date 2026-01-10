@@ -386,6 +386,7 @@ return {
                     -- click = true,
                     lsp = {
                         auto_attach = true,
+                        preference = { "ty" },
                     },
                 },
             },

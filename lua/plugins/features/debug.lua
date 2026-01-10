@@ -96,6 +96,11 @@ return {
                         play = "",
                         terminate = "",
                     },
+                    -- Auto open when a session is started and auto close when all sessions finish
+                    -- Alternatively, can be a string:
+                    -- - "keep_terminal": as above, but keeps the terminal when the session finishes
+                    -- - "open_term": open the terminal when starting a new session, nothing else
+                    auto_toggle = "open_term",
                 },
             },
         },

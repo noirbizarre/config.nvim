@@ -1,5 +1,7 @@
 local gitwin = { win = { width = 0.4, height = 0.4 } }
 
+function git_commit() Snacks.terminal("git commit", gitwin) end
+
 return {
     {
         "folke/which-key.nvim",
@@ -128,7 +130,7 @@ return {
                 mode = { "n", "v" },
                 desc = "Git Browse (main)",
             },
-            { "<leader>gcc", function() Snacks.terminal("git commit", gitwin) end, desc = "Git Commit" },
+            { "<leader>gcc", git_commit, desc = "Git Commit" },
             { "<leader>gca", function() Snacks.terminal("git amend", gitwin) end, desc = "Git Commit Amend" },
             { "<leader>gcA", function() Snacks.terminal("git commit --all", gitwin) end, desc = "Git Commit All" },
             { "<leader>gcz", function() Snacks.terminal("cz commit", gitwin) end, desc = "Git Commit(izen)" },
@@ -145,6 +147,12 @@ return {
                     },
                     git_log_file = {
                         confirm = "show_commit",
+                    },
+                    git_status = {
+                        confirm = function(picker)
+                            picker:close()
+                            git_commit()
+                        end,
                     },
                 },
                 actions = {

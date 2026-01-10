@@ -70,6 +70,7 @@ return {
         "folke/snacks.nvim",
         priority = 1000,
         lazy = false,
+        dev = true,
         keys = {
             --- Base Pickers
             { "<C-k>", function() Snacks.picker.files() end, desc = "File picker" },

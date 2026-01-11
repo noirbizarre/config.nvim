@@ -1,6 +1,12 @@
 local ascii = require("lib.ui.ascii")
 local ft = require("lib.filetypes")
 
+local icons_opts = {
+    custom_sources = {
+        unicode = vim.fn.stdpath("config") .. "/data/unicode.json",
+    },
+}
+
 return {
     --- Solarized Osaka
     {
@@ -98,12 +104,12 @@ return {
             { "<leader>k,", function() Snacks.picker.resume() end, desc = "Resume" },
             {
                 "<leader>k;",
-                function() Snacks.picker.icons() end,
+                function() Snacks.picker.icons(icons_opts) end,
                 desc = "Emojis",
             },
             {
                 "<M-;>",
-                function() Snacks.picker.icons() end,
+                function() Snacks.picker.icons(icons_opts) end,
                 desc = "Emojis",
                 mode = { "n", "i" },
             },

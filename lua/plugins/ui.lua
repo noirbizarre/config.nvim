@@ -236,6 +236,7 @@ return {
                 sources = {
                     files = {
                         hidden = true,
+                        confirm = "open_or_create",
                     },
                     grep = {
                         hidden = true,
@@ -296,6 +297,30 @@ return {
                 layout = {
                     footer_keys = true,
                     footer_max_keys = 10,
+                },
+                actions = {
+                    open_or_create = {
+                        name = "Open/Create File",
+                        description = "Open the selected file or create a new file with the input name",
+                        action = function(picker, item)
+                            if item then
+                                picker:close()
+                                vim.cmd.edit(item.file)
+                            else
+                                picker:close()
+                                Snacks.input({
+                                    prompt = "New file name?",
+                                    icon = "",
+                                    default = picker.input:get(),
+                                    completion = "file",
+                                }, function(value)
+                                    if value and value ~= "" then
+                                        vim.cmd.edit(value)
+                                    end
+                                end)
+                            end
+                        end,
+                    },
                 },
             },
             quickfile = { enabled = true },

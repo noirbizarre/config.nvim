@@ -39,6 +39,9 @@ vim.opt.backspace = [[indent,eol,start]]
 -- Session Persistence
 vim.opt.sessionoptions = "buffers,curdir,folds,help,tabpages,winsize,globals"
 
+-- Reuse existing windows (this tab or another) when jumping from Quickfix, Debug
+vim.opt.switchbuf = "usetab,uselast"
+
 -- Refresh changed files automatically
 vim.opt.autoread = true
 

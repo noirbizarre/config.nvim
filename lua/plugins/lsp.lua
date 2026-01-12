@@ -78,27 +78,10 @@ return {
             -- json schemas
             "b0o/schemastore.nvim",
             "mason-org/mason.nvim",
-            {
-                "cenk1cenk2/schema-companion.nvim",
-                -- dev = true,
-                dependencies = {
-                    { "nvim-lua/plenary.nvim" },
-                },
-                opts = {},
-            },
-            --- For LSP Cpabilities
+            --- For LSP Capabilities
             --- See: https://cmp.saghen.dev/installation.html
             "saghen/blink.cmp",
         },
-        keys = {
-            {
-                "<leader>ks",
-                function() require("schema-companion").select_matching_schema() end,
-                desc = "Select a matching Schema",
-            },
-            { "<leader>kS", function() require("schema-companion").select_schema() end, desc = "Select any Schema" },
-        },
-
         config = function()
             -- Force file watching support even on backends that do not
             -- See:

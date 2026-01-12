@@ -39,6 +39,9 @@ vim.opt.backspace = [[indent,eol,start]]
 -- Session Persistence
 vim.opt.sessionoptions = "buffers,curdir,folds,help,tabpages,winsize,globals"
 
+-- Refresh changed files automatically
+vim.opt.autoread = true
+
 -- Disable swap files
 vim.opt.swapfile = false
 

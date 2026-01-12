@@ -30,7 +30,7 @@ return {
         },
         opts = {
             default_styles = {
-                { python = "Google" },
+                python = "Google",
             },
             styles = {
                 python = {
@@ -93,13 +93,13 @@ return {
         cmd = "GrugFar",
         keys = {
             {
-                "<leader>ss",
+                "<leader>sn",
                 function() require("grug-far").open({ transient = true }) end,
                 mode = { "n", "v" },
                 desc = "Search & replace",
             },
             {
-                "<leader>S",
+                "<leader>ss",
                 function()
                     require("grug-far").toggle_instance({ instanceName = "far", staticTitle = "Find and Replace" })
                 end,

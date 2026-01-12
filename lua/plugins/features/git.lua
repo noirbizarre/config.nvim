@@ -1,5 +1,11 @@
 local gitwin = { win = { width = 0.4, height = 0.4 } }
 
+function git_commit() Snacks.terminal("git commit", gitwin) end
+
+local meta_c_commit = {
+    keys = { ["<M-c>"] = { "git_commit", mode = { "n", "i", "x" } } },
+}
+
 return {
     {
         "folke/which-key.nvim",
@@ -35,6 +41,12 @@ return {
             { "<leader>gxn", "<cmd>GitConflictChooseNone<cr>", desc = "Choose none" },
         },
         config = true,
+    },
+    -- VSCode-like diff viewer
+    {
+        "esmuellert/codediff.nvim",
+        dependencies = { "MunifTanjim/nui.nvim" },
+        cmd = "CodeDiff",
     },
     -- Git integration for buffers
     {
@@ -111,6 +123,7 @@ return {
             { "<leader>gs", function() Snacks.picker.git_status() end, desc = "Git Status" },
             { "<leader>gt", function() Snacks.picker.git_stash() end, desc = "Git Stash" },
             { "<leader>gb", function() Snacks.picker.git_branches() end, desc = "Git Branches" },
+            { "<leader>gB", function() Snacks.picker.git_branches({ all = true }) end, desc = "Git Branches (all)" },
             { "<leader>gd", function() Snacks.picker.git_diff({ group = true }) end, desc = "Git Diff" },
             { "<leader>gD", function() Snacks.picker.git_diff() end, desc = "Git Diff (Hunks)" },
             { "<leader>gg", function() Snacks.lazygit() end, desc = "Lazygit" },
@@ -121,11 +134,71 @@ return {
                 mode = { "n", "v" },
                 desc = "Git Browse (main)",
             },
-            { "<leader>gcc", function() Snacks.terminal("git commit", gitwin) end, desc = "Git Commit" },
+            { "<leader>gcc", git_commit, desc = "Git Commit" },
             { "<leader>gca", function() Snacks.terminal("git amend", gitwin) end, desc = "Git Commit Amend" },
             { "<leader>gcA", function() Snacks.terminal("git commit --all", gitwin) end, desc = "Git Commit All" },
             { "<leader>gcz", function() Snacks.terminal("cz commit", gitwin) end, desc = "Git Commit(izen)" },
-            { "<leader>gp", function() Snacks.terminal("git add -p") end, desc = "Git Partial Add" },
+            { "<leader>gp", function() Snacks.terminal("git add -p", gitwin) end, desc = "Git Partial Add" },
+        },
+        opts = {
+            picker = {
+                sources = {
+                    git_log = {
+                        confirm = "show_commit",
+                    },
+                    git_log_line = {
+                        confirm = "show_commit",
+                    },
+                    git_log_file = {
+                        confirm = "show_commit",
+                    },
+                    git_diff = {
+                        win = {
+                            input = meta_c_commit,
+                            list = meta_c_commit,
+                            preview = meta_c_commit,
+                        },
+                    },
+                    git_status = {
+                        win = {
+                            input = meta_c_commit,
+                            list = meta_c_commit,
+                            preview = meta_c_commit,
+                        },
+                    },
+                },
+                actions = {
+                    show_commit = function(_, item)
+                        local win_opts = {
+                            keys = {
+                                -- Go back on left or backspace
+                                ["<left>"] = { "cancel", mode = { "n", "x" } },
+                                ["<bs>"] = { "cancel", mode = { "n", "x" } },
+                                -- Close log and diff on q or esc
+                                ["<q>"] = { "close", mode = { "n", "x" } },
+                                ["<esc>"] = { "close", mode = { "n", "x" } },
+                            },
+                        }
+                        Snacks.picker.git_diff({
+                            group = true,
+                            focus = "list",
+                            base = item.commit,
+                            cmd_args = { item.commit .. "~" },
+                            layout = {
+                                hidden = { "input" },
+                            },
+                            win = {
+                                list = win_opts,
+                                preview = win_opts,
+                            },
+                        })
+                    end,
+                    git_commit = function(picker)
+                        picker:close()
+                        git_commit()
+                    end,
+                },
+            },
         },
     },
 }

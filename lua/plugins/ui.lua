@@ -1,6 +1,12 @@
 local ascii = require("lib.ui.ascii")
 local ft = require("lib.filetypes")
 
+local icons_opts = {
+    custom_sources = {
+        unicode = vim.fn.stdpath("config") .. "/data/unicode.json",
+    },
+}
+
 return {
     --- Solarized Osaka
     {
@@ -52,6 +58,10 @@ return {
                     highlights.WhichKeyIconPurple = { fg = colors.violet }
                     highlights.WhichKeyIconYellow = { fg = colors.yellow }
 
+                    -- Some statusline highlights
+                    highlights.StatuslineError = { fg = colors.red }
+                    highlights.StatuslineWarn = { fg = colors.yellow }
+
                     for group, highlight in pairs(opts.highlights or {}) do
                         highlights[group] = highlight
                     end
@@ -66,6 +76,7 @@ return {
         "folke/snacks.nvim",
         priority = 1000,
         lazy = false,
+        dev = true,
         keys = {
             --- Base Pickers
             { "<C-k>", function() Snacks.picker.files() end, desc = "File picker" },
@@ -93,12 +104,12 @@ return {
             { "<leader>k,", function() Snacks.picker.resume() end, desc = "Resume" },
             {
                 "<leader>k;",
-                function() Snacks.picker.icons() end,
+                function() Snacks.picker.icons(icons_opts) end,
                 desc = "Emojis",
             },
             {
                 "<M-;>",
-                function() Snacks.picker.icons() end,
+                function() Snacks.picker.icons(icons_opts) end,
                 desc = "Emojis",
                 mode = { "n", "i" },
             },
@@ -156,7 +167,13 @@ return {
                             icon = " ",
                             key = "r",
                             desc = "Recent Files",
-                            action = ":lua Snacks.picker.recent()",
+                            action = ":lua Snacks.picker.recent({filter={cwd=true}})",
+                        },
+                        {
+                            icon = " ",
+                            key = "d",
+                            desc = "Git Status",
+                            action = ":lua Snacks.picker.git_status()",
                         },
                         { icon = " ", key = "s", desc = "Restore Session", section = "session" },
                         { icon = "󰒲 ", key = "l", desc = "Lazy", action = ":Lazy", enabled = package.loaded.lazy },
@@ -166,37 +183,7 @@ return {
                 },
                 sections = {
                     { section = "header" },
-                    {
-                        pane = 2,
-                        section = "terminal",
-                        -- cmd = "colorscript -e six",
-                        cmd = "colorscript -e square",
-                        height = 5,
-                        padding = 1,
-                    },
                     { section = "keys", gap = 1, padding = 1 },
-                    {
-                        pane = 2,
-                        icon = " ",
-                        title = "Recent Files",
-                        section = "recent_files",
-                        cwd = true,
-                        indent = 2,
-                        padding = 1,
-                        limit = 8,
-                    },
-                    {
-                        pane = 2,
-                        icon = " ",
-                        title = "Git Status",
-                        section = "terminal",
-                        enabled = vim.fn.isdirectory(".git") == 1,
-                        cmd = "hub status --short --branch --renames",
-                        height = 5,
-                        padding = 1,
-                        ttl = 5 * 60,
-                        indent = 3,
-                    },
                     { section = "startup" },
                 },
             },
@@ -255,6 +242,7 @@ return {
                 sources = {
                     files = {
                         hidden = true,
+                        confirm = "open_or_create",
                     },
                     grep = {
                         hidden = true,
@@ -315,6 +303,30 @@ return {
                 layout = {
                     footer_keys = true,
                     footer_max_keys = 10,
+                },
+                actions = {
+                    open_or_create = {
+                        name = "Open/Create File",
+                        description = "Open the selected file or create a new file with the input name",
+                        action = function(picker, item)
+                            if item then
+                                picker:close()
+                                vim.cmd.edit(item.file)
+                            else
+                                picker:close()
+                                Snacks.input({
+                                    prompt = "New file name?",
+                                    icon = "",
+                                    default = picker.input:get(),
+                                    completion = "file",
+                                }, function(value)
+                                    if value and value ~= "" then
+                                        vim.cmd.edit(value)
+                                    end
+                                end)
+                            end
+                        end,
+                    },
                 },
             },
             quickfile = { enabled = true },
@@ -406,10 +418,10 @@ return {
                     -- click = true,
                     lsp = {
                         auto_attach = true,
+                        preference = { "ty" },
                     },
                 },
             },
-            "AndreM222/copilot-lualine",
         },
         event = "VeryLazy",
         opts = function()

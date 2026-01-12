@@ -28,9 +28,24 @@ require("lazy").setup({
                 "MasonLog",
             },
             opts = {
-                -- ui = {
-                --     border = "rounded",
-                -- },
+                registries = {
+                    "github:mason-org/mason-registry",
+                    "github:noirbizarre/extra-mason-registry",
+                },
+                ui = {
+                    icons = {
+                        package_installed = "󰏖 ",
+                        ---@since 1.0.0
+                        -- The list icon to use for packages that are installing, or queued for installation.
+                        package_pending = "󱧘 ",
+                        ---@since 1.0.0
+                        -- The list icon to use for packages that are not installed.
+                        package_uninstalled = "󰏗 ",
+                    },
+                    keymaps = {
+                        toggle_help = "?",
+                    },
+                },
             },
         },
         -- import your plugins

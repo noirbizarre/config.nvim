@@ -97,7 +97,10 @@ return {
                 gh_actions_ls = {
                     init_options = {
                         sessionToken = vim.env.GITHUB_TOKEN,
-                        repos = get_repos_config(),
+                        -- Allow to disable repos matching by env as it triggers GitHub secrets retrieval
+                        repos = vim.env.GH_ACTION_LS_NO_REPO and nil or get_repos_config(),
+                        -- Enable all experimental features
+                        experimentalFeatures = { all = true },
                     },
                 },
             },

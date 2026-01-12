@@ -2,7 +2,6 @@
 local ft = require("lib.filetypes")
 
 return {
-    -- Brrowed from https://github.com/LazyVim/LazyVim/blob/main/lua/lazyvim/util/ui.lua
     foldexpr = function()
         local buf = vim.api.nvim_get_current_buf()
         if vim.b[buf].ts_folds == nil then

@@ -8,20 +8,8 @@ return {
         },
     },
     {
-        "zbirenbaum/copilot.lua",
-        cmd = "Copilot",
-        event = "InsertEnter",
-        opts = {
-            filetypes = {
-                yaml = true,
-                markdown = true,
-            },
-            suggestion = { enabled = false },
-            panel = { enabled = false },
-        },
-    },
-    {
         "folke/sidekick.nvim",
+        dev = true,
         opts = {
             cli = {
                 mux = {
@@ -100,10 +88,52 @@ return {
         },
     },
     {
+        "nvim-lualine/lualine.nvim",
+        opts = function(_, opts)
+            -- Copilot status
+            table.insert(opts.sections.lualine_x, {
+                function()
+                    local status = require("sidekick.status").get()
+                    if status and (status.kind == "Inactive" or status.kind == "Error") then
+                        return " "
+                    elseif status and status.kind == "Warning" then
+                        return " "
+                    end
+                    return " "
+                end,
+                color = function()
+                    local status = require("sidekick.status").get()
+                    if status and status.kind == "Error" then
+                        return "StatuslineError"
+                    elseif status and status.busy then
+                        return "StatuslineWarn"
+                    end
+                end,
+                cond = function() return require("sidekick.status").get() ~= nil end,
+            })
+            -- CLI session status
+            table.insert(opts.sections.lualine_x, {
+                function()
+                    local status = require("sidekick.status").cli()
+                    return " " .. (#status > 1 and #status or "")
+                end,
+                cond = function() return #require("sidekick.status").cli() > 0 end,
+            })
+        end,
+    },
+    {
         "craftzdog/solarized-osaka.nvim",
         opts = {
             highlights = {
                 SidekickChat = "Normal",
+            },
+        },
+    },
+    {
+        "noirbizarre/ensure.nvim",
+        opts = {
+            lsp = {
+                enable = { "copilot" },
             },
         },
     },

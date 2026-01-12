@@ -68,7 +68,6 @@ local opts = {
             -- collapsed = true, -- show window as closed/collapsed on start
             open = "Neotree show position=left buffers",
         },
-        { title = "Tests", ft = "neotest-summary" },
         -- any other neo-tree windows
         -- "neo-tree",
     },
@@ -76,6 +75,7 @@ local opts = {
         { title = "Debug", ft = "dap-view", size = { width = 90 }, wo = { winbar = false } },
         { title = "Debug", ft = "dap-repl", size = { width = 90 }, wo = { winbar = false } },
         { title = "Debug Term", ft = "dap-view-term", size = { width = 90 }, wo = { winbar = false } },
+        { title = "Tests", ft = "neotest-summary", size = { width = 0.15 } },
         { title = "Search & replace", ft = "grug-far", size = { width = 0.25 } },
         { title = "Outline", ft = "sagaoutline", size = { width = 0.18 } },
         { title = "Outline", ft = "Outline", size = { width = 0.18 } },

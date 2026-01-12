@@ -22,6 +22,11 @@ return {
                 desc = "Neotest: Run File",
             },
             {
+                "<leader>tt",
+                function() require("neotest").run.run({ vim.fn.getcwd(), env = mise.get_env() }) end,
+                desc = "Neotest: Run all tests",
+            },
+            {
                 "<leader>tF",
                 function() require("neotest").run.run({ vim.fn.expand("%"), strategy = "dap", env = mise.get_env() }) end,
                 desc = "Neotest: Debug File",
@@ -65,6 +70,21 @@ return {
                 "<leader>ts",
                 function() require("neotest").summary.toggle() end,
                 desc = "Neotest: Summary",
+            },
+            {
+                "<leader>twf",
+                function() require("neotest").watch.watch({ vim.fn.expand("%"), env = mise.get_env() }) end,
+                desc = "Neotest: Watch File",
+            },
+            {
+                "<leader>ww",
+                function() require("neotest").watch.watch({ vim.fn.getcwd(), env = mise.get_env() }) end,
+                desc = "Neotest: Watch all files",
+            },
+            {
+                "<leader>twn",
+                function() require("neotest").watch.watch({ env = mise.get_env() }) end,
+                desc = "Neotest: Watch Nearest",
             },
         },
         opts = {

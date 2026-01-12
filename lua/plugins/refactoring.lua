@@ -30,7 +30,7 @@ return {
         },
         opts = {
             default_styles = {
-                { python = "Google" },
+                python = "Google",
             },
             styles = {
                 python = {

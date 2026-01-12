@@ -138,6 +138,26 @@ return {
             { "<leader>gca", function() Snacks.terminal("git amend", gitwin) end, desc = "Git Commit Amend" },
             { "<leader>gcA", function() Snacks.terminal("git commit --all", gitwin) end, desc = "Git Commit All" },
             { "<leader>gcz", function() Snacks.terminal("cz commit", gitwin) end, desc = "Git Commit(izen)" },
+            {
+                "<leader>gcr",
+                function()
+                    Snacks.input({
+                        prompt = "Rebase onto : ",
+                        icon = "",
+                        default = "main",
+                    }, function(base)
+                        if base and base ~= "" then
+                            Snacks.terminal("git rebase -i " .. base, gitwin)
+                        end
+                    end)
+                end,
+                desc = "Git Rebase (Interactive)",
+            },
+            {
+                "<leader>gcR",
+                function() Snacks.terminal("git rebase --continue", gitwin) end,
+                desc = "Git Rebase (continue)",
+            },
             { "<leader>gp", function() Snacks.terminal("git add -p", gitwin) end, desc = "Git Partial Add" },
         },
         opts = {

@@ -188,35 +188,44 @@ return {
                     },
                 },
                 actions = {
-                    show_commit = function(_, item)
-                        local win_opts = {
-                            keys = {
-                                -- Go back on left or backspace
-                                ["<left>"] = { "cancel", mode = { "n", "x" } },
-                                ["<bs>"] = { "cancel", mode = { "n", "x" } },
-                                -- Close log and diff on q or esc
-                                ["<q>"] = { "close", mode = { "n", "x" } },
-                                ["<esc>"] = { "close", mode = { "n", "x" } },
-                            },
-                        }
-                        Snacks.picker.git_diff({
-                            group = true,
-                            focus = "list",
-                            base = item.commit,
-                            cmd_args = { item.commit .. "~" },
-                            layout = {
-                                hidden = { "input" },
-                            },
-                            win = {
-                                list = win_opts,
-                                preview = win_opts,
-                            },
-                        })
-                    end,
-                    git_commit = function(picker)
-                        picker:close()
-                        git_commit()
-                    end,
+                    show_commit = {
+                        name = "Display Commit",
+                        desc = "Show the selected commit in a diff view",
+                        action = function(_, item)
+                            local win_opts = {
+                                keys = {
+                                    -- Go back on left or backspace
+                                    ["<left>"] = { "cancel", mode = { "n", "x" } },
+                                    ["<bs>"] = { "cancel", mode = { "n", "x" } },
+                                    -- Close log and diff on q or esc
+                                    ["<q>"] = { "close", mode = { "n", "x" } },
+                                    ["<esc>"] = { "close", mode = { "n", "x" } },
+                                },
+                            }
+                            Snacks.picker.git_diff({
+                                group = true,
+                                focus = "list",
+                                base = item.commit,
+                                cmd_args = { item.commit .. "~" },
+                                layout = {
+                                    hidden = { "input" },
+                                },
+                                win = {
+                                    list = win_opts,
+                                    preview = win_opts,
+                                },
+                            })
+                        end,
+                    },
+                    git_commit = {
+                        name = "Commit",
+                        desc = "Commit changes",
+                        weight = 200,
+                        action = function(picker)
+                            picker:close()
+                            git_commit()
+                        end,
+                    },
                 },
             },
         },

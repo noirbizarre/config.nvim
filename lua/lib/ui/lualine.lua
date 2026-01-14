@@ -78,8 +78,8 @@ return {
             "searchcount",
             "filetype",
             schemas.statusline,
-            { "fileformat", separator = "", padding = { left = 1 } },
-            "encoding",
+            { "fileformat", separator = "" },
+            { "encoding", padding = { left = 0, right = 1 } },
             {
                 "lsp_status",
                 icon = " ",

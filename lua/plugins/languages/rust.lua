@@ -31,6 +31,13 @@ return {
             ignore = {
                 packages = { "rustfmt" },
             },
+            lsp = {
+                auto = {
+                    ignore = {
+                        rust = "*",
+                    },
+                },
+            },
         },
     },
 }

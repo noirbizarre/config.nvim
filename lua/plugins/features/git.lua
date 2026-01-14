@@ -1,3 +1,4 @@
+local utils = require("lib.ui.utils")
 local gitwin = { win = { width = 0.4, height = 0.4 } }
 
 function git_commit() Snacks.terminal("git commit", gitwin) end
@@ -111,6 +112,21 @@ return {
                     },
                 })
             end,
+        },
+    },
+    {
+        "craftzdog/solarized-osaka.nvim",
+        opts = {
+            highlights = {
+                SnacksPickerGitCommit = "@lsp.type.event",
+                SnacksPickerGitDate = "@comment.info",
+                SnacksPickerGitBreaking = utils.extend_hl("@comment.error", { bold = true }),
+                SnacksPickerGitType = utils.extend_hl("Operator", { bold = true }),
+                SnacksPickerGitTypeDimmed = utils.extend_hl("String", { bold = true }),
+                SnacksPickerGitScope = utils.extend_hl("@comment.note", { bold = true }),
+                SnacksPickerGitMsg = "@variable",
+                SnacksPickerDimmed = "@comment",
+            },
         },
     },
     --- Pickers

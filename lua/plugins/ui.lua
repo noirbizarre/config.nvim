@@ -26,6 +26,20 @@ return {
                 ---@param highlights table<string, vim.api.keyset.highlight|string>
                 ---@param colors ColorScheme
                 on_highlights = function(highlights, colors)
+                    local util = require("solarized-osaka.util")
+                    -- Fixes
+                    highlights.DiffChange = "Normal"
+                    highlights.DiffAdd = {
+                        fg = colors.green,
+                        bg = util.blend(colors.green700, colors.bg, 0.25),
+                        bold = true,
+                    }
+                    highlights.DiffDelete = {
+                        fg = colors.red,
+                        bg = util.blend(colors.red, colors.bg, 0.25),
+                        bold = true,
+                    }
+
                     --- Reusable rainbow values
                     highlights.RainbowRed = { fg = colors.red }
                     highlights.RainbowOrange = { fg = colors.orange }
@@ -63,7 +77,11 @@ return {
                     highlights.StatuslineWarn = { fg = colors.yellow }
 
                     for group, highlight in pairs(opts.highlights or {}) do
-                        highlights[group] = highlight
+                        if type(highlight) == "function" then
+                            highlights[group] = highlight(highlights, colors)
+                        else
+                            highlights[group] = highlight
+                        end
                     end
                 end,
             })

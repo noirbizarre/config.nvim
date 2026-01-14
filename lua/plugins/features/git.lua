@@ -157,15 +157,31 @@ return {
             {
                 "<leader>gcr",
                 function()
-                    Snacks.input({
-                        prompt = "Rebase onto : ",
-                        icon = "",
-                        default = "main",
-                    }, function(base)
-                        if base and base ~= "" then
-                            Snacks.terminal("git rebase -i " .. base, gitwin)
-                        end
-                    end)
+                    Snacks.picker.git_branches({
+                        title = "Rebase onto branch",
+                        prompt = " ",
+                        confirm = function(picker, item)
+                            picker:close()
+                            vim.schedule(function() -- Avoid close actions form stealing focus
+                                if item then
+                                    Snacks.terminal("git rebase -i " .. item.branch, gitwin)
+                                else
+                                    Snacks.input({
+                                        prompt = "Rebase onto?",
+                                        icon = "",
+                                        default = picker.input:get(),
+                                    }, function(value)
+                                        if value and value ~= "" then
+                                            Snacks.terminal("git rebase -i " .. value, gitwin)
+                                        end
+                                    end)
+                                end
+                            end)
+                        end,
+                        layout = {
+                            preset = "vscode",
+                        },
+                    })
                 end,
                 desc = "Git Rebase (Interactive)",
             },

@@ -570,6 +570,866 @@
     "category": "Maths"
   },
   {
+    "icon": "⅐",
+    "name": "vulgar fraction one seventh",
+    "category": "Maths"
+  },
+  {
+    "icon": "⅑",
+    "name": "vulgar fraction one ninth",
+    "category": "Maths"
+  },
+  {
+    "icon": "⅒",
+    "name": "vulgar fraction one tenth",
+    "category": "Maths"
+  },
+  {
+    "icon": "⅓",
+    "name": "vulgar fraction one third",
+    "category": "Maths"
+  },
+  {
+    "icon": "⅔",
+    "name": "vulgar fraction two thirds",
+    "category": "Maths"
+  },
+  {
+    "icon": "⅕",
+    "name": "vulgar fraction one fifth",
+    "category": "Maths"
+  },
+  {
+    "icon": "⅖",
+    "name": "vulgar fraction two fifths",
+    "category": "Maths"
+  },
+  {
+    "icon": "⅗",
+    "name": "vulgar fraction three fifths",
+    "category": "Maths"
+  },
+  {
+    "icon": "⅘",
+    "name": "vulgar fraction four fifths",
+    "category": "Maths"
+  },
+  {
+    "icon": "⅙",
+    "name": "vulgar fraction one sixth",
+    "category": "Maths"
+  },
+  {
+    "icon": "⅚",
+    "name": "vulgar fraction five sixths",
+    "category": "Maths"
+  },
+  {
+    "icon": "⅛",
+    "name": "vulgar fraction one eighth",
+    "category": "Maths"
+  },
+  {
+    "icon": "⅜",
+    "name": "vulgar fraction three eighths",
+    "category": "Maths"
+  },
+  {
+    "icon": "⅝",
+    "name": "vulgar fraction five eighths",
+    "category": "Maths"
+  },
+  {
+    "icon": "⅞",
+    "name": "vulgar fraction seven eighths",
+    "category": "Maths"
+  },
+  {
+    "icon": "⅟",
+    "name": "fraction numerator one",
+    "category": "Maths"
+  },
+  {
+    "icon": "Ⅰ",
+    "name": "roman numeral one",
+    "category": "Maths"
+  },
+  {
+    "icon": "Ⅱ",
+    "name": "roman numeral two",
+    "category": "Maths"
+  },
+  {
+    "icon": "Ⅲ",
+    "name": "roman numeral three",
+    "category": "Maths"
+  },
+  {
+    "icon": "Ⅳ",
+    "name": "roman numeral four",
+    "category": "Maths"
+  },
+  {
+    "icon": "Ⅴ",
+    "name": "roman numeral five",
+    "category": "Maths"
+  },
+  {
+    "icon": "Ⅵ",
+    "name": "roman numeral six",
+    "category": "Maths"
+  },
+  {
+    "icon": "Ⅶ",
+    "name": "roman numeral seven",
+    "category": "Maths"
+  },
+  {
+    "icon": "Ⅷ",
+    "name": "roman numeral eight",
+    "category": "Maths"
+  },
+  {
+    "icon": "Ⅸ",
+    "name": "roman numeral nine",
+    "category": "Maths"
+  },
+  {
+    "icon": "Ⅹ",
+    "name": "roman numeral ten",
+    "category": "Maths"
+  },
+  {
+    "icon": "Ⅺ",
+    "name": "roman numeral eleven",
+    "category": "Maths"
+  },
+  {
+    "icon": "Ⅻ",
+    "name": "roman numeral twelve",
+    "category": "Maths"
+  },
+  {
+    "icon": "Ⅼ",
+    "name": "roman numeral fifty",
+    "category": "Maths"
+  },
+  {
+    "icon": "Ⅽ",
+    "name": "roman numeral one hundred",
+    "category": "Maths"
+  },
+  {
+    "icon": "Ⅾ",
+    "name": "roman numeral five hundred",
+    "category": "Maths"
+  },
+  {
+    "icon": "Ⅿ",
+    "name": "roman numeral one thousand",
+    "category": "Maths"
+  },
+  {
+    "icon": "ⅰ",
+    "name": "small roman numeral one",
+    "category": "Maths"
+  },
+  {
+    "icon": "ⅱ",
+    "name": "small roman numeral two",
+    "category": "Maths"
+  },
+  {
+    "icon": "ⅲ",
+    "name": "small roman numeral three",
+    "category": "Maths"
+  },
+  {
+    "icon": "ⅳ",
+    "name": "small roman numeral four",
+    "category": "Maths"
+  },
+  {
+    "icon": "ⅴ",
+    "name": "small roman numeral five",
+    "category": "Maths"
+  },
+  {
+    "icon": "ⅵ",
+    "name": "small roman numeral six",
+    "category": "Maths"
+  },
+  {
+    "icon": "ⅶ",
+    "name": "small roman numeral seven",
+    "category": "Maths"
+  },
+  {
+    "icon": "ⅷ",
+    "name": "small roman numeral eight",
+    "category": "Maths"
+  },
+  {
+    "icon": "ⅸ",
+    "name": "small roman numeral nine",
+    "category": "Maths"
+  },
+  {
+    "icon": "ⅹ",
+    "name": "small roman numeral ten",
+    "category": "Maths"
+  },
+  {
+    "icon": "ⅺ",
+    "name": "small roman numeral eleven",
+    "category": "Maths"
+  },
+  {
+    "icon": "ⅻ",
+    "name": "small roman numeral twelve",
+    "category": "Maths"
+  },
+  {
+    "icon": "ⅼ",
+    "name": "small roman numeral fifty",
+    "category": "Maths"
+  },
+  {
+    "icon": "ⅽ",
+    "name": "small roman numeral one hundred",
+    "category": "Maths"
+  },
+  {
+    "icon": "ⅾ",
+    "name": "small roman numeral five hundred",
+    "category": "Maths"
+  },
+  {
+    "icon": "ⅿ",
+    "name": "small roman numeral one thousand",
+    "category": "Maths"
+  },
+  {
+    "icon": "ↀ",
+    "name": "roman numeral one thousand c d",
+    "category": "Maths"
+  },
+  {
+    "icon": "ↁ",
+    "name": "roman numeral five thousand",
+    "category": "Maths"
+  },
+  {
+    "icon": "ↂ",
+    "name": "roman numeral ten thousand",
+    "category": "Maths"
+  },
+  {
+    "icon": "Ↄ",
+    "name": "roman numeral reversed one hundred",
+    "category": "Maths"
+  },
+  {
+    "icon": "ↄ",
+    "name": "latin small letter reversed c",
+    "category": "Maths"
+  },
+  {
+    "icon": "ↅ",
+    "name": "roman numeral six late form",
+    "category": "Maths"
+  },
+  {
+    "icon": "ↆ",
+    "name": "roman numeral fifty early form",
+    "category": "Maths"
+  },
+  {
+    "icon": "ↇ",
+    "name": "roman numeral fifty thousand",
+    "category": "Maths"
+  },
+  {
+    "icon": "ↈ",
+    "name": "roman numeral one hundred thousand",
+    "category": "Maths"
+  },
+  {
+    "icon": "↉",
+    "name": "vulgar fraction zero thirds",
+    "category": "Maths"
+  },
+  {
+    "icon": "↊",
+    "name": "turned digit two",
+    "category": "Maths"
+  },
+  {
+    "icon": "↋",
+    "name": "turned digit three",
+    "category": "Maths"
+  },
+  {
+    "icon": "←",
+    "name": "leftwards arrow",
+    "category": "Arrows"
+  },
+  {
+    "icon": "↑",
+    "name": "upwards arrow",
+    "category": "Arrows"
+  },
+  {
+    "icon": "→",
+    "name": "rightwards arrow",
+    "category": "Arrows"
+  },
+  {
+    "icon": "↓",
+    "name": "downwards arrow",
+    "category": "Arrows"
+  },
+  {
+    "icon": "↔",
+    "name": "left right arrow",
+    "category": "Arrows"
+  },
+  {
+    "icon": "↕",
+    "name": "up down arrow",
+    "category": "Arrows"
+  },
+  {
+    "icon": "↖",
+    "name": "north west arrow",
+    "category": "Arrows"
+  },
+  {
+    "icon": "↗",
+    "name": "north east arrow",
+    "category": "Arrows"
+  },
+  {
+    "icon": "↘",
+    "name": "south east arrow",
+    "category": "Arrows"
+  },
+  {
+    "icon": "↙",
+    "name": "south west arrow",
+    "category": "Arrows"
+  },
+  {
+    "icon": "↚",
+    "name": "leftwards arrow with stroke",
+    "category": "Arrows"
+  },
+  {
+    "icon": "↛",
+    "name": "rightwards arrow with stroke",
+    "category": "Arrows"
+  },
+  {
+    "icon": "↜",
+    "name": "leftwards wave arrow",
+    "category": "Arrows"
+  },
+  {
+    "icon": "↝",
+    "name": "rightwards wave arrow",
+    "category": "Arrows"
+  },
+  {
+    "icon": "↞",
+    "name": "leftwards two headed arrow",
+    "category": "Arrows"
+  },
+  {
+    "icon": "↟",
+    "name": "upwards two headed arrow",
+    "category": "Arrows"
+  },
+  {
+    "icon": "↠",
+    "name": "rightwards two headed arrow",
+    "category": "Arrows"
+  },
+  {
+    "icon": "↡",
+    "name": "downwards two headed arrow",
+    "category": "Arrows"
+  },
+  {
+    "icon": "↢",
+    "name": "leftwards arrow with tail",
+    "category": "Arrows"
+  },
+  {
+    "icon": "↣",
+    "name": "rightwards arrow with tail",
+    "category": "Arrows"
+  },
+  {
+    "icon": "↤",
+    "name": "leftwards arrow from bar",
+    "category": "Arrows"
+  },
+  {
+    "icon": "↥",
+    "name": "upwards arrow from bar",
+    "category": "Arrows"
+  },
+  {
+    "icon": "↦",
+    "name": "rightwards arrow from bar",
+    "category": "Arrows"
+  },
+  {
+    "icon": "↧",
+    "name": "downwards arrow from bar",
+    "category": "Arrows"
+  },
+  {
+    "icon": "↨",
+    "name": "up down arrow with base",
+    "category": "Arrows"
+  },
+  {
+    "icon": "↩",
+    "name": "leftwards arrow with hook",
+    "category": "Arrows"
+  },
+  {
+    "icon": "↪",
+    "name": "rightwards arrow with hook",
+    "category": "Arrows"
+  },
+  {
+    "icon": "↫",
+    "name": "leftwards arrow with loop",
+    "category": "Arrows"
+  },
+  {
+    "icon": "↬",
+    "name": "rightwards arrow with loop",
+    "category": "Arrows"
+  },
+  {
+    "icon": "↭",
+    "name": "left right wave arrow",
+    "category": "Arrows"
+  },
+  {
+    "icon": "↮",
+    "name": "left right arrow with stroke",
+    "category": "Arrows"
+  },
+  {
+    "icon": "↯",
+    "name": "downwards zigzag arrow",
+    "category": "Arrows"
+  },
+  {
+    "icon": "↰",
+    "name": "upwards arrow with tip leftwards",
+    "category": "Arrows"
+  },
+  {
+    "icon": "↱",
+    "name": "upwards arrow with tip rightwards",
+    "category": "Arrows"
+  },
+  {
+    "icon": "↲",
+    "name": "downwards arrow with tip leftwards",
+    "category": "Arrows"
+  },
+  {
+    "icon": "↳",
+    "name": "downwards arrow with tip rightwards",
+    "category": "Arrows"
+  },
+  {
+    "icon": "↴",
+    "name": "rightwards arrow with corner downwards",
+    "category": "Arrows"
+  },
+  {
+    "icon": "↵",
+    "name": "downwards arrow with corner leftwards",
+    "category": "Arrows"
+  },
+  {
+    "icon": "↶",
+    "name": "anticlockwise top semicircle arrow",
+    "category": "Arrows"
+  },
+  {
+    "icon": "↷",
+    "name": "clockwise top semicircle arrow",
+    "category": "Arrows"
+  },
+  {
+    "icon": "↸",
+    "name": "north west arrow to long bar",
+    "category": "Arrows"
+  },
+  {
+    "icon": "↹",
+    "name": "leftwards arrow to bar over rightwards arrow to bar",
+    "category": "Arrows"
+  },
+  {
+    "icon": "↺",
+    "name": "anticlockwise open circle arrow",
+    "category": "Arrows"
+  },
+  {
+    "icon": "↻",
+    "name": "clockwise open circle arrow",
+    "category": "Arrows"
+  },
+  {
+    "icon": "↼",
+    "name": "leftwards harpoon with barb upwards",
+    "category": "Arrows"
+  },
+  {
+    "icon": "↽",
+    "name": "leftwards harpoon with barb downwards",
+    "category": "Arrows"
+  },
+  {
+    "icon": "↾",
+    "name": "upwards harpoon with barb rightwards",
+    "category": "Arrows"
+  },
+  {
+    "icon": "↿",
+    "name": "upwards harpoon with barb leftwards",
+    "category": "Arrows"
+  },
+  {
+    "icon": "⇀",
+    "name": "rightwards harpoon with barb upwards",
+    "category": "Arrows"
+  },
+  {
+    "icon": "⇁",
+    "name": "rightwards harpoon with barb downwards",
+    "category": "Arrows"
+  },
+  {
+    "icon": "⇂",
+    "name": "downwards harpoon with barb rightwards",
+    "category": "Arrows"
+  },
+  {
+    "icon": "⇃",
+    "name": "downwards harpoon with barb leftwards",
+    "category": "Arrows"
+  },
+  {
+    "icon": "⇄",
+    "name": "rightwards arrow over leftwards arrow",
+    "category": "Arrows"
+  },
+  {
+    "icon": "⇅",
+    "name": "upwards arrow leftwards of downwards arrow",
+    "category": "Arrows"
+  },
+  {
+    "icon": "⇆",
+    "name": "leftwards arrow over rightwards arrow",
+    "category": "Arrows"
+  },
+  {
+    "icon": "⇇",
+    "name": "leftwards paired arrows",
+    "category": "Arrows"
+  },
+  {
+    "icon": "⇈",
+    "name": "upwards paired arrows",
+    "category": "Arrows"
+  },
+  {
+    "icon": "⇉",
+    "name": "rightwards paired arrows",
+    "category": "Arrows"
+  },
+  {
+    "icon": "⇊",
+    "name": "downwards paired arrows",
+    "category": "Arrows"
+  },
+  {
+    "icon": "⇋",
+    "name": "leftwards harpoon over rightwards harpoon",
+    "category": "Arrows"
+  },
+  {
+    "icon": "⇌",
+    "name": "rightwards harpoon over leftwards harpoon",
+    "category": "Arrows"
+  },
+  {
+    "icon": "⇍",
+    "name": "leftwards double arrow with stroke",
+    "category": "Arrows"
+  },
+  {
+    "icon": "⇎",
+    "name": "left right double arrow with stroke",
+    "category": "Arrows"
+  },
+  {
+    "icon": "⇏",
+    "name": "rightwards double arrow with stroke",
+    "category": "Arrows"
+  },
+  {
+    "icon": "⇐",
+    "name": "leftwards double arrow",
+    "category": "Arrows"
+  },
+  {
+    "icon": "⇑",
+    "name": "upwards double arrow",
+    "category": "Arrows"
+  },
+  {
+    "icon": "⇒",
+    "name": "rightwards double arrow",
+    "category": "Arrows"
+  },
+  {
+    "icon": "⇓",
+    "name": "downwards double arrow",
+    "category": "Arrows"
+  },
+  {
+    "icon": "⇔",
+    "name": "left right double arrow",
+    "category": "Arrows"
+  },
+  {
+    "icon": "⇕",
+    "name": "up down double arrow",
+    "category": "Arrows"
+  },
+  {
+    "icon": "⇖",
+    "name": "north west double arrow",
+    "category": "Arrows"
+  },
+  {
+    "icon": "⇗",
+    "name": "north east double arrow",
+    "category": "Arrows"
+  },
+  {
+    "icon": "⇘",
+    "name": "south east double arrow",
+    "category": "Arrows"
+  },
+  {
+    "icon": "⇙",
+    "name": "south west double arrow",
+    "category": "Arrows"
+  },
+  {
+    "icon": "⇚",
+    "name": "leftwards triple arrow",
+    "category": "Arrows"
+  },
+  {
+    "icon": "⇛",
+    "name": "rightwards triple arrow",
+    "category": "Arrows"
+  },
+  {
+    "icon": "⇜",
+    "name": "leftwards squiggle arrow",
+    "category": "Arrows"
+  },
+  {
+    "icon": "⇝",
+    "name": "rightwards squiggle arrow",
+    "category": "Arrows"
+  },
+  {
+    "icon": "⇞",
+    "name": "upwards arrow with double stroke",
+    "category": "Arrows"
+  },
+  {
+    "icon": "⇟",
+    "name": "downwards arrow with double stroke",
+    "category": "Arrows"
+  },
+  {
+    "icon": "⇠",
+    "name": "leftwards dashed arrow",
+    "category": "Arrows"
+  },
+  {
+    "icon": "⇡",
+    "name": "upwards dashed arrow",
+    "category": "Arrows"
+  },
+  {
+    "icon": "⇢",
+    "name": "rightwards dashed arrow",
+    "category": "Arrows"
+  },
+  {
+    "icon": "⇣",
+    "name": "downwards dashed arrow",
+    "category": "Arrows"
+  },
+  {
+    "icon": "⇤",
+    "name": "leftwards arrow to bar",
+    "category": "Arrows"
+  },
+  {
+    "icon": "⇥",
+    "name": "rightwards arrow to bar",
+    "category": "Arrows"
+  },
+  {
+    "icon": "⇦",
+    "name": "leftwards white arrow",
+    "category": "Arrows"
+  },
+  {
+    "icon": "⇧",
+    "name": "upwards white arrow",
+    "category": "Arrows"
+  },
+  {
+    "icon": "⇨",
+    "name": "rightwards white arrow",
+    "category": "Arrows"
+  },
+  {
+    "icon": "⇩",
+    "name": "downwards white arrow",
+    "category": "Arrows"
+  },
+  {
+    "icon": "⇪",
+    "name": "upwards white arrow from bar",
+    "category": "Arrows"
+  },
+  {
+    "icon": "⇫",
+    "name": "upwards white arrow on pedestal",
+    "category": "Arrows"
+  },
+  {
+    "icon": "⇬",
+    "name": "upwards white arrow on pedestal with horizontal bar",
+    "category": "Arrows"
+  },
+  {
+    "icon": "⇭",
+    "name": "upwards white arrow on pedestal with vertical bar",
+    "category": "Arrows"
+  },
+  {
+    "icon": "⇮",
+    "name": "upwards white double arrow",
+    "category": "Arrows"
+  },
+  {
+    "icon": "⇯",
+    "name": "upwards white double arrow on pedestal",
+    "category": "Arrows"
+  },
+  {
+    "icon": "⇰",
+    "name": "rightwards white arrow from wall",
+    "category": "Arrows"
+  },
+  {
+    "icon": "⇱",
+    "name": "north west arrow to corner",
+    "category": "Arrows"
+  },
+  {
+    "icon": "⇲",
+    "name": "south east arrow to corner",
+    "category": "Arrows"
+  },
+  {
+    "icon": "⇳",
+    "name": "up down white arrow",
+    "category": "Arrows"
+  },
+  {
+    "icon": "⇴",
+    "name": "right arrow with small circle",
+    "category": "Arrows"
+  },
+  {
+    "icon": "⇵",
+    "name": "downwards arrow leftwards of upwards arrow",
+    "category": "Arrows"
+  },
+  {
+    "icon": "⇶",
+    "name": "three rightwards arrows",
+    "category": "Arrows"
+  },
+  {
+    "icon": "⇷",
+    "name": "leftwards arrow with vertical stroke",
+    "category": "Arrows"
+  },
+  {
+    "icon": "⇸",
+    "name": "rightwards arrow with vertical stroke",
+    "category": "Arrows"
+  },
+  {
+    "icon": "⇹",
+    "name": "left right arrow with vertical stroke",
+    "category": "Arrows"
+  },
+  {
+    "icon": "⇺",
+    "name": "leftwards arrow with double vertical stroke",
+    "category": "Arrows"
+  },
+  {
+    "icon": "⇻",
+    "name": "rightwards arrow with double vertical stroke",
+    "category": "Arrows"
+  },
+  {
+    "icon": "⇼",
+    "name": "left right arrow with double vertical stroke",
+    "category": "Arrows"
+  },
+  {
+    "icon": "⇽",
+    "name": "leftwards open-headed arrow",
+    "category": "Arrows"
+  },
+  {
+    "icon": "⇾",
+    "name": "rightwards open-headed arrow",
+    "category": "Arrows"
+  },
+  {
+    "icon": "⇿",
+    "name": "left right open-headed arrow",
+    "category": "Arrows"
+  },
+  {
     "icon": "∀",
     "name": "for all",
     "category": "Maths"
@@ -15300,6 +16160,1021 @@
     "category": "Maths"
   },
   {
+    "icon": "𝤪",
+    "name": "signwriting movement-wallplane single straight small",
+    "category": "Arrows"
+  },
+  {
+    "icon": "𝤫",
+    "name": "signwriting movement-wallplane single straight medium",
+    "category": "Arrows"
+  },
+  {
+    "icon": "𝤬",
+    "name": "signwriting movement-wallplane single straight large",
+    "category": "Arrows"
+  },
+  {
+    "icon": "𝤭",
+    "name": "signwriting movement-wallplane single straight largest",
+    "category": "Arrows"
+  },
+  {
+    "icon": "𝤮",
+    "name": "signwriting movement-wallplane single wrist flex",
+    "category": "Arrows"
+  },
+  {
+    "icon": "𝤯",
+    "name": "signwriting movement-wallplane double straight",
+    "category": "Arrows"
+  },
+  {
+    "icon": "𝤰",
+    "name": "signwriting movement-wallplane double wrist flex",
+    "category": "Arrows"
+  },
+  {
+    "icon": "𝤱",
+    "name": "signwriting movement-wallplane double alternating",
+    "category": "Arrows"
+  },
+  {
+    "icon": "𝤲",
+    "name": "signwriting movement-wallplane double alternating wrist flex",
+    "category": "Arrows"
+  },
+  {
+    "icon": "𝤳",
+    "name": "signwriting movement-wallplane cross",
+    "category": "Arrows"
+  },
+  {
+    "icon": "𝤴",
+    "name": "signwriting movement-wallplane triple straight movement",
+    "category": "Arrows"
+  },
+  {
+    "icon": "𝤵",
+    "name": "signwriting movement-wallplane triple wrist flex",
+    "category": "Arrows"
+  },
+  {
+    "icon": "𝤶",
+    "name": "signwriting movement-wallplane triple alternating",
+    "category": "Arrows"
+  },
+  {
+    "icon": "𝤷",
+    "name": "signwriting movement-wallplane triple alternating wrist flex",
+    "category": "Arrows"
+  },
+  {
+    "icon": "𝤸",
+    "name": "signwriting movement-wallplane bend small",
+    "category": "Arrows"
+  },
+  {
+    "icon": "𝤹",
+    "name": "signwriting movement-wallplane bend medium",
+    "category": "Arrows"
+  },
+  {
+    "icon": "𝤺",
+    "name": "signwriting movement-wallplane bend large",
+    "category": "Arrows"
+  },
+  {
+    "icon": "𝤻",
+    "name": "signwriting movement-wallplane corner small",
+    "category": "Arrows"
+  },
+  {
+    "icon": "𝤼",
+    "name": "signwriting movement-wallplane corner medium",
+    "category": "Arrows"
+  },
+  {
+    "icon": "𝤽",
+    "name": "signwriting movement-wallplane corner large",
+    "category": "Arrows"
+  },
+  {
+    "icon": "𝤾",
+    "name": "signwriting movement-wallplane corner rotation",
+    "category": "Arrows"
+  },
+  {
+    "icon": "𝤿",
+    "name": "signwriting movement-wallplane check small",
+    "category": "Arrows"
+  },
+  {
+    "icon": "𝥀",
+    "name": "signwriting movement-wallplane check medium",
+    "category": "Arrows"
+  },
+  {
+    "icon": "𝥁",
+    "name": "signwriting movement-wallplane check large",
+    "category": "Arrows"
+  },
+  {
+    "icon": "𝥂",
+    "name": "signwriting movement-wallplane box small",
+    "category": "Arrows"
+  },
+  {
+    "icon": "𝥃",
+    "name": "signwriting movement-wallplane box medium",
+    "category": "Arrows"
+  },
+  {
+    "icon": "𝥄",
+    "name": "signwriting movement-wallplane box large",
+    "category": "Arrows"
+  },
+  {
+    "icon": "𝥅",
+    "name": "signwriting movement-wallplane zigzag small",
+    "category": "Arrows"
+  },
+  {
+    "icon": "𝥆",
+    "name": "signwriting movement-wallplane zigzag medium",
+    "category": "Arrows"
+  },
+  {
+    "icon": "𝥇",
+    "name": "signwriting movement-wallplane zigzag large",
+    "category": "Arrows"
+  },
+  {
+    "icon": "𝥈",
+    "name": "signwriting movement-wallplane peaks small",
+    "category": "Arrows"
+  },
+  {
+    "icon": "𝥉",
+    "name": "signwriting movement-wallplane peaks medium",
+    "category": "Arrows"
+  },
+  {
+    "icon": "𝥊",
+    "name": "signwriting movement-wallplane peaks large",
+    "category": "Arrows"
+  },
+  {
+    "icon": "𝥋",
+    "name": "signwriting travel-wallplane rotation-wallplane single",
+    "category": "Arrows"
+  },
+  {
+    "icon": "𝥌",
+    "name": "signwriting travel-wallplane rotation-wallplane double",
+    "category": "Arrows"
+  },
+  {
+    "icon": "𝥍",
+    "name": "signwriting travel-wallplane rotation-wallplane alternating",
+    "category": "Arrows"
+  },
+  {
+    "icon": "𝥎",
+    "name": "signwriting travel-wallplane rotation-floorplane single",
+    "category": "Arrows"
+  },
+  {
+    "icon": "𝥏",
+    "name": "signwriting travel-wallplane rotation-floorplane double",
+    "category": "Arrows"
+  },
+  {
+    "icon": "𝥐",
+    "name": "signwriting travel-wallplane rotation-floorplane alternating",
+    "category": "Arrows"
+  },
+  {
+    "icon": "𝥑",
+    "name": "signwriting travel-wallplane shaking",
+    "category": "Arrows"
+  },
+  {
+    "icon": "𝥒",
+    "name": "signwriting travel-wallplane arm spiral single",
+    "category": "Arrows"
+  },
+  {
+    "icon": "𝥓",
+    "name": "signwriting travel-wallplane arm spiral double",
+    "category": "Arrows"
+  },
+  {
+    "icon": "𝥔",
+    "name": "signwriting travel-wallplane arm spiral triple",
+    "category": "Arrows"
+  },
+  {
+    "icon": "𝥕",
+    "name": "signwriting movement-diagonal away small",
+    "category": "Arrows"
+  },
+  {
+    "icon": "𝥖",
+    "name": "signwriting movement-diagonal away medium",
+    "category": "Arrows"
+  },
+  {
+    "icon": "𝥗",
+    "name": "signwriting movement-diagonal away large",
+    "category": "Arrows"
+  },
+  {
+    "icon": "𝥘",
+    "name": "signwriting movement-diagonal away largest",
+    "category": "Arrows"
+  },
+  {
+    "icon": "𝥙",
+    "name": "signwriting movement-diagonal towards small",
+    "category": "Arrows"
+  },
+  {
+    "icon": "𝥚",
+    "name": "signwriting movement-diagonal towards medium",
+    "category": "Arrows"
+  },
+  {
+    "icon": "𝥛",
+    "name": "signwriting movement-diagonal towards large",
+    "category": "Arrows"
+  },
+  {
+    "icon": "𝥜",
+    "name": "signwriting movement-diagonal towards largest",
+    "category": "Arrows"
+  },
+  {
+    "icon": "𝥝",
+    "name": "signwriting movement-diagonal between away small",
+    "category": "Arrows"
+  },
+  {
+    "icon": "𝥞",
+    "name": "signwriting movement-diagonal between away medium",
+    "category": "Arrows"
+  },
+  {
+    "icon": "𝥟",
+    "name": "signwriting movement-diagonal between away large",
+    "category": "Arrows"
+  },
+  {
+    "icon": "𝥠",
+    "name": "signwriting movement-diagonal between away largest",
+    "category": "Arrows"
+  },
+  {
+    "icon": "𝥡",
+    "name": "signwriting movement-diagonal between towards small",
+    "category": "Arrows"
+  },
+  {
+    "icon": "𝥢",
+    "name": "signwriting movement-diagonal between towards medium",
+    "category": "Arrows"
+  },
+  {
+    "icon": "𝥣",
+    "name": "signwriting movement-diagonal between towards large",
+    "category": "Arrows"
+  },
+  {
+    "icon": "𝥤",
+    "name": "signwriting movement-diagonal between towards largest",
+    "category": "Arrows"
+  },
+  {
+    "icon": "𝥥",
+    "name": "signwriting movement-floorplane single straight small",
+    "category": "Arrows"
+  },
+  {
+    "icon": "𝥦",
+    "name": "signwriting movement-floorplane single straight medium",
+    "category": "Arrows"
+  },
+  {
+    "icon": "𝥧",
+    "name": "signwriting movement-floorplane single straight large",
+    "category": "Arrows"
+  },
+  {
+    "icon": "𝥨",
+    "name": "signwriting movement-floorplane single straight largest",
+    "category": "Arrows"
+  },
+  {
+    "icon": "𝥩",
+    "name": "signwriting movement-floorplane single wrist flex",
+    "category": "Arrows"
+  },
+  {
+    "icon": "𝥪",
+    "name": "signwriting movement-floorplane double straight",
+    "category": "Arrows"
+  },
+  {
+    "icon": "𝥫",
+    "name": "signwriting movement-floorplane double wrist flex",
+    "category": "Arrows"
+  },
+  {
+    "icon": "𝥬",
+    "name": "signwriting movement-floorplane double alternating",
+    "category": "Arrows"
+  },
+  {
+    "icon": "𝥭",
+    "name": "signwriting movement-floorplane double alternating wrist flex",
+    "category": "Arrows"
+  },
+  {
+    "icon": "𝥮",
+    "name": "signwriting movement-floorplane cross",
+    "category": "Arrows"
+  },
+  {
+    "icon": "𝥯",
+    "name": "signwriting movement-floorplane triple straight movement",
+    "category": "Arrows"
+  },
+  {
+    "icon": "𝥰",
+    "name": "signwriting movement-floorplane triple wrist flex",
+    "category": "Arrows"
+  },
+  {
+    "icon": "𝥱",
+    "name": "signwriting movement-floorplane triple alternating movement",
+    "category": "Arrows"
+  },
+  {
+    "icon": "𝥲",
+    "name": "signwriting movement-floorplane triple alternating wrist flex",
+    "category": "Arrows"
+  },
+  {
+    "icon": "𝥳",
+    "name": "signwriting movement-floorplane bend",
+    "category": "Arrows"
+  },
+  {
+    "icon": "𝥴",
+    "name": "signwriting movement-floorplane corner small",
+    "category": "Arrows"
+  },
+  {
+    "icon": "𝥵",
+    "name": "signwriting movement-floorplane corner medium",
+    "category": "Arrows"
+  },
+  {
+    "icon": "𝥶",
+    "name": "signwriting movement-floorplane corner large",
+    "category": "Arrows"
+  },
+  {
+    "icon": "𝥷",
+    "name": "signwriting movement-floorplane check",
+    "category": "Arrows"
+  },
+  {
+    "icon": "𝥸",
+    "name": "signwriting movement-floorplane box small",
+    "category": "Arrows"
+  },
+  {
+    "icon": "𝥹",
+    "name": "signwriting movement-floorplane box medium",
+    "category": "Arrows"
+  },
+  {
+    "icon": "𝥺",
+    "name": "signwriting movement-floorplane box large",
+    "category": "Arrows"
+  },
+  {
+    "icon": "𝥻",
+    "name": "signwriting movement-floorplane zigzag small",
+    "category": "Arrows"
+  },
+  {
+    "icon": "𝥼",
+    "name": "signwriting movement-floorplane zigzag medium",
+    "category": "Arrows"
+  },
+  {
+    "icon": "𝥽",
+    "name": "signwriting movement-floorplane zigzag large",
+    "category": "Arrows"
+  },
+  {
+    "icon": "𝥾",
+    "name": "signwriting movement-floorplane peaks small",
+    "category": "Arrows"
+  },
+  {
+    "icon": "𝥿",
+    "name": "signwriting movement-floorplane peaks medium",
+    "category": "Arrows"
+  },
+  {
+    "icon": "𝦀",
+    "name": "signwriting movement-floorplane peaks large",
+    "category": "Arrows"
+  },
+  {
+    "icon": "𝦁",
+    "name": "signwriting travel-floorplane rotation-floorplane single",
+    "category": "Arrows"
+  },
+  {
+    "icon": "𝦂",
+    "name": "signwriting travel-floorplane rotation-floorplane double",
+    "category": "Arrows"
+  },
+  {
+    "icon": "𝦃",
+    "name": "signwriting travel-floorplane rotation-floorplane alternating",
+    "category": "Arrows"
+  },
+  {
+    "icon": "𝦄",
+    "name": "signwriting travel-floorplane rotation-wallplane single",
+    "category": "Arrows"
+  },
+  {
+    "icon": "𝦅",
+    "name": "signwriting travel-floorplane rotation-wallplane double",
+    "category": "Arrows"
+  },
+  {
+    "icon": "𝦆",
+    "name": "signwriting travel-floorplane rotation-wallplane alternating",
+    "category": "Arrows"
+  },
+  {
+    "icon": "𝦇",
+    "name": "signwriting travel-floorplane shaking",
+    "category": "Arrows"
+  },
+  {
+    "icon": "𝦈",
+    "name": "signwriting movement-wallplane curve quarter small",
+    "category": "Arrows"
+  },
+  {
+    "icon": "𝦉",
+    "name": "signwriting movement-wallplane curve quarter medium",
+    "category": "Arrows"
+  },
+  {
+    "icon": "𝦊",
+    "name": "signwriting movement-wallplane curve quarter large",
+    "category": "Arrows"
+  },
+  {
+    "icon": "𝦋",
+    "name": "signwriting movement-wallplane curve quarter largest",
+    "category": "Arrows"
+  },
+  {
+    "icon": "𝦌",
+    "name": "signwriting movement-wallplane curve half-circle small",
+    "category": "Arrows"
+  },
+  {
+    "icon": "𝦍",
+    "name": "signwriting movement-wallplane curve half-circle medium",
+    "category": "Arrows"
+  },
+  {
+    "icon": "𝦎",
+    "name": "signwriting movement-wallplane curve half-circle large",
+    "category": "Arrows"
+  },
+  {
+    "icon": "𝦏",
+    "name": "signwriting movement-wallplane curve half-circle largest",
+    "category": "Arrows"
+  },
+  {
+    "icon": "𝦐",
+    "name": "signwriting movement-wallplane curve three-quarter circle small",
+    "category": "Arrows"
+  },
+  {
+    "icon": "𝦑",
+    "name": "signwriting movement-wallplane curve three-quarter circle medium",
+    "category": "Arrows"
+  },
+  {
+    "icon": "𝦒",
+    "name": "signwriting movement-wallplane hump small",
+    "category": "Arrows"
+  },
+  {
+    "icon": "𝦓",
+    "name": "signwriting movement-wallplane hump medium",
+    "category": "Arrows"
+  },
+  {
+    "icon": "𝦔",
+    "name": "signwriting movement-wallplane hump large",
+    "category": "Arrows"
+  },
+  {
+    "icon": "𝦕",
+    "name": "signwriting movement-wallplane loop small",
+    "category": "Arrows"
+  },
+  {
+    "icon": "𝦖",
+    "name": "signwriting movement-wallplane loop medium",
+    "category": "Arrows"
+  },
+  {
+    "icon": "𝦗",
+    "name": "signwriting movement-wallplane loop large",
+    "category": "Arrows"
+  },
+  {
+    "icon": "𝦘",
+    "name": "signwriting movement-wallplane loop small double",
+    "category": "Arrows"
+  },
+  {
+    "icon": "𝦙",
+    "name": "signwriting movement-wallplane wave curve double small",
+    "category": "Arrows"
+  },
+  {
+    "icon": "𝦚",
+    "name": "signwriting movement-wallplane wave curve double medium",
+    "category": "Arrows"
+  },
+  {
+    "icon": "𝦛",
+    "name": "signwriting movement-wallplane wave curve double large",
+    "category": "Arrows"
+  },
+  {
+    "icon": "𝦜",
+    "name": "signwriting movement-wallplane wave curve triple small",
+    "category": "Arrows"
+  },
+  {
+    "icon": "𝦝",
+    "name": "signwriting movement-wallplane wave curve triple medium",
+    "category": "Arrows"
+  },
+  {
+    "icon": "𝦞",
+    "name": "signwriting movement-wallplane wave curve triple large",
+    "category": "Arrows"
+  },
+  {
+    "icon": "𝦟",
+    "name": "signwriting movement-wallplane curve then straight",
+    "category": "Arrows"
+  },
+  {
+    "icon": "𝦠",
+    "name": "signwriting movement-wallplane curved cross small",
+    "category": "Arrows"
+  },
+  {
+    "icon": "𝦡",
+    "name": "signwriting movement-wallplane curved cross medium",
+    "category": "Arrows"
+  },
+  {
+    "icon": "𝦢",
+    "name": "signwriting rotation-wallplane single",
+    "category": "Arrows"
+  },
+  {
+    "icon": "𝦣",
+    "name": "signwriting rotation-wallplane double",
+    "category": "Arrows"
+  },
+  {
+    "icon": "𝦤",
+    "name": "signwriting rotation-wallplane alternate",
+    "category": "Arrows"
+  },
+  {
+    "icon": "𝦥",
+    "name": "signwriting movement-wallplane shaking",
+    "category": "Arrows"
+  },
+  {
+    "icon": "𝦦",
+    "name": "signwriting movement-wallplane curve hitting front wall",
+    "category": "Arrows"
+  },
+  {
+    "icon": "𝦧",
+    "name": "signwriting movement-wallplane hump hitting front wall",
+    "category": "Arrows"
+  },
+  {
+    "icon": "𝦨",
+    "name": "signwriting movement-wallplane loop hitting front wall",
+    "category": "Arrows"
+  },
+  {
+    "icon": "𝦩",
+    "name": "signwriting movement-wallplane wave hitting front wall",
+    "category": "Arrows"
+  },
+  {
+    "icon": "𝦪",
+    "name": "signwriting rotation-wallplane single hitting front wall",
+    "category": "Arrows"
+  },
+  {
+    "icon": "𝦫",
+    "name": "signwriting rotation-wallplane double hitting front wall",
+    "category": "Arrows"
+  },
+  {
+    "icon": "𝦬",
+    "name": "signwriting rotation-wallplane alternating hitting front wall",
+    "category": "Arrows"
+  },
+  {
+    "icon": "𝦭",
+    "name": "signwriting movement-wallplane curve hitting chest",
+    "category": "Arrows"
+  },
+  {
+    "icon": "𝦮",
+    "name": "signwriting movement-wallplane hump hitting chest",
+    "category": "Arrows"
+  },
+  {
+    "icon": "𝦯",
+    "name": "signwriting movement-wallplane loop hitting chest",
+    "category": "Arrows"
+  },
+  {
+    "icon": "𝦰",
+    "name": "signwriting movement-wallplane wave hitting chest",
+    "category": "Arrows"
+  },
+  {
+    "icon": "𝦱",
+    "name": "signwriting rotation-wallplane single hitting chest",
+    "category": "Arrows"
+  },
+  {
+    "icon": "𝦲",
+    "name": "signwriting rotation-wallplane double hitting chest",
+    "category": "Arrows"
+  },
+  {
+    "icon": "𝦳",
+    "name": "signwriting rotation-wallplane alternating hitting chest",
+    "category": "Arrows"
+  },
+  {
+    "icon": "𝦴",
+    "name": "signwriting movement-wallplane wave diagonal path small",
+    "category": "Arrows"
+  },
+  {
+    "icon": "𝦵",
+    "name": "signwriting movement-wallplane wave diagonal path medium",
+    "category": "Arrows"
+  },
+  {
+    "icon": "𝦶",
+    "name": "signwriting movement-wallplane wave diagonal path large",
+    "category": "Arrows"
+  },
+  {
+    "icon": "𝦷",
+    "name": "signwriting movement-floorplane curve hitting ceiling small",
+    "category": "Arrows"
+  },
+  {
+    "icon": "𝦸",
+    "name": "signwriting movement-floorplane curve hitting ceiling large",
+    "category": "Arrows"
+  },
+  {
+    "icon": "𝦹",
+    "name": "signwriting movement-floorplane hump hitting ceiling small double",
+    "category": "Arrows"
+  },
+  {
+    "icon": "𝦺",
+    "name": "signwriting movement-floorplane hump hitting ceiling large double",
+    "category": "Arrows"
+  },
+  {
+    "icon": "𝦻",
+    "name": "signwriting movement-floorplane hump hitting ceiling small triple",
+    "category": "Arrows"
+  },
+  {
+    "icon": "𝦼",
+    "name": "signwriting movement-floorplane hump hitting ceiling large triple",
+    "category": "Arrows"
+  },
+  {
+    "icon": "𝦽",
+    "name": "signwriting movement-floorplane loop hitting ceiling small single",
+    "category": "Arrows"
+  },
+  {
+    "icon": "𝦾",
+    "name": "signwriting movement-floorplane loop hitting ceiling large single",
+    "category": "Arrows"
+  },
+  {
+    "icon": "𝦿",
+    "name": "signwriting movement-floorplane loop hitting ceiling small double",
+    "category": "Arrows"
+  },
+  {
+    "icon": "𝧀",
+    "name": "signwriting movement-floorplane loop hitting ceiling large double",
+    "category": "Arrows"
+  },
+  {
+    "icon": "𝧁",
+    "name": "signwriting movement-floorplane wave hitting ceiling small",
+    "category": "Arrows"
+  },
+  {
+    "icon": "𝧂",
+    "name": "signwriting movement-floorplane wave hitting ceiling large",
+    "category": "Arrows"
+  },
+  {
+    "icon": "𝧃",
+    "name": "signwriting rotation-floorplane single hitting ceiling",
+    "category": "Arrows"
+  },
+  {
+    "icon": "𝧄",
+    "name": "signwriting rotation-floorplane double hitting ceiling",
+    "category": "Arrows"
+  },
+  {
+    "icon": "𝧅",
+    "name": "signwriting rotation-floorplane alternating hitting ceiling",
+    "category": "Arrows"
+  },
+  {
+    "icon": "𝧆",
+    "name": "signwriting movement-floorplane curve hitting floor small",
+    "category": "Arrows"
+  },
+  {
+    "icon": "𝧇",
+    "name": "signwriting movement-floorplane curve hitting floor large",
+    "category": "Arrows"
+  },
+  {
+    "icon": "𝧈",
+    "name": "signwriting movement-floorplane hump hitting floor small double",
+    "category": "Arrows"
+  },
+  {
+    "icon": "𝧉",
+    "name": "signwriting movement-floorplane hump hitting floor large double",
+    "category": "Arrows"
+  },
+  {
+    "icon": "𝧊",
+    "name": "signwriting movement-floorplane hump hitting floor triple small triple",
+    "category": "Arrows"
+  },
+  {
+    "icon": "𝧋",
+    "name": "signwriting movement-floorplane hump hitting floor triple large triple",
+    "category": "Arrows"
+  },
+  {
+    "icon": "𝧌",
+    "name": "signwriting movement-floorplane loop hitting floor small single",
+    "category": "Arrows"
+  },
+  {
+    "icon": "𝧍",
+    "name": "signwriting movement-floorplane loop hitting floor large single",
+    "category": "Arrows"
+  },
+  {
+    "icon": "𝧎",
+    "name": "signwriting movement-floorplane loop hitting floor small double",
+    "category": "Arrows"
+  },
+  {
+    "icon": "𝧏",
+    "name": "signwriting movement-floorplane loop hitting floor large double",
+    "category": "Arrows"
+  },
+  {
+    "icon": "𝧐",
+    "name": "signwriting movement-floorplane wave hitting floor small",
+    "category": "Arrows"
+  },
+  {
+    "icon": "𝧑",
+    "name": "signwriting movement-floorplane wave hitting floor large",
+    "category": "Arrows"
+  },
+  {
+    "icon": "𝧒",
+    "name": "signwriting rotation-floorplane single hitting floor",
+    "category": "Arrows"
+  },
+  {
+    "icon": "𝧓",
+    "name": "signwriting rotation-floorplane double hitting floor",
+    "category": "Arrows"
+  },
+  {
+    "icon": "𝧔",
+    "name": "signwriting rotation-floorplane alternating hitting floor",
+    "category": "Arrows"
+  },
+  {
+    "icon": "𝧕",
+    "name": "signwriting movement-floorplane curve small",
+    "category": "Arrows"
+  },
+  {
+    "icon": "𝧖",
+    "name": "signwriting movement-floorplane curve medium",
+    "category": "Arrows"
+  },
+  {
+    "icon": "𝧗",
+    "name": "signwriting movement-floorplane curve large",
+    "category": "Arrows"
+  },
+  {
+    "icon": "𝧘",
+    "name": "signwriting movement-floorplane curve largest",
+    "category": "Arrows"
+  },
+  {
+    "icon": "𝧙",
+    "name": "signwriting movement-floorplane curve combined",
+    "category": "Arrows"
+  },
+  {
+    "icon": "𝧚",
+    "name": "signwriting movement-floorplane hump small",
+    "category": "Arrows"
+  },
+  {
+    "icon": "𝧛",
+    "name": "signwriting movement-floorplane loop small",
+    "category": "Arrows"
+  },
+  {
+    "icon": "𝧜",
+    "name": "signwriting movement-floorplane wave snake",
+    "category": "Arrows"
+  },
+  {
+    "icon": "𝧝",
+    "name": "signwriting movement-floorplane wave small",
+    "category": "Arrows"
+  },
+  {
+    "icon": "𝧞",
+    "name": "signwriting movement-floorplane wave large",
+    "category": "Arrows"
+  },
+  {
+    "icon": "𝧟",
+    "name": "signwriting rotation-floorplane single",
+    "category": "Arrows"
+  },
+  {
+    "icon": "𝧠",
+    "name": "signwriting rotation-floorplane double",
+    "category": "Arrows"
+  },
+  {
+    "icon": "𝧡",
+    "name": "signwriting rotation-floorplane alternating",
+    "category": "Arrows"
+  },
+  {
+    "icon": "𝧢",
+    "name": "signwriting movement-floorplane shaking parallel",
+    "category": "Arrows"
+  },
+  {
+    "icon": "𝧣",
+    "name": "signwriting movement-wallplane arm circle small single",
+    "category": "Arrows"
+  },
+  {
+    "icon": "𝧤",
+    "name": "signwriting movement-wallplane arm circle medium single",
+    "category": "Arrows"
+  },
+  {
+    "icon": "𝧥",
+    "name": "signwriting movement-wallplane arm circle small double",
+    "category": "Arrows"
+  },
+  {
+    "icon": "𝧦",
+    "name": "signwriting movement-wallplane arm circle medium double",
+    "category": "Arrows"
+  },
+  {
+    "icon": "𝧧",
+    "name": "signwriting movement-floorplane arm circle hitting wall small single",
+    "category": "Arrows"
+  },
+  {
+    "icon": "𝧨",
+    "name": "signwriting movement-floorplane arm circle hitting wall medium single",
+    "category": "Arrows"
+  },
+  {
+    "icon": "𝧩",
+    "name": "signwriting movement-floorplane arm circle hitting wall large single",
+    "category": "Arrows"
+  },
+  {
+    "icon": "𝧪",
+    "name": "signwriting movement-floorplane arm circle hitting wall small double",
+    "category": "Arrows"
+  },
+  {
+    "icon": "𝧫",
+    "name": "signwriting movement-floorplane arm circle hitting wall medium double",
+    "category": "Arrows"
+  },
+  {
+    "icon": "𝧬",
+    "name": "signwriting movement-floorplane arm circle hitting wall large double",
+    "category": "Arrows"
+  },
+  {
+    "icon": "𝧭",
+    "name": "signwriting movement-wallplane wrist circle front single",
+    "category": "Arrows"
+  },
+  {
+    "icon": "𝧮",
+    "name": "signwriting movement-wallplane wrist circle front double",
+    "category": "Arrows"
+  },
+  {
+    "icon": "𝧯",
+    "name": "signwriting movement-floorplane wrist circle hitting wall single",
+    "category": "Arrows"
+  },
+  {
+    "icon": "𝧰",
+    "name": "signwriting movement-floorplane wrist circle hitting wall double",
+    "category": "Arrows"
+  },
+  {
+    "icon": "𝧱",
+    "name": "signwriting movement-wallplane finger circles single",
+    "category": "Arrows"
+  },
+  {
+    "icon": "𝧲",
+    "name": "signwriting movement-wallplane finger circles double",
+    "category": "Arrows"
+  },
+  {
+    "icon": "𝧳",
+    "name": "signwriting movement-floorplane finger circles hitting wall single",
+    "category": "Arrows"
+  },
+  {
+    "icon": "𝧴",
+    "name": "signwriting movement-floorplane finger circles hitting wall double",
+    "category": "Arrows"
+  },
+  {
     "icon": "𞸀",
     "name": "arabic mathematical alef",
     "category": "Maths"
@@ -17143,6 +19018,1006 @@
     "icon": "🃵",
     "name": "playing card trump-21",
     "category": "Games"
+  },
+  {
+    "icon": "🄀",
+    "name": "digit zero full stop",
+    "category": "Symbols"
+  },
+  {
+    "icon": "🄁",
+    "name": "digit zero comma",
+    "category": "Symbols"
+  },
+  {
+    "icon": "🄂",
+    "name": "digit one comma",
+    "category": "Symbols"
+  },
+  {
+    "icon": "🄃",
+    "name": "digit two comma",
+    "category": "Symbols"
+  },
+  {
+    "icon": "🄄",
+    "name": "digit three comma",
+    "category": "Symbols"
+  },
+  {
+    "icon": "🄅",
+    "name": "digit four comma",
+    "category": "Symbols"
+  },
+  {
+    "icon": "🄆",
+    "name": "digit five comma",
+    "category": "Symbols"
+  },
+  {
+    "icon": "🄇",
+    "name": "digit six comma",
+    "category": "Symbols"
+  },
+  {
+    "icon": "🄈",
+    "name": "digit seven comma",
+    "category": "Symbols"
+  },
+  {
+    "icon": "🄉",
+    "name": "digit eight comma",
+    "category": "Symbols"
+  },
+  {
+    "icon": "🄊",
+    "name": "digit nine comma",
+    "category": "Symbols"
+  },
+  {
+    "icon": "🄋",
+    "name": "dingbat circled sans-serif digit zero",
+    "category": "Symbols"
+  },
+  {
+    "icon": "🄌",
+    "name": "dingbat negative circled sans-serif digit zero",
+    "category": "Symbols"
+  },
+  {
+    "icon": "🄍",
+    "name": "circled zero with slash",
+    "category": "Symbols"
+  },
+  {
+    "icon": "🄎",
+    "name": "circled anticlockwise arrow",
+    "category": "Symbols"
+  },
+  {
+    "icon": "🄏",
+    "name": "circled dollar sign with overlaid backslash",
+    "category": "Symbols"
+  },
+  {
+    "icon": "🄐",
+    "name": "parenthesized latin capital letter a",
+    "category": "Symbols"
+  },
+  {
+    "icon": "🄑",
+    "name": "parenthesized latin capital letter b",
+    "category": "Symbols"
+  },
+  {
+    "icon": "🄒",
+    "name": "parenthesized latin capital letter c",
+    "category": "Symbols"
+  },
+  {
+    "icon": "🄓",
+    "name": "parenthesized latin capital letter d",
+    "category": "Symbols"
+  },
+  {
+    "icon": "🄔",
+    "name": "parenthesized latin capital letter e",
+    "category": "Symbols"
+  },
+  {
+    "icon": "🄕",
+    "name": "parenthesized latin capital letter f",
+    "category": "Symbols"
+  },
+  {
+    "icon": "🄖",
+    "name": "parenthesized latin capital letter g",
+    "category": "Symbols"
+  },
+  {
+    "icon": "🄗",
+    "name": "parenthesized latin capital letter h",
+    "category": "Symbols"
+  },
+  {
+    "icon": "🄘",
+    "name": "parenthesized latin capital letter i",
+    "category": "Symbols"
+  },
+  {
+    "icon": "🄙",
+    "name": "parenthesized latin capital letter j",
+    "category": "Symbols"
+  },
+  {
+    "icon": "🄚",
+    "name": "parenthesized latin capital letter k",
+    "category": "Symbols"
+  },
+  {
+    "icon": "🄛",
+    "name": "parenthesized latin capital letter l",
+    "category": "Symbols"
+  },
+  {
+    "icon": "🄜",
+    "name": "parenthesized latin capital letter m",
+    "category": "Symbols"
+  },
+  {
+    "icon": "🄝",
+    "name": "parenthesized latin capital letter n",
+    "category": "Symbols"
+  },
+  {
+    "icon": "🄞",
+    "name": "parenthesized latin capital letter o",
+    "category": "Symbols"
+  },
+  {
+    "icon": "🄟",
+    "name": "parenthesized latin capital letter p",
+    "category": "Symbols"
+  },
+  {
+    "icon": "🄠",
+    "name": "parenthesized latin capital letter q",
+    "category": "Symbols"
+  },
+  {
+    "icon": "🄡",
+    "name": "parenthesized latin capital letter r",
+    "category": "Symbols"
+  },
+  {
+    "icon": "🄢",
+    "name": "parenthesized latin capital letter s",
+    "category": "Symbols"
+  },
+  {
+    "icon": "🄣",
+    "name": "parenthesized latin capital letter t",
+    "category": "Symbols"
+  },
+  {
+    "icon": "🄤",
+    "name": "parenthesized latin capital letter u",
+    "category": "Symbols"
+  },
+  {
+    "icon": "🄥",
+    "name": "parenthesized latin capital letter v",
+    "category": "Symbols"
+  },
+  {
+    "icon": "🄦",
+    "name": "parenthesized latin capital letter w",
+    "category": "Symbols"
+  },
+  {
+    "icon": "🄧",
+    "name": "parenthesized latin capital letter x",
+    "category": "Symbols"
+  },
+  {
+    "icon": "🄨",
+    "name": "parenthesized latin capital letter y",
+    "category": "Symbols"
+  },
+  {
+    "icon": "🄩",
+    "name": "parenthesized latin capital letter z",
+    "category": "Symbols"
+  },
+  {
+    "icon": "🄪",
+    "name": "tortoise shell bracketed latin capital letter s",
+    "category": "Symbols"
+  },
+  {
+    "icon": "🄫",
+    "name": "circled italic latin capital letter c",
+    "category": "Symbols"
+  },
+  {
+    "icon": "🄬",
+    "name": "circled italic latin capital letter r",
+    "category": "Symbols"
+  },
+  {
+    "icon": "🄭",
+    "name": "circled cd",
+    "category": "Symbols"
+  },
+  {
+    "icon": "🄮",
+    "name": "circled wz",
+    "category": "Symbols"
+  },
+  {
+    "icon": "🄯",
+    "name": "copyleft symbol",
+    "category": "Symbols"
+  },
+  {
+    "icon": "🄰",
+    "name": "squared latin capital letter a",
+    "category": "Symbols"
+  },
+  {
+    "icon": "🄱",
+    "name": "squared latin capital letter b",
+    "category": "Symbols"
+  },
+  {
+    "icon": "🄲",
+    "name": "squared latin capital letter c",
+    "category": "Symbols"
+  },
+  {
+    "icon": "🄳",
+    "name": "squared latin capital letter d",
+    "category": "Symbols"
+  },
+  {
+    "icon": "🄴",
+    "name": "squared latin capital letter e",
+    "category": "Symbols"
+  },
+  {
+    "icon": "🄵",
+    "name": "squared latin capital letter f",
+    "category": "Symbols"
+  },
+  {
+    "icon": "🄶",
+    "name": "squared latin capital letter g",
+    "category": "Symbols"
+  },
+  {
+    "icon": "🄷",
+    "name": "squared latin capital letter h",
+    "category": "Symbols"
+  },
+  {
+    "icon": "🄸",
+    "name": "squared latin capital letter i",
+    "category": "Symbols"
+  },
+  {
+    "icon": "🄹",
+    "name": "squared latin capital letter j",
+    "category": "Symbols"
+  },
+  {
+    "icon": "🄺",
+    "name": "squared latin capital letter k",
+    "category": "Symbols"
+  },
+  {
+    "icon": "🄻",
+    "name": "squared latin capital letter l",
+    "category": "Symbols"
+  },
+  {
+    "icon": "🄼",
+    "name": "squared latin capital letter m",
+    "category": "Symbols"
+  },
+  {
+    "icon": "🄽",
+    "name": "squared latin capital letter n",
+    "category": "Symbols"
+  },
+  {
+    "icon": "🄾",
+    "name": "squared latin capital letter o",
+    "category": "Symbols"
+  },
+  {
+    "icon": "🄿",
+    "name": "squared latin capital letter p",
+    "category": "Symbols"
+  },
+  {
+    "icon": "🅀",
+    "name": "squared latin capital letter q",
+    "category": "Symbols"
+  },
+  {
+    "icon": "🅁",
+    "name": "squared latin capital letter r",
+    "category": "Symbols"
+  },
+  {
+    "icon": "🅂",
+    "name": "squared latin capital letter s",
+    "category": "Symbols"
+  },
+  {
+    "icon": "🅃",
+    "name": "squared latin capital letter t",
+    "category": "Symbols"
+  },
+  {
+    "icon": "🅄",
+    "name": "squared latin capital letter u",
+    "category": "Symbols"
+  },
+  {
+    "icon": "🅅",
+    "name": "squared latin capital letter v",
+    "category": "Symbols"
+  },
+  {
+    "icon": "🅆",
+    "name": "squared latin capital letter w",
+    "category": "Symbols"
+  },
+  {
+    "icon": "🅇",
+    "name": "squared latin capital letter x",
+    "category": "Symbols"
+  },
+  {
+    "icon": "🅈",
+    "name": "squared latin capital letter y",
+    "category": "Symbols"
+  },
+  {
+    "icon": "🅉",
+    "name": "squared latin capital letter z",
+    "category": "Symbols"
+  },
+  {
+    "icon": "🅊",
+    "name": "squared hv",
+    "category": "Symbols"
+  },
+  {
+    "icon": "🅋",
+    "name": "squared mv",
+    "category": "Symbols"
+  },
+  {
+    "icon": "🅌",
+    "name": "squared sd",
+    "category": "Symbols"
+  },
+  {
+    "icon": "🅍",
+    "name": "squared ss",
+    "category": "Symbols"
+  },
+  {
+    "icon": "🅎",
+    "name": "squared ppv",
+    "category": "Symbols"
+  },
+  {
+    "icon": "🅏",
+    "name": "squared wc",
+    "category": "Symbols"
+  },
+  {
+    "icon": "🅐",
+    "name": "negative circled latin capital letter a",
+    "category": "Symbols"
+  },
+  {
+    "icon": "🅑",
+    "name": "negative circled latin capital letter b",
+    "category": "Symbols"
+  },
+  {
+    "icon": "🅒",
+    "name": "negative circled latin capital letter c",
+    "category": "Symbols"
+  },
+  {
+    "icon": "🅓",
+    "name": "negative circled latin capital letter d",
+    "category": "Symbols"
+  },
+  {
+    "icon": "🅔",
+    "name": "negative circled latin capital letter e",
+    "category": "Symbols"
+  },
+  {
+    "icon": "🅕",
+    "name": "negative circled latin capital letter f",
+    "category": "Symbols"
+  },
+  {
+    "icon": "🅖",
+    "name": "negative circled latin capital letter g",
+    "category": "Symbols"
+  },
+  {
+    "icon": "🅗",
+    "name": "negative circled latin capital letter h",
+    "category": "Symbols"
+  },
+  {
+    "icon": "🅘",
+    "name": "negative circled latin capital letter i",
+    "category": "Symbols"
+  },
+  {
+    "icon": "🅙",
+    "name": "negative circled latin capital letter j",
+    "category": "Symbols"
+  },
+  {
+    "icon": "🅚",
+    "name": "negative circled latin capital letter k",
+    "category": "Symbols"
+  },
+  {
+    "icon": "🅛",
+    "name": "negative circled latin capital letter l",
+    "category": "Symbols"
+  },
+  {
+    "icon": "🅜",
+    "name": "negative circled latin capital letter m",
+    "category": "Symbols"
+  },
+  {
+    "icon": "🅝",
+    "name": "negative circled latin capital letter n",
+    "category": "Symbols"
+  },
+  {
+    "icon": "🅞",
+    "name": "negative circled latin capital letter o",
+    "category": "Symbols"
+  },
+  {
+    "icon": "🅟",
+    "name": "negative circled latin capital letter p",
+    "category": "Symbols"
+  },
+  {
+    "icon": "🅠",
+    "name": "negative circled latin capital letter q",
+    "category": "Symbols"
+  },
+  {
+    "icon": "🅡",
+    "name": "negative circled latin capital letter r",
+    "category": "Symbols"
+  },
+  {
+    "icon": "🅢",
+    "name": "negative circled latin capital letter s",
+    "category": "Symbols"
+  },
+  {
+    "icon": "🅣",
+    "name": "negative circled latin capital letter t",
+    "category": "Symbols"
+  },
+  {
+    "icon": "🅤",
+    "name": "negative circled latin capital letter u",
+    "category": "Symbols"
+  },
+  {
+    "icon": "🅥",
+    "name": "negative circled latin capital letter v",
+    "category": "Symbols"
+  },
+  {
+    "icon": "🅦",
+    "name": "negative circled latin capital letter w",
+    "category": "Symbols"
+  },
+  {
+    "icon": "🅧",
+    "name": "negative circled latin capital letter x",
+    "category": "Symbols"
+  },
+  {
+    "icon": "🅨",
+    "name": "negative circled latin capital letter y",
+    "category": "Symbols"
+  },
+  {
+    "icon": "🅩",
+    "name": "negative circled latin capital letter z",
+    "category": "Symbols"
+  },
+  {
+    "icon": "🅪",
+    "name": "raised mc sign",
+    "category": "Symbols"
+  },
+  {
+    "icon": "🅫",
+    "name": "raised md sign",
+    "category": "Symbols"
+  },
+  {
+    "icon": "🅬",
+    "name": "raised mr sign",
+    "category": "Symbols"
+  },
+  {
+    "icon": "🅭",
+    "name": "circled cc",
+    "category": "Symbols"
+  },
+  {
+    "icon": "🅮",
+    "name": "circled c with overlaid backslash",
+    "category": "Symbols"
+  },
+  {
+    "icon": "🅯",
+    "name": "circled human figure",
+    "category": "Symbols"
+  },
+  {
+    "icon": "🅰",
+    "name": "negative squared latin capital letter a",
+    "category": "Symbols"
+  },
+  {
+    "icon": "🅱",
+    "name": "negative squared latin capital letter b",
+    "category": "Symbols"
+  },
+  {
+    "icon": "🅲",
+    "name": "negative squared latin capital letter c",
+    "category": "Symbols"
+  },
+  {
+    "icon": "🅳",
+    "name": "negative squared latin capital letter d",
+    "category": "Symbols"
+  },
+  {
+    "icon": "🅴",
+    "name": "negative squared latin capital letter e",
+    "category": "Symbols"
+  },
+  {
+    "icon": "🅵",
+    "name": "negative squared latin capital letter f",
+    "category": "Symbols"
+  },
+  {
+    "icon": "🅶",
+    "name": "negative squared latin capital letter g",
+    "category": "Symbols"
+  },
+  {
+    "icon": "🅷",
+    "name": "negative squared latin capital letter h",
+    "category": "Symbols"
+  },
+  {
+    "icon": "🅸",
+    "name": "negative squared latin capital letter i",
+    "category": "Symbols"
+  },
+  {
+    "icon": "🅹",
+    "name": "negative squared latin capital letter j",
+    "category": "Symbols"
+  },
+  {
+    "icon": "🅺",
+    "name": "negative squared latin capital letter k",
+    "category": "Symbols"
+  },
+  {
+    "icon": "🅻",
+    "name": "negative squared latin capital letter l",
+    "category": "Symbols"
+  },
+  {
+    "icon": "🅼",
+    "name": "negative squared latin capital letter m",
+    "category": "Symbols"
+  },
+  {
+    "icon": "🅽",
+    "name": "negative squared latin capital letter n",
+    "category": "Symbols"
+  },
+  {
+    "icon": "🅾",
+    "name": "negative squared latin capital letter o",
+    "category": "Symbols"
+  },
+  {
+    "icon": "🅿",
+    "name": "negative squared latin capital letter p",
+    "category": "Symbols"
+  },
+  {
+    "icon": "🆀",
+    "name": "negative squared latin capital letter q",
+    "category": "Symbols"
+  },
+  {
+    "icon": "🆁",
+    "name": "negative squared latin capital letter r",
+    "category": "Symbols"
+  },
+  {
+    "icon": "🆂",
+    "name": "negative squared latin capital letter s",
+    "category": "Symbols"
+  },
+  {
+    "icon": "🆃",
+    "name": "negative squared latin capital letter t",
+    "category": "Symbols"
+  },
+  {
+    "icon": "🆄",
+    "name": "negative squared latin capital letter u",
+    "category": "Symbols"
+  },
+  {
+    "icon": "🆅",
+    "name": "negative squared latin capital letter v",
+    "category": "Symbols"
+  },
+  {
+    "icon": "🆆",
+    "name": "negative squared latin capital letter w",
+    "category": "Symbols"
+  },
+  {
+    "icon": "🆇",
+    "name": "negative squared latin capital letter x",
+    "category": "Symbols"
+  },
+  {
+    "icon": "🆈",
+    "name": "negative squared latin capital letter y",
+    "category": "Symbols"
+  },
+  {
+    "icon": "🆉",
+    "name": "negative squared latin capital letter z",
+    "category": "Symbols"
+  },
+  {
+    "icon": "🆊",
+    "name": "crossed negative squared latin capital letter p",
+    "category": "Symbols"
+  },
+  {
+    "icon": "🆋",
+    "name": "negative squared ic",
+    "category": "Symbols"
+  },
+  {
+    "icon": "🆌",
+    "name": "negative squared pa",
+    "category": "Symbols"
+  },
+  {
+    "icon": "🆍",
+    "name": "negative squared sa",
+    "category": "Symbols"
+  },
+  {
+    "icon": "🆎",
+    "name": "negative squared ab",
+    "category": "Symbols"
+  },
+  {
+    "icon": "🆏",
+    "name": "negative squared wc",
+    "category": "Symbols"
+  },
+  {
+    "icon": "🆐",
+    "name": "square dj",
+    "category": "Symbols"
+  },
+  {
+    "icon": "🆑",
+    "name": "squared cl",
+    "category": "Symbols"
+  },
+  {
+    "icon": "🆒",
+    "name": "squared cool",
+    "category": "Symbols"
+  },
+  {
+    "icon": "🆓",
+    "name": "squared free",
+    "category": "Symbols"
+  },
+  {
+    "icon": "🆔",
+    "name": "squared id",
+    "category": "Symbols"
+  },
+  {
+    "icon": "🆕",
+    "name": "squared new",
+    "category": "Symbols"
+  },
+  {
+    "icon": "🆖",
+    "name": "squared ng",
+    "category": "Symbols"
+  },
+  {
+    "icon": "🆗",
+    "name": "squared ok",
+    "category": "Symbols"
+  },
+  {
+    "icon": "🆘",
+    "name": "squared sos",
+    "category": "Symbols"
+  },
+  {
+    "icon": "🆙",
+    "name": "squared up with exclamation mark",
+    "category": "Symbols"
+  },
+  {
+    "icon": "🆚",
+    "name": "squared vs",
+    "category": "Symbols"
+  },
+  {
+    "icon": "🆛",
+    "name": "squared three d",
+    "category": "Symbols"
+  },
+  {
+    "icon": "🆜",
+    "name": "squared second screen",
+    "category": "Symbols"
+  },
+  {
+    "icon": "🆝",
+    "name": "squared two k",
+    "category": "Symbols"
+  },
+  {
+    "icon": "🆞",
+    "name": "squared four k",
+    "category": "Symbols"
+  },
+  {
+    "icon": "🆟",
+    "name": "squared eight k",
+    "category": "Symbols"
+  },
+  {
+    "icon": "🆠",
+    "name": "squared five point one",
+    "category": "Symbols"
+  },
+  {
+    "icon": "🆡",
+    "name": "squared seven point one",
+    "category": "Symbols"
+  },
+  {
+    "icon": "🆢",
+    "name": "squared twenty-two point two",
+    "category": "Symbols"
+  },
+  {
+    "icon": "🆣",
+    "name": "squared sixty p",
+    "category": "Symbols"
+  },
+  {
+    "icon": "🆤",
+    "name": "squared one hundred twenty p",
+    "category": "Symbols"
+  },
+  {
+    "icon": "🆥",
+    "name": "squared latin small letter d",
+    "category": "Symbols"
+  },
+  {
+    "icon": "🆦",
+    "name": "squared hc",
+    "category": "Symbols"
+  },
+  {
+    "icon": "🆧",
+    "name": "squared hdr",
+    "category": "Symbols"
+  },
+  {
+    "icon": "🆨",
+    "name": "squared hi-res",
+    "category": "Symbols"
+  },
+  {
+    "icon": "🆩",
+    "name": "squared lossless",
+    "category": "Symbols"
+  },
+  {
+    "icon": "🆪",
+    "name": "squared shv",
+    "category": "Symbols"
+  },
+  {
+    "icon": "🆫",
+    "name": "squared uhd",
+    "category": "Symbols"
+  },
+  {
+    "icon": "🆬",
+    "name": "squared vod",
+    "category": "Symbols"
+  },
+  {
+    "icon": "🆭",
+    "name": "mask work symbol",
+    "category": "Symbols"
+  },
+  {
+    "icon": "🇦",
+    "name": "regional indicator symbol letter a",
+    "category": "Symbols"
+  },
+  {
+    "icon": "🇧",
+    "name": "regional indicator symbol letter b",
+    "category": "Symbols"
+  },
+  {
+    "icon": "🇨",
+    "name": "regional indicator symbol letter c",
+    "category": "Symbols"
+  },
+  {
+    "icon": "🇩",
+    "name": "regional indicator symbol letter d",
+    "category": "Symbols"
+  },
+  {
+    "icon": "🇪",
+    "name": "regional indicator symbol letter e",
+    "category": "Symbols"
+  },
+  {
+    "icon": "🇫",
+    "name": "regional indicator symbol letter f",
+    "category": "Symbols"
+  },
+  {
+    "icon": "🇬",
+    "name": "regional indicator symbol letter g",
+    "category": "Symbols"
+  },
+  {
+    "icon": "🇭",
+    "name": "regional indicator symbol letter h",
+    "category": "Symbols"
+  },
+  {
+    "icon": "🇮",
+    "name": "regional indicator symbol letter i",
+    "category": "Symbols"
+  },
+  {
+    "icon": "🇯",
+    "name": "regional indicator symbol letter j",
+    "category": "Symbols"
+  },
+  {
+    "icon": "🇰",
+    "name": "regional indicator symbol letter k",
+    "category": "Symbols"
+  },
+  {
+    "icon": "🇱",
+    "name": "regional indicator symbol letter l",
+    "category": "Symbols"
+  },
+  {
+    "icon": "🇲",
+    "name": "regional indicator symbol letter m",
+    "category": "Symbols"
+  },
+  {
+    "icon": "🇳",
+    "name": "regional indicator symbol letter n",
+    "category": "Symbols"
+  },
+  {
+    "icon": "🇴",
+    "name": "regional indicator symbol letter o",
+    "category": "Symbols"
+  },
+  {
+    "icon": "🇵",
+    "name": "regional indicator symbol letter p",
+    "category": "Symbols"
+  },
+  {
+    "icon": "🇶",
+    "name": "regional indicator symbol letter q",
+    "category": "Symbols"
+  },
+  {
+    "icon": "🇷",
+    "name": "regional indicator symbol letter r",
+    "category": "Symbols"
+  },
+  {
+    "icon": "🇸",
+    "name": "regional indicator symbol letter s",
+    "category": "Symbols"
+  },
+  {
+    "icon": "🇹",
+    "name": "regional indicator symbol letter t",
+    "category": "Symbols"
+  },
+  {
+    "icon": "🇺",
+    "name": "regional indicator symbol letter u",
+    "category": "Symbols"
+  },
+  {
+    "icon": "🇻",
+    "name": "regional indicator symbol letter v",
+    "category": "Symbols"
+  },
+  {
+    "icon": "🇼",
+    "name": "regional indicator symbol letter w",
+    "category": "Symbols"
+  },
+  {
+    "icon": "🇽",
+    "name": "regional indicator symbol letter x",
+    "category": "Symbols"
+  },
+  {
+    "icon": "🇾",
+    "name": "regional indicator symbol letter y",
+    "category": "Symbols"
+  },
+  {
+    "icon": "🇿",
+    "name": "regional indicator symbol letter z",
+    "category": "Symbols"
   },
   {
     "icon": "🠀",

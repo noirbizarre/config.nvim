@@ -39,6 +39,11 @@ rich.traceback.install(
 )
 
 
+def u2int(code: str) -> int:
+    """Convert a Unicode codepoint string (e.g., 'U+1F600' or '1F600') to an integer."""
+    return int(code.lstrip("U+"), 16)
+
+
 OK = "[green]✔[/]"
 KO = "[red]✘[/]"
 
@@ -54,6 +59,7 @@ CATEGORIES: dict[str, list[str | tuple[int, int]]] = {
         "Dingbats",
         "Miscellaneous Symbols",
         "Miscellaneous Technical",
+        "Enclosed Alphanumeric Supplement",
     ],
     "Games": [
         "Domino Tiles",
@@ -69,16 +75,20 @@ CATEGORIES: dict[str, list[str | tuple[int, int]]] = {
         "Mathematical Alphanumeric Symbols",
         "Arabic Mathematical Alphabetic Symbols",
         "Letterlike Symbols",
+        "Number Forms",
     ],
     "Boxes & Lines": [
         "Block Elements",
         "Box Drawing",
     ],
     "Arrows": [
+        "Arrows",
         "Miscellaneous Symbols and Arrows",
         "Supplemental Arrows-A",
         "Supplemental Arrows-B",
         "Supplemental Arrows-C",
+        # Sutton SignWriting Movements
+        (u2int("U+1D92A"), u2int("U+1D9F4")),
     ],
 }
 

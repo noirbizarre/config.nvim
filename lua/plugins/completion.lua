@@ -124,6 +124,7 @@ return {
     },
     {
         "philosofonusus/ecolog.nvim",
+        branch = "v1",
         keys = {
             { "<leader>eg", "<cmd>EcologGoto<cr>", desc = "Go to env file" },
             { "<leader>ep", "<cmd>EcologPeek<cr>", desc = "Ecolog peek variable" },

@@ -4,6 +4,7 @@ return {
         opts = {
             spec = {
                 { "<leader>a", group = "AI", icon = "" },
+                { "<leader>an", group = "Next Edit Suggestions", icon = "⭾" },
             },
         },
     },
@@ -40,6 +41,21 @@ return {
                 end,
                 expr = true,
                 desc = "Goto/Apply Next Edit Suggestion",
+            },
+            {
+                "<leader>anx",
+                function() require("sidekick.nes").clear() end,
+                desc = "Clear Next Edit Suggestions",
+            },
+            {
+                "<leader>ant",
+                function() require("sidekick.nes").toggle() end,
+                desc = "Toggle Next Edit Suggestions",
+            },
+            {
+                "<leader>ann",
+                function() require("sidekick.nes").update() end,
+                desc = "Request new edits from LSP server (if any)",
             },
             {
                 "<c-.>",
@@ -83,7 +99,36 @@ return {
                 "<leader>ap",
                 function() require("sidekick.cli").prompt() end,
                 desc = "Sidekick Ask Prompt",
-                mode = { "n", "v" },
+                mode = { "n", "x" },
+            },
+        },
+    },
+    {
+        "saghen/blink.cmp",
+        ---@module 'blink.cmp'
+        ---@type blink.cmp.Config
+        ---@diagnostic disable: missing-fields
+        opts = {
+            keymap = {
+                --- Amend super-tab preset with Next Edit Suggestion
+                ["<Tab>"] = {
+                    function(cmp)
+                        if cmp.snippet_active() then
+                            return cmp.accept()
+                        else
+                            return cmp.select_and_accept()
+                        end
+                    end,
+                    "snippet_forward",
+                    function() -- sidekick next edit suggestion
+                        return require("sidekick").nes_jump_or_apply()
+                    end,
+                    -- Will be available in Neovim 0.12+
+                    -- function() -- if you are using Neovim's native inline completions
+                    --     return vim.lsp.inline_completion.get()
+                    -- end,
+                    "fallback",
+                },
             },
         },
     },

@@ -9,6 +9,9 @@ return {
         },
     },
     opts = {
+        formatters = {
+            ["*"] = { "codespell" },
+        },
         lsp = {
             enable = { "ltex_plus" },
             ltex_plus = {

@@ -329,7 +329,7 @@ return {
                         action = function(picker, item)
                             if item then
                                 picker:close()
-                                vim.cmd.edit(item.file)
+                                vim.cmd.edit(vim.fn.fnameescape(item.file))
                             else
                                 picker:close()
                                 Snacks.input({

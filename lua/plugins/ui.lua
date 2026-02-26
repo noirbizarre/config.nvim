@@ -99,6 +99,7 @@ return {
             --- Base Pickers
             { "<C-k>", function() Snacks.picker.files() end, desc = "File picker" },
             { "<leader>kf", function() Snacks.picker.files() end, desc = "File picker" },
+            { "<leader>ks", function() Snacks.picker.smart() end, desc = "Smart Find Files" },
             { "<leader>kg", function() Snacks.picker.grep() end, desc = "Live grep" },
             {
                 "<leader>kw",

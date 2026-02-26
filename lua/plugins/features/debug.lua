@@ -92,6 +92,11 @@ return {
                 desc = "Breakpoint Condition",
             },
             {
+                "<leader>dE",
+                function() require("dap").set_exception_breakpoints() end,
+                desc = "Stop on exceptions",
+            },
+            {
                 "<leader>db",
                 function() require("lib.dap").toggle_breakpoint() end,
                 desc = "Toggle Breakpoint",

@@ -191,6 +191,7 @@ return {
                 desc = "Git Rebase (continue)",
             },
             { "<leader>gp", function() Snacks.terminal("git add -p", gitwin) end, desc = "Git Partial Add" },
+            { "<leader>gS", function() Snacks.terminal("git dmb", gitwin) end, desc = "Git Sync" },
         },
         opts = {
             picker = {

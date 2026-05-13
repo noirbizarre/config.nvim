@@ -1,3 +1,7 @@
+local has_mise = vim.env.__MISE_SESSION and true or false
+
+function with_mise(cmd) return has_mise and { "mise", "exec", "--no-prepare", "--raw", "--", cmd } or { cmd } end
+
 return {
     {
         "folke/which-key.nvim",
@@ -19,26 +23,32 @@ return {
                     create = "split",
                     split = { size = 0.33 },
                 },
+                tools = {
+                    opencode = {
+                        cmd = with_mise("opencode"),
+                    },
+                    claude = {
+                        cmd = with_mise("claude"),
+                    },
+                },
             },
         },
-        config = function(_, opts)
-            require("sidekick").setup(opts)
-            if vim.env.__MISE_SESSION then
-                --- Use mise if a mise session is detected
-                for _, tool in pairs(require("sidekick.config").cli.tools) do
-                    tool.cmd = vim.list_extend({ "mise", "exec", "--no-prepare", "--raw", "--" }, tool.cmd)
-                end
-            end
-        end,
         keys = {
             {
                 "<tab>",
                 function()
                     -- if there is a next edit, jump to it, otherwise apply it if any
-                    if not require("sidekick").nes_jump_or_apply() then
-                        return "<Tab>" -- fallback to normal tab
+                    if require("sidekick").nes_jump_or_apply() then
+                        return -- jumped or applied
                     end
+                    -- if you are using Neovim's native inline completions
+                    if vim.lsp.inline_completion.get() then
+                        return
+                    end
+                    -- fall back to normal tab
+                    return "<tab>"
                 end,
+                mode = { "i", "n" },
                 expr = true,
                 desc = "Goto/Apply Next Edit Suggestion",
             },
@@ -86,13 +96,13 @@ return {
             },
             {
                 "<leader>at",
-                function() require("sidekick.cli").send({ msg = "{this}" }) end,
+                function() require("sidekick.cli").send({ msg = "{this}", focus = true }) end,
                 mode = { "x", "n" },
                 desc = "Send This",
             },
             {
                 "<leader>af",
-                function() require("sidekick.cli").send({ msg = "{file}" }) end,
+                function() require("sidekick.cli").send({ msg = "{file}", focus = true }) end,
                 desc = "Send File",
             },
             {
@@ -122,6 +132,9 @@ return {
                     "snippet_forward",
                     function() -- sidekick next edit suggestion
                         return require("sidekick").nes_jump_or_apply()
+                    end,
+                    function() -- if you are using Neovim's native inline completions
+                        return vim.lsp.inline_completion.get()
                     end,
                     -- Will be available in Neovim 0.12+
                     -- function() -- if you are using Neovim's native inline completions
@@ -153,6 +166,7 @@ return {
                     elseif status and status.busy then
                         return "StatuslineWarn"
                     end
+                    return ""
                 end,
                 cond = function() return require("sidekick.status").get() ~= nil end,
             })

@@ -1,6 +1,7 @@
 return {
     "noirbizarre/ensure.nvim",
     opts = {
+        parsers = { disable = { "dockerfile" } },
         linters = {
             dockerfile = { "hadolint" },
         },

@@ -1,15 +1,23 @@
+local biome_or_prettier = function()
+    if vim.fs.find({ "biome.json", "biome.jsonc" }, { path = vim.uv.cwd(), upward = true })[1] then
+        return "biome"
+    end
+    return "prettier"
+end
+local formatter = biome_or_prettier()
+
 return {
     {
         "noirbizarre/ensure.nvim",
         opts = {
             formatters = {
-                javascript = { "prettier" },
-                javascriptreact = { "prettier" },
-                typescript = { "prettier" },
-                typescriptreact = { "prettier" },
+                javascript = { formatter },
+                javascriptreact = { formatter },
+                typescript = { formatter },
+                typescriptreact = { formatter },
             },
             lsp = {
-                enable = { "vtsls" },
+                enable = { "tsgo", "biome" },
             },
         },
     },

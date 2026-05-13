@@ -1,0 +1,14 @@
+words = [
+    "autocommand",
+    "foldexpr",
+    "indentexpr",
+    "keymap",
+    "keymaps",
+    "linters",
+    "nvim",
+    "solarized",
+    "statusline",
+    "stylua",
+    "textobjects",
+]
+ignore_patterns = ['[^\s]+/[^\s]+']

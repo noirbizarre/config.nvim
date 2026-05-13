@@ -11,7 +11,8 @@ local cache = {}
 
 ---@class schemas.Adapter
 ---@field lsp string LSP client name
----@field schema_method string LSP method to request schema
+---@field schema_method string|nil LSP method to request schema
+---@field client vim.lsp.Client LSP client
 local Adapter = {}
 
 ---Parse buffer schemas from LSP result
@@ -19,6 +20,27 @@ local Adapter = {}
 ---@param client vim.lsp.Client LSP client
 ---@return Schema[] schemas Parsed schemas
 function Adapter:parse_buf_schemas(result, client) return {} end
+
+---Manually fetch schemas for a given buffer (no dedicated endpoint)
+---@param client vim.lsp.Client LSP client
+---@param bufnr number Buffer number
+---@param callback fun(bufnr:number, schemas:Schema[]) Callback to receive schemas
+function Adapter:fetch_buf_schemas(client, bufnr, callback) end
+
+---List available schemas for a given client and buffer
+---@param client vim.lsp.Client LSP client
+---@param bufnr number Buffer number
+---@param callback fun(schemas:Schema[]) Callback to receive schemas
+function Adapter:list_schemas(client, bufnr, callback) end
+
+---Set schema buffer
+---@param client vim.lsp.Client LSP client
+---@param bufnr number Buffer number
+---@param uri string Schema URI to set
+function Adapter:set_schema(client, bufnr, uri)
+    vim.print("Selected schema: ", uri)
+    vim.print("Setting schema is not yet supported for " .. self.lsp)
+end
 
 ---Instantiate a new Adapter
 ---@param lsp string LSP client name
@@ -41,21 +63,52 @@ vim.api.nvim_create_autocmd("LspAttach", {
         end
         local adapter = M.adapters[client.name]
         if adapter then
+            adapter.client = client
             vim.defer_fn(function()
-                client:request(adapter.schema_method, { vim.uri_from_bufnr(ev.buf) }, function(err, result, ctx)
-                    if err then
-                        vim.print(adapter.lsp .. " schema error", err)
-                    end
-                    cache[ev.buf] = adapter:parse_buf_schemas(result, client)
-                end, ev.buf)
+                if adapter.schema_method == nil then
+                    adapter:fetch_buf_schemas(client, ev.buf, function(bufnr, schemas) cache[bufnr] = schemas end)
+                    return
+                else
+                    client:request(adapter.schema_method, { vim.uri_from_bufnr(ev.buf) }, function(err, result, ctx)
+                        if err then
+                            vim.print(adapter.lsp .. " schema error", err)
+                            return
+                        end
+                        cache[ev.buf] = adapter:parse_buf_schemas(result, client)
+                    end, ev.buf)
+                end
             end, 100)
+
+            local wk = require("which-key")
+            wk.add({
+                buffer = ev.buf,
+                {
+                    "<leader>ks",
+                    function()
+                        adapter:list_schemas(client, ev.buf, function(schemas)
+                            schemas = vim.tbl_filter(function(s) return s ~= nil and s.name ~= nil end, schemas)
+                            vim.ui.select(schemas, {
+                                prompt = "Select Schema:",
+                                icon = "󰘦 ",
+                                format_item = function(schema) return schema.name end,
+                            }, function(choice)
+                                if choice == nil then
+                                    return
+                                end
+                                adapter:set_schema(client, ev.buf, choice.uri)
+                            end)
+                        end)
+                    end,
+                    desc = "Change Schema",
+                },
+            })
         end
     end,
 })
 
 --- Create a new schema adapter
 ---@param lsp string LSP client name
----@param method string LSP method to request schema
+---@param method string|nil LSP method to request schema
 ---@return schemas.Adapter
 function M.adapter(lsp, method)
     local adapter = Adapter:new(lsp, method)
@@ -88,7 +141,7 @@ function M.display_currents()
     return ""
 end
 
-function M.select() end
+function M.select() local bufnr = vim.api.nvim_get_current_buf() end
 
 M.statusline = {
     M.display_currents,

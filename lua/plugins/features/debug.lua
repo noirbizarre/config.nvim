@@ -29,7 +29,7 @@ return {
                     winbar = {
                         sections = { "scopes", "watches", "exceptions", "breakpoints", "threads", "repl" },
                         default_section = "scopes",
-                        show_keymap_hints = true,
+                        show_keymap_hints = false,
                         base_sections = {
                             breakpoints = { label = " Breakpoints" },
                             scopes = { label = " Scopes" },

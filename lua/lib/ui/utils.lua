@@ -1,7 +1,7 @@
 --- Miscelaneous helpers
 local M = {}
 
-local ft = require("lib.filetypes")
+local files = require("lib.files")
 
 M.foldexpr = function()
     local buf = vim.api.nvim_get_current_buf()
@@ -11,7 +11,7 @@ M.foldexpr = function()
         if vim.bo[buf].filetype == "" then
             return "0"
         end
-        if ft.internals[vim.bo[buf].filetype] ~= nil then
+        if files.internal_filetypes[vim.bo[buf].filetype] ~= nil then
             vim.b[buf].ts_folds = false
         else
             vim.b[buf].ts_folds = pcall(vim.treesitter.get_parser, buf)

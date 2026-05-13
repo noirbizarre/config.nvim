@@ -10,6 +10,26 @@ local Adapter = schemas.adapter("yamlls", "yaml/get/jsonSchema")
 
 function Adapter:parse_buf_schemas(result) return result end
 
+function Adapter:fetch_buf_schemas(client, bufnr, callback)
+    client:request("yaml/get/jsonSchema", { vim.uri_from_bufnr(bufnr) }, function(err, result, ctx)
+        if err then
+            vim.print("YAML schema error", err)
+            return
+        end
+        callback(bufnr, self:parse_buf_schemas(result, client))
+    end, bufnr)
+end
+
+function Adapter:list_schemas(client, bufnr, callback)
+    client:request("yaml/get/all/jsonSchemas", { vim.uri_from_bufnr(bufnr) }, function(err, result, ctx)
+        if err then
+            vim.print("yamlls schema error", err)
+            return
+        end
+        callback(self:parse_buf_schemas(result, client))
+    end, bufnr)
+end
+
 ---@class SchemaDefinition
 ---@field uri string The URL of the schema (accept local path and file:// proto)
 ---@field name string The name of the schema

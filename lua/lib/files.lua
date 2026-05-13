@@ -2,7 +2,7 @@
 
 return {
     --- Buffer filetypes to exclude from plugin
-    internals = {
+    internal_filetypes = {
         "Avante",
         "AvanteInput",
         "AvanteSelectedFiles",
@@ -45,5 +45,24 @@ return {
         "telescope",
         "toggleterm",
         "trouble",
+    },
+    --- Always exclude patterns
+    always_excluded = {
+        "**/.*_cache/**",
+        "**/dist/**",
+        -- Python
+        "**/venv/**",
+        "**/.venv/**",
+        "**/.tox/**",
+        "**/__pycache__/**",
+        -- JS/TS
+        "**/node_modules/*",
+        "**/.yarn/cache/*",
+        "**/.yarn/install*",
+        "**/.yarn/releases/*",
+        "**/.pnpm-store/*",
+        -- rust build assets
+        "**/target/**",
+        "**/build/**",
     },
 }

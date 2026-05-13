@@ -1,4 +1,4 @@
-local ft = require("lib.filetypes")
+local files = require("lib.files")
 
 local function group(name)
     -- Prevent Stylua collapse
@@ -17,7 +17,7 @@ vim.api.nvim_create_autocmd({ "BufEnter", "BufWinEnter" }, {
 vim.api.nvim_create_autocmd("BufEnter", {
     group = group("no_statuscolumn"),
     callback = function()
-        if vim.tbl_contains(ft.internals, vim.bo.filetype) then
+        if vim.tbl_contains(files.internal_filetypes, vim.bo.filetype) then
             vim.wo.statuscolumn = ""
         end
     end,
@@ -27,7 +27,7 @@ vim.api.nvim_create_autocmd("BufEnter", {
 vim.api.nvim_create_autocmd({ "BufEnter", "FocusGained", "InsertLeave" }, {
     pattern = "*",
     callback = function()
-        if not vim.tbl_contains(ft.internals, vim.bo.filetype) then
+        if not vim.tbl_contains(files.internal_filetypes, vim.bo.filetype) then
             vim.wo.relativenumber = true
         end
     end,

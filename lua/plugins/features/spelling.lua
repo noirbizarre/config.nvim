@@ -13,7 +13,16 @@ return {
             ["*"] = { "codespell" },
         },
         lsp = {
-            enable = { "ltex_plus" },
+            enable = { "codebook", "harper_ls" },
+            harper_ls = {
+                settings = {
+                    ["harper-ls"] = {
+                        linters = {
+                            SpellCheck = false,
+                        },
+                    },
+                },
+            },
             ltex_plus = {
                 settings = {
                     ltex = {

@@ -20,22 +20,6 @@ return {
         branch = "main",
         build = function() require("nvim-treesitter").update() end,
     },
-    -- Incremental selection
-    {
-        "MeanderingProgrammer/treesitter-modules.nvim",
-        dependencies = { "nvim-treesitter/nvim-treesitter" },
-        opts = {
-            incremental_selection = {
-                enable = true,
-                keymaps = {
-                    init_selection = "<Enter>",
-                    node_incremental = "<Enter>",
-                    scope_incremental = false,
-                    node_decremental = "<BS>",
-                },
-            },
-        },
-    },
     -- Custom Textobjects
     {
         "nvim-treesitter/nvim-treesitter-textobjects",
@@ -85,9 +69,9 @@ return {
                 enable = true,
                 lookahead = true,
                 selection_modes = {
-                    ["@parameter.outer"] = "v", -- charwise
-                    ["@function.outer"] = "V", -- linewise
-                    ["@class.outer"] = "<c-v>", -- blockwise
+                    ["@parameter.outer"] = "v", -- char-wise
+                    ["@function.outer"] = "V", -- line-wise
+                    ["@class.outer"] = "<c-v>", -- block-wise
                 },
             },
         },
@@ -128,7 +112,7 @@ return {
         "eero-lehtinen/oklch-color-picker.nvim",
         event = "VeryLazy",
         keys = {
-            -- One handed keymap recommended, you will be using the mouse
+            -- One-handed keymap recommended, you will be using the mouse
             {
                 "<leader>uc",
                 function() require("oklch-color-picker").pick_under_cursor() end,

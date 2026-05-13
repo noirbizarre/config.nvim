@@ -1,3 +1,5 @@
+local files = require("lib.files")
+
 return {
     {
         "folke/which-key.nvim",
@@ -61,7 +63,8 @@ return {
             },
             { "<leader>lw", function() Snacks.picker.lsp_workspace_symbols() end, desc = "Workspace symbols" },
             { "<leader>lc", function() Snacks.picker.lsp_incoming_calls() end, desc = "Incoming calls" },
-            { "<leader>ld", function() Snacks.picker.diagnostics() end, desc = "Diagnostics" },
+            { "<leader>ld", function() Snacks.picker.diagnostics_buffer() end, desc = "Buffer Diagnostics" },
+            { "<leader>lD", function() Snacks.picker.diagnostics() end, desc = "Diagnostics" },
         },
     },
     -- lsp servers
@@ -97,19 +100,10 @@ return {
             local icons = require("lib.ui.icons")
 
             -- Exclude big directories from being watched
-            vim.lsp._watchfiles._poll_exclude_pattern = vim.lsp._watchfiles._poll_exclude_pattern
-                -- Standard cache dirs
-                + vim.glob.to_lpeg("**/.*_cache/**")
-                -- Python
-                -- + vim.glob.to_lpeg("**/.venv/**")
-                + vim.glob.to_lpeg("**/.tox/**")
-                + vim.glob.to_lpeg("**/__pycache__/**")
-                -- JS/TS
-                + vim.glob.to_lpeg("**/.yarn/**")
-                -- rust build assets
-                + vim.glob.to_lpeg("**/target/**")
-                + vim.glob.to_lpeg("**/build/**")
-                + vim.glob.to_lpeg("**/dist/**")
+            for _, pattern in ipairs(files.always_excluded) do
+                vim.lsp._watchfiles._poll_exclude_pattern = vim.lsp._watchfiles._poll_exclude_pattern
+                    + vim.glob.to_lpeg(pattern)
+            end
 
             vim.diagnostic.config({
                 signs = {

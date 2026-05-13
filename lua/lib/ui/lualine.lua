@@ -1,7 +1,7 @@
 --- Full lualine.nvim configuration
 --- See: https://github.com/nvim-lualine/lualine.nvim
 local icons = require("lib.ui.icons")
-local filetypes = require("lib.filetypes")
+local files = require("lib.files")
 local schemas = require("lib.schemas")
 table.unpack = table.unpack or unpack -- 5.1 compatibility
 
@@ -34,10 +34,10 @@ return {
         icons_enabled = true,
         always_show_tabline = false,
         globalstatus = true,
-        disabled_focus = filetypes.internals,
+        disabled_focus = files.internal_filetypes,
         disabled_filetypes = {
             statusline = { "snacks_dashboard" },
-            winbar = { "gitrebase", table.unpack(filetypes.internals) },
+            winbar = { "gitrebase", table.unpack(files.internal_filetypes) },
         },
     },
     sections = {

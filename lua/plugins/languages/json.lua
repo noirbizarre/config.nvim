@@ -4,6 +4,8 @@ vim.filetype.add({
     pattern = {
         -- VSCode JSONC
         [".*/%.vscode/.+%.json"] = "jsonc",
+        -- Vicinae config
+        [".*/vicinae/.+%.json"] = "jsonc",
     },
 })
 
@@ -40,7 +42,6 @@ return {
             "jq",
             "json",
             "json5",
-            "jsonc",
         },
         linters = {
             json = { "jsonlint" },

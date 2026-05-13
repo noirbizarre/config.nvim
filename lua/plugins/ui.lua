@@ -1,5 +1,5 @@
 local ascii = require("lib.ui.ascii")
-local ft = require("lib.filetypes")
+local files = require("lib.files")
 
 local icons_opts = {
     custom_sources = {
@@ -19,6 +19,7 @@ return {
                 terminal_colors = false,
                 dim_inactive = true, -- Non focused panes set to alternative background
                 styles = {
+                    comments = { italic = true },
                     sidebars = "transparent",
                     -- floats = "transparent",
                 },
@@ -114,7 +115,7 @@ return {
             { "<leader>kk", function() Snacks.picker.keymaps() end, desc = "Keymaps" },
             { "<leader>kh", function() Snacks.picker.help() end, desc = "Help Pages" },
             { "<leader>kH", function() Snacks.picker.highlights() end, desc = "Highlights" },
-            { "<leader>kq", function() Snacks.picker.qflist() end, desc = "Quickfixes" },
+            { "<leader>kq", function() Snacks.picker.qflist() end, desc = "Quick fixes" },
             { "<leader>kc", function() Snacks.picker.commands() end, desc = "Commands" },
             { "<leader>kC", function() Snacks.picker.command_history() end, desc = "Command history" },
             { "<leader>ku", function() Snacks.picker.undo() end, desc = "Undo tree" },
@@ -247,7 +248,7 @@ return {
                     return vim.g.snacks_indent ~= false
                         and vim.b[buf].snacks_indent ~= false
                         and vim.bo[buf].buftype == ""
-                        and not vim.tbl_contains(ft.internals, vim.bo.filetype)
+                        and not vim.tbl_contains(files.internal_filetypes, vim.bo.filetype)
                 end,
             },
             input = { enabled = true },
@@ -262,9 +263,11 @@ return {
                     files = {
                         hidden = true,
                         confirm = "open_or_create",
+                        exclude = files.always_excluded,
                     },
                     grep = {
                         hidden = true,
+                        exclude = files.always_excluded,
                     },
                     lsp_symbols = {
                         filter = {
@@ -288,6 +291,7 @@ return {
                         },
                     },
                     explorer = {
+                        exclude = files.always_excluded,
                         layout = {
                             hidden = { "input", "preview" },
                         },

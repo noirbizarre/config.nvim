@@ -234,31 +234,55 @@ return {
     -- Debug printing helper
     {
         "ThePrimeagen/refactoring.nvim",
+        -- `dependencies = { "lewis6991/async.nvim" }` is set on the main spec
+        -- in `lua/plugins/refactoring.lua`; lazy.nvim merges specs so it is
+        -- enough to declare it once.
         keys = {
             {
                 "<leader>dpp",
-                function() require("refactoring").debug.printf({}) end,
+                function() return require("refactoring.debug").print_loc({}) end,
+                expr = true,
                 desc = "Print statement",
             },
             {
                 "<leader>dpv",
-                function() require("refactoring").debug.print_var({}) end,
-                mode = { "n", "x" },
+                function() return require("refactoring.debug").print_var({}) .. "iw" end,
+                expr = true,
+                desc = "Print var statement",
+            },
+            {
+                "<leader>dpv",
+                function() return require("refactoring.debug").print_var({}) end,
+                mode = "x",
+                expr = true,
                 desc = "Print var statement",
             },
             {
                 "<leader>dpx",
-                function() require("refactoring").debug.cleanup({}) end,
+                function() return require("refactoring.debug").cleanup({}) end,
+                expr = true,
                 desc = "Clear print statements",
             },
         },
-        opts = {
-            printf_statements = {
-                python = { 'print(f"🔎 [%s]=> {locals()=}")' },
-            },
-            print_var_statements = {
-                python = { 'print(f"🔎 %.0s{%s=}")' },
-            },
-        },
+        -- opts = {
+        --     debug = {
+        --         print_loc = {
+        --             code_generation = {
+        --                 print_loc = {
+        --                     python = function(opts)
+        --                         return ([[print(f"🔎 [%s]=> {locals()=}")]]):format(opts.debug_path)
+        --                     end,
+        --                 },
+        --             },
+        --         },
+        --         print_var = {
+        --             code_generation = {
+        --                 print_var = {
+        --                     python = function(opts) return ([[print(f"🔎 {%s=}")]]):format(opts.identifier) end,
+        --                 },
+        --             },
+        --         },
+        --     },
+        -- },
     },
 }

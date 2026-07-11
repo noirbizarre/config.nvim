@@ -2,11 +2,13 @@ return {
     --- The Refactoring library based off the Refactoring book by Martin Fowler
     {
         "ThePrimeagen/refactoring.nvim",
+        dependencies = { "lewis6991/async.nvim" },
         keys = {
             {
                 "<leader>rr",
-                function() require("refactoring").select_refactor({ prefer_ex_cmd = true }) end,
+                function() return require("refactoring").select_refactor() end,
                 mode = { "n", "x" },
+                expr = true,
                 desc = "Refactor",
             },
         },

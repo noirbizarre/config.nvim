@@ -1,6 +1,6 @@
 local has_mise = vim.env.__MISE_SESSION and true or false
 
-function with_mise(cmd) return has_mise and { "mise", "exec", "--no-prepare", "--raw", "--", cmd } or { cmd } end
+function with_mise(cmd) return has_mise and { "mise", "exec", "--no-deps", "--raw", "--", cmd } or { cmd } end
 
 return {
     {

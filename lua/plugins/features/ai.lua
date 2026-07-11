@@ -30,6 +30,9 @@ return {
                     claude = {
                         cmd = with_mise("claude"),
                     },
+                    codex = {
+                        cmd = with_mise("codex"),
+                    },
                 },
             },
         },

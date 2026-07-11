@@ -1,5 +1,6 @@
 local ascii = require("lib.ui.ascii")
 local files = require("lib.files")
+local git = require("lib.git")
 
 local icons_opts = {
     custom_sources = {
@@ -136,8 +137,13 @@ return {
             --- Buffers
             { "<leader>bb", function() Snacks.picker.buffers() end, desc = "Buffers" },
             { "<leader>bd", function() Snacks.bufdelete() end, desc = "Delete Buffer" },
-            { "<leader>bs", function() Snacks.scratch() end, desc = "Toggle Scratch Buffer" },
+            { "<leader>bs", function() require("lib.scratch").toggle() end, desc = "Toggle Scratch Buffer" },
             { "<leader>bS", function() Snacks.scratch.select() end, desc = "Select Scratch Buffer" },
+            {
+                "<leader>bn",
+                function() require("lib.scratch").named() end,
+                desc = "New Named Scratch Note",
+            },
             --- Refactoring
             { "<leader>rR", function() Snacks.rename.rename_file() end, desc = "Rename File" },
             --- UI & Motions
@@ -252,6 +258,20 @@ return {
                 end,
             },
             input = { enabled = true },
+            scratch = {
+                -- Recompute on every open/list/select so the root always reflects
+                -- the current project / git worktree (config hook runs on every
+                -- Snacks.config.get).
+                config = function(opts) opts.root = git.notes_dir() end,
+                -- Notes are project-scoped and shared across worktrees: drop branch
+                -- (not branch-tied) and cwd (redundant + differs per worktree), keep
+                -- count so multiple pads per project are still possible.
+                filekey = {
+                    cwd = false,
+                    branch = false,
+                    count = true,
+                },
+            },
             picker = {
                 prompt = "   ",
                 formatters = {
@@ -268,6 +288,35 @@ return {
                     grep = {
                         hidden = true,
                         exclude = files.always_excluded,
+                    },
+                    scratch = {
+                        -- Record the picked note as the "last note" so <leader>bs
+                        -- toggles it, then perform the default open behaviour.
+                        confirm = function(picker, item)
+                            picker:close()
+                            if not item then
+                                return
+                            end
+                            require("lib.scratch").remember({
+                                file = item.item.file,
+                                name = item.item.name,
+                                ft = item.item.ft,
+                            })
+                            Snacks.scratch.open({
+                                icon = item.item.icon,
+                                file = item.item.file,
+                                name = item.item.name,
+                                ft = item.item.ft,
+                            })
+                        end,
+                        win = {
+                            input = {
+                                keys = {
+                                    -- keep default <c-x>; add <c-d> as an alias
+                                    ["<c-d>"] = { "scratch_delete", mode = { "n", "i" }, desc = "Delete scratch" },
+                                },
+                            },
+                        },
                     },
                     lsp_symbols = {
                         filter = {

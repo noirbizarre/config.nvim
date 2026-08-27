@@ -137,6 +137,7 @@ return {
             { "<leader>gf", function() Snacks.picker.git_log_file() end, desc = "Current buffer history" },
             { "<leader>gl", function() Snacks.picker.git_log_line() end, desc = "Current line history" },
             { "<leader>gs", function() Snacks.picker.git_status() end, desc = "Git Status" },
+            { "<leader>gS", function() Snacks.picker.git_status({ group = true }) end, desc = "Git Status (Hunks)" },
             { "<leader>gt", function() Snacks.picker.git_stash() end, desc = "Git Stash" },
             { "<leader>gb", function() Snacks.picker.git_branches() end, desc = "Git Branches" },
             { "<leader>gB", function() Snacks.picker.git_branches({ all = true }) end, desc = "Git Branches (all)" },
@@ -191,7 +192,7 @@ return {
                 desc = "Git Rebase (continue)",
             },
             { "<leader>gp", function() Snacks.terminal("git add -p", gitwin) end, desc = "Git Partial Add" },
-            { "<leader>gS", function() Snacks.terminal("git dmb", gitwin) end, desc = "Git Sync" },
+            -- { "<leader>gS", function() Snacks.terminal("git dmb", gitwin) end, desc = "Git Sync" },
         },
         opts = {
             picker = {

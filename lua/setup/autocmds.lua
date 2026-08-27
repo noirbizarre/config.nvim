@@ -13,6 +13,14 @@ vim.api.nvim_create_autocmd({ "BufEnter", "BufWinEnter" }, {
     end,
 })
 
+vim.api.nvim_create_autocmd({ "BufEnter", "BufWinEnter" }, {
+    pattern = { "*.tape" },
+    callback = function()
+        vim.cmd("set filetype=vhs")
+        vim.api.nvim_command("set commentstring=#%s")
+    end,
+})
+
 -- Disable statuscolumn on internal windows
 vim.api.nvim_create_autocmd("BufEnter", {
     group = group("no_statuscolumn"),

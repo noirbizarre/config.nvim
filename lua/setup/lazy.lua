@@ -48,20 +48,37 @@ require("lazy").setup({
                 },
             },
         },
-        -- import your plugins
+        {
+            "folke/which-key.nvim",
+            opts_extend = { "spec", "icons.rules" },
+        },
         { import = "plugins" },
         { import = "plugins.features" },
         { import = "plugins.languages" },
         {
             "noirbizarre/ensure.nvim",
             -- dev = true,
+            -- event = { "BufNewFile", "BufReadPre"},
+            -- cmd = "Ensure",
+            -- opts_extend = {
+            --     "ignore.packages",
+            --     "ignore.parsers",
+            --     "lsp.auto.ignore",
+            --     "lsp.disable",
+            --     "lsp.enable",
+            --     "packages",
+            --     "parsers",
+            --     "plugins",
+            -- },
             ---@type ensure.SetupOpts
             opts = {
                 ignore = {
                     packages = { "janet", "inko" },
                 },
                 lsp = {
-                    auto = true,
+                    auto = {
+                        enable = true,
+                    },
                 },
             },
         },

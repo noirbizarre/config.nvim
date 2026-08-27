@@ -16,7 +16,7 @@ return {
         opts = {
             highlights = {
                 ["@markup.heading"] = function(highlights, colors)
-                    local util = require("solarized-osaka.util")
+                    local util = require("snacks.util")
                     highlights["@markup.heading.1"] = {
                         fg = colors.blue,
                         bg = util.blend(colors.blue, colors.bg, 0.25),

@@ -28,7 +28,7 @@ return {
                 ---@param highlights table<string, vim.api.keyset.highlight|string>
                 ---@param colors ColorScheme
                 on_highlights = function(highlights, colors)
-                    local util = require("solarized-osaka.util")
+                    local util = require("snacks.util")
                     -- Fixes
                     highlights.DiffChange = "Normal"
                     highlights.DiffAdd = {
